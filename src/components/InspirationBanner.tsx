@@ -17,7 +17,7 @@ export const InspirationBanner: React.FC<InspirationBannerProps> = ({
     <section className="py-20 md:py-28 bg-[#0c0f0d] border-b border-neutral-800/80 relative overflow-hidden @container">
       {/* Background glow */}
       <div
-        className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-64 bg-[#ccff00]/5 blur-[120px]"
+        className="pointer-events-none absolute bottom-0 inset-x-0 mx-auto w-3/4 h-64 bg-[#ccff00]/5 blur-[120px]"
         aria-hidden="true"
       />
 

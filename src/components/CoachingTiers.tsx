@@ -142,7 +142,7 @@ export const CoachingTiers: React.FC<CoachingTiersProps> = ({ onSelectTier }) =>
             >
               {/* Popular Badge */}
               {tier.popular && (
-                <div className="absolute -top-3 left-8 bg-[#ccff00] text-black px-3 py-0.5 text-[11px] font-black uppercase tracking-wider">
+                <div className="absolute -top-3 start-8 bg-[#ccff00] text-black px-3 py-0.5 text-[11px] font-black uppercase tracking-wider">
                   Recommended · Doctor Flagship
                 </div>
               )}
@@ -177,15 +177,15 @@ export const CoachingTiers: React.FC<CoachingTiersProps> = ({ onSelectTier }) =>
                 <div className="space-y-3 mb-6 p-3.5 bg-[#141a16] border border-neutral-800/80 text-xs">
                   <div className="flex justify-between">
                     <span className="text-neutral-400">Doctor Touchpoint:</span>
-                    <span className="text-white font-medium text-right">{tier.deliverables.communication}</span>
+                    <span className="text-white font-medium text-end">{tier.deliverables.communication}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-neutral-400">Bloodwork Review:</span>
-                    <span className="text-[#ccff00] font-medium text-right">{tier.deliverables.bloodwork}</span>
+                    <span className="text-[#ccff00] font-medium text-end">{tier.deliverables.bloodwork}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-neutral-400">Diet Strategy:</span>
-                    <span className="text-white font-medium text-right">{tier.deliverables.nutrition}</span>
+                    <span className="text-white font-medium text-end">{tier.deliverables.nutrition}</span>
                   </div>
                 </div>
 

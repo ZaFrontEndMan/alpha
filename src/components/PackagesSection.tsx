@@ -83,7 +83,7 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({
             >
               {/* Popular Badge */}
               {pkg.popular && (
-                <div className="absolute -top-3.5 left-8 bg-[#ccff00] text-black px-3.5 py-0.5 text-[11px] font-black uppercase tracking-wider">
+                <div className="absolute -top-3.5 start-8 bg-[#ccff00] text-black px-3.5 py-0.5 text-[11px] font-black uppercase tracking-wider">
                   {lang === 'en' ? 'RECOMMENDED · ELITE' : 'الباقة الأكثر طلباً · تميز'}
                 </div>
               )}

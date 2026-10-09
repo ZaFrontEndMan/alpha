@@ -199,7 +199,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               setMobileMenuOpen(false);
               onOpenCalculator();
             }}
-            className="block text-left w-full text-sm font-semibold text-neutral-200 hover:text-[#ccff00] py-1.5"
+            className="block text-start w-full text-sm font-semibold text-neutral-200 hover:text-[#ccff00] py-1.5"
           >
             {t.nav.calculator}
           </button>

@@ -181,7 +181,7 @@ export const TransformationsGrid: React.FC<TransformationsGridProps> = ({
               className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-transparent to-[#0e1210] lg:opacity-100 opacity-60"
               aria-hidden="true"
             />
-            <div className="absolute top-4 left-4 bg-black/85 border border-[#ccff00] px-3 py-1 text-[11px] font-mono text-[#ccff00] font-bold uppercase">
+            <div className="absolute top-4 start-4 bg-black/85 border border-[#ccff00] px-3 py-1 text-[11px] font-mono text-[#ccff00] font-bold uppercase">
               12 WEEKS RECOMPOSITION
             </div>
           </div>

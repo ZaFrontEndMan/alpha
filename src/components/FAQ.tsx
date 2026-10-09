@@ -63,7 +63,7 @@ export const FAQ: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full text-left p-6 flex items-center justify-between gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ccff00]"
+                  className="w-full text-start p-6 flex items-center justify-between gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ccff00]"
                 >
                   <span className="font-display text-base sm:text-lg font-bold text-white">
                     {item.q}

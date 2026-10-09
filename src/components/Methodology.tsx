@@ -48,7 +48,7 @@ export const Methodology: React.FC = () => {
                 className="absolute inset-0 bg-gradient-to-t from-[#090b0a]/90 via-transparent to-transparent"
                 aria-hidden="true"
               />
-              <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs font-mono text-neutral-300">
+              <div className="absolute bottom-3 inset-x-4 flex items-center justify-between text-xs font-mono text-neutral-300">
                 <span>Thyroid · Cortisol · Lipids</span>
                 <span className="text-[#ccff00] font-semibold">Zero Guesswork</span>
               </div>
@@ -124,7 +124,7 @@ export const Methodology: React.FC = () => {
                 className="absolute inset-0 bg-gradient-to-t from-[#090b0a]/90 via-transparent to-transparent"
                 aria-hidden="true"
               />
-              <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs font-mono text-neutral-300">
+              <div className="absolute bottom-3 inset-x-4 flex items-center justify-between text-xs font-mono text-neutral-300">
                 <span>Leptin & Insulin Timing</span>
                 <span className="text-[#ccff00] font-semibold">Macro Precision</span>
               </div>

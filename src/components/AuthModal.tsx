@@ -43,7 +43,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-6 right-6 text-neutral-400 hover:text-white p-1 text-sm font-mono cursor-pointer"
+          className="absolute top-6 end-6 text-neutral-400 hover:text-white p-1 text-sm font-mono cursor-pointer"
           aria-label="Close modal"
         >
           ✕ ESC

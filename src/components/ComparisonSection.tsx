@@ -81,7 +81,7 @@ export const ComparisonSection: React.FC<ComparisonSectionProps> = ({
 
         {/* CTA Bar */}
         <div className="mt-10 p-6 bg-[#111713] border border-neutral-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-xs sm:text-sm text-neutral-300 text-center sm:text-left">
+          <div className="text-xs sm:text-sm text-neutral-300 text-center sm:text-start">
             {lang === 'en'
               ? 'Don’t gamble your health and hard work with unproven guesswork. Work directly with a doctor and pro athlete.'
               : 'لا تخاطر بصحتك ومجهودك مع خطط عشوائية غير مدروسة. انضم لطبيب وبطل محترف يضمن لك النتيجة بأمان.'}

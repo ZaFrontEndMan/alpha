@@ -178,7 +178,7 @@ export default function App() {
       />
 
       {/* Mobile Sticky Quick Action Bar (Comfortable thumb target size <= 15% viewport height) */}
-      <div className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#090b0a]/95 backdrop-blur-md border-t border-neutral-800 p-2.5 flex items-center gap-2">
+      <div className="sm:hidden fixed bottom-0 inset-x-0 z-40 bg-[#090b0a]/95 backdrop-blur-md border-t border-neutral-800 p-2.5 flex items-center gap-2">
         <button
           type="button"
           onClick={handleNavigateToCalculator}

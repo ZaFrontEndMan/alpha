@@ -38,7 +38,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ t, lang }) => {
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ccff00] cursor-pointer min-h-[48px]"
+                  className="w-full text-start p-5 sm:p-6 flex items-center justify-between gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ccff00] cursor-pointer min-h-[48px]"
                 >
                   <span className={cn(
                     "text-base sm:text-lg font-bold text-white",

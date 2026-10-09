@@ -19,7 +19,7 @@ export const Hero: React.FC<HeroProps> = ({
     <section className="relative overflow-hidden pt-10 pb-16 md:pt-16 md:pb-24 border-b border-neutral-800/80 @container">
       {/* Subtle ambient neon lime glow behind hero visual */}
       <div
-        className="pointer-events-none absolute top-1/4 -right-10 -z-10 w-96 h-96 rounded-full bg-[#ccff00]/8 blur-[120px]"
+        className="pointer-events-none absolute top-1/4 -end-10 -z-10 w-96 h-96 rounded-full bg-[#ccff00]/8 blur-[120px]"
         aria-hidden="true"
       />
 
@@ -130,7 +130,7 @@ export const Hero: React.FC<HeroProps> = ({
                 />
 
                 {/* Overlaid Medical Credentials Badge */}
-                <div className="absolute bottom-4 left-4 right-4 p-4 bg-[#090b0a]/90 backdrop-blur-md border border-neutral-800">
+                <div className="absolute bottom-4 inset-x-4 p-4 bg-[#090b0a]/90 backdrop-blur-md border border-neutral-800">
                   <div className="flex items-center justify-between">
                     <div>
                       <div className="text-[11px] font-mono uppercase tracking-wider text-[#ccff00]">
@@ -140,7 +140,7 @@ export const Hero: React.FC<HeroProps> = ({
                         {lang === 'en' ? 'IFBB PRO ATHLETE & M.D.' : 'بطل محترف IFBB Pro وطبيب بشري'}
                       </div>
                     </div>
-                    <div className="text-right">
+                    <div className="text-end">
                       <div className="text-[10px] text-neutral-400 uppercase">Alpha Team</div>
                       <div className="text-xs font-semibold text-[#ccff00] font-mono">500+ Clients</div>
                     </div>

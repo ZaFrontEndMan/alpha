@@ -66,7 +66,7 @@ Looking forward to starting my 90-day transformation!`
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-6 right-6 text-neutral-400 hover:text-white p-1 text-sm font-mono cursor-pointer"
+          className="absolute top-6 end-6 text-neutral-400 hover:text-white p-1 text-sm font-mono cursor-pointer"
           aria-label="Close modal"
         >
           ✕ ESC
@@ -75,7 +75,7 @@ Looking forward to starting my 90-day transformation!`
         {!submitted ? (
           <div>
             {/* Modal Header */}
-            <div className="mb-6 pr-8">
+            <div className="mb-6 pe-8">
               <div className="text-xs font-mono uppercase text-[#ccff00] tracking-wider">
                 {lang === 'en' ? `Step ${step} of 3 · Physician Intake` : `الخطوة ${step} من 3 · التقييم الطبي`}
               </div>
@@ -166,7 +166,7 @@ Looking forward to starting my 90-day transformation!`
                           key={i}
                           type="button"
                           onClick={() => setFormData({ ...formData, targetGoal: g.en })}
-                          className={`p-2.5 text-xs text-left border transition-colors cursor-pointer min-h-[42px] ${
+                          className={`p-2.5 text-xs text-start border transition-colors cursor-pointer min-h-[42px] ${
                             formData.targetGoal === g.en
                               ? 'border-[#ccff00] bg-[#141a15] text-[#ccff00] font-bold'
                               : 'border-neutral-800 bg-[#121614] text-neutral-300 hover:text-white'
@@ -387,7 +387,7 @@ Looking forward to starting my 90-day transformation!`
               </p>
             </div>
 
-            <div className="p-4 bg-[#121614] border border-neutral-800 text-left text-xs font-mono space-y-1.5">
+            <div className="p-4 bg-[#121614] border border-neutral-800 text-start text-xs font-mono space-y-1.5">
               <div className="flex justify-between">
                 <span className="text-neutral-400">{lang === 'en' ? 'Package:' : 'الباقة:'}</span>
                 <span className="text-white font-bold">{formData.selectedTier}</span>

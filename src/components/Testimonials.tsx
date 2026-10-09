@@ -76,7 +76,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
 
         {/* Trust CTA bar */}
         <div className="mt-12 pt-8 border-t border-neutral-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-xs text-neutral-400 text-center sm:text-left">
+          <div className="text-xs text-neutral-400 text-center sm:text-start">
             {lang === 'en'
               ? 'Over 500+ real client transformations logged. Join the Alpha Team today.'
               : 'أكثر من 500 تحول حقيقي موثق بالنتائج. انضم لفريق الألفا اليوم.'}

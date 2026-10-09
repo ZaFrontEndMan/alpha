@@ -333,7 +333,7 @@ Calculated at https://drahmedassem.com`;
                     type="button"
                     onClick={() => setGoal(g.id as FitnessGoal)}
                     className={cn(
-                      "p-3 text-left border transition-all cursor-pointer min-h-[44px]",
+                      "p-3 text-start border transition-all cursor-pointer min-h-[44px]",
                       goal === g.id
                         ? 'border-[#ccff00] bg-[#141a15]'
                         : 'border-neutral-800 bg-[#0e1210] hover:border-neutral-700'
@@ -367,7 +367,7 @@ Calculated at https://drahmedassem.com`;
               </div>
               <div className="text-5xl font-black text-white font-mono tabular-nums tracking-tight">
                 {results.targetCalories}
-                <span className="text-sm font-sans font-bold text-[#ccff00] ml-1.5 uppercase">
+                <span className="text-sm font-sans font-bold text-[#ccff00] ms-1.5 uppercase">
                   kcal
                 </span>
               </div>

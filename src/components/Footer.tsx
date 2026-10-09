@@ -120,7 +120,7 @@ export const Footer: React.FC<FooterProps> = ({ t, lang }) => {
         </div>
 
         {/* Legal Notices Row */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 font-mono text-center sm:text-left">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 font-mono text-center sm:text-start">
           <div>{t.footer.rights}</div>
           <div className="flex items-center gap-4">
             <a href="#" className="hover:text-neutral-300 transition-colors">
