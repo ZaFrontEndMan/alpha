@@ -1,0 +1,6 @@
+{
+  "name": "Dr. Ahmed Assem | Elite Fitness & Medical Coaching",
+  "description": "Official online coaching platform of Dr. Ahmed Assem. Medically guided fitness, nutrition protocols, macro calculator, and IFBB Pro physique transformations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

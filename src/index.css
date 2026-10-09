@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: #090b0a;
+    color: #f3f4f6;
+  }
+
+  /* English default fonts */
+  [dir="ltr"] body,
+  html:not([dir="rtl"]) body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  /* Arabic Cairo font */
+  [dir="rtl"] body {
+    font-family: 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Tahoma, sans-serif;
+  }
+
+  /* Display and athletic fonts */
+  .font-sport {
+    font-family: 'Barlow Condensed', 'Outfit', sans-serif;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .font-cairo {
+    font-family: 'Cairo', sans-serif;
+  }
+
+  .font-mono-numbers {
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090b0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #232a25;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ccff00;
+}
