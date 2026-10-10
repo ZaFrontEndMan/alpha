@@ -1,4 +1,6 @@
 import React from 'react';
+import clinicalMetabolicLabImg from '../assets/images/clinical_metabolic_lab_1791556783263.jpg';
+import precisionNutritionProtocolImg from '../assets/images/precision_nutrition_protocol_1791556794751.jpg';
 
 export const Methodology: React.FC = () => {
   return (
@@ -38,7 +40,7 @@ export const Methodology: React.FC = () => {
 
             <div className="relative overflow-hidden border border-neutral-800/80 h-56 sm:h-64 mt-4">
               <img
-                src="/src/assets/images/clinical_metabolic_lab_1791556783263.jpg"
+                src={clinicalMetabolicLabImg}
                 alt="Sports science metabolic and biomarker clinical testing lab"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 referrerPolicy="no-referrer"
@@ -114,7 +116,7 @@ export const Methodology: React.FC = () => {
 
             <div className="relative overflow-hidden border border-neutral-800/80 h-56 mt-4">
               <img
-                src="/src/assets/images/precision_nutrition_protocol_1791556794751.jpg"
+                src={precisionNutritionProtocolImg}
                 alt="Precision athlete nutrition and meal preparation protocol"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 referrerPolicy="no-referrer"

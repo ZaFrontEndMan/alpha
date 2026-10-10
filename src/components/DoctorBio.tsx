@@ -15,7 +15,7 @@ export const DoctorBio: React.FC<DoctorBioProps> = ({ onOpenConsultation }) => {
             <div className="bg-[#121614] border border-neutral-800 p-8 sm:p-10 relative overflow-hidden">
               {/* Subtle AA vector emblem watermark */}
               <div className="mb-8">
-                <BrandLogo size={64} variant="lime" showWordmark />
+                <BrandLogo size={64} showWordmark />
               </div>
 
               <blockquote className="font-display text-xl sm:text-2xl font-bold text-white leading-snug mb-6">

@@ -32,7 +32,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           href="#"
           className="flex items-center gap-3 shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ccff00]"
         >
-          <BrandLogo size={36} variant="lime" />
+          <BrandLogo size={36} />
           <div className="flex flex-col leading-none">
             <span className={cn(
               "tracking-tight text-white text-base sm:text-lg group-hover:text-[#ccff00] transition-colors font-extrabold",

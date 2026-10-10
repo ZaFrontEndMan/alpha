@@ -16,7 +16,7 @@ export const Footer: React.FC<FooterProps> = ({ t, lang }) => {
           {/* Brand Info */}
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <BrandLogo size={40} variant="lime" />
+              <BrandLogo size={40} />
               <div className="flex flex-col leading-none">
                 <span className={cn(
                   "tracking-tight text-white text-lg font-black",

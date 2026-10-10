@@ -15,6 +15,8 @@ import { Footer } from './components/Footer';
 import { ConsultationModal } from './components/ConsultationModal';
 import { AuthModal } from './components/AuthModal';
 import { translations, Language } from './translations';
+import { LogoIntro } from './components/LogoIntro';
+import { scrollToId, startScroll, stopScroll, useParallax, useScrollReveal, useSmoothScroll } from './components/fx';
 
 export default function App() {
   const [lang, setLang] = useState<Language>('en');
@@ -23,6 +25,17 @@ export default function App() {
   const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
   const [selectedTier, setSelectedTier] = useState('Elite Coaching (7000 EGP)');
   const [preloadedMacroSummary, setPreloadedMacroSummary] = useState('');
+
+  // Smooth scroll, scroll reveals and parallax (same feel as the Consightve landing)
+  useSmoothScroll();
+  useScrollReveal();
+  useParallax();
+
+  // Hold the page still behind an open modal; the modal scrolls on its own (data-lenis-prevent)
+  useEffect(() => {
+    if (isConsultationOpen || isAuthOpen) stopScroll();
+    else startScroll();
+  }, [isConsultationOpen, isAuthOpen]);
 
   // Update HTML document dir attribute when language changes
   useEffect(() => {
@@ -52,10 +65,7 @@ export default function App() {
   };
 
   const handleNavigateToCalculator = () => {
-    const el = document.getElementById('calculator');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
+    scrollToId('calculator');
   };
 
   const handleApplyWithMacros = (macroSummary: string) => {
@@ -66,6 +76,9 @@ export default function App() {
 
   return (
     <div className={`min-h-screen bg-[#090b0a] text-neutral-100 flex flex-col selection:bg-[#ccff00] selection:text-black ${lang === 'ar' ? 'font-cairo' : 'font-sans'}`}>
+      {/* Logo loader: plays once, then lifts off the hero */}
+      <LogoIntro />
+
       {/* Top Navigation */}
       <Navbar
         lang={lang}
@@ -78,7 +91,7 @@ export default function App() {
       />
 
       {/* Main Flow */}
-      <main className="flex-1">
+      <main id="main" className="flex-1">
         {/* 1. Hero Section */}
         <Hero
           t={t}
@@ -178,18 +191,18 @@ export default function App() {
       />
 
       {/* Mobile Sticky Quick Action Bar (Comfortable thumb target size <= 15% viewport height) */}
-      <div className="sm:hidden fixed bottom-0 inset-x-0 z-40 bg-[#090b0a]/95 backdrop-blur-md border-t border-neutral-800 p-2.5 flex items-center gap-2">
+      <div className="sm:hidden fixed bottom-0 inset-x-0 z-40 bg-[#090b0a]/95 backdrop-blur-md border-t border-neutral-800 px-3 py-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] flex items-center gap-2">
         <button
           type="button"
           onClick={handleNavigateToCalculator}
-          className="flex-1 py-3 px-3 min-h-[44px] text-xs font-bold uppercase tracking-wider text-neutral-300 border border-neutral-700 bg-neutral-900/90 text-center cursor-pointer"
+          className="flex-1 py-2 px-2 min-h-[38px] text-[0.68rem] font-bold uppercase tracking-wider text-neutral-300 whitespace-nowrap border border-neutral-700 bg-neutral-900/90 text-center cursor-pointer"
         >
           {t.nav.calculator}
         </button>
         <button
           type="button"
           onClick={() => handleOpenConsultation()}
-          className="flex-1 py-3 px-3 min-h-[44px] text-xs font-black uppercase tracking-wider text-black bg-[#ccff00] hover:bg-[#b5e600] text-center shadow-[0_0_15px_rgba(204,255,0,0.3)] cursor-pointer"
+          className="flex-1 py-2 px-2 min-h-[38px] text-[0.68rem] font-black uppercase tracking-wider text-black bg-[#ccff00] hover:bg-[#b5e600] text-center shadow-[0_0_12px_rgba(204,255,0,0.25)] whitespace-nowrap cursor-pointer"
         >
           {t.hero.ctaStart}
         </button>

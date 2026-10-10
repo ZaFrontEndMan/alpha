@@ -60,7 +60,7 @@ Looking forward to starting my 90-day transformation!`
   );
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+    <div data-lenis-prevent className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
       <div className="bg-[#0c0f0d] border border-neutral-700 max-w-xl w-full p-6 sm:p-8 relative shadow-2xl">
         {/* Close Button */}
         <button

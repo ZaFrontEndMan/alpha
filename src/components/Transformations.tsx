@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { TransformationItem } from '../types';
+import physiqueTransformationShowcaseImg from '../assets/images/physique_transformation_showcase_1791556772517.jpg';
 
 interface TransformationsProps {
   onOpenConsultation: () => void;
@@ -159,7 +160,7 @@ export const Transformations: React.FC<TransformationsProps> = ({ onOpenConsulta
         <div className="mb-12 bg-[#0e1210] border border-neutral-800 overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center">
           <div className="lg:col-span-5 relative h-72 lg:h-full min-h-[300px]">
             <img
-              src="/src/assets/images/physique_transformation_showcase_1791556772517.jpg"
+              src={physiqueTransformationShowcaseImg}
               alt="Elite athletic muscular conditioning showcase"
               className="w-full h-full object-cover filter brightness-95"
               referrerPolicy="no-referrer"

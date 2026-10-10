@@ -1,6 +1,7 @@
 import React from 'react';
 import { TranslationContent, Language } from '../translations';
 import { cn } from '../utils/cn';
+import coachMedal from '../assets/images/coach-medal.webp';
 
 interface WhyChooseProps {
   t: TranslationContent;
@@ -16,20 +17,41 @@ export const WhyChoose: React.FC<WhyChooseProps> = ({
   return (
     <section className="py-20 md:py-28 bg-[#090b0a] border-b border-neutral-800/80 @container">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="max-w-3xl mb-16">
-          <div className="text-xs font-bold tracking-widest text-[#ccff00] uppercase mb-3">
-            {t.whyChoose.tag}
+        {/* Section Header + the coach with his IFBB medal */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-end mb-16">
+          <div className="lg:col-span-7 max-w-3xl">
+            <div className="text-xs font-bold tracking-widest text-[#ccff00] uppercase mb-3">
+              {t.whyChoose.tag}
+            </div>
+            <h2 className={cn(
+              "text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight [text-wrap:balance]",
+              lang === 'en' ? 'font-sport' : 'font-cairo'
+            )}>
+              {t.whyChoose.heading}
+            </h2>
+            <p className="mt-4 text-base sm:text-lg text-neutral-300 leading-relaxed">
+              {t.whyChoose.subheading}
+            </p>
           </div>
-          <h2 className={cn(
-            "text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight [text-wrap:balance]",
-            lang === 'en' ? 'font-sport' : 'font-cairo'
-          )}>
-            {t.whyChoose.heading}
-          </h2>
-          <p className="mt-4 text-base sm:text-lg text-neutral-300 leading-relaxed">
-            {t.whyChoose.subheading}
-          </p>
+
+          <figure className="lg:col-span-5 relative max-w-md w-full mx-auto lg:max-w-none">
+            <div className="relative overflow-hidden border border-neutral-800 aspect-[4/5] bg-neutral-900">
+              <img
+                src={coachMedal}
+                alt={lang === 'en' ? 'Dr. Ahmed Assem holding his IFBB Federation medal' : 'د. أحمد عاصم بميدالية الاتحاد الدولي IFBB'}
+                width={864}
+                height={1232}
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover object-[50%_35%]"
+              />
+              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#090b0a] to-transparent" aria-hidden="true" />
+            </div>
+            <figcaption className="absolute bottom-4 inset-x-4 flex items-center justify-between gap-3 p-3 bg-[#090b0a]/90 backdrop-blur-md border border-neutral-800 text-xs font-mono">
+              <span className="text-[#ccff00] font-bold uppercase tracking-wider">IFBB Federation</span>
+              <span className="text-neutral-300">{lang === 'en' ? 'Medalist' : 'حاصل على ميدالية'}</span>
+            </figcaption>
+          </figure>
         </div>
 
         {/* The 4 Core Pillars Grid */}

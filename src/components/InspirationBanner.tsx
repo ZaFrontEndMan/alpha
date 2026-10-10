@@ -1,6 +1,7 @@
 import React from 'react';
 import { TranslationContent, Language } from '../translations';
 import { cn } from '../utils/cn';
+import coachHeader from '../assets/images/coach-header.webp';
 
 interface InspirationBannerProps {
   t: TranslationContent;
@@ -15,6 +16,24 @@ export const InspirationBanner: React.FC<InspirationBannerProps> = ({
 }) => {
   return (
     <section className="py-20 md:py-28 bg-[#0c0f0d] border-b border-neutral-800/80 relative overflow-hidden @container">
+      {/* The coach behind the card (mirrored in RTL so he always sits on the open side) */}
+      <div className="pointer-events-none absolute inset-0 rtl:-scale-x-100" aria-hidden="true">
+        <img
+          data-parallax="0.1"
+          data-reveal-skip
+          src={coachHeader}
+          alt=""
+          width={2400}
+          height={1350}
+          loading="lazy"
+          decoding="async"
+          className="absolute right-0 -top-[8%] h-[116%] w-full object-cover object-[75%_center] opacity-35 lg:w-auto lg:max-w-none lg:opacity-75"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0c0f0d] via-[#0c0f0d]/70 to-transparent lg:via-[#0c0f0d]/40" />
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#0c0f0d] to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0c0f0d] to-transparent" />
+      </div>
+
       {/* Background glow */}
       <div
         className="pointer-events-none absolute bottom-0 inset-x-0 mx-auto w-3/4 h-64 bg-[#ccff00]/5 blur-[120px]"
@@ -22,7 +41,7 @@ export const InspirationBanner: React.FC<InspirationBannerProps> = ({
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="bg-[#0e1210] border border-neutral-800 p-8 sm:p-14 text-center max-w-4xl mx-auto space-y-8">
+        <div className="bg-[#0e1210]/85 backdrop-blur-sm border border-neutral-800 p-8 sm:p-12 text-center max-w-4xl lg:max-w-2xl mx-auto lg:ms-0 space-y-8">
           <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-[#ccff00]">
             <span>{t.banner.title}</span>
             <span className="text-neutral-600">·</span>

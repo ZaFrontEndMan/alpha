@@ -37,7 +37,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+    <div data-lenis-prevent className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
       <div className="bg-[#0c0f0d] border border-neutral-700 max-w-md w-full p-6 sm:p-8 relative shadow-2xl">
         {/* Close Button */}
         <button
@@ -51,7 +51,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 
         {/* Modal Brand Header */}
         <div className="text-center mb-6">
-          <BrandLogo size={42} variant="lime" className="justify-center mb-3" />
+          <BrandLogo size={42} className="justify-center mb-3" />
           <h3 className={cn(
             "text-2xl font-black text-white",
             lang === 'en' ? 'font-sport' : 'font-cairo'

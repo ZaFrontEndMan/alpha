@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Language, TranslationContent } from '../translations';
 import { cn } from '../utils/cn';
+import physiqueTransformationShowcaseImg from '../assets/images/physique_transformation_showcase_1791556772517.jpg';
 
 interface TransformationsGridProps {
   lang: Language;
@@ -120,7 +121,7 @@ export const TransformationsGrid: React.FC<TransformationsGridProps> = ({
     <section id="transformations" className="py-20 md:py-28 bg-[#090b0a] border-b border-neutral-800/80 @container">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div className="mb-12">
           <div className="max-w-3xl">
             <div className="text-xs font-bold tracking-widest text-[#ccff00] uppercase mb-3 flex items-center gap-2">
               <span>{lang === 'en' ? 'DOCUMENTED PROOF' : 'نتائج واقعية موثقة'}</span>
@@ -141,37 +142,13 @@ export const TransformationsGrid: React.FC<TransformationsGridProps> = ({
                 : 'متوسط نزول 8-12 كجم دهون في 90 يوماً. عضلات بطن مقسمة في 12 أسبوعاً. استعادة كاملة لصحة الحرق والهرمونات.'}
             </p>
           </div>
-
-          {/* Filter Segmented Controls with responsive mobile sizing */}
-          <div className="flex flex-wrap items-center gap-1.5 p-1 bg-[#121614] border border-neutral-800 self-start md:self-end">
-            {[
-              { id: 'all', labelEn: 'All (500+)', labelAr: 'الكل (+500)' },
-              { id: 'fat_loss', labelEn: 'Fat Loss', labelAr: 'خسارة الدهون' },
-              { id: 'recomp', labelEn: 'Recomposition', labelAr: 'إعادة التشكيل' },
-              { id: 'muscle_gain', labelEn: 'Muscle Gain', labelAr: 'بناء العضلات' },
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                type="button"
-                onClick={() => setFilter(tab.id)}
-                className={cn(
-                  "px-3 py-2 text-xs font-bold transition-all min-h-[38px] cursor-pointer",
-                  filter === tab.id
-                    ? "bg-[#ccff00] text-black font-extrabold shadow-sm"
-                    : "text-neutral-400 hover:text-white"
-                )}
-              >
-                {lang === 'en' ? tab.labelEn : tab.labelAr}
-              </button>
-            ))}
-          </div>
         </div>
 
         {/* Featured Visual Transformation Showcase (With Real Gym Asset) */}
         <div className="mb-12 bg-[#0e1210] border border-neutral-800 overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center">
           <div className="lg:col-span-5 relative h-72 lg:h-full min-h-[320px]">
             <img
-              src="/src/assets/images/physique_transformation_showcase_1791556772517.jpg"
+              src={physiqueTransformationShowcaseImg}
               alt="Elite client physique transformation"
               className="w-full h-full object-cover filter brightness-95 contrast-105"
               referrerPolicy="no-referrer"
@@ -251,8 +228,37 @@ export const TransformationsGrid: React.FC<TransformationsGridProps> = ({
           </div>
         </div>
 
-        {/* Transformation Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="text-xs font-mono font-bold uppercase tracking-widest text-neutral-400">
+            {lang === 'en' ? 'Browse client results by goal' : 'تصفح نتائج المتدربين حسب الهدف'}
+          </div>
+          {/* Filter tabs: they filter the cards right below, so they sit between the banner and the cards */}
+          <div className="flex flex-wrap items-center gap-1.5 p-1 bg-[#121614] border border-neutral-800 w-full sm:w-auto">
+            {[
+              { id: 'all', labelEn: 'All (500+)', labelAr: 'الكل (+500)' },
+              { id: 'fat_loss', labelEn: 'Fat Loss', labelAr: 'خسارة الدهون' },
+              { id: 'recomp', labelEn: 'Recomposition', labelAr: 'إعادة التشكيل' },
+              { id: 'muscle_gain', labelEn: 'Muscle Gain', labelAr: 'بناء العضلات' },
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => setFilter(tab.id)}
+                className={cn(
+                  "flex-1 sm:flex-none px-3 py-2 text-xs font-bold transition-all min-h-[38px] cursor-pointer whitespace-nowrap",
+                  filter === tab.id
+                    ? "bg-[#ccff00] text-black font-extrabold shadow-sm"
+                    : "text-neutral-400 hover:text-white"
+                )}
+              >
+                {lang === 'en' ? tab.labelEn : tab.labelAr}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Transformation Cards Grid (re-keyed per filter so the new set fades in) */}
+        <div key={filter} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 tab-swap">
           {filteredList.map((client) => (
             <div
               key={client.id}
