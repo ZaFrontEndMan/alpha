@@ -115,7 +115,7 @@ const TypedHeadline: React.FC<{ tokens: { w: string; accent?: boolean }[]; run: 
       <span aria-hidden="true">
         {tokens.map((tok, i) => (
           <React.Fragment key={i}>
-            <span className={cn('inline-block whitespace-nowrap', tok.accent && 'type-accent text-[#ccff00]')}>
+            <span className={cn('inline-block whitespace-nowrap', tok.accent && 'type-accent text-[var(--primary)]')}>
               {Array.from(tok.w).map((c, ci) => (
                 <span key={ci} className="type-ch" data-on="false">
                   {c === ' ' ? '\u00a0' : c}
@@ -183,8 +183,8 @@ export const Hero: React.FC<HeroProps> = ({
           <div className="absolute inset-0 bg-gradient-to-r from-[#090b0a]/90 via-[#090b0a]/45 via-45% to-transparent to-70%" />
         </div>
         <div className="relative h-full w-[60%] px-4 sm:px-6 py-[4%] flex flex-col justify-between">
-          <div className="hero-tag inline-flex self-start items-center gap-1.5 text-[0.55rem] sm:text-xs font-bold tracking-widest text-[#ccff00] uppercase">
-            <span className="hero-tag-dot w-1 h-1 sm:w-1.5 sm:h-1.5 bg-[#ccff00]" aria-hidden="true" />
+          <div className="hero-tag inline-flex self-start items-center gap-1.5 text-[0.55rem] sm:text-xs font-bold tracking-widest text-[var(--primary)] uppercase">
+            <span className="hero-tag-dot w-1 h-1 sm:w-1.5 sm:h-1.5 bg-[var(--primary)]" aria-hidden="true" />
             <span>{t.hero.tagline}</span>
           </div>
           <TypedHeadline
@@ -207,8 +207,8 @@ export const Hero: React.FC<HeroProps> = ({
           {/* Left Column: Proposition & Authority */}
           <div className="lg:col-span-7 flex flex-col justify-center">
             {/* Tagline */}
-            <div className="hero-tag hidden lg:inline-flex self-start items-center gap-2 text-xs font-bold tracking-widest text-[#ccff00] uppercase mb-4">
-              <span className="hero-tag-dot w-1.5 h-1.5 bg-[#ccff00]" aria-hidden="true" />
+            <div className="hero-tag hidden lg:inline-flex self-start items-center gap-2 text-xs font-bold tracking-widest text-[var(--primary)] uppercase mb-4">
+              <span className="hero-tag-dot w-1.5 h-1.5 bg-[var(--primary)]" aria-hidden="true" />
               <span>{t.hero.tagline}</span>
               <span className="text-neutral-600" aria-hidden="true">·</span>
               <span className="text-white font-mono">{t.stats.transformationsCount}</span>
@@ -227,7 +227,7 @@ export const Hero: React.FC<HeroProps> = ({
                   <React.Fragment key={`${lang}-${i}`}>
                     <span className="hero-word">
                       <span
-                        className={cn(tok.accent && 'hero-accent text-[#ccff00] whitespace-nowrap')}
+                        className={cn(tok.accent && 'hero-accent text-[var(--primary)] whitespace-nowrap')}
                         style={{ animationDelay: `${0.2 + i * 0.055}s` }}
                       >
                         {tok.w}
@@ -251,7 +251,7 @@ export const Hero: React.FC<HeroProps> = ({
                   className="hero-fade flex items-center gap-2.5 p-3 bg-[#121614] border border-neutral-800 text-sm font-semibold text-neutral-200"
                   style={{ ['--d' as any]: 0.08 + idx * 0.07 }}
                 >
-                  <span className="text-[#ccff00] font-mono font-bold text-sm shrink-0">✓</span>
+                  <span className="text-[var(--primary)] font-mono font-bold text-sm shrink-0">✓</span>
                   <span>{bullet}</span>
                 </div>
               ))}
@@ -262,7 +262,7 @@ export const Hero: React.FC<HeroProps> = ({
               <button
                 type="button"
                 onClick={onOpenConsultation}
-                className="hero-cta relative overflow-hidden inline-flex items-center justify-center py-2.5 sm:py-4 px-4 sm:px-7 min-h-[38px] sm:min-h-[48px] text-[0.68rem] sm:text-sm font-black uppercase tracking-wider text-black bg-[#ccff00] hover:bg-[#b5e600] active:scale-[0.98] transition-all shadow-[0_0_16px_rgba(204,255,0,0.25)] sm:shadow-[0_0_24px_rgba(204,255,0,0.3)] whitespace-nowrap cursor-pointer"
+                className="hero-cta relative overflow-hidden inline-flex items-center justify-center py-2.5 sm:py-4 px-4 sm:px-7 min-h-[38px] sm:min-h-[48px] text-[0.68rem] sm:text-sm font-black uppercase tracking-wider text-black bg-[var(--primary)] hover:bg-[var(--primary-hover)] active:scale-[0.98] transition-all shadow-[0_0_16px_var(--primary)] sm:shadow-[0_0_24px_var(--primary)] whitespace-nowrap cursor-pointer"
               >
                 <span className="relative z-10">{t.hero.ctaStart}</span>
               </button>
@@ -279,7 +279,7 @@ export const Hero: React.FC<HeroProps> = ({
             {/* Inline Unboxed Trust Metrics (count up) */}
             <div className="hero-fade mt-7 lg:mt-8 pt-5 lg:pt-6 border-t border-neutral-800 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-neutral-400 font-mono" style={{ ['--d' as any]: 0.42 }}>
               <div className="flex items-center gap-1.5">
-                <Count to={500} suffix="+" run={ready} delay={900} className="font-bold text-[#ccff00] text-sm tabular-nums" />
+                <Count to={500} suffix="+" run={ready} delay={900} className="font-bold text-[var(--primary)] text-sm tabular-nums" />
                 <span>{t.stats.transformationsLabel}</span>
               </div>
               <span className="text-neutral-700" aria-hidden="true">/</span>
@@ -302,7 +302,7 @@ export const Hero: React.FC<HeroProps> = ({
       <div className="hero-badge hidden lg:block absolute bottom-10 end-8 xl:end-12 w-80 p-4 bg-[#090b0a]/85 backdrop-blur-md border border-neutral-800">
         <div className="flex items-center justify-between">
           <div>
-            <div className="text-[11px] font-mono uppercase tracking-wider text-[#ccff00]">
+            <div className="text-[11px] font-mono uppercase tracking-wider text-[var(--primary)]">
               {t.stats.doctorLabel}
             </div>
             <div className="text-sm font-bold text-white mt-0.5">
@@ -311,7 +311,7 @@ export const Hero: React.FC<HeroProps> = ({
           </div>
           <div className="text-end">
             <div className="text-[10px] text-neutral-400 uppercase">Alpha Team</div>
-            <div className="text-xs font-semibold text-[#ccff00] font-mono">500+ Clients</div>
+            <div className="text-xs font-semibold text-[var(--primary)] font-mono">500+ Clients</div>
           </div>
         </div>
       </div>

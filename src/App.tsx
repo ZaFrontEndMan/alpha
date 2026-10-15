@@ -75,7 +75,7 @@ export default function App() {
   };
 
   return (
-    <div className={`min-h-screen bg-[#090b0a] text-neutral-100 flex flex-col selection:bg-[#ccff00] selection:text-black ${lang === 'ar' ? 'font-cairo' : 'font-sans'}`}>
+    <div className={`min-h-screen bg-[#090b0a] text-neutral-100 flex flex-col selection:bg-[var(--primary)] selection:text-black ${lang === 'ar' ? 'font-cairo' : 'font-sans'}`}>
       {/* Logo loader: plays once, then lifts off the hero */}
       <LogoIntro />
 
@@ -202,7 +202,7 @@ export default function App() {
         <button
           type="button"
           onClick={() => handleOpenConsultation()}
-          className="flex-1 py-2 px-2 min-h-[38px] text-[0.68rem] font-black uppercase tracking-wider text-black bg-[#ccff00] hover:bg-[#b5e600] text-center shadow-[0_0_12px_rgba(204,255,0,0.25)] whitespace-nowrap cursor-pointer"
+          className="flex-1 py-2 px-2 min-h-[38px] text-[0.68rem] font-black uppercase tracking-wider text-black bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-center shadow-[0_0_12px_var(--primary)] whitespace-nowrap cursor-pointer"
         >
           {t.hero.ctaStart}
         </button>

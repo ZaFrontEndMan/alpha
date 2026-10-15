@@ -40,7 +40,7 @@ export const FAQ: React.FC = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="text-xs font-semibold tracking-wider text-[#ccff00] uppercase mb-3">
+          <div className="text-xs font-semibold tracking-wider text-[var(--primary)] uppercase mb-3">
             Common Inquiries
           </div>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight [text-wrap:balance]">
@@ -63,12 +63,12 @@ export const FAQ: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full text-start p-6 flex items-center justify-between gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ccff00]"
+                  className="w-full text-start p-6 flex items-center justify-between gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]"
                 >
                   <span className="font-display text-base sm:text-lg font-bold text-white">
                     {item.q}
                   </span>
-                  <span className="font-mono text-lg font-bold text-[#ccff00] shrink-0">
+                  <span className="font-mono text-lg font-bold text-[var(--primary)] shrink-0">
                     {isOpen ? '−' : '+'}
                   </span>
                 </button>

@@ -98,7 +98,7 @@ export const Transformations: React.FC<TransformationsProps> = ({ onOpenConsulta
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div className="max-w-2xl">
-            <div className="text-xs font-semibold tracking-wider text-[#ccff00] uppercase mb-3">
+            <div className="text-xs font-semibold tracking-wider text-[var(--primary)] uppercase mb-3">
               Documented Client Outcomes
             </div>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight [text-wrap:balance]">
@@ -116,7 +116,7 @@ export const Transformations: React.FC<TransformationsProps> = ({ onOpenConsulta
               onClick={() => setFilter('all')}
               className={`px-3 py-1.5 text-xs font-bold uppercase tracking-wider transition-colors ${
                 filter === 'all'
-                  ? 'bg-[#ccff00] text-black shadow-sm'
+                  ? 'bg-[var(--primary)] text-black shadow-sm'
                   : 'text-neutral-400 hover:text-white'
               }`}
             >
@@ -127,7 +127,7 @@ export const Transformations: React.FC<TransformationsProps> = ({ onOpenConsulta
               onClick={() => setFilter('recomp')}
               className={`px-3 py-1.5 text-xs font-bold uppercase tracking-wider transition-colors ${
                 filter === 'recomp'
-                  ? 'bg-[#ccff00] text-black shadow-sm'
+                  ? 'bg-[var(--primary)] text-black shadow-sm'
                   : 'text-neutral-400 hover:text-white'
               }`}
             >
@@ -138,7 +138,7 @@ export const Transformations: React.FC<TransformationsProps> = ({ onOpenConsulta
               onClick={() => setFilter('fat_loss')}
               className={`px-3 py-1.5 text-xs font-bold uppercase tracking-wider transition-colors ${
                 filter === 'fat_loss'
-                  ? 'bg-[#ccff00] text-black shadow-sm'
+                  ? 'bg-[var(--primary)] text-black shadow-sm'
                   : 'text-neutral-400 hover:text-white'
               }`}
             >
@@ -149,7 +149,7 @@ export const Transformations: React.FC<TransformationsProps> = ({ onOpenConsulta
               onClick={() => setFilter('contest_prep')}
               className={`px-3 py-1.5 text-xs font-bold uppercase tracking-wider transition-colors ${
                 filter === 'contest_prep'
-                  ? 'bg-[#ccff00] text-black shadow-sm'
+                  ? 'bg-[var(--primary)] text-black shadow-sm'
                   : 'text-neutral-400 hover:text-white'
               }`}
             >
@@ -176,7 +176,7 @@ export const Transformations: React.FC<TransformationsProps> = ({ onOpenConsulta
 
           <div className="lg:col-span-7 p-6 sm:p-10 flex flex-col justify-between">
             <div>
-              <div className="flex items-center gap-2 text-xs font-mono uppercase text-[#ccff00] mb-2">
+              <div className="flex items-center gap-2 text-xs font-mono uppercase text-[var(--primary)] mb-2">
                 <span>Featured Trajectory</span>
                 <span className="text-neutral-600">·</span>
                 <span>Sub-10% Body Fat Milestone</span>
@@ -191,7 +191,7 @@ export const Transformations: React.FC<TransformationsProps> = ({ onOpenConsulta
               <div className="grid grid-cols-3 gap-4 pb-6 border-b border-neutral-800 font-mono">
                 <div>
                   <div className="text-[11px] text-neutral-400 uppercase">Body Fat</div>
-                  <div className="text-xl sm:text-2xl font-bold text-[#ccff00] mt-0.5 tabular-nums">9.4%</div>
+                  <div className="text-xl sm:text-2xl font-bold text-[var(--primary)] mt-0.5 tabular-nums">9.4%</div>
                 </div>
                 <div>
                   <div className="text-[11px] text-neutral-400 uppercase">Duration</div>
@@ -211,7 +211,7 @@ export const Transformations: React.FC<TransformationsProps> = ({ onOpenConsulta
               <button
                 type="button"
                 onClick={onOpenConsultation}
-                className="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-black bg-[#ccff00] hover:bg-[#b5e600] transition-colors"
+                className="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-black bg-[var(--primary)] hover:bg-[var(--primary-hover)] transition-colors"
               >
                 Start Your Protocol
               </button>
@@ -229,7 +229,7 @@ export const Transformations: React.FC<TransformationsProps> = ({ onOpenConsulta
               <div>
                 {/* Unboxed Metadata (Zero-pill discipline) */}
                 <div className="flex items-center justify-between text-xs text-neutral-400 mb-3 font-mono">
-                  <span className="text-[#ccff00] font-bold uppercase">
+                  <span className="text-[var(--primary)] font-bold uppercase">
                     {item.category.replace('_', ' ')}
                   </span>
                   <span>{item.durationWeeks} Weeks</span>
@@ -246,7 +246,7 @@ export const Transformations: React.FC<TransformationsProps> = ({ onOpenConsulta
                   </div>
                   <div className="flex justify-between">
                     <span className="text-neutral-400">Body Fat:</span>
-                    <span className="text-[#ccff00] font-bold tabular-nums">{item.bodyFatDelta}</span>
+                    <span className="text-[var(--primary)] font-bold tabular-nums">{item.bodyFatDelta}</span>
                   </div>
                   {item.muscleDelta && (
                     <div className="flex justify-between">
@@ -280,7 +280,7 @@ export const Transformations: React.FC<TransformationsProps> = ({ onOpenConsulta
             <div className="bg-[#0f1311] border border-neutral-700 max-w-lg w-full p-6 sm:p-8 space-y-6">
               <div className="flex items-start justify-between">
                 <div>
-                  <div className="text-xs font-mono uppercase text-[#ccff00]">
+                  <div className="text-xs font-mono uppercase text-[var(--primary)]">
                     Clinical Case Breakdown · {selectedItem.durationWeeks} Weeks
                   </div>
                   <h3 className="text-2xl font-display font-black text-white mt-1">
@@ -304,7 +304,7 @@ export const Transformations: React.FC<TransformationsProps> = ({ onOpenConsulta
                 </div>
                 <div>
                   <span className="text-neutral-400 block">Body Composition</span>
-                  <span className="text-[#ccff00] font-bold text-sm">{selectedItem.bodyFatDelta}</span>
+                  <span className="text-[var(--primary)] font-bold text-sm">{selectedItem.bodyFatDelta}</span>
                 </div>
               </div>
 
@@ -315,7 +315,7 @@ export const Transformations: React.FC<TransformationsProps> = ({ onOpenConsulta
                 <ul className="space-y-2 text-xs text-neutral-300">
                   {selectedItem.keyStrategy.map((strat, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <span className="text-[#ccff00] font-mono font-bold">›</span>
+                      <span className="text-[var(--primary)] font-mono font-bold">›</span>
                       <span>{strat}</span>
                     </li>
                   ))}
@@ -329,7 +329,7 @@ export const Transformations: React.FC<TransformationsProps> = ({ onOpenConsulta
                     setSelectedItem(null);
                     onOpenConsultation();
                   }}
-                  className="w-full py-3 text-xs font-bold uppercase tracking-wider text-black bg-[#ccff00] hover:bg-[#b5e600]"
+                  className="w-full py-3 text-xs font-bold uppercase tracking-wider text-black bg-[var(--primary)] hover:bg-[var(--primary-hover)]"
                 >
                   Apply for a Similar Protocol
                 </button>

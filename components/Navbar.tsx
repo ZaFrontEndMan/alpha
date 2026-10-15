@@ -31,12 +31,12 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Brand Zone */}
         <a
           href="#"
-          className="flex items-center gap-3 shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ccff00]"
+          className="flex items-center gap-3 shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]"
         >
           <BrandLogo size={36} />
           <div className="flex flex-col leading-none">
             <span className={cn(
-              "tracking-tight text-white text-base sm:text-lg group-hover:text-[#ccff00] transition-colors font-extrabold",
+              "tracking-tight text-white text-base sm:text-lg group-hover:text-[var(--primary)] transition-colors font-extrabold",
               lang === 'en' ? 'font-sport' : 'font-cairo'
             )}>
               {lang === 'en' ? 'AHMED ASSEM' : 'د. أحمد عاصم'}
@@ -51,44 +51,44 @@ export const Navbar: React.FC<NavbarProps> = ({
         <nav className="hidden xl:flex items-center gap-6 text-xs lg:text-sm font-semibold text-neutral-300">
           <a
             href="#"
-            className="hover:text-white transition-colors whitespace-nowrap hover:underline underline-offset-8 decoration-[#ccff00] decoration-2"
+            className="hover:text-white transition-colors whitespace-nowrap hover:underline underline-offset-8 decoration-[var(--primary)] decoration-2"
           >
             {t.nav.home}
           </a>
           <a
             href="#packages"
-            className="hover:text-white transition-colors whitespace-nowrap hover:underline underline-offset-8 decoration-[#ccff00] decoration-2"
+            className="hover:text-white transition-colors whitespace-nowrap hover:underline underline-offset-8 decoration-[var(--primary)] decoration-2"
           >
             {t.nav.packages}
           </a>
           <a
             href="#features"
-            className="hover:text-white transition-colors whitespace-nowrap hover:underline underline-offset-8 decoration-[#ccff00] decoration-2"
+            className="hover:text-white transition-colors whitespace-nowrap hover:underline underline-offset-8 decoration-[var(--primary)] decoration-2"
           >
             {t.nav.features}
           </a>
           <a
             href="#transformations"
-            className="hover:text-white transition-colors whitespace-nowrap hover:underline underline-offset-8 decoration-[#ccff00] decoration-2 text-[#ccff00]"
+            className="hover:text-white transition-colors whitespace-nowrap hover:underline underline-offset-8 decoration-[var(--primary)] decoration-2 text-[var(--primary)]"
           >
             {t.nav.transformations}
           </a>
           <a
             href="#comparison"
-            className="hover:text-white transition-colors whitespace-nowrap hover:underline underline-offset-8 decoration-[#ccff00] decoration-2"
+            className="hover:text-white transition-colors whitespace-nowrap hover:underline underline-offset-8 decoration-[var(--primary)] decoration-2"
           >
             {t.nav.comparison}
           </a>
           <button
             type="button"
             onClick={onOpenCalculator}
-            className="hover:text-white transition-colors whitespace-nowrap hover:underline underline-offset-8 decoration-[#ccff00] decoration-2 cursor-pointer"
+            className="hover:text-white transition-colors whitespace-nowrap hover:underline underline-offset-8 decoration-[var(--primary)] decoration-2 cursor-pointer"
           >
             {t.nav.calculator}
           </button>
           <a
             href="#faqs"
-            className="hover:text-white transition-colors whitespace-nowrap hover:underline underline-offset-8 decoration-[#ccff00] decoration-2"
+            className="hover:text-white transition-colors whitespace-nowrap hover:underline underline-offset-8 decoration-[var(--primary)] decoration-2"
           >
             {t.nav.faqs}
           </a>
@@ -100,7 +100,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             type="button"
             onClick={onToggleLang}
-            className="px-2.5 sm:px-3 py-1.5 text-xs font-bold border border-neutral-700 bg-neutral-900/80 hover:border-[#ccff00] hover:text-[#ccff00] text-neutral-200 transition-colors cursor-pointer flex items-center gap-1.5 min-h-[38px] sm:min-h-[36px]"
+            className="px-2.5 sm:px-3 py-1.5 text-xs font-bold border border-neutral-700 bg-neutral-900/80 hover:border-[var(--primary)] hover:text-[var(--primary)] text-neutral-200 transition-colors cursor-pointer flex items-center gap-1.5 min-h-[38px] sm:min-h-[36px]"
             title="Switch Language"
           >
             <span className="text-[11px] font-mono">🌐</span>
@@ -128,7 +128,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             type="button"
             onClick={onOpenConsultation}
-            className="hidden md:inline-flex items-center justify-center px-4 py-2 text-xs font-black uppercase tracking-wider text-black bg-[#ccff00] hover:bg-[#b5e600] active:scale-[0.98] transition-all shadow-[0_0_15px_rgba(204,255,0,0.25)] min-h-[38px] whitespace-nowrap"
+            className="hidden md:inline-flex items-center justify-center px-4 py-2 text-xs font-black uppercase tracking-wider text-black bg-[var(--primary)] hover:bg-[var(--primary-hover)] active:scale-[0.98] transition-all shadow-[0_0_15px_var(--primary)] min-h-[38px] whitespace-nowrap"
           >
             {t.hero.ctaStart}
           </button>
@@ -137,7 +137,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="xl:hidden p-2 text-neutral-300 hover:text-white min-h-[44px] min-w-[44px] flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ccff00]"
+            className="xl:hidden p-2 text-neutral-300 hover:text-white min-h-[44px] min-w-[44px] flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]"
             aria-label="Toggle navigation menu"
           >
             <svg
@@ -162,35 +162,35 @@ export const Navbar: React.FC<NavbarProps> = ({
           <a
             href="#"
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-sm font-semibold text-neutral-200 hover:text-[#ccff00] py-1.5"
+            className="block text-sm font-semibold text-neutral-200 hover:text-[var(--primary)] py-1.5"
           >
             {t.nav.home}
           </a>
           <a
             href="#packages"
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-sm font-semibold text-neutral-200 hover:text-[#ccff00] py-1.5"
+            className="block text-sm font-semibold text-neutral-200 hover:text-[var(--primary)] py-1.5"
           >
             {t.nav.packages}
           </a>
           <a
             href="#features"
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-sm font-semibold text-neutral-200 hover:text-[#ccff00] py-1.5"
+            className="block text-sm font-semibold text-neutral-200 hover:text-[var(--primary)] py-1.5"
           >
             {t.nav.features}
           </a>
           <a
             href="#transformations"
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-sm font-semibold text-[#ccff00] py-1.5"
+            className="block text-sm font-semibold text-[var(--primary)] py-1.5"
           >
             {t.nav.transformations}
           </a>
           <a
             href="#comparison"
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-sm font-semibold text-neutral-200 hover:text-[#ccff00] py-1.5"
+            className="block text-sm font-semibold text-neutral-200 hover:text-[var(--primary)] py-1.5"
           >
             {t.nav.comparison}
           </a>
@@ -200,14 +200,14 @@ export const Navbar: React.FC<NavbarProps> = ({
               setMobileMenuOpen(false);
               onOpenCalculator();
             }}
-            className="block text-start w-full text-sm font-semibold text-neutral-200 hover:text-[#ccff00] py-1.5"
+            className="block text-start w-full text-sm font-semibold text-neutral-200 hover:text-[var(--primary)] py-1.5"
           >
             {t.nav.calculator}
           </button>
           <a
             href="#faqs"
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-sm font-semibold text-neutral-200 hover:text-[#ccff00] py-1.5"
+            className="block text-sm font-semibold text-neutral-200 hover:text-[var(--primary)] py-1.5"
           >
             {t.nav.faqs}
           </a>
@@ -243,7 +243,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 setMobileMenuOpen(false);
                 onOpenConsultation();
               }}
-              className="w-full py-3.5 text-center text-xs font-black uppercase tracking-wider text-black bg-[#ccff00] hover:bg-[#b5e600] min-h-[46px]"
+              className="w-full py-3.5 text-center text-xs font-black uppercase tracking-wider text-black bg-[var(--primary)] hover:bg-[var(--primary-hover)] min-h-[46px]"
             >
               {t.hero.ctaStart}
             </button>

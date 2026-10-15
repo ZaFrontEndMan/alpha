@@ -76,7 +76,7 @@ Looking forward to starting my 90-day transformation!`
           <div>
             {/* Modal Header */}
             <div className="mb-6 pe-8">
-              <div className="text-xs font-mono uppercase text-[#ccff00] tracking-wider">
+              <div className="text-xs font-mono uppercase text-[var(--primary)] tracking-wider">
                 {lang === 'en' ? `Step ${step} of 3 · Physician Intake` : `الخطوة ${step} من 3 · التقييم الطبي`}
               </div>
               <h3 className={cn(
@@ -98,7 +98,7 @@ Looking forward to starting my 90-day transformation!`
                 <div
                   key={s}
                   className={`h-1 flex-1 transition-all ${
-                    step >= s ? 'bg-[#ccff00]' : 'bg-neutral-800'
+                    step >= s ? 'bg-[var(--primary)]' : 'bg-neutral-800'
                   }`}
                 />
               ))}
@@ -115,7 +115,7 @@ Looking forward to starting my 90-day transformation!`
                     <select
                       value={formData.selectedTier}
                       onChange={(e) => setFormData({ ...formData, selectedTier: e.target.value })}
-                      className="w-full bg-[#121614] border border-neutral-800 text-white p-3 text-xs focus:border-[#ccff00] focus:outline-none"
+                      className="w-full bg-[#121614] border border-neutral-800 text-white p-3 text-xs focus:border-[var(--primary)] focus:outline-none"
                     >
                       <option value="Transformation System (4500 EGP)">Transformation System (4500.00 EGP)</option>
                       <option value="Elite Coaching (7000 EGP)">Elite Coaching (7000.00 EGP) — Recommended</option>
@@ -134,7 +134,7 @@ Looking forward to starting my 90-day transformation!`
                         required
                         value={formData.currentWeight}
                         onChange={(e) => setFormData({ ...formData, currentWeight: e.target.value })}
-                        className="w-full bg-[#121614] border border-neutral-800 text-white p-3 text-xs font-mono focus:border-[#ccff00] focus:outline-none"
+                        className="w-full bg-[#121614] border border-neutral-800 text-white p-3 text-xs font-mono focus:border-[var(--primary)] focus:outline-none"
                       />
                     </div>
                     <div>
@@ -146,7 +146,7 @@ Looking forward to starting my 90-day transformation!`
                         required
                         value={formData.age}
                         onChange={(e) => setFormData({ ...formData, age: e.target.value })}
-                        className="w-full bg-[#121614] border border-neutral-800 text-white p-3 text-xs font-mono focus:border-[#ccff00] focus:outline-none"
+                        className="w-full bg-[#121614] border border-neutral-800 text-white p-3 text-xs font-mono focus:border-[var(--primary)] focus:outline-none"
                       />
                     </div>
                   </div>
@@ -168,7 +168,7 @@ Looking forward to starting my 90-day transformation!`
                           onClick={() => setFormData({ ...formData, targetGoal: g.en })}
                           className={`p-2.5 text-xs text-start border transition-colors cursor-pointer min-h-[42px] ${
                             formData.targetGoal === g.en
-                              ? 'border-[#ccff00] bg-[#141a15] text-[#ccff00] font-bold'
+                              ? 'border-[var(--primary)] bg-[#141a15] text-[var(--primary)] font-bold'
                               : 'border-neutral-800 bg-[#121614] text-neutral-300 hover:text-white'
                           }`}
                         >
@@ -183,7 +183,7 @@ Looking forward to starting my 90-day transformation!`
                       <span className="text-neutral-400 block font-mono">
                         {lang === 'en' ? 'Calculator Baseline:' : 'بيانات حاسبة السعرات:'}
                       </span>
-                      <span className="text-[#ccff00] font-bold font-mono">{initialMacroSummary}</span>
+                      <span className="text-[var(--primary)] font-bold font-mono">{initialMacroSummary}</span>
                     </div>
                   )}
 
@@ -191,7 +191,7 @@ Looking forward to starting my 90-day transformation!`
                     <button
                       type="button"
                       onClick={() => setStep(2)}
-                      className="w-full py-3.5 min-h-[48px] text-xs font-black uppercase tracking-wider text-black bg-[#ccff00] hover:bg-[#b5e600] cursor-pointer"
+                      className="w-full py-3.5 min-h-[48px] text-xs font-black uppercase tracking-wider text-black bg-[var(--primary)] hover:bg-[var(--primary-hover)] cursor-pointer"
                     >
                       {lang === 'en' ? 'Continue to Medical Profile →' : 'الانتقال للبيانات الطبية ←'}
                     </button>
@@ -209,7 +209,7 @@ Looking forward to starting my 90-day transformation!`
                     <select
                       value={formData.experienceLevel}
                       onChange={(e) => setFormData({ ...formData, experienceLevel: e.target.value })}
-                      className="w-full bg-[#121614] border border-neutral-800 text-white p-3 text-xs focus:border-[#ccff00] focus:outline-none"
+                      className="w-full bg-[#121614] border border-neutral-800 text-white p-3 text-xs focus:border-[var(--primary)] focus:outline-none"
                     >
                       <option value="Beginner (< 1 year)">Beginner (&lt; 1 year / مبتدئ)</option>
                       <option value="Intermediate (2-4 years)">Intermediate (2-4 years / متوسط)</option>
@@ -227,7 +227,7 @@ Looking forward to starting my 90-day transformation!`
                         onClick={() => setFormData({ ...formData, hasRecentBloodwork: true })}
                         className={`flex-1 p-3 text-xs border font-bold transition-colors cursor-pointer min-h-[44px] ${
                           formData.hasRecentBloodwork
-                            ? 'border-[#ccff00] bg-[#141a15] text-[#ccff00]'
+                            ? 'border-[var(--primary)] bg-[#141a15] text-[var(--primary)]'
                             : 'border-neutral-800 bg-[#121614] text-neutral-400'
                         }`}
                       >
@@ -238,7 +238,7 @@ Looking forward to starting my 90-day transformation!`
                         onClick={() => setFormData({ ...formData, hasRecentBloodwork: false })}
                         className={`flex-1 p-3 text-xs border font-bold transition-colors cursor-pointer min-h-[44px] ${
                           !formData.hasRecentBloodwork
-                            ? 'border-[#ccff00] bg-[#141a15] text-[#ccff00]'
+                            ? 'border-[var(--primary)] bg-[#141a15] text-[var(--primary)]'
                             : 'border-neutral-800 bg-[#121614] text-neutral-400'
                         }`}
                       >
@@ -256,7 +256,7 @@ Looking forward to starting my 90-day transformation!`
                       value={formData.medicalConditions}
                       onChange={(e) => setFormData({ ...formData, medicalConditions: e.target.value })}
                       placeholder={lang === 'en' ? 'e.g. Lower back stiffness, thyroid issues, food allergies...' : 'مثال: خشونة في الركبة، خمول غدة، حساسية طعام...'}
-                      className="w-full bg-[#121614] border border-neutral-800 text-white p-3 text-xs focus:border-[#ccff00] focus:outline-none"
+                      className="w-full bg-[#121614] border border-neutral-800 text-white p-3 text-xs focus:border-[var(--primary)] focus:outline-none"
                     />
                   </div>
 
@@ -271,7 +271,7 @@ Looking forward to starting my 90-day transformation!`
                     <button
                       type="button"
                       onClick={() => setStep(3)}
-                      className="flex-1 py-3 min-h-[44px] text-xs font-black uppercase tracking-wider text-black bg-[#ccff00] hover:bg-[#b5e600] cursor-pointer"
+                      className="flex-1 py-3 min-h-[44px] text-xs font-black uppercase tracking-wider text-black bg-[var(--primary)] hover:bg-[var(--primary-hover)] cursor-pointer"
                     >
                       {lang === 'en' ? 'Next: Contact Info →' : 'التالي: بيانات التواصل ←'}
                     </button>
@@ -292,7 +292,7 @@ Looking forward to starting my 90-day transformation!`
                       placeholder="e.g. Zeyad Elnamory"
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                      className="w-full bg-[#121614] border border-neutral-800 text-white p-3 text-xs focus:border-[#ccff00] focus:outline-none"
+                      className="w-full bg-[#121614] border border-neutral-800 text-white p-3 text-xs focus:border-[var(--primary)] focus:outline-none"
                     />
                   </div>
 
@@ -306,7 +306,7 @@ Looking forward to starting my 90-day transformation!`
                       placeholder="+20 100 123 4567 or +971 50 123 4567"
                       value={formData.whatsapp}
                       onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
-                      className="w-full bg-[#121614] border border-neutral-800 text-white p-3 text-xs font-mono focus:border-[#ccff00] focus:outline-none"
+                      className="w-full bg-[#121614] border border-neutral-800 text-white p-3 text-xs font-mono focus:border-[var(--primary)] focus:outline-none"
                     />
                     <span className="text-[11px] text-neutral-400 mt-1 block">
                       {lang === 'en'
@@ -326,7 +326,7 @@ Looking forward to starting my 90-day transformation!`
                         placeholder="client@gmail.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-[#121614] border border-neutral-800 text-white p-3 text-xs focus:border-[#ccff00] focus:outline-none"
+                        className="w-full bg-[#121614] border border-neutral-800 text-white p-3 text-xs focus:border-[var(--primary)] focus:outline-none"
                       />
                     </div>
                     <div>
@@ -339,7 +339,7 @@ Looking forward to starting my 90-day transformation!`
                         placeholder="Egypt, UAE, Saudi, UK..."
                         value={formData.country}
                         onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                        className="w-full bg-[#121614] border border-neutral-800 text-white p-3 text-xs focus:border-[#ccff00] focus:outline-none"
+                        className="w-full bg-[#121614] border border-neutral-800 text-white p-3 text-xs focus:border-[var(--primary)] focus:outline-none"
                       />
                     </div>
                   </div>
@@ -354,7 +354,7 @@ Looking forward to starting my 90-day transformation!`
                     </button>
                     <button
                       type="submit"
-                      className="flex-1 py-3.5 min-h-[48px] text-xs font-black uppercase tracking-wider text-black bg-[#ccff00] hover:bg-[#b5e600] shadow-[0_0_20px_rgba(204,255,0,0.3)] cursor-pointer"
+                      className="flex-1 py-3.5 min-h-[48px] text-xs font-black uppercase tracking-wider text-black bg-[var(--primary)] hover:bg-[var(--primary-hover)] shadow-[0_0_20px_var(--primary)] cursor-pointer"
                     >
                       {lang === 'en' ? 'Submit Intake Application →' : 'إرسال الاستمارة الطبية ←'}
                     </button>
@@ -366,12 +366,12 @@ Looking forward to starting my 90-day transformation!`
         ) : (
           /* Submission Confirmation */
           <div className="text-center py-6 space-y-6">
-            <div className="w-16 h-16 mx-auto bg-[#ccff00]/10 border border-[#ccff00] flex items-center justify-center text-2xl text-[#ccff00]">
+            <div className="w-16 h-16 mx-auto bg-[var(--primary)]/10 border border-[var(--primary)] flex items-center justify-center text-2xl text-[var(--primary)]">
               ✓
             </div>
 
             <div>
-              <div className="text-xs font-mono uppercase text-[#ccff00] tracking-wider mb-1">
+              <div className="text-xs font-mono uppercase text-[var(--primary)] tracking-wider mb-1">
                 {lang === 'en' ? 'APPLICATION CONFIRMED' : 'تم استلام الاستمارة بنجاح'}
               </div>
               <h3 className={cn(
@@ -394,7 +394,7 @@ Looking forward to starting my 90-day transformation!`
               </div>
               <div className="flex justify-between">
                 <span className="text-neutral-400">{lang === 'en' ? 'Target:' : 'الهدف:'}</span>
-                <span className="text-[#ccff00] font-bold">{formData.targetGoal}</span>
+                <span className="text-[var(--primary)] font-bold">{formData.targetGoal}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-neutral-400">{lang === 'en' ? 'SLA:' : 'وقت الرد:'}</span>
@@ -408,7 +408,7 @@ Looking forward to starting my 90-day transformation!`
                 href={`https://wa.me/201099999999?text=${whatsappMessage}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex w-full items-center justify-center gap-2 py-3.5 min-h-[48px] text-xs font-black uppercase tracking-wider text-black bg-[#ccff00] hover:bg-[#b5e600] cursor-pointer"
+                className="inline-flex w-full items-center justify-center gap-2 py-3.5 min-h-[48px] text-xs font-black uppercase tracking-wider text-black bg-[var(--primary)] hover:bg-[var(--primary-hover)] cursor-pointer"
               >
                 {lang === 'en' ? 'Fast-Track via WhatsApp Direct' : 'محادثة سريعة عبر الواتساب مباشرة'}
               </a>

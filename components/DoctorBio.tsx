@@ -29,7 +29,7 @@ export const DoctorBio: React.FC<DoctorBioProps> = ({ onOpenConsultation }) => {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-neutral-400">Athletic Status:</span>
-                  <span className="text-[#ccff00] font-bold">IFBB Pro League Athlete</span>
+                  <span className="text-[var(--primary)] font-bold">IFBB Pro League Athlete</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-neutral-400">Organization:</span>
@@ -45,7 +45,7 @@ export const DoctorBio: React.FC<DoctorBioProps> = ({ onOpenConsultation }) => {
 
           {/* Right Column: Bio Narrative */}
           <div className="lg:col-span-7 flex flex-col justify-center">
-            <div className="text-xs font-semibold tracking-wider text-[#ccff00] uppercase mb-3">
+            <div className="text-xs font-semibold tracking-wider text-[var(--primary)] uppercase mb-3">
               Physician & Pro Athlete
             </div>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight [text-wrap:balance]">
@@ -68,7 +68,7 @@ export const DoctorBio: React.FC<DoctorBioProps> = ({ onOpenConsultation }) => {
               <button
                 type="button"
                 onClick={onOpenConsultation}
-                className="px-6 py-3.5 text-xs font-black uppercase tracking-wider text-black bg-[#ccff00] hover:bg-[#b5e600] transition-colors"
+                className="px-6 py-3.5 text-xs font-black uppercase tracking-wider text-black bg-[var(--primary)] hover:bg-[var(--primary-hover)] transition-colors"
               >
                 Schedule Direct Consultation
               </button>

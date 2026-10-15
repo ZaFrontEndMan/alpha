@@ -100,7 +100,7 @@ export const CoachingTiers: React.FC<CoachingTiersProps> = ({ onSelectTier }) =>
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div className="max-w-2xl">
-            <div className="text-xs font-semibold tracking-wider text-[#ccff00] uppercase mb-3">
+            <div className="text-xs font-semibold tracking-wider text-[var(--primary)] uppercase mb-3">
               One-on-One Physician Coaching
             </div>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight [text-wrap:balance]">
@@ -120,7 +120,7 @@ export const CoachingTiers: React.FC<CoachingTiersProps> = ({ onSelectTier }) =>
                 onClick={() => setCurrency(curr)}
                 className={`px-2.5 py-1 text-xs font-mono font-bold uppercase transition-colors ${
                   currency === curr
-                    ? 'bg-[#ccff00] text-black shadow-sm'
+                    ? 'bg-[var(--primary)] text-black shadow-sm'
                     : 'text-neutral-400 hover:text-white'
                 }`}
               >
@@ -137,19 +137,19 @@ export const CoachingTiers: React.FC<CoachingTiersProps> = ({ onSelectTier }) =>
               key={tier.id}
               className={`flex flex-col justify-between p-8 border transition-all ${
                 tier.popular
-                  ? 'bg-[#101512] border-[#ccff00] shadow-[0_0_30px_rgba(204,255,0,0.12)] relative'
+                  ? 'bg-[#101512] border-[var(--primary)] shadow-[0_0_20px_var(--primary)] relative'
                   : 'bg-[#090b0a] border-neutral-800 hover:border-neutral-700'
               }`}
             >
               {/* Popular Badge */}
               {tier.popular && (
-                <div className="absolute -top-3 start-8 bg-[#ccff00] text-black px-3 py-0.5 text-[11px] font-black uppercase tracking-wider">
+                <div className="absolute -top-3 start-8 bg-[var(--primary)] text-black px-3 py-0.5 text-[11px] font-black uppercase tracking-wider">
                   Recommended · Doctor Flagship
                 </div>
               )}
 
               <div>
-                <div className="text-xs font-mono uppercase text-[#ccff00] tracking-wider mb-1">
+                <div className="text-xs font-mono uppercase text-[var(--primary)] tracking-wider mb-1">
                   {tier.duration}
                 </div>
                 <h3 className="font-display text-2xl font-black text-white">
@@ -182,7 +182,7 @@ export const CoachingTiers: React.FC<CoachingTiersProps> = ({ onSelectTier }) =>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-neutral-400">Bloodwork Review:</span>
-                    <span className="text-[#ccff00] font-medium text-end">{tier.deliverables.bloodwork}</span>
+                    <span className="text-[var(--primary)] font-medium text-end">{tier.deliverables.bloodwork}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-neutral-400">Diet Strategy:</span>
@@ -194,7 +194,7 @@ export const CoachingTiers: React.FC<CoachingTiersProps> = ({ onSelectTier }) =>
                 <ul className="space-y-2.5 text-xs text-neutral-300 mb-8">
                   {tier.features.map((feat, i) => (
                     <li key={i} className="flex items-start gap-2.5">
-                      <span className="text-[#ccff00] font-bold font-mono">✓</span>
+                      <span className="text-[var(--primary)] font-bold font-mono">✓</span>
                       <span>{feat}</span>
                     </li>
                   ))}
@@ -208,7 +208,7 @@ export const CoachingTiers: React.FC<CoachingTiersProps> = ({ onSelectTier }) =>
                   onClick={() => onSelectTier(tier.name)}
                   className={`w-full py-3.5 text-xs font-black uppercase tracking-wider transition-all ${
                     tier.popular
-                      ? 'bg-[#ccff00] text-black hover:bg-[#b5e600] shadow-[0_0_20px_rgba(204,255,0,0.3)]'
+                      ? 'bg-[var(--primary)] text-black hover:bg-[var(--primary-hover)] shadow-[0_0_20px_var(--primary)]'
                       : 'bg-neutral-900 border border-neutral-700 text-white hover:border-neutral-500 hover:bg-neutral-800'
                   }`}
                 >

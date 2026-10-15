@@ -34,7 +34,7 @@ export const ProofStrip: React.FC = () => {
                 {item.metric.includes('+') || item.metric.includes('%') ? (
                   <>
                     <span>{item.metric.slice(0, -1)}</span>
-                    <span className="text-[#ccff00]">{item.metric.slice(-1)}</span>
+                    <span className="text-[var(--primary)]">{item.metric.slice(-1)}</span>
                   </>
                 ) : (
                   item.metric

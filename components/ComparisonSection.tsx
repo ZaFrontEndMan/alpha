@@ -18,7 +18,7 @@ export const ComparisonSection: React.FC<ComparisonSectionProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-14">
-          <div className="text-xs font-bold tracking-widest text-[#ccff00] uppercase mb-3">
+          <div className="text-xs font-bold tracking-widest text-[var(--primary)] uppercase mb-3">
             {t.comparison.tag}
           </div>
           <h2 className={cn(
@@ -39,7 +39,7 @@ export const ComparisonSection: React.FC<ComparisonSectionProps> = ({
             <div className="p-4 md:col-span-4 text-neutral-300">
               {lang === 'en' ? 'EVALUATION CRITERIA' : 'معايير التقييم والمقارنة'}
             </div>
-            <div className="p-4 md:col-span-4 text-[#ccff00] bg-[#161d18] border-x border-neutral-800 flex items-center gap-2">
+            <div className="p-4 md:col-span-4 text-[var(--primary)] bg-[#161d18] border-x border-neutral-800 flex items-center gap-2">
               <span>★</span>
               <span>{lang === 'en' ? 'DR. AHMED ASSEM (ALPHA SYSTEM)' : 'نظام د. أحمد عاصم (ALPHA)'}</span>
             </div>
@@ -58,14 +58,14 @@ export const ComparisonSection: React.FC<ComparisonSectionProps> = ({
                 {/* Column 1: Criteria */}
                 <div className="p-4 md:col-span-4 font-bold text-white flex items-center">
                   <div className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 bg-[#ccff00] rounded-none shrink-0" />
+                    <span className="w-1.5 h-1.5 bg-[var(--primary)] rounded-none shrink-0" />
                     <span>{row.criteria}</span>
                   </div>
                 </div>
 
                 {/* Column 2: Dr. Ahmed Assem System */}
                 <div className="p-4 md:col-span-4 text-neutral-100 bg-[#141a16]/60 md:border-x border-neutral-800/90 flex items-start gap-2.5">
-                  <span className="text-[#ccff00] font-bold font-mono text-sm shrink-0">✓</span>
+                  <span className="text-[var(--primary)] font-bold font-mono text-sm shrink-0">✓</span>
                   <span className="leading-relaxed font-medium">{row.drAssem}</span>
                 </div>
 
@@ -89,7 +89,7 @@ export const ComparisonSection: React.FC<ComparisonSectionProps> = ({
           <button
             type="button"
             onClick={onOpenConsultation}
-            className="w-full sm:w-auto px-7 py-3 min-h-[44px] text-xs font-black uppercase tracking-wider text-black bg-[#ccff00] hover:bg-[#b5e600] transition-colors cursor-pointer text-center whitespace-nowrap"
+            className="w-full sm:w-auto px-7 py-3 min-h-[44px] text-xs font-black uppercase tracking-wider text-black bg-[var(--primary)] hover:bg-[var(--primary-hover)] transition-colors cursor-pointer text-center whitespace-nowrap"
           >
             {t.hero.ctaStart}
           </button>

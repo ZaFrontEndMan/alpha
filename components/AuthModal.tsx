@@ -74,7 +74,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             className={cn(
               "py-2 text-xs font-bold uppercase transition-colors cursor-pointer",
               mode === 'login'
-                ? "bg-[#ccff00] text-black shadow-sm font-black"
+                ? "bg-[var(--primary)] text-black shadow-sm font-black"
                 : "text-neutral-400 hover:text-white"
             )}
           >
@@ -86,7 +86,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             className={cn(
               "py-2 text-xs font-bold uppercase transition-colors cursor-pointer",
               mode === 'register'
-                ? "bg-[#ccff00] text-black shadow-sm font-black"
+                ? "bg-[var(--primary)] text-black shadow-sm font-black"
                 : "text-neutral-400 hover:text-white"
             )}
           >
@@ -96,7 +96,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 
         {isSuccess ? (
           <div className="py-8 text-center space-y-3">
-            <div className="w-12 h-12 mx-auto bg-[#ccff00]/10 border border-[#ccff00] flex items-center justify-center text-xl text-[#ccff00] font-mono">
+            <div className="w-12 h-12 mx-auto bg-[var(--primary)]/10 border border-[var(--primary)] flex items-center justify-center text-xl text-[var(--primary)] font-mono">
               ✓
             </div>
             <h4 className="text-lg font-bold text-white">
@@ -122,7 +122,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                     placeholder="e.g. Ahmed Elsissy"
-                    className="w-full bg-[#121614] border border-neutral-800 text-white p-3 text-xs focus:border-[#ccff00] focus:outline-none"
+                    className="w-full bg-[#121614] border border-neutral-800 text-white p-3 text-xs focus:border-[var(--primary)] focus:outline-none"
                   />
                 </div>
 
@@ -136,7 +136,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+20 100 123 4567"
-                    className="w-full bg-[#121614] border border-neutral-800 text-white p-3 text-xs font-mono focus:border-[#ccff00] focus:outline-none"
+                    className="w-full bg-[#121614] border border-neutral-800 text-white p-3 text-xs font-mono focus:border-[var(--primary)] focus:outline-none"
                   />
                 </div>
               </>
@@ -152,7 +152,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="client@drahmedassem.com"
-                className="w-full bg-[#121614] border border-neutral-800 text-white p-3 text-xs focus:border-[#ccff00] focus:outline-none"
+                className="w-full bg-[#121614] border border-neutral-800 text-white p-3 text-xs focus:border-[var(--primary)] focus:outline-none"
               />
             </div>
 
@@ -166,14 +166,14 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••••••"
-                className="w-full bg-[#121614] border border-neutral-800 text-white p-3 text-xs font-mono focus:border-[#ccff00] focus:outline-none"
+                className="w-full bg-[#121614] border border-neutral-800 text-white p-3 text-xs font-mono focus:border-[var(--primary)] focus:outline-none"
               />
             </div>
 
             <div className="pt-2">
               <button
                 type="submit"
-                className="w-full py-3.5 text-xs font-black uppercase tracking-wider text-black bg-[#ccff00] hover:bg-[#b5e600] cursor-pointer min-h-[44px]"
+                className="w-full py-3.5 text-xs font-black uppercase tracking-wider text-black bg-[var(--primary)] hover:bg-[var(--primary-hover)] cursor-pointer min-h-[44px]"
               >
                 {mode === 'login' ? t.auth.submitLogin : t.auth.submitRegister}
               </button>
@@ -183,7 +183,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
               <button
                 type="button"
                 onClick={() => setMode(mode === 'login' ? 'register' : 'login')}
-                className="text-xs text-neutral-400 hover:text-[#ccff00] transition-colors"
+                className="text-xs text-neutral-400 hover:text-[var(--primary)] transition-colors"
               >
                 {mode === 'login' ? t.auth.noAccount : t.auth.haveAccount}
               </button>

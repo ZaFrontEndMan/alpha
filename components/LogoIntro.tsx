@@ -94,7 +94,7 @@ export const LogoIntro: React.FC = () => {
             e.stopPropagation();
             leave();
           }}
-          className="uppercase underline underline-offset-4 decoration-[#ccff00] decoration-2 hover:text-[#ccff00] cursor-pointer"
+          className="uppercase underline underline-offset-4 decoration-[var(--primary)] decoration-2 hover:text-[var(--primary)] cursor-pointer"
         >
           Skip intro
         </button>
@@ -147,10 +147,10 @@ export const LogoIntro: React.FC = () => {
         </h2>
 
         {/* rule + typed tagline */}
-        <span className="intro-rule block h-[2px] bg-[#ccff00] mt-4 w-[min(80vw,30rem)] origin-left" aria-hidden="true" />
-        <p className="mt-3 w-[min(80vw,30rem)] font-mono text-[0.68rem] sm:text-sm uppercase tracking-[0.18em] text-[#ccff00] h-[1.5em] text-center">
+        <span className="intro-rule block h-[2px] bg-[var(--primary)] mt-4 w-[min(80vw,30rem)] origin-left" aria-hidden="true" />
+        <p className="mt-3 w-[min(80vw,30rem)] font-mono text-[0.68rem] sm:text-sm uppercase tracking-[0.18em] text-[var(--primary)] h-[1.5em] text-center">
           <span ref={tagEl} />
-          <span className="inline-block w-[0.55em] h-[1em] -mb-[0.15em] ml-0.5 bg-[#ccff00] animate-[caret-blink_900ms_steps(1)_infinite]" />
+          <span className="inline-block w-[0.55em] h-[1em] -mb-[0.15em] ml-0.5 bg-[var(--primary)] animate-[caret-blink_900ms_steps(1)_infinite]" />
         </p>
       </div>
 
@@ -169,7 +169,7 @@ export const LogoIntro: React.FC = () => {
       </div>
       <span
         ref={barEl}
-        className="absolute left-0 bottom-0 h-1.5 w-full bg-[#ccff00] origin-left"
+        className="absolute left-0 bottom-0 h-1.5 w-full bg-[var(--primary)] origin-left"
         style={{ transform: 'scaleX(0)' }}
         aria-hidden="true"
       />

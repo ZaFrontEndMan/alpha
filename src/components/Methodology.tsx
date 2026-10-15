@@ -8,7 +8,7 @@ export const Methodology: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
-          <div className="text-xs font-semibold tracking-wider text-[#ccff00] uppercase mb-3">
+          <div className="text-xs font-semibold tracking-wider text-[var(--primary)] uppercase mb-3">
             The Scientific Blueprint
           </div>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight [text-wrap:balance]">
@@ -25,7 +25,7 @@ export const Methodology: React.FC = () => {
           <div className="md:col-span-12 lg:col-span-7 bg-[#0f1311] border border-neutral-800 p-6 sm:p-8 flex flex-col justify-between group hover:border-neutral-700 transition-colors">
             <div>
               <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-mono font-bold text-[#ccff00] tracking-wider uppercase">
+                <span className="text-xs font-mono font-bold text-[var(--primary)] tracking-wider uppercase">
                   01. Diagnostics
                 </span>
                 <span className="text-xs text-neutral-400">Pre & Post Bloodwork Audits</span>
@@ -52,7 +52,7 @@ export const Methodology: React.FC = () => {
               />
               <div className="absolute bottom-3 inset-x-4 flex items-center justify-between text-xs font-mono text-neutral-300">
                 <span>Thyroid · Cortisol · Lipids</span>
-                <span className="text-[#ccff00] font-semibold">Zero Guesswork</span>
+                <span className="text-[var(--primary)] font-semibold">Zero Guesswork</span>
               </div>
             </div>
           </div>
@@ -61,7 +61,7 @@ export const Methodology: React.FC = () => {
           <div className="md:col-span-12 lg:col-span-5 bg-[#0f1311] border border-neutral-800 p-6 sm:p-8 flex flex-col justify-between group hover:border-neutral-700 transition-colors">
             <div>
               <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-mono font-bold text-[#ccff00] tracking-wider uppercase">
+                <span className="text-xs font-mono font-bold text-[var(--primary)] tracking-wider uppercase">
                   02. Biomechanics
                 </span>
                 <span className="text-xs text-neutral-400">IFBB Pro Mechanics</span>
@@ -75,14 +75,14 @@ export const Methodology: React.FC = () => {
 
               <div className="space-y-3 pt-2">
                 <div className="p-3 bg-[#151a17] border border-neutral-800 flex items-start gap-3 text-xs text-neutral-300">
-                  <span className="text-[#ccff00] font-mono font-bold">✓</span>
+                  <span className="text-[var(--primary)] font-mono font-bold">✓</span>
                   <div>
                     <strong className="text-white block">Mechanical Tension Tracking:</strong>
                     Standardized repetition tempos, pause reps, and RPE/RIR calibrated sets.
                   </div>
                 </div>
                 <div className="p-3 bg-[#151a17] border border-neutral-800 flex items-start gap-3 text-xs text-neutral-300">
-                  <span className="text-[#ccff00] font-mono font-bold">✓</span>
+                  <span className="text-[var(--primary)] font-mono font-bold">✓</span>
                   <div>
                     <strong className="text-white block">Video Form Correction:</strong>
                     Direct biomechanical video breakdown for compound lifts.
@@ -101,7 +101,7 @@ export const Methodology: React.FC = () => {
           <div className="md:col-span-12 lg:col-span-5 bg-[#0f1311] border border-neutral-800 p-6 sm:p-8 flex flex-col justify-between group hover:border-neutral-700 transition-colors">
             <div>
               <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-mono font-bold text-[#ccff00] tracking-wider uppercase">
+                <span className="text-xs font-mono font-bold text-[var(--primary)] tracking-wider uppercase">
                   03. Nutrition
                 </span>
                 <span className="text-xs text-neutral-400">Metabolic Calibration</span>
@@ -128,7 +128,7 @@ export const Methodology: React.FC = () => {
               />
               <div className="absolute bottom-3 inset-x-4 flex items-center justify-between text-xs font-mono text-neutral-300">
                 <span>Leptin & Insulin Timing</span>
-                <span className="text-[#ccff00] font-semibold">Macro Precision</span>
+                <span className="text-[var(--primary)] font-semibold">Macro Precision</span>
               </div>
             </div>
           </div>
@@ -137,7 +137,7 @@ export const Methodology: React.FC = () => {
           <div className="md:col-span-12 lg:col-span-7 bg-[#0f1311] border border-neutral-800 p-6 sm:p-8 flex flex-col justify-between group hover:border-neutral-700 transition-colors">
             <div>
               <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-mono font-bold text-[#ccff00] tracking-wider uppercase">
+                <span className="text-xs font-mono font-bold text-[var(--primary)] tracking-wider uppercase">
                   04. Accountability
                 </span>
                 <span className="text-xs text-neutral-400">Doctor 1-on-1 Line</span>
@@ -151,19 +151,19 @@ export const Methodology: React.FC = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
                 <div className="p-4 bg-[#151a17] border border-neutral-800">
-                  <div className="text-xs font-mono text-[#ccff00] uppercase">Weekly Video</div>
+                  <div className="text-xs font-mono text-[var(--primary)] uppercase">Weekly Video</div>
                   <div className="text-sm font-bold text-white mt-1">Direct Consultation</div>
                   <div className="text-[11px] text-neutral-400 mt-0.5">Face-to-face progress review</div>
                 </div>
 
                 <div className="p-4 bg-[#151a17] border border-neutral-800">
-                  <div className="text-xs font-mono text-[#ccff00] uppercase">Direct Line</div>
+                  <div className="text-xs font-mono text-[var(--primary)] uppercase">Direct Line</div>
                   <div className="text-sm font-bold text-white mt-1">Priority WhatsApp</div>
                   <div className="text-[11px] text-neutral-400 mt-0.5">Real-time daily adjustments</div>
                 </div>
 
                 <div className="p-4 bg-[#151a17] border border-neutral-800">
-                  <div className="text-xs font-mono text-[#ccff00] uppercase">Safety First</div>
+                  <div className="text-xs font-mono text-[var(--primary)] uppercase">Safety First</div>
                   <div className="text-sm font-bold text-white mt-1">Organ & Liver Audits</div>
                   <div className="text-[11px] text-neutral-400 mt-0.5">Clinical physician supervision</div>
                 </div>
@@ -172,7 +172,7 @@ export const Methodology: React.FC = () => {
 
             <div className="mt-6 pt-4 border-t border-neutral-800/80 flex items-center justify-between text-xs text-neutral-400">
               <span>Alpha Team Portal & Dedicated Client App</span>
-              <span className="text-[#ccff00] font-mono">100% Doctor Accountability</span>
+              <span className="text-[var(--primary)] font-mono">100% Doctor Accountability</span>
             </div>
           </div>
         </div>

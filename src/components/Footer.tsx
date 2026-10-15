@@ -24,7 +24,7 @@ export const Footer: React.FC<FooterProps> = ({ t, lang }) => {
                 )}>
                   {lang === 'en' ? 'AHMED ASSEM' : 'د. أحمد عاصم'}
                 </span>
-                <span className="text-[10px] tracking-wider text-[#ccff00] font-semibold uppercase mt-0.5">
+                <span className="text-[10px] tracking-wider text-[var(--primary)] font-semibold uppercase mt-0.5">
                   IFBB PRO · MEDICAL DOCTOR
                 </span>
               </div>
@@ -36,7 +36,7 @@ export const Footer: React.FC<FooterProps> = ({ t, lang }) => {
                 : 'غيّر حياتك بالكامل في 90 يوماً بنظام مصمم طبياً. مئات المتدربين غيروا أجسامهم بنظام مثبت علمياً بدون أي عشوائية.'}
             </p>
 
-            <div className="text-[11px] font-mono text-[#ccff00]">
+            <div className="text-[11px] font-mono text-[var(--primary)]">
               Official Platform · drahmedassem.com
             </div>
           </div>
@@ -95,7 +95,7 @@ export const Footer: React.FC<FooterProps> = ({ t, lang }) => {
                 <span className="text-neutral-500">Email:</span>{' '}
                 <a
                   href="mailto:contact@drahmedassem.com"
-                  className="hover:text-[#ccff00] transition-colors"
+                  className="hover:text-[var(--primary)] transition-colors"
                 >
                   contact@drahmedassem.com
                 </a>
@@ -106,7 +106,7 @@ export const Footer: React.FC<FooterProps> = ({ t, lang }) => {
                   href="https://wa.me/201099999999"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#ccff00] transition-colors"
+                  className="hover:text-[var(--primary)] transition-colors"
                 >
                   {lang === 'en' ? 'Direct Physician Desk' : 'مكتب الدكتور المباشر'}
                 </a>

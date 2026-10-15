@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import '../src/index.css';
+import { getSiteData } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Dr. Ahmed Assem | Elite Fitness & Medical Coaching',
@@ -14,11 +15,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // Fetch theme data server-side
+  const siteData = await getSiteData();
+  const theme = siteData.theme;
+
   return (
     <html lang="en" className="dark">
       <head>
@@ -30,8 +35,32 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Cairo:wght@400;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
+        {/* Inject theme CSS variables */}
+        <style dangerouslySetInnerHTML={{ __html: `
+          :root {
+            --primary: ${theme.primaryColor};
+            --primary-hover: ${theme.primaryColorHover};
+            --primary-ring: ${theme.ringColor};
+            --radius: ${theme.borderRadius};
+            --theme-primary: ${theme.primaryColor};
+            --theme-primary-hover: ${theme.primaryColorHover};
+            --theme-bg: ${theme.backgroundColor};
+            --theme-surface: ${theme.surfaceColor};
+            --theme-border: ${theme.borderColor};
+            --theme-text-primary: ${theme.textPrimary};
+            --theme-text-secondary: ${theme.textSecondary};
+            --theme-ring: ${theme.ringColor};
+            --theme-border-radius: ${theme.borderRadius};
+          }
+        `}} />
       </head>
-      <body className="bg-[#090b0a] text-neutral-100 antialiased selection:bg-[#ccff00] selection:text-black">
+      <body 
+        className="antialiased selection:bg-[var(--primary)] selection:text-black" 
+        style={{ 
+          backgroundColor: theme.backgroundColor, 
+          color: theme.textPrimary 
+        }}
+      >
         {children}
       </body>
     </html>

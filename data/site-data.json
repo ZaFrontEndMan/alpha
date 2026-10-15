@@ -1,0 +1,381 @@
+{
+  "theme": {
+    "primaryColor": "#8cffdb",
+    "primaryColorHover": "#63b098",
+    "backgroundColor": "#090b0a",
+    "surfaceColor": "#0c0f0d",
+    "borderColor": "#262a28",
+    "textPrimary": "#ffffff",
+    "textSecondary": "#a3a3a3",
+    "ringColor": "rgba(204, 255, 0, 0.3)",
+    "fontPrimary": "system-ui, -apple-system, sans-serif",
+    "fontHeading": "system-ui, -apple-system, sans-serif",
+    "borderRadius": "0"
+  },
+  "branding": {
+    "siteName": "Alpha Coaching - Dr. Ahmed Assem",
+    "tagline": "Medically Guided Elite Coaching",
+    "logo": "",
+    "coachName": "Dr. Ahmed Assem",
+    "coachTitle": "M.D., IFBB Pro",
+    "coachExperienceYears": "14+"
+  },
+  "hero": {
+    "tagline": "MEDICALLY GUIDED ELITE COACHING",
+    "headline": "Transform your whole life in 90 days with a medically designed system",
+    "subheadline": "Hundreds of clients transformed their bodies using a proven system — not guesswork",
+    "heroImage": "/dr_ahmed_assem_hero_1791556760890.jpg",
+    "bullets": [
+      "8–12 kg fat loss",
+      "Shredded abs in 12 weeks",
+      "Muscle gain + significant recomposition",
+      "Fixed their relationship with food"
+    ],
+    "ctaPrimary": "START NOW & GET ALPHA",
+    "ctaSecondary": "VIEW PACKAGES",
+    "heroImages": [
+      "/images/uploads/1791931279136_imgi_34_62ebfe00-a0b8-4836-a5dd-0641108c562a28.jpg",
+      "/images/uploads/1791931287981_imgi_35_bbc3aa97-552d-4236-9848-7a3c9ab3e4ba29.jpg"
+    ]
+  },
+  "stats": {
+    "transformationsCount": "500+",
+    "transformationsLabel": "Real Transformations",
+    "weeksToChange": "12",
+    "weeksLabel": "Weeks To Change",
+    "experienceYears": "14+",
+    "experienceLabel": "IFBB Pro & Clinical Experience"
+  },
+  "transformations": {
+    "tag": "TRANSFORMATIONS",
+    "heading": "500+ Real Client Transformations",
+    "subheading": "Evidence-based results from real people who followed the system",
+    "galleryImages": [
+      "/physique_transformation_showcase_1791556772517.jpg",
+      "/coach-header.webp",
+      "/coach-portrait.webp"
+    ]
+  },
+  "testimonials": {
+    "tag": "TESTIMONIALS",
+    "heading": "Real Feedback From Clients Who Followed The System",
+    "subheading": "A premium front-end testimonial section designed to make trust visible at a glance.",
+    "reviews": [
+      {
+        "id": "testimonial-1",
+        "name": "Zeyad elnamory",
+        "role": "Fat Loss Client",
+        "avatar": "Z",
+        "quote": "Before starting, I tried everything and always failed to stay consistent. The difference here was the system — everything was clear, structured, and adjusted weekly. I never felt lost. I dropped from 152 kg to 100 kg, and for the first time I can actually maintain my results.",
+        "highlight": "152 kg → 100 kg (-52 kg Fat Loss)",
+        "stats": "-52 KG"
+      },
+      {
+        "id": "testimonial-2",
+        "name": "Ahmed elsissy",
+        "role": "Body Recomp Client",
+        "avatar": "A",
+        "quote": "I built muscle and lost fat at the same time — something I never thought was possible. I wasn't overweight, but I had no shape. With this coaching, everything changed — training, nutrition, mindset. I look completely different now, and people actually notice.",
+        "highlight": "Lean Mass Gain & Abdominal Definition",
+        "stats": "+4.5 KG MUSCLE"
+      },
+      {
+        "id": "testimonial-3",
+        "name": "Mohamed nizar",
+        "role": "Muscle Gain Client",
+        "avatar": "M",
+        "quote": "Consistency was my biggest problem… until this system. I used to start and quit every time. The weekly follow-ups and adjustments made it impossible to fall off. This wasn't just a plan — it was my saver.",
+        "highlight": "100% Habit & Gym Adherence",
+        "stats": "UNBROKEN STREAK"
+      }
+    ]
+  },
+  "whyChoose": {
+    "tag": "WHY CHOOSE",
+    "heading": "Why Choose Dr. Ahmed Assem?",
+    "subheading": "Not Just Ordinary Coaching — A Complete System Built with Science & Experience",
+    "coachImage": "/coach-medal.webp",
+    "trackRecordCount": "500+",
+    "trackRecordLabel": "Proven Track Record",
+    "trackRecordDescription": "Fat loss, muscle building, and full body recomposition with clients across Egypt, UAE, UK, and worldwide.",
+    "pillars": [
+      {
+        "id": "pillar-1",
+        "number": "01",
+        "title": "Medically Guided Approach",
+        "description": "As a doctor, every plan is built with a deep understanding of Hormones, Metabolism, Recovery, and Long-term health. No random plans. No guesswork."
+      },
+      {
+        "id": "pillar-2",
+        "number": "02",
+        "title": "IFBB PRO Athlete Experience",
+        "description": "I don't just study transformations — I live them. With years of competitive experience and real-world results, you get a system tested under pressure — not just theory."
+      },
+      {
+        "id": "pillar-3",
+        "number": "03",
+        "title": "Proven Track Record",
+        "description": "Over 500+ real transformations. Fat loss, muscle building, full body recomposition with clients from different backgrounds and levels."
+      },
+      {
+        "id": "pillar-4",
+        "number": "04",
+        "title": "Fully Customized — No Templates",
+        "description": "Your plan is built based on your body, your lifestyle, your goal, and your blood work. Not copied. Not reused."
+      }
+    ]
+  },
+  "features": {
+    "tag": "CORE OFFERINGS",
+    "heading": "Features That Deliver Guaranteed Results",
+    "items": [
+      {
+        "id": "feature-1",
+        "icon": "meal",
+        "title": "Personalized MEAL PLAN",
+        "description": "Fully customised training & meal plans customised to YOU & YOUR goals as well as your schedule and lifestyle which will be updated based on your progress. Choose from Balanced, Carbcycling, and Advanced diets!"
+      },
+      {
+        "id": "feature-2",
+        "icon": "workout",
+        "title": "Personalised WORKOUT PROGRAM",
+        "description": "Workout program just for you! I will customise your own ongoing training program. All exercises have been filmed to demonstrate how to perform them correctly."
+      },
+      {
+        "id": "feature-3",
+        "icon": "location",
+        "title": "HOME OR GYM WORKOUTS",
+        "description": "Workout wherever is most convenient for you with home or gym workout options!"
+      }
+    ]
+  },
+  "comparison": {
+    "tag": "SYSTEM ADVANTAGE",
+    "heading": "Dr. Ahmed Assem vs Conventional Coaching",
+    "subheading": "See the clinical difference between a doctor-guided protocol and cookie-cutter social media plans.",
+    "table": [
+      {
+        "id": "comparison-1",
+        "criteria": "Medical Doctor Supervision (M.D.)",
+        "drAssem": "Yes — Full endocrine, metabolic, and biomarker oversight",
+        "others": "None — Uncertified gym trainers or fitness influencers"
+      },
+      {
+        "id": "comparison-2",
+        "criteria": "Hormonal & Bloodwork Analysis",
+        "drAssem": "Comprehensive lab reviews (Thyroid, Lipids, Liver, Androgens)",
+        "others": "Ignored or dangerous guesswork"
+      },
+      {
+        "id": "comparison-3",
+        "criteria": "Competitive IFBB Pro Credentials",
+        "drAssem": "International IFBB Pro Athlete with stage-proven methods",
+        "others": "Theoretical knowledge or amateur bro-splits"
+      },
+      {
+        "id": "comparison-4",
+        "criteria": "Plan Customization",
+        "drAssem": "100% Bespoke — built around your metabolism, schedule & bloodwork",
+        "others": "Generic copy-pasted PDF templates"
+      },
+      {
+        "id": "comparison-5",
+        "criteria": "Follow-ups & Accountability",
+        "drAssem": "Weekly detailed video audits & direct physician WhatsApp hotline",
+        "others": "Sporadic copy-paste text or automated bots"
+      },
+      {
+        "id": "comparison-6",
+        "criteria": "Long-term Metabolic Health",
+        "drAssem": "Reverse-dieting & leptin/thyroid preservation built into every cut",
+        "others": "Metabolic damage, starvation, and rapid rebound weight gain"
+      }
+    ]
+  },
+  "packages": {
+    "tag": "PACKAGES",
+    "heading": "Select Your Transformation Package",
+    "items": [
+      {
+        "id": "starter",
+        "name": "Transformation System",
+        "priceEGP": 4500,
+        "description": "A structured system designed to help you lose fat, build muscle, and stay consistent — without extreme dieting.",
+        "popular": false,
+        "features": [
+          "Customized Training Program with Video Demonstrations",
+          "Structured Cardio & Fat Loss Protocol",
+          "Meal Alternatives & Food Substitution System",
+          "Supplement Guidance Based on Your Needs",
+          "Weekly Check-ins & Progress Tracking",
+          "Flexible Macro and micro -Based Nutrition Plan",
+          "Ongoing Plan Adjustments Based on Progress",
+          "Direct Support (Response within 24 Hours)",
+          "Lifestyle & Habit Guidance"
+        ]
+      },
+      {
+        "id": "elite",
+        "name": "Elite Coaching",
+        "priceEGP": 7000,
+        "description": "A premium coaching experience combining medical knowledge, structured follow-ups, and continuous optimization to deliver real transformations",
+        "popular": true,
+        "features": [
+          "2 Check-ins per Week with Detailed Analysis",
+          "Advanced Nutrition System (Flexible & Macro and micro -Based)",
+          "Continuous Plan Adjustments Based on Progress",
+          "Meal Alternatives & Food Substitution System",
+          "Customized Training Program with Video Demonstrations",
+          "Supplements and PEDs Guidance Based on Your Needs",
+          "Accountability System & Progress Tracking",
+          "Priority Daily Support",
+          "Lifestyle & Habit Optimization Guidance"
+        ]
+      },
+      {
+        "id": "alpha-vip",
+        "name": "Alpha VIP Medical Mastery",
+        "priceEGP": 12000,
+        "description": "A high-level coaching experience designed for serious individuals who want maximum results with full medical guidance, close monitoring, and elite-level customization.",
+        "popular": false,
+        "features": [
+          "Everything in Elite Coaching",
+          "Daily Check-ins & Close Monitoring",
+          "Weekly Video Calls (1:1 with Dr. Assem)",
+          "Direct WhatsApp And Calls Support (Fast Response Priority)",
+          "Advanced Nutrition System (Fully Customized)",
+          "Advanced Training Program with Continuous Optimization",
+          "Medical Guidance & Hormonal Awareness",
+          "Blood Test Guidance & Interpretation",
+          "Supplement Protocol (Precise & Personalized)",
+          "Lifestyle Optimization & Habit Coaching",
+          "Peak Week Strategy (if needed)"
+        ]
+      },
+      {
+        "id": "consultation",
+        "name": "1-on-1 Strategy Consultation",
+        "priceEGP": 2000,
+        "description": "A personalized one-on-one session designed to analyze your current situation, identify what's holding you back, and build a clear, actionable strategy to reach your goal efficiently.",
+        "popular": false,
+        "note": "If you decide to join coaching after the session, the consultation fee will be deducted from your program.",
+        "features": [
+          "Full Body & Goal Assessment",
+          "Nutrition Strategy (Fat loss / Muscle gain / Recomp)",
+          "Training Direction Based on Your Level",
+          "Supplement Guidance (if needed)",
+          "Problem Solving (Plateaus, adherence, confusion, etc.)",
+          "Clear Action Plan to Follow After the Session"
+        ]
+      }
+    ]
+  },
+  "howItWorks": {
+    "tag": "PROCESS",
+    "heading": "How It Works",
+    "steps": [
+      {
+        "id": "step-1",
+        "step": "01",
+        "title": "Fill the form & upload your pictures",
+        "description": "Complete the biometric intake form and submit current physique baseline photos."
+      },
+      {
+        "id": "step-2",
+        "step": "02",
+        "title": "Wait your customized program",
+        "description": "Dr. Assem engineers your bespoke training, macro split, and metabolic plan."
+      },
+      {
+        "id": "step-3",
+        "step": "03",
+        "title": "Send any concerns or questions",
+        "description": "Clarify any schedule, dietary restrictions, or equipment preferences."
+      },
+      {
+        "id": "step-4",
+        "step": "04",
+        "title": "Receive your program",
+        "description": "Access your full program with demonstration videos and macro guidelines."
+      },
+      {
+        "id": "step-5",
+        "step": "05",
+        "title": "Follow the diet & the workout plan",
+        "description": "Execute with structured check-ins, weekly biofeedback, and continuous tweaks."
+      },
+      {
+        "id": "step-6",
+        "step": "06",
+        "title": "Look better within 12 weeks",
+        "description": "Witness drastic fat loss, dense muscle gains, and elevated health biomarkers."
+      }
+    ]
+  },
+  "inspirationBanner": {
+    "title": "START NOW",
+    "quote": "Build Your Best Shape With The Right System, Team, And Guidance. BY JOINING MY TEAM YOU WILL HAVE THE RIGHT GUIDANCE, GAIN THE KNOWLEDGE AND MOST IMPORTANTLY UNLOCK THE MINDSET THAT WILL STREAMLINE YOUR ROAD TO RESULTS NO MATTER WHAT YOUR GOAL IS.",
+    "pills": [
+      "Custom Plan",
+      "Weekly Follow-up",
+      "Real Results"
+    ],
+    "ctaText": "JOIN ALPHA TEAM TODAY"
+  },
+  "faqs": {
+    "tag": "FREQUENTLY ASKED QUESTIONS",
+    "heading": "Common Questions About The System",
+    "items": [
+      {
+        "id": "faq-1",
+        "question": "How do I receive the program?",
+        "answer": "Your programs will be sent within 7-10 days after purchase."
+      },
+      {
+        "id": "faq-2",
+        "question": "Are the programs available world wide?",
+        "answer": "Yes, 100% online remote coaching is available worldwide. We work with clients across 18+ countries."
+      },
+      {
+        "id": "faq-3",
+        "question": "Do I need a gym?",
+        "answer": "No. You can choose between full gym access or a structured home workout option using dumbbells and resistance bands."
+      },
+      {
+        "id": "faq-4",
+        "question": "I'm new to the gym - is this good for beginner?",
+        "answer": "Yes. Every exercise has been filmed with high-definition video demonstrations showing exact execution, tempos, and setup."
+      },
+      {
+        "id": "faq-5",
+        "question": "Am I obligated to eat certain foods?",
+        "answer": "No! Our flexible macro and micro-based nutrition system includes a comprehensive meal alternative and food substitution framework."
+      },
+      {
+        "id": "faq-6",
+        "question": "How Many Days A Week Will I Train?",
+        "answer": "We design your split around your schedule and recovery capacity—typically between 3 to 6 days per week."
+      },
+      {
+        "id": "faq-7",
+        "question": "Will I have to train for hours?",
+        "answer": "No. Sessions are designed for maximum stimulus-to-fatigue efficiency and typically take 45 to 60 minutes."
+      },
+      {
+        "id": "faq-8",
+        "question": "How long between signing up and getting started ?",
+        "answer": "You will receive your intake assessment immediately upon registration, and your finalized custom program within 7-10 days."
+      }
+    ]
+  },
+  "footer": {
+    "copyrightText": "© Copyright 2026 ALPHA T. All rights reserved.",
+    "privacyLink": "/privacy",
+    "termsLink": "/terms",
+    "socialLinks": {
+      "instagram": "",
+      "facebook": "",
+      "whatsapp": ""
+    }
+  }
+}

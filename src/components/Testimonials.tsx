@@ -18,7 +18,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-14">
-          <div className="text-xs font-bold tracking-widest text-[#ccff00] uppercase mb-3">
+          <div className="text-xs font-bold tracking-widest text-[var(--primary)] uppercase mb-3">
             {t.testimonials.title}
           </div>
           <h2 className={cn(
@@ -41,7 +41,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
             >
               {/* Highlight badge at top */}
               <div className="flex items-center justify-between pb-4 mb-4 border-b border-neutral-800">
-                <span className="text-xs font-mono font-bold text-[#ccff00]">
+                <span className="text-xs font-mono font-bold text-[var(--primary)]">
                   {item.stats}
                 </span>
                 <span className="text-xs font-mono text-neutral-400">
@@ -57,7 +57,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
               {/* Client Profile Lockup */}
               <div className="pt-4 border-t border-neutral-800 flex items-center gap-4">
                 {/* Client Avatar Graphic */}
-                <div className="w-12 h-12 bg-neutral-800 border border-neutral-700 flex items-center justify-center font-display font-black text-white text-base shrink-0 group-hover:border-[#ccff00] transition-colors">
+                <div className="w-12 h-12 bg-neutral-800 border border-neutral-700 flex items-center justify-center font-display font-black text-white text-base shrink-0 group-hover:border-[var(--primary)] transition-colors">
                   {item.name.charAt(0)}
                 </div>
 
@@ -65,7 +65,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
                   <div className="text-base font-bold text-white leading-tight">
                     {item.name}
                   </div>
-                  <div className="text-xs text-[#ccff00] font-mono mt-0.5">
+                  <div className="text-xs text-[var(--primary)] font-mono mt-0.5">
                     {item.highlight}
                   </div>
                 </div>
@@ -84,7 +84,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
           <button
             type="button"
             onClick={onOpenConsultation}
-            className="w-full sm:w-auto px-6 py-3 min-h-[44px] text-xs font-black uppercase tracking-wider text-black bg-[#ccff00] hover:bg-[#b5e600] transition-colors cursor-pointer text-center"
+            className="w-full sm:w-auto px-6 py-3 min-h-[44px] text-xs font-black uppercase tracking-wider text-black bg-[var(--primary)] hover:bg-[var(--primary-hover)] transition-colors cursor-pointer text-center"
           >
             {t.hero.ctaStart}
           </button>

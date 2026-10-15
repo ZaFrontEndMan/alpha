@@ -6,7 +6,7 @@
   }
 
   body {
-    background-color: #090b0a;
+    background-color: var(--theme-bg, #090b0a);
     color: #f3f4f6;
   }
 
@@ -52,7 +52,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ccff00;
+  background: var(--primary, #ccff00);
 }
 
 /* ------------------------------------------------------------------ */
@@ -135,7 +135,7 @@ html.lenis body {
 @keyframes intro-fill {
   0% { fill: rgba(255, 255, 255, 0); stroke: #ffffff; }
   35% { fill: #ffffff; stroke: #ffffff; }
-  100% { fill: var(--final, #ccff00); stroke: var(--final, #ccff00); }
+  100% { fill: var(--final, var(--primary, #ccff00)); stroke: var(--final, var(--primary, #ccff00)); }
 }
 
 /* the mark gives a small "lock" pop as the pieces meet */
@@ -260,7 +260,7 @@ html.lenis body {
   inset-inline: 0;
   bottom: 0.02em;
   height: 0.09em;
-  background: #ccff00;
+  background: var(--primary, #ccff00);
   transform: scaleX(0);
   transform-origin: left;
 }
@@ -388,7 +388,7 @@ html.lenis body {
   bottom: 0.08em;
   width: 0.09em;
   margin-inline-start: 0.04em;
-  background: #ccff00;
+  background: var(--primary, #ccff00);
 }
 .type-accent {
   position: relative;
@@ -399,7 +399,7 @@ html.lenis body {
   inset-inline: 0;
   bottom: 0.02em;
   height: 0.09em;
-  background: #ccff00;
+  background: var(--primary, #ccff00);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.6s var(--intro-ease);
@@ -409,4 +409,47 @@ html.lenis body {
 }
 [data-typed='true'] .type-accent::after {
   transform: scaleX(1);
+}
+
+/* ------------------------------------------------------------------ */
+/* Theme CSS Variables (Server-side injected + fallbacks)             */
+/* ------------------------------------------------------------------ */
+:root {
+  /* Primary theme variables - injected by server */
+  --primary: #ccff00;
+  --primary-hover: #b5e600;
+  --primary-ring: rgba(204, 255, 0, 0.3);
+  --radius: 0px;
+  
+  /* Extended theme variables */
+  --theme-primary: var(--primary);
+  --theme-primary-hover: var(--primary-hover);
+  --theme-bg: #090b0a;
+  --theme-surface: #0c0f0d;
+  --theme-border: #262a28;
+  --theme-text-primary: #ffffff;
+  --theme-text-secondary: #a3a3a3;
+  --theme-ring: var(--primary-ring);
+  --theme-border-radius: var(--radius);
+
+  /* Admin panel colors */
+  --admin-primary: var(--primary);
+  --admin-primary-hover: var(--primary-hover);
+  --admin-bg: var(--theme-bg);
+  --admin-surface: var(--theme-surface);
+  --admin-border: var(--theme-border);
+  --admin-text-primary: var(--theme-text-primary);
+  --admin-text-secondary: var(--theme-text-secondary);
+  --admin-input-bg: #0c0f0d;
+}
+
+/* Admin panel specific styles */
+.admin-panel {
+  --admin-primary: var(--admin-primary);
+  --admin-primary-hover: var(--admin-primary-hover);
+  --admin-bg: var(--admin-bg);
+  --admin-surface: var(--admin-surface);
+  --admin-border: var(--admin-border);
+  --admin-text-primary: var(--admin-text-primary);
+  --admin-text-secondary: var(--admin-text-secondary);
 }
