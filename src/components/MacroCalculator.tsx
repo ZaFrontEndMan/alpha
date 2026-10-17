@@ -176,7 +176,7 @@ Calculated at https://drahmedassem.com`;
             className={cn(
               "px-3 py-1.5 text-xs font-semibold uppercase tracking-wider transition-colors min-h-[36px] cursor-pointer",
               unitSystem === 'metric'
-                ? 'bg-[#ccff00] text-black shadow-sm font-bold'
+                ? 'bg-[#8cffdb] text-black shadow-sm font-bold'
                 : 'text-neutral-400 hover:text-white'
             )}
           >
@@ -188,7 +188,7 @@ Calculated at https://drahmedassem.com`;
             className={cn(
               "px-3 py-1.5 text-xs font-semibold uppercase tracking-wider transition-colors min-h-[36px] cursor-pointer",
               unitSystem === 'imperial'
-                ? 'bg-[#ccff00] text-black shadow-sm font-bold'
+                ? 'bg-[#8cffdb] text-black shadow-sm font-bold'
                 : 'text-neutral-400 hover:text-white'
             )}
           >
@@ -203,7 +203,7 @@ Calculated at https://drahmedassem.com`;
             className={cn(
               "px-3 py-1.5 text-xs font-semibold uppercase tracking-wider transition-colors min-h-[36px] cursor-pointer",
               gender === 'male'
-                ? 'bg-[#ccff00] text-black shadow-sm font-bold'
+                ? 'bg-[#8cffdb] text-black shadow-sm font-bold'
                 : 'text-neutral-400 hover:text-white'
             )}
           >
@@ -215,7 +215,7 @@ Calculated at https://drahmedassem.com`;
             className={cn(
               "px-3 py-1.5 text-xs font-semibold uppercase tracking-wider transition-colors min-h-[36px] cursor-pointer",
               gender === 'female'
-                ? 'bg-[#ccff00] text-black shadow-sm font-bold'
+                ? 'bg-[#8cffdb] text-black shadow-sm font-bold'
                 : 'text-neutral-400 hover:text-white'
             )}
           >
@@ -236,7 +236,7 @@ Calculated at https://drahmedassem.com`;
             max="80"
             value={age}
             onChange={(e) => setAge(Math.max(16, parseInt(e.target.value) || 16))}
-            className="w-full bg-[#121614] border border-neutral-800 focus:border-[#ccff00] px-3.5 py-2.5 text-white font-mono tabular-nums text-sm focus:outline-none min-h-[44px]"
+            className="w-full bg-[#121614] border border-neutral-800 focus:border-[#8cffdb] px-3.5 py-2.5 text-white font-mono tabular-nums text-sm focus:outline-none min-h-[44px]"
           />
         </div>
 
@@ -251,7 +251,7 @@ Calculated at https://drahmedassem.com`;
               max="220"
               value={weightKg}
               onChange={(e) => setWeightKg(parseFloat(e.target.value) || 0)}
-              className="w-full bg-[#121614] border border-neutral-800 focus:border-[#ccff00] px-3.5 py-2.5 text-white font-mono tabular-nums text-sm focus:outline-none min-h-[44px]"
+              className="w-full bg-[#121614] border border-neutral-800 focus:border-[#8cffdb] px-3.5 py-2.5 text-white font-mono tabular-nums text-sm focus:outline-none min-h-[44px]"
             />
           ) : (
             <input
@@ -260,7 +260,7 @@ Calculated at https://drahmedassem.com`;
               max="480"
               value={weightLbs}
               onChange={(e) => setWeightLbs(parseFloat(e.target.value) || 0)}
-              className="w-full bg-[#121614] border border-neutral-800 focus:border-[#ccff00] px-3.5 py-2.5 text-white font-mono tabular-nums text-sm focus:outline-none min-h-[44px]"
+              className="w-full bg-[#121614] border border-neutral-800 focus:border-[#8cffdb] px-3.5 py-2.5 text-white font-mono tabular-nums text-sm focus:outline-none min-h-[44px]"
             />
           )}
         </div>
@@ -276,7 +276,7 @@ Calculated at https://drahmedassem.com`;
               max="230"
               value={heightCm}
               onChange={(e) => setHeightCm(parseFloat(e.target.value) || 0)}
-              className="w-full bg-[#121614] border border-neutral-800 focus:border-[#ccff00] px-3.5 py-2.5 text-white font-mono tabular-nums text-sm focus:outline-none min-h-[44px]"
+              className="w-full bg-[#121614] border border-neutral-800 focus:border-[#8cffdb] px-3.5 py-2.5 text-white font-mono tabular-nums text-sm focus:outline-none min-h-[44px]"
             />
           ) : (
             <div className="grid grid-cols-2 gap-2">
@@ -286,7 +286,7 @@ Calculated at https://drahmedassem.com`;
                 max="7"
                 value={heightFt}
                 onChange={(e) => setHeightFt(parseInt(e.target.value) || 0)}
-                className="w-full bg-[#121614] border border-neutral-800 focus:border-[#ccff00] px-2 py-2.5 text-white font-mono tabular-nums text-sm focus:outline-none text-center min-h-[44px]"
+                className="w-full bg-[#121614] border border-neutral-800 focus:border-[#8cffdb] px-2 py-2.5 text-white font-mono tabular-nums text-sm focus:outline-none text-center min-h-[44px]"
               />
               <input
                 type="number"
@@ -294,7 +294,7 @@ Calculated at https://drahmedassem.com`;
                 max="11"
                 value={heightIn}
                 onChange={(e) => setHeightIn(parseInt(e.target.value) || 0)}
-                className="w-full bg-[#121614] border border-neutral-800 focus:border-[#ccff00] px-2 py-2.5 text-white font-mono tabular-nums text-sm focus:outline-none text-center min-h-[44px]"
+                className="w-full bg-[#121614] border border-neutral-800 focus:border-[#8cffdb] px-2 py-2.5 text-white font-mono tabular-nums text-sm focus:outline-none text-center min-h-[44px]"
               />
             </div>
           )}
@@ -310,7 +310,7 @@ Calculated at https://drahmedassem.com`;
               {lang === 'en' ? '(Optional - Enables Katch-McArdle)' : '(اختياري - معادلة دقيقة)'}
             </span>
           </label>
-          <span className="text-xs font-mono text-[#ccff00] font-bold">{bodyFat ? `${bodyFat}%` : '15%'}</span>
+          <span className="text-xs font-mono text-[#8cffdb] font-bold">{bodyFat ? `${bodyFat}%` : '15%'}</span>
         </div>
         <input
           type="range"
@@ -319,7 +319,7 @@ Calculated at https://drahmedassem.com`;
           step="0.5"
           value={bodyFat || '15'}
           onChange={(e) => setBodyFat(e.target.value)}
-          className="w-full accent-[#ccff00] cursor-pointer"
+          className="w-full accent-[#8cffdb] cursor-pointer"
         />
         <div className="flex justify-between text-[11px] font-mono text-neutral-400 mt-1">
           <span>5% (Stage Lean)</span>
@@ -350,7 +350,7 @@ Calculated at https://drahmedassem.com`;
             className={cn(
               "w-full p-3.5 text-start border transition-all cursor-pointer min-h-[48px]",
               activity === item.id
-                ? 'border-[#ccff00] bg-[#141a15]'
+                ? 'border-[#8cffdb] bg-[#141a15]'
                 : 'border-neutral-800 bg-[#0e1210] hover:border-neutral-700'
             )}
           >
@@ -359,7 +359,7 @@ Calculated at https://drahmedassem.com`;
                 {lang === 'en' ? item.labelEn : item.labelAr}
               </span>
               {activity === item.id && (
-                <span className="text-[10px] font-mono text-[#ccff00] font-bold">✓ SELECTED</span>
+                <span className="text-[10px] font-mono text-[#8cffdb] font-bold">✓ SELECTED</span>
               )}
             </div>
             <p className="text-[11px] text-neutral-400 mt-0.5">
@@ -392,14 +392,14 @@ Calculated at https://drahmedassem.com`;
               className={cn(
                 "p-3 text-start border transition-all cursor-pointer min-h-[46px]",
                 goal === g.id
-                  ? 'border-[#ccff00] bg-[#141a15]'
+                  ? 'border-[#8cffdb] bg-[#141a15]'
                   : 'border-neutral-800 bg-[#0e1210] hover:border-neutral-700'
               )}
             >
               <span className="text-xs font-bold text-white block">
                 {lang === 'en' ? g.labelEn : g.labelAr}
               </span>
-              <span className="text-[11px] font-mono text-[#ccff00] mt-0.5 block">{g.delta}</span>
+              <span className="text-[11px] font-mono text-[#8cffdb] mt-0.5 block">{g.delta}</span>
             </button>
           ))}
         </div>
@@ -422,7 +422,7 @@ Calculated at https://drahmedassem.com`;
               className={cn(
                 "px-3 py-2 text-xs font-semibold transition-colors border min-h-[40px] cursor-pointer",
                 dietPref === d.id
-                  ? 'border-[#ccff00] bg-[#ccff00] text-black font-bold'
+                  ? 'border-[#8cffdb] bg-[#8cffdb] text-black font-bold'
                   : 'border-neutral-800 bg-[#121614] text-neutral-300 hover:text-white'
               )}
             >
@@ -437,7 +437,7 @@ Calculated at https://drahmedassem.com`;
   const renderResultsCard = () => (
     <div className="space-y-6">
       <div className="flex items-center justify-between pb-3 border-b border-neutral-800">
-        <span className="text-xs font-mono font-bold text-[#ccff00] uppercase tracking-wider">
+        <span className="text-xs font-mono font-bold text-[#8cffdb] uppercase tracking-wider">
           {lang === 'en' ? 'Clinical Prescription' : 'النتيجة المحسوبة طبياً'}
         </span>
         <span className="text-xs font-mono text-neutral-400">
@@ -452,14 +452,14 @@ Calculated at https://drahmedassem.com`;
         </div>
         <div className="text-4xl sm:text-5xl font-black text-white font-mono tabular-nums tracking-tight">
           {results.targetCalories}
-          <span className="text-sm font-sans font-bold text-[#ccff00] ms-1.5 uppercase">
+          <span className="text-sm font-sans font-bold text-[#8cffdb] ms-1.5 uppercase">
             kcal
           </span>
         </div>
         <div className="text-xs text-neutral-400 mt-2 flex items-center justify-center gap-3 font-mono">
           <span>TDEE: {results.tdee} kcal</span>
           <span>·</span>
-          <span className="text-[#ccff00]">
+          <span className="text-[#8cffdb]">
             {results.targetCalories > results.tdee ? `+${results.targetCalories - results.tdee}` : `${results.targetCalories - results.tdee}`} kcal
           </span>
         </div>
@@ -476,7 +476,7 @@ Calculated at https://drahmedassem.com`;
         <div className="h-3 w-full bg-neutral-900 flex overflow-hidden border border-neutral-800">
           <div
             style={{ width: `${results.proteinRatio}%` }}
-            className="bg-[#ccff00] h-full"
+            className="bg-[#8cffdb] h-full"
             title="Protein"
           />
           <div
@@ -495,7 +495,7 @@ Calculated at https://drahmedassem.com`;
       {/* 3 Macro Cards */}
       <div className="grid grid-cols-3 gap-2 sm:gap-3">
         <div className="bg-[#121614] border border-neutral-800 p-3 sm:p-3.5 text-center">
-          <div className="text-[11px] font-bold text-[#ccff00] uppercase tracking-wider">
+          <div className="text-[11px] font-bold text-[#8cffdb] uppercase tracking-wider">
             {lang === 'en' ? 'Protein' : 'بروتين'}
           </div>
           <div className="text-xl sm:text-2xl font-black text-white font-mono tabular-nums mt-1">
@@ -537,7 +537,7 @@ Calculated at https://drahmedassem.com`;
           <span className="text-neutral-300 font-medium">
             {lang === 'en' ? 'Daily Hydration Target:' : 'احتياج الماء اليومي:'}
           </span>
-          <span className="font-mono font-bold text-[#ccff00]">{results.waterLiters} Liters H2O</span>
+          <span className="font-mono font-bold text-[#8cffdb]">{results.waterLiters} Liters H2O</span>
         </div>
 
         <div className="pt-2 border-t border-neutral-800 flex items-center justify-between">
@@ -553,7 +553,7 @@ Calculated at https://drahmedassem.com`;
                 className={cn(
                   "w-8 h-8 text-xs font-mono font-bold transition-colors cursor-pointer",
                   mealsCount === num
-                    ? 'bg-[#ccff00] text-black'
+                    ? 'bg-[#8cffdb] text-black'
                     : 'bg-neutral-800 text-neutral-300 hover:text-white'
                 )}
               >
@@ -573,7 +573,7 @@ Calculated at https://drahmedassem.com`;
         <button
           type="button"
           onClick={handleConsultDoctorWithData}
-          className="w-full py-3.5 min-h-[48px] text-xs font-black uppercase tracking-wider text-black bg-[#ccff00] hover:bg-[#b5e600] active:scale-[0.98] transition-all shadow-[0_0_20px_rgba(204,255,0,0.25)] cursor-pointer"
+          className="w-full py-3.5 min-h-[48px] text-xs font-black uppercase tracking-wider text-black bg-[#8cffdb] hover:bg-[#77d9ba] active:scale-[0.98] transition-all shadow-[0_0_20px_rgba(140,255,219,0.25)] cursor-pointer"
         >
           {lang === 'en' ? 'Apply for Coaching with These Macros' : 'ابدأ تدريبك مع هذه الماكروز'}
         </button>
@@ -592,11 +592,11 @@ Calculated at https://drahmedassem.com`;
   );
 
   return (
-    <section id="calculator" className="py-20 md:py-28 bg-[#0c0f0d] border-b border-neutral-800/80 @container">
+    <section id="calculator" className="py-20 md:py-28 bg-[#0c0f0d] @container">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-10">
-          <div className="text-xs font-bold tracking-widest text-[#ccff00] uppercase mb-3">
+          <div className="text-xs font-bold tracking-widest text-[#8cffdb] uppercase mb-3">
             {lang === 'en' ? 'CLINICAL CALORIE ENGINE' : 'حاسبة السعرات الطبية'}
           </div>
           <h2 className={cn(
@@ -621,7 +621,7 @@ Calculated at https://drahmedassem.com`;
           {/* Stepper Header Tabs */}
           <div className="mb-6">
             <div className="flex items-center justify-between text-xs font-mono mb-2">
-              <span className="text-[#ccff00] font-bold">
+              <span className="text-[#8cffdb] font-bold">
                 {lang === 'en' ? `STEP ${mobileStep} OF 4` : `الخطوة ${mobileStep} من ٤`}
               </span>
               <span className="text-neutral-400">
@@ -639,7 +639,7 @@ Calculated at https://drahmedassem.com`;
                   aria-label={`Go to step ${stepIdx}`}
                   className={cn(
                     "h-full transition-all cursor-pointer",
-                    mobileStep >= stepIdx ? "bg-[#ccff00]" : "bg-neutral-800"
+                    mobileStep >= stepIdx ? "bg-[#8cffdb]" : "bg-neutral-800"
                   )}
                 />
               ))}
@@ -655,7 +655,7 @@ Calculated at https://drahmedassem.com`;
                   className={cn(
                     "cursor-pointer transition-colors py-1 px-1.5",
                     mobileStep === s.num
-                      ? "text-[#ccff00] font-bold"
+                      ? "text-[#8cffdb] font-bold"
                       : "text-neutral-500 hover:text-neutral-300"
                   )}
                 >
@@ -722,7 +722,7 @@ Calculated at https://drahmedassem.com`;
               <button
                 type="button"
                 onClick={() => setMobileStep(mobileStep + 1)}
-                className="flex-1 py-3 px-6 min-h-[46px] text-xs font-black uppercase tracking-wider text-black bg-[#ccff00] hover:bg-[#b5e600] shadow-[0_0_15px_rgba(204,255,0,0.25)] cursor-pointer"
+                className="flex-1 py-3 px-6 min-h-[46px] text-xs font-black uppercase tracking-wider text-black bg-[#8cffdb] hover:bg-[#77d9ba] shadow-[0_0_15px_rgba(140,255,219,0.25)] cursor-pointer"
               >
                 {lang === 'en' ? 'Next Step →' : 'التالي ←'}
               </button>

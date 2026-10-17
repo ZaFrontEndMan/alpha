@@ -10,7 +10,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ t, lang }) => {
   return (
-    <footer className="bg-[#070908] border-t border-neutral-800 text-neutral-400 py-16 @container">
+    <footer className="bg-[#070908] text-neutral-400 py-16 @container">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-neutral-800/80">
           {/* Brand Info */}
@@ -24,7 +24,7 @@ export const Footer: React.FC<FooterProps> = ({ t, lang }) => {
                 )}>
                   {lang === 'en' ? 'AHMED ASSEM' : 'د. أحمد عاصم'}
                 </span>
-                <span className="text-[10px] tracking-wider text-[#ccff00] font-semibold uppercase mt-0.5">
+                <span className="text-[10px] tracking-wider text-[#8cffdb] font-semibold uppercase mt-0.5">
                   IFBB PRO · MEDICAL DOCTOR
                 </span>
               </div>
@@ -36,7 +36,7 @@ export const Footer: React.FC<FooterProps> = ({ t, lang }) => {
                 : 'غيّر حياتك بالكامل في 90 يوماً بنظام مصمم طبياً. مئات المتدربين غيروا أجسامهم بنظام مثبت علمياً بدون أي عشوائية.'}
             </p>
 
-            <div className="text-[11px] font-mono text-[#ccff00]">
+            <div className="text-[11px] font-mono text-[#8cffdb]">
               Official Platform · drahmedassem.com
             </div>
           </div>
@@ -95,7 +95,7 @@ export const Footer: React.FC<FooterProps> = ({ t, lang }) => {
                 <span className="text-neutral-500">Email:</span>{' '}
                 <a
                   href="mailto:contact@drahmedassem.com"
-                  className="hover:text-[#ccff00] transition-colors"
+                  className="hover:text-[#8cffdb] transition-colors"
                 >
                   contact@drahmedassem.com
                 </a>
@@ -106,7 +106,7 @@ export const Footer: React.FC<FooterProps> = ({ t, lang }) => {
                   href="https://wa.me/201099999999"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#ccff00] transition-colors"
+                  className="hover:text-[#8cffdb] transition-colors"
                 >
                   {lang === 'en' ? 'Direct Physician Desk' : 'مكتب الدكتور المباشر'}
                 </a>

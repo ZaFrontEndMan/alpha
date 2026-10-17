@@ -28,13 +28,13 @@ const TIERS: CoachingTier[] = [
       'Custom macro prescription with flexible meal options',
       'Bi-weekly check-in with measurement & photo audit',
       'Supplement safety & foundational vitamin stack',
-      'Access to Alpha Team mobile workout portal',
+      'Access to Dr. Ahmed Assem mobile workout portal',
     ],
     deliverables: {
       bloodwork: 'Basic metabolic intake audit',
       nutrition: 'Targeted caloric progression',
       training: 'Phase 1 & 2 mesocycles',
-      communication: 'Alpha Team portal messaging',
+      communication: 'Dr. Ahmed Assem portal messaging',
     },
   },
   {
@@ -94,12 +94,12 @@ export const CoachingTiers: React.FC<CoachingTiersProps> = ({ onSelectTier }) =>
   };
 
   return (
-    <section id="coaching-tiers" className="py-20 md:py-28 bg-[#0c0f0d] border-b border-neutral-800/80">
+    <section id="coaching-tiers" className="py-20 md:py-28 bg-[#0c0f0d]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div className="max-w-2xl">
-            <div className="text-xs font-semibold tracking-wider text-[#ccff00] uppercase mb-3">
+            <div className="text-xs font-semibold tracking-wider text-[#8cffdb] uppercase mb-3">
               One-on-One Physician Coaching
             </div>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight [text-wrap:balance]">
@@ -119,7 +119,7 @@ export const CoachingTiers: React.FC<CoachingTiersProps> = ({ onSelectTier }) =>
                 onClick={() => setCurrency(curr)}
                 className={`px-2.5 py-1 text-xs font-mono font-bold uppercase transition-colors ${
                   currency === curr
-                    ? 'bg-[#ccff00] text-black shadow-sm'
+                    ? 'bg-[#8cffdb] text-black shadow-sm'
                     : 'text-neutral-400 hover:text-white'
                 }`}
               >
@@ -136,19 +136,19 @@ export const CoachingTiers: React.FC<CoachingTiersProps> = ({ onSelectTier }) =>
               key={tier.id}
               className={`flex flex-col justify-between p-8 border transition-all ${
                 tier.popular
-                  ? 'bg-[#101512] border-[#ccff00] shadow-[0_0_30px_rgba(204,255,0,0.12)] relative'
+                  ? 'bg-[#101512] border-[#8cffdb] shadow-[0_0_30px_rgba(140,255,219,0.12)] relative'
                   : 'bg-[#090b0a] border-neutral-800 hover:border-neutral-700'
               }`}
             >
               {/* Popular Badge */}
               {tier.popular && (
-                <div className="absolute -top-3 start-8 bg-[#ccff00] text-black px-3 py-0.5 text-[11px] font-black uppercase tracking-wider">
+                <div className="absolute -top-3 start-8 bg-[#8cffdb] text-black px-3 py-0.5 text-[11px] font-black uppercase tracking-wider">
                   Recommended · Doctor Flagship
                 </div>
               )}
 
               <div>
-                <div className="text-xs font-mono uppercase text-[#ccff00] tracking-wider mb-1">
+                <div className="text-xs font-mono uppercase text-[#8cffdb] tracking-wider mb-1">
                   {tier.duration}
                 </div>
                 <h3 className="font-display text-2xl font-black text-white">
@@ -181,7 +181,7 @@ export const CoachingTiers: React.FC<CoachingTiersProps> = ({ onSelectTier }) =>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-neutral-400">Bloodwork Review:</span>
-                    <span className="text-[#ccff00] font-medium text-end">{tier.deliverables.bloodwork}</span>
+                    <span className="text-[#8cffdb] font-medium text-end">{tier.deliverables.bloodwork}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-neutral-400">Diet Strategy:</span>
@@ -193,7 +193,7 @@ export const CoachingTiers: React.FC<CoachingTiersProps> = ({ onSelectTier }) =>
                 <ul className="space-y-2.5 text-xs text-neutral-300 mb-8">
                   {tier.features.map((feat, i) => (
                     <li key={i} className="flex items-start gap-2.5">
-                      <span className="text-[#ccff00] font-bold font-mono">✓</span>
+                      <span className="text-[#8cffdb] font-bold font-mono">✓</span>
                       <span>{feat}</span>
                     </li>
                   ))}
@@ -207,7 +207,7 @@ export const CoachingTiers: React.FC<CoachingTiersProps> = ({ onSelectTier }) =>
                   onClick={() => onSelectTier(tier.name)}
                   className={`w-full py-3.5 text-xs font-black uppercase tracking-wider transition-all ${
                     tier.popular
-                      ? 'bg-[#ccff00] text-black hover:bg-[#b5e600] shadow-[0_0_20px_rgba(204,255,0,0.3)]'
+                      ? 'bg-[#8cffdb] text-black hover:bg-[#77d9ba] shadow-[0_0_20px_rgba(140,255,219,0.3)]'
                       : 'bg-neutral-900 border border-neutral-700 text-white hover:border-neutral-500 hover:bg-neutral-800'
                   }`}
                 >

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { TransformationsGrid } from './components/TransformationsGrid';
+import { TransformationsShowcase } from './components/TransformationsShowcase';
 import { Testimonials } from './components/Testimonials';
 import { WhyChoose } from './components/WhyChoose';
 import { FeaturesSection } from './components/FeaturesSection';
@@ -13,16 +14,14 @@ import { MacroCalculator } from './components/MacroCalculator';
 import { FAQSection } from './components/FAQSection';
 import { Footer } from './components/Footer';
 import { ConsultationModal } from './components/ConsultationModal';
-import { AuthModal } from './components/AuthModal';
 import { translations, Language } from './translations';
 import { LogoIntro } from './components/LogoIntro';
+import { SocialRail } from './components/SocialRail';
 import { scrollToId, startScroll, stopScroll, useParallax, useScrollReveal, useSmoothScroll } from './components/fx';
 
 export default function App() {
   const [lang, setLang] = useState<Language>('en');
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
-  const [isAuthOpen, setIsAuthOpen] = useState(false);
-  const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
   const [selectedTier, setSelectedTier] = useState('Elite Coaching (7000 EGP)');
   const [preloadedMacroSummary, setPreloadedMacroSummary] = useState('');
 
@@ -33,9 +32,9 @@ export default function App() {
 
   // Hold the page still behind an open modal; the modal scrolls on its own (data-lenis-prevent)
   useEffect(() => {
-    if (isConsultationOpen || isAuthOpen) stopScroll();
+    if (isConsultationOpen) stopScroll();
     else startScroll();
-  }, [isConsultationOpen, isAuthOpen]);
+  }, [isConsultationOpen]);
 
   // Update HTML document dir attribute when language changes
   useEffect(() => {
@@ -54,16 +53,6 @@ export default function App() {
     setIsConsultationOpen(true);
   };
 
-  const handleOpenLogin = () => {
-    setAuthMode('login');
-    setIsAuthOpen(true);
-  };
-
-  const handleOpenRegister = () => {
-    setAuthMode('register');
-    setIsAuthOpen(true);
-  };
-
   const handleNavigateToCalculator = () => {
     scrollToId('calculator');
   };
@@ -75,17 +64,18 @@ export default function App() {
   };
 
   return (
-    <div className={`min-h-screen bg-[#090b0a] text-neutral-100 flex flex-col selection:bg-[#ccff00] selection:text-black ${lang === 'ar' ? 'font-cairo' : 'font-sans'}`}>
+    <div className={`min-h-screen w-full overflow-x-hidden bg-[#090b0a] text-neutral-100 flex flex-col selection:bg-[#8cffdb] selection:text-black ${lang === 'ar' ? 'font-cairo' : 'font-sans'}`}>
       {/* Logo loader: plays once, then lifts off the hero */}
       <LogoIntro />
+
+      {/* Fixed social links, vertically centered on the edge (desktop + mobile) */}
+      <SocialRail />
 
       {/* Top Navigation */}
       <Navbar
         lang={lang}
         t={t}
         onToggleLang={handleToggleLang}
-        onOpenLogin={handleOpenLogin}
-        onOpenRegister={handleOpenRegister}
         onOpenConsultation={() => handleOpenConsultation()}
         onOpenCalculator={handleNavigateToCalculator}
       />
@@ -100,14 +90,21 @@ export default function App() {
           onOpenCalculator={handleNavigateToCalculator}
         />
 
-        {/* 2. Transformations +500 Showcase Grid */}
+        {/* 2. Transformations photo showcase (staggered grid, scroll-reveal) */}
+        <TransformationsShowcase
+          t={t}
+          lang={lang}
+          onOpenConsultation={() => handleOpenConsultation()}
+        />
+
+        {/* 3. Transformations +500 Detailed Grid */}
         <TransformationsGrid
           t={t}
           lang={lang}
           onOpenConsultation={() => handleOpenConsultation()}
         />
 
-        {/* 3. Testimonials with Real Client Quotes (Zeyad, Ahmed, Mohamed) */}
+        {/* 4. Testimonials with Real Client Quotes (Zeyad, Ahmed, Mohamed) */}
         <Testimonials
           t={t}
           lang={lang}
@@ -181,15 +178,6 @@ export default function App() {
         initialMacroSummary={preloadedMacroSummary}
       />
 
-      {/* Auth Modal (Login / Register) */}
-      <AuthModal
-        isOpen={isAuthOpen}
-        initialMode={authMode}
-        onClose={() => setIsAuthOpen(false)}
-        lang={lang}
-        t={t}
-      />
-
       {/* Mobile Sticky Quick Action Bar (Comfortable thumb target size <= 15% viewport height) */}
       <div className="sm:hidden fixed bottom-0 inset-x-0 z-40 bg-[#090b0a]/95 backdrop-blur-md border-t border-neutral-800 px-3 py-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] flex items-center gap-2">
         <button
@@ -202,7 +190,7 @@ export default function App() {
         <button
           type="button"
           onClick={() => handleOpenConsultation()}
-          className="flex-1 py-2 px-2 min-h-[38px] text-[0.68rem] font-black uppercase tracking-wider text-black bg-[#ccff00] hover:bg-[#b5e600] text-center shadow-[0_0_12px_rgba(204,255,0,0.25)] whitespace-nowrap cursor-pointer"
+          className="flex-1 py-2 px-2 min-h-[38px] text-[0.68rem] font-black uppercase tracking-wider text-black bg-[#8cffdb] hover:bg-[#77d9ba] text-center shadow-[0_0_12px_rgba(140,255,219,0.25)] whitespace-nowrap cursor-pointer"
         >
           {t.hero.ctaStart}
         </button>

@@ -15,7 +15,7 @@ export const InspirationBanner: React.FC<InspirationBannerProps> = ({
   onOpenConsultation,
 }) => {
   return (
-    <section className="py-20 md:py-28 bg-[#0c0f0d] border-b border-neutral-800/80 relative overflow-hidden @container">
+    <section className="py-20 md:py-28 bg-[#0c0f0d] relative overflow-hidden @container">
       {/* The coach behind the card (mirrored in RTL so he always sits on the open side) */}
       <div className="pointer-events-none absolute inset-0 rtl:-scale-x-100" aria-hidden="true">
         <img
@@ -36,16 +36,16 @@ export const InspirationBanner: React.FC<InspirationBannerProps> = ({
 
       {/* Background glow */}
       <div
-        className="pointer-events-none absolute bottom-0 inset-x-0 mx-auto w-3/4 h-64 bg-[#ccff00]/5 blur-[120px]"
+        className="pointer-events-none absolute bottom-0 inset-x-0 mx-auto w-3/4 h-64 bg-[#8cffdb]/5 blur-[120px]"
         aria-hidden="true"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="bg-[#0e1210]/85 backdrop-blur-sm border border-neutral-800 p-8 sm:p-12 text-center max-w-4xl lg:max-w-2xl mx-auto lg:ms-0 space-y-8">
-          <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-[#ccff00]">
+          <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-[#8cffdb]">
             <span>{t.banner.title}</span>
             <span className="text-neutral-600">·</span>
-            <span>ALPHA TEAM</span>
+            <span>DR. AHMED ASSEM</span>
           </div>
 
           <h2 className={cn(
@@ -68,7 +68,7 @@ export const InspirationBanner: React.FC<InspirationBannerProps> = ({
                 key={idx}
                 className="px-4 py-2 bg-[#151a17] border border-neutral-800 flex items-center gap-2"
               >
-                <span className="text-[#ccff00] font-mono">✓</span>
+                <span className="text-[#8cffdb] font-mono">✓</span>
                 <span>{pill}</span>
               </div>
             ))}
@@ -77,7 +77,7 @@ export const InspirationBanner: React.FC<InspirationBannerProps> = ({
           {/* Key Stat Blocks */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 pt-6 border-t border-neutral-800/80 font-mono">
             <div>
-              <div className="text-3xl sm:text-4xl font-black text-[#ccff00] tabular-nums">
+              <div className="text-3xl sm:text-4xl font-black text-[#8cffdb] tabular-nums">
                 {t.stats.weeksChange}
               </div>
               <div className="text-xs text-neutral-400 mt-1 uppercase">
@@ -109,7 +109,7 @@ export const InspirationBanner: React.FC<InspirationBannerProps> = ({
             <button
               type="button"
               onClick={onOpenConsultation}
-              className="w-full sm:w-auto px-10 py-4 min-h-[48px] text-xs sm:text-sm font-black uppercase tracking-wider text-black bg-[#ccff00] hover:bg-[#b5e600] active:scale-[0.98] transition-all shadow-[0_0_25px_rgba(204,255,0,0.3)] cursor-pointer"
+              className="w-full sm:w-auto px-10 py-4 min-h-[48px] text-xs sm:text-sm font-black uppercase tracking-wider text-black bg-[#8cffdb] hover:bg-[#77d9ba] active:scale-[0.98] transition-all shadow-[0_0_25px_rgba(140,255,219,0.3)] cursor-pointer"
             >
               {t.banner.cta}
             </button>

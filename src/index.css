@@ -3,11 +3,14 @@
 @layer base {
   html {
     color-scheme: dark;
+    overflow-x: hidden;
   }
 
   body {
     background-color: #090b0a;
     color: #f3f4f6;
+    overflow-x: hidden;
+    width: 100%;
   }
 
   /* English default fonts */
@@ -52,7 +55,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ccff00;
+  background: #8cffdb;
 }
 
 /* ------------------------------------------------------------------ */
@@ -135,7 +138,7 @@ html.lenis body {
 @keyframes intro-fill {
   0% { fill: rgba(255, 255, 255, 0); stroke: #ffffff; }
   35% { fill: #ffffff; stroke: #ffffff; }
-  100% { fill: var(--final, #ccff00); stroke: var(--final, #ccff00); }
+  100% { fill: var(--final, #8cffdb); stroke: var(--final, #8cffdb); }
 }
 
 /* the mark gives a small "lock" pop as the pieces meet */
@@ -215,6 +218,28 @@ html.lenis body {
   will-change: transform;
 }
 
+/* ------------------------------------------------------------------ */
+/* Transformations showcase: per-tile scroll reveal (IntersectionObserver) */
+/* ------------------------------------------------------------------ */
+.reveal-tile {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0) scale(0.98);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal-tile.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-tile {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   [data-reveal] {
     opacity: 1 !important;
@@ -260,7 +285,7 @@ html.lenis body {
   inset-inline: 0;
   bottom: 0.02em;
   height: 0.09em;
-  background: #ccff00;
+  background: #8cffdb;
   transform: scaleX(0);
   transform-origin: left;
 }
@@ -388,7 +413,7 @@ html.lenis body {
   bottom: 0.08em;
   width: 0.09em;
   margin-inline-start: 0.04em;
-  background: #ccff00;
+  background: #8cffdb;
 }
 .type-accent {
   position: relative;
@@ -399,7 +424,7 @@ html.lenis body {
   inset-inline: 0;
   bottom: 0.02em;
   height: 0.09em;
-  background: #ccff00;
+  background: #8cffdb;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.6s var(--intro-ease);

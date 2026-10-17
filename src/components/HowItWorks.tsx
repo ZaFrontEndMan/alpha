@@ -14,11 +14,11 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
   onOpenConsultation,
 }) => {
   return (
-    <section className="py-20 md:py-28 bg-[#090b0a] border-b border-neutral-800/80 @container">
+    <section className="py-20 md:py-28 bg-[#090b0a] @container">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
-          <div className="text-xs font-bold tracking-widest text-[#ccff00] uppercase mb-3">
+          <div className="text-xs font-bold tracking-widest text-[#8cffdb] uppercase mb-3">
             {t.howItWorks.tag}
           </div>
           <h2 className={cn(
@@ -38,7 +38,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
             >
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <span className="font-display font-black text-2xl sm:text-3xl text-[#ccff00] font-mono tabular-nums">
+                  <span className="font-display font-black text-2xl sm:text-3xl text-[#8cffdb] font-mono tabular-nums">
                     {st.step}
                   </span>
                   <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-500">
@@ -47,7 +47,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
                 </div>
 
                 <h3 className={cn(
-                  "text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-[#ccff00] transition-colors",
+                  "text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-[#8cffdb] transition-colors",
                   lang === 'en' ? 'font-sport' : 'font-cairo'
                 )}>
                   {st.title}
@@ -60,7 +60,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
 
               <div className="mt-6 pt-4 border-t border-neutral-800/80 flex items-center justify-between text-[11px] text-neutral-400 font-mono">
                 <span>{lang === 'en' ? 'STEP' : 'الخطوة'} {st.step}</span>
-                <span className="text-[#ccff00]">✓ SYSTEM PROTOCOL</span>
+                <span className="text-[#8cffdb]">✓ SYSTEM PROTOCOL</span>
               </div>
             </div>
           ))}
@@ -71,7 +71,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
           <button
             type="button"
             onClick={onOpenConsultation}
-            className="w-full sm:w-auto px-8 py-4 min-h-[48px] text-xs sm:text-sm font-black uppercase tracking-wider text-black bg-[#ccff00] hover:bg-[#b5e600] transition-colors cursor-pointer text-center"
+            className="w-full sm:w-auto px-8 py-4 min-h-[48px] text-xs sm:text-sm font-black uppercase tracking-wider text-black bg-[#8cffdb] hover:bg-[#77d9ba] transition-colors cursor-pointer text-center"
           >
             {t.hero.ctaStart}
           </button>

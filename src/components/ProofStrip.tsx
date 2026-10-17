@@ -25,7 +25,7 @@ export const ProofStrip: React.FC = () => {
   ];
 
   return (
-    <section className="bg-[#0c0f0d] border-b border-neutral-800/80 py-10">
+    <section className="bg-[#0c0f0d] py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {proofs.map((item, idx) => (
@@ -34,7 +34,7 @@ export const ProofStrip: React.FC = () => {
                 {item.metric.includes('+') || item.metric.includes('%') ? (
                   <>
                     <span>{item.metric.slice(0, -1)}</span>
-                    <span className="text-[#ccff00]">{item.metric.slice(-1)}</span>
+                    <span className="text-[#8cffdb]">{item.metric.slice(-1)}</span>
                   </>
                 ) : (
                   item.metric

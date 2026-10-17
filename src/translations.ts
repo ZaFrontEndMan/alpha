@@ -14,10 +14,8 @@ export interface TranslationContent {
     langToggle: string;
   };
   hero: {
-    tagline: string;
     headline: string;
     subheadline: string;
-    bullets: string[];
     ctaStart: string;
     ctaPackages: string;
   };
@@ -144,16 +142,9 @@ export const translations: Record<Language, TranslationContent> = {
       langToggle: 'العربية',
     },
     hero: {
-      tagline: 'MEDICALLY GUIDED ELITE COACHING',
-      headline: 'Transform your whole life in 90 days with a medically designed system',
+      headline: 'Transform your whole life in 12 weeks with a medically designed system',
       subheadline: 'Hundreds of clients transformed their bodies using a proven system — not guesswork',
-      bullets: [
-        '8–12 kg fat loss',
-        'Shredded abs in 12 weeks',
-        'Muscle gain + significant recomposition',
-        'Fixed their relationship with food',
-      ],
-      ctaStart: 'START NOW & GET ALPHA',
+      ctaStart: 'START NOW',
       ctaPackages: 'VIEW PACKAGES',
     },
     stats: {
@@ -323,7 +314,7 @@ export const translations: Record<Language, TranslationContent> = {
         },
         {
           id: 'alpha-vip',
-          name: 'Alpha VIP Medical Mastery',
+          name: 'Dr. Ahmed Assem VIP Medical Mastery',
           price: '12000.00 EGP',
           priceNumeric: 12000,
           description:
@@ -402,7 +393,7 @@ export const translations: Record<Language, TranslationContent> = {
       quote:
         'Build Your Best Shape With The Right System, Team, And Guidance. BY JOINING MY TEAM YOU WILL HAVE THE RIGHT GUIDANCE, GAIN THE KNOWLEDGE AND MOST IMPORTANTLY UNLOCK THE MINDSET THAT WILL STREAMLINE YOUR ROAD TO RESULTS NO MATTER WHAT YOUR GOAL IS.',
       pills: ['Custom Plan', 'Weekly Follow-up', 'Real Results'],
-      cta: 'JOIN ALPHA TEAM TODAY',
+      cta: 'JOIN DR. AHMED ASSEM TODAY',
     },
     faqs: {
       title: 'FREQUENTLY ASKED QUESTIONS',
@@ -442,13 +433,13 @@ export const translations: Record<Language, TranslationContent> = {
       ],
     },
     footer: {
-      rights: '© Copyright 2026 ALPHA T. All rights reserved.',
+      rights: '© Copyright 2026 DR. AHMED ASSEM. All rights reserved.',
       privacy: 'Privacy Policy',
       terms: 'Terms and Conditions',
     },
     auth: {
       loginTitle: 'Client Portal Login',
-      registerTitle: 'Create Alpha Account',
+      registerTitle: 'Create Account',
       email: 'Email Address',
       password: 'Password',
       fullName: 'Full Name',
@@ -474,16 +465,9 @@ export const translations: Record<Language, TranslationContent> = {
       langToggle: 'English',
     },
     hero: {
-      tagline: 'تدريب احترافي بإشراف طبي متكامل',
-      headline: 'غيّر حياتك بالكامل في 90 يوماً بنظام مصمم طبياً',
+      headline: 'غيّر حياتك بالكامل في 12 أسبوعاً بنظام مصمم طبياً',
       subheadline: 'مئات المتدربين غيروا أجسامهم بنظام مثبت علمياً — بدون أي عشوائية',
-      bullets: [
-        'خسارة 8–12 كجم دهون',
-        'عضلات بطن مقسمة في 12 أسبوعاً',
-        'بناء عضلات + إعادة تشكيل كامل للجسم',
-        'علاج العلاقة مع الأكل والتخلص من الحرمان',
-      ],
-      ctaStart: 'ابدأ الآن وانضم للألفا',
+      ctaStart: 'ابدأ الآن',
       ctaPackages: 'استعرض الباقات',
     },
     stats: {
@@ -653,7 +637,7 @@ export const translations: Record<Language, TranslationContent> = {
         },
         {
           id: 'alpha-vip',
-          name: 'تدريب النخبة الطبي (Alpha VIP)',
+          name: 'تدريب النخبة الطبي مع د. أحمد عاصم',
           price: '12000.00 EGP',
           priceNumeric: 12000,
           description:
@@ -772,7 +756,7 @@ export const translations: Record<Language, TranslationContent> = {
       ],
     },
     footer: {
-      rights: '© جميع الحقوق محفوظة 2026 ALPHA T - د. أحمد عاصم.',
+      rights: '© جميع الحقوق محفوظة 2026 د. أحمد عاصم.',
       privacy: 'سياسة الخصوصية',
       terms: 'الشروط والأحكام',
     },

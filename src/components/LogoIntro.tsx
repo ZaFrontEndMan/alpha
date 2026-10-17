@@ -93,7 +93,7 @@ export const LogoIntro: React.FC = () => {
             e.stopPropagation();
             leave();
           }}
-          className="uppercase underline underline-offset-4 decoration-[#ccff00] decoration-2 hover:text-[#ccff00] cursor-pointer"
+          className="uppercase underline underline-offset-4 decoration-[#8cffdb] decoration-2 hover:text-[#8cffdb] cursor-pointer"
         >
           Skip intro
         </button>
@@ -146,17 +146,17 @@ export const LogoIntro: React.FC = () => {
         </h2>
 
         {/* rule + typed tagline */}
-        <span className="intro-rule block h-[2px] bg-[#ccff00] mt-4 w-[min(80vw,30rem)] origin-left" aria-hidden="true" />
-        <p className="mt-3 w-[min(80vw,30rem)] font-mono text-[0.68rem] sm:text-sm uppercase tracking-[0.18em] text-[#ccff00] h-[1.5em] text-center">
+        <span className="intro-rule block h-[2px] bg-[#8cffdb] mt-4 w-[min(80vw,30rem)] origin-left" aria-hidden="true" />
+        <p className="mt-3 w-[min(80vw,30rem)] font-mono text-[0.68rem] sm:text-sm uppercase tracking-[0.18em] text-[#8cffdb] h-[1.5em] text-center">
           <span ref={tagEl} />
-          <span className="inline-block w-[0.55em] h-[1em] -mb-[0.15em] ml-0.5 bg-[#ccff00] animate-[caret-blink_900ms_steps(1)_infinite]" />
+          <span className="inline-block w-[0.55em] h-[1em] -mb-[0.15em] ml-0.5 bg-[#8cffdb] animate-[caret-blink_900ms_steps(1)_infinite]" />
         </p>
       </div>
 
       {/* counter */}
       <div className="intro-fade absolute inset-x-0 bottom-0 flex items-end justify-between p-5 sm:p-8">
         <span className="text-[10px] sm:text-xs font-mono font-semibold uppercase tracking-[0.2em] text-neutral-400">
-          Alpha Team
+          Dr. Ahmed Assem
         </span>
         <span
           ref={countEl}
@@ -168,7 +168,7 @@ export const LogoIntro: React.FC = () => {
       </div>
       <span
         ref={barEl}
-        className="absolute left-0 bottom-0 h-1.5 w-full bg-[#ccff00] origin-left"
+        className="absolute left-0 bottom-0 h-1.5 w-full bg-[#8cffdb] origin-left"
         style={{ transform: 'scaleX(0)' }}
         aria-hidden="true"
       />

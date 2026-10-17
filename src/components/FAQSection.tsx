@@ -11,11 +11,11 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ t, lang }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faqs" className="py-20 md:py-28 bg-[#090b0a] border-b border-neutral-800/80 @container">
+    <section id="faqs" className="py-20 md:py-28 bg-[#090b0a] @container">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="text-xs font-bold tracking-widest text-[#ccff00] uppercase mb-3">
+          <div className="text-xs font-bold tracking-widest text-[#8cffdb] uppercase mb-3">
             {lang === 'en' ? 'COMMON QUESTIONS' : 'كل ما تحتاج معرفته'}
           </div>
           <h2 className={cn(
@@ -38,7 +38,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ t, lang }) => {
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full text-start p-5 sm:p-6 flex items-center justify-between gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ccff00] cursor-pointer min-h-[48px]"
+                  className="w-full text-start p-5 sm:p-6 flex items-center justify-between gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8cffdb] cursor-pointer min-h-[48px]"
                 >
                   <span className={cn(
                     "text-base sm:text-lg font-bold text-white",
@@ -46,7 +46,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ t, lang }) => {
                   )}>
                     {item.q}
                   </span>
-                  <span className="font-mono text-xl font-bold text-[#ccff00] shrink-0">
+                  <span className="font-mono text-xl font-bold text-[#8cffdb] shrink-0">
                     {isOpen ? '−' : '+'}
                   </span>
                 </button>

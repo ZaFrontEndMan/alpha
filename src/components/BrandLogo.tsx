@@ -42,7 +42,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
           <span className="font-display font-extrabold tracking-tight text-white text-base md:text-lg flex items-center gap-1.5">
             DR. AHMED ASSEM
           </span>
-          <span className="text-[10px] tracking-widest text-[#ccff00] font-semibold uppercase mt-0.5">
+          <span className="text-[10px] tracking-widest text-[#8cffdb] font-semibold uppercase mt-0.5">
             IFBB PRO · MEDICAL DOCTOR
           </span>
         </div>

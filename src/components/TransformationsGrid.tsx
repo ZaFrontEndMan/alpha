@@ -118,12 +118,12 @@ export const TransformationsGrid: React.FC<TransformationsGridProps> = ({
   });
 
   return (
-    <section id="transformations" className="py-20 md:py-28 bg-[#090b0a] border-b border-neutral-800/80 @container">
+    <section id="transformations" className="py-20 md:py-28 bg-[#090b0a] @container">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-12">
           <div className="max-w-3xl">
-            <div className="text-xs font-bold tracking-widest text-[#ccff00] uppercase mb-3 flex items-center gap-2">
+            <div className="text-xs font-bold tracking-widest text-[#8cffdb] uppercase mb-3 flex items-center gap-2">
               <span>{lang === 'en' ? 'DOCUMENTED PROOF' : 'نتائج واقعية موثقة'}</span>
               <span className="text-neutral-600">·</span>
               <span className="font-mono text-white">500+ TRANSFORMATIONS</span>
@@ -158,14 +158,14 @@ export const TransformationsGrid: React.FC<TransformationsGridProps> = ({
               className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-transparent to-[#0e1210] lg:opacity-100 opacity-60"
               aria-hidden="true"
             />
-            <div className="absolute top-4 start-4 bg-black/85 border border-[#ccff00] px-3 py-1 text-[11px] font-mono text-[#ccff00] font-bold uppercase">
+            <div className="absolute top-4 start-4 bg-black/85 border border-[#8cffdb] px-3 py-1 text-[11px] font-mono text-[#8cffdb] font-bold uppercase">
               12 WEEKS RECOMPOSITION
             </div>
           </div>
 
           <div className="lg:col-span-7 p-6 sm:p-10 flex flex-col justify-between">
             <div>
-              <div className="flex items-center gap-2 text-xs font-mono uppercase text-[#ccff00] mb-2">
+              <div className="flex items-center gap-2 text-xs font-mono uppercase text-[#8cffdb] mb-2">
                 <span>{lang === 'en' ? 'Clinical Recomposition' : 'تحول إعادة التشكيل'}</span>
                 <span className="text-neutral-600">·</span>
                 <span>{lang === 'en' ? 'Sub-10% Body Fat' : 'نسبة دهون تحت 10%'}</span>
@@ -190,7 +190,7 @@ export const TransformationsGrid: React.FC<TransformationsGridProps> = ({
                   <div className="text-[11px] text-neutral-400 uppercase">
                     {lang === 'en' ? 'Fat Loss' : 'خسارة دهون'}
                   </div>
-                  <div className="text-xl sm:text-2xl font-bold text-[#ccff00] mt-0.5 tabular-nums">
+                  <div className="text-xl sm:text-2xl font-bold text-[#8cffdb] mt-0.5 tabular-nums">
                     -11.5 kg
                   </div>
                 </div>
@@ -215,12 +215,12 @@ export const TransformationsGrid: React.FC<TransformationsGridProps> = ({
 
             <div className="pt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
               <span className="text-xs text-neutral-400">
-                {lang === 'en' ? 'Alpha Team Protocol · 100% Customized' : 'بروتوكول فريق الألفا · مخصص 100%'}
+                {lang === 'en' ? 'Dr. Ahmed Assem Protocol · 100% Customized' : 'بروتوكول د. أحمد عاصم · مخصص 100%'}
               </span>
               <button
                 type="button"
                 onClick={onOpenConsultation}
-                className="w-full sm:w-auto px-6 py-3 min-h-[44px] text-xs font-black uppercase tracking-wider text-black bg-[#ccff00] hover:bg-[#b5e600] transition-colors cursor-pointer text-center"
+                className="w-full sm:w-auto px-6 py-3 min-h-[44px] text-xs font-black uppercase tracking-wider text-black bg-[#8cffdb] hover:bg-[#77d9ba] transition-colors cursor-pointer text-center"
               >
                 {t.hero.ctaStart}
               </button>
@@ -247,7 +247,7 @@ export const TransformationsGrid: React.FC<TransformationsGridProps> = ({
                 className={cn(
                   "flex-1 sm:flex-none px-3 py-2 text-xs font-bold transition-all min-h-[38px] cursor-pointer whitespace-nowrap",
                   filter === tab.id
-                    ? "bg-[#ccff00] text-black font-extrabold shadow-sm"
+                    ? "bg-[#8cffdb] text-black font-extrabold shadow-sm"
                     : "text-neutral-400 hover:text-white"
                 )}
               >
@@ -266,16 +266,16 @@ export const TransformationsGrid: React.FC<TransformationsGridProps> = ({
             >
               <div>
                 <div className="flex items-center justify-between text-xs font-mono text-neutral-400 mb-3">
-                  <span className="text-[#ccff00] font-bold uppercase">
+                  <span className="text-[#8cffdb] font-bold uppercase">
                     {client.type.replace('_', ' ')}
                   </span>
                   <span>{client.duration}</span>
                 </div>
 
-                <h3 className="text-lg font-bold text-white group-hover:text-[#ccff00] transition-colors">
+                <h3 className="text-lg font-bold text-white group-hover:text-[#8cffdb] transition-colors">
                   {lang === 'en' ? client.nameEn : client.nameAr}
                 </h3>
-                <div className="text-xs text-[#ccff00] font-mono mt-1 mb-4">
+                <div className="text-xs text-[#8cffdb] font-mono mt-1 mb-4">
                   {lang === 'en' ? client.achievementEn : client.achievementAr}
                 </div>
 
@@ -286,7 +286,7 @@ export const TransformationsGrid: React.FC<TransformationsGridProps> = ({
                   </div>
                   <div className="flex justify-between">
                     <span className="text-neutral-400">{lang === 'en' ? 'Body Fat:' : 'نسبة الدهون:'}</span>
-                    <span className="text-[#ccff00] font-bold tabular-nums">{client.bodyFatShift}</span>
+                    <span className="text-[#8cffdb] font-bold tabular-nums">{client.bodyFatShift}</span>
                   </div>
                 </div>
 
@@ -299,7 +299,7 @@ export const TransformationsGrid: React.FC<TransformationsGridProps> = ({
                 <button
                   type="button"
                   onClick={onOpenConsultation}
-                  className="w-full py-2.5 min-h-[40px] text-xs font-bold uppercase tracking-wider text-neutral-300 hover:text-black hover:bg-[#ccff00] border border-neutral-700 hover:border-[#ccff00] transition-colors cursor-pointer text-center"
+                  className="w-full py-2.5 min-h-[40px] text-xs font-bold uppercase tracking-wider text-neutral-300 hover:text-black hover:bg-[#8cffdb] border border-neutral-700 hover:border-[#8cffdb] transition-colors cursor-pointer text-center"
                 >
                   {lang === 'en' ? 'Start Similar Protocol' : 'ابدأ برنامجاً مماثلاً'}
                 </button>
@@ -310,7 +310,7 @@ export const TransformationsGrid: React.FC<TransformationsGridProps> = ({
 
         {/* 500+ Database Micro-Grid Stamp */}
         <div className="mt-12 p-6 bg-[#0c0f0d] border border-neutral-800 text-center">
-          <div className="text-xs font-mono text-[#ccff00] uppercase tracking-wider mb-2">
+          <div className="text-xs font-mono text-[#8cffdb] uppercase tracking-wider mb-2">
             {lang === 'en' ? 'CONTINUOUS DOCUMENTATION' : 'توثيق مستمر للنتائج'}
           </div>
           <p className="text-sm text-neutral-300 max-w-xl mx-auto mb-4">
@@ -321,7 +321,7 @@ export const TransformationsGrid: React.FC<TransformationsGridProps> = ({
           <button
             type="button"
             onClick={onOpenConsultation}
-            className="inline-flex items-center justify-center py-3 px-8 text-xs font-black uppercase tracking-wider text-black bg-[#ccff00] hover:bg-[#b5e600] min-h-[44px]"
+            className="inline-flex items-center justify-center py-3 px-8 text-xs font-black uppercase tracking-wider text-black bg-[#8cffdb] hover:bg-[#77d9ba] min-h-[44px]"
           >
             {t.banner.cta}
           </button>
