@@ -46,7 +46,7 @@ const SOCIAL_LINKS = [
 export const SocialRail: React.FC = () => {
   return (
     <div
-      className="fixed top-1/2 end-0 z-30 flex -translate-y-1/2 flex-col gap-1.5 sm:gap-2 rounded-s-xl border border-e-0 border-neutral-800/80 bg-[#090b0a]/90 p-1.5 shadow-[0_8px_24px_rgba(0,0,0,0.35)] backdrop-blur-md sm:p-2"
+      className="social-rail-fixed fixed top-1/2 end-0 z-30 flex -translate-y-1/2 flex-col gap-0.5 sm:gap-2 rounded-s-lg sm:rounded-s-xl border border-e-0 border-neutral-800/80 bg-[#090b0a]/80 p-1 sm:p-2 shadow-[0_8px_24px_rgba(0,0,0,0.35)] backdrop-blur-md"
       role="navigation"
       aria-label="Social media"
     >
@@ -58,9 +58,9 @@ export const SocialRail: React.FC = () => {
           rel="noopener noreferrer"
           aria-label={label}
           title={label}
-          className="flex h-8 w-8 items-center justify-center text-neutral-300 transition-colors hover:text-[#8cffdb] active:scale-90 sm:h-9 sm:w-9"
+          className="flex h-7 w-7 items-center justify-center text-neutral-300 transition-colors hover:text-[#8cffdb] active:scale-90 sm:h-9 sm:w-9"
         >
-          <Icon className="h-4 w-4 sm:h-[18px] sm:w-[18px]" />
+          <Icon className="h-3.5 w-3.5 sm:h-[18px] sm:w-[18px]" />
         </a>
       ))}
     </div>

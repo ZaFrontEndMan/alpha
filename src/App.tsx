@@ -5,6 +5,7 @@ import { TransformationsGrid } from './components/TransformationsGrid';
 import { TransformationsShowcase } from './components/TransformationsShowcase';
 import { Testimonials } from './components/Testimonials';
 import { WhyChoose } from './components/WhyChoose';
+import { CoachShowcase } from './components/CoachShowcase';
 import { FeaturesSection } from './components/FeaturesSection';
 import { ComparisonSection } from './components/ComparisonSection';
 import { PackagesSection } from './components/PackagesSection';
@@ -64,7 +65,7 @@ export default function App() {
   };
 
   return (
-    <div className={`min-h-screen w-full overflow-x-hidden bg-[#090b0a] text-neutral-100 flex flex-col selection:bg-[#8cffdb] selection:text-black ${lang === 'ar' ? 'font-cairo' : 'font-sans'}`}>
+    <div className={`min-h-screen w-full overflow-x-clip bg-[#090b0a] text-neutral-100 flex flex-col selection:bg-[#8cffdb] selection:text-black ${lang === 'ar' ? 'font-cairo' : 'font-sans'}`}>
       {/* Logo loader: plays once, then lifts off the hero */}
       <LogoIntro />
 
@@ -104,62 +105,69 @@ export default function App() {
           onOpenConsultation={() => handleOpenConsultation()}
         />
 
-        {/* 4. Testimonials with Real Client Quotes (Zeyad, Ahmed, Mohamed) */}
-        <Testimonials
-          t={t}
-          lang={lang}
-          onOpenConsultation={() => handleOpenConsultation()}
-        />
-
-        {/* 4. Why Choose Dr. Ahmed Assem (The 4 Pillars & 500+ Record) */}
-        <WhyChoose
-          t={t}
-          lang={lang}
-          onOpenConsultation={() => handleOpenConsultation()}
-        />
-
-        {/* 5. Core Features (Meal Plan, Workout Program, Home/Gym) */}
-        <FeaturesSection
-          t={t}
-          lang={lang}
-          onOpenConsultation={() => handleOpenConsultation()}
-        />
-
-        {/* 6. System Comparison Section (Dr. Ahmed Assem vs Conventional) */}
-        <ComparisonSection
-          t={t}
-          lang={lang}
-          onOpenConsultation={() => handleOpenConsultation()}
-        />
-
-        {/* 7. Packages with exact EGP pricing (4500, 7000, 12000, 2000) */}
-        <PackagesSection
-          t={t}
-          lang={lang}
-          onSelectPackage={(pkgName) => handleOpenConsultation(pkgName)}
-        />
-
-        {/* 8. How It Works (6-Step Timeline) */}
-        <HowItWorks
-          t={t}
-          lang={lang}
-          onOpenConsultation={() => handleOpenConsultation()}
-        />
-
-        {/* 9. Inspiration & Mindset Banner */}
+        {/* 4. Inspiration & Mindset Banner */}
         <InspirationBanner
           t={t}
           lang={lang}
           onOpenConsultation={() => handleOpenConsultation()}
         />
 
-        {/* 10. Interactive Macro & Calorie Calculator */}
+        {/* 5. Testimonials with Real Client Quotes (Zeyad, Ahmed, Mohamed) */}
+        <Testimonials
+          t={t}
+          lang={lang}
+          onOpenConsultation={() => handleOpenConsultation()}
+        />
+
+        {/* 6. Why Choose Dr. Ahmed Assem (The 4 Pillars & 500+ Record) */}
+        <WhyChoose
+          t={t}
+          lang={lang}
+          onOpenConsultation={() => handleOpenConsultation()}
+        />
+
+        {/* 7. The coach himself — large portrait with ghost typography */}
+        <CoachShowcase
+          t={t}
+          lang={lang}
+          onOpenConsultation={() => handleOpenConsultation()}
+        />
+
+        {/* 8. Core Features (Meal Plan, Workout Program, Home/Gym) */}
+        <FeaturesSection
+          t={t}
+          lang={lang}
+          onOpenConsultation={() => handleOpenConsultation()}
+        />
+
+        {/* 9. System Comparison Section (Dr. Ahmed Assem vs Conventional) */}
+        <ComparisonSection
+          t={t}
+          lang={lang}
+          onOpenConsultation={() => handleOpenConsultation()}
+        />
+
+        {/* 10. Packages with exact EGP pricing (4500, 7000, 12000, 2000) */}
+        <PackagesSection
+          t={t}
+          lang={lang}
+          onSelectPackage={(pkgName) => handleOpenConsultation(pkgName)}
+        />
+
+        {/* 11. How It Works (6-Step Timeline) */}
+        <HowItWorks
+          t={t}
+          lang={lang}
+          onOpenConsultation={() => handleOpenConsultation()}
+        />
+
+        {/* 12. Interactive Macro & Calorie Calculator */}
         <MacroCalculator
           lang={lang}
           onApplyWithMacros={handleApplyWithMacros}
         />
 
-        {/* 11. Frequently Asked Questions (All 8 questions) */}
+        {/* 13. Frequently Asked Questions (All 8 questions) */}
         <FAQSection
           t={t}
           lang={lang}

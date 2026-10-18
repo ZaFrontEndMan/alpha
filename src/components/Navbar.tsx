@@ -21,8 +21,10 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-[#090b0a]/95 backdrop-blur-md transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4 md:gap-8">
+    <header className="fixed inset-x-0 top-0 z-50">
+      {/* Transparent bar: a soft black overlay + blur, so the hero photo shows through underneath */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/70 to-black/35 backdrop-blur-md" />
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4 md:gap-8">
         {/* Brand Zone */}
         <a
           href="#"
@@ -127,7 +129,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="xl:hidden border-b border-neutral-800 bg-[#0e1210] px-4 pt-4 pb-6 space-y-3">
+        <div className="relative xl:hidden border-b border-neutral-800 bg-black/90 backdrop-blur-xl px-4 pt-4 pb-6 space-y-3">
           <a
             href="#"
             onClick={() => setMobileMenuOpen(false)}

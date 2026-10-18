@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Language, TranslationContent } from '../translations';
 import { cn } from '../utils/cn';
 import { prefersReducedMotion } from './fx';
+import personBg from '../assets/person/person_3.jpg';
 
 /** Pulls every renamed client photo (1.jpg … n.jpg) in numeric order, no manual import list to maintain. */
 const photoModules = import.meta.glob('../assets/transformation/*.{jpg,jpeg,png,webp}', {
@@ -24,12 +25,13 @@ interface TransformationsShowcaseProps {
 }
 
 /** One photo tile. Reveals once via the shared observer below, then stays put — never re-measured, never re-animated. */
-const Tile: React.FC<{ src: string; tall?: boolean; alt: string }> = ({ src, tall, alt }) => (
+const Tile: React.FC<{ src: string; tall?: boolean; alt: string; className?: string }> = ({ src, tall, alt, className }) => (
   <div
     data-tile
     className={cn(
-      'reveal-tile relative w-full overflow-hidden rounded-xl bg-[#121614]',
-      tall ? 'aspect-[3/4]' : 'aspect-[4/5]'
+      'reveal-tile relative w-full overflow-hidden rounded-lg sm:rounded-xl bg-[#121614] border border-neutral-800/80 shadow-md sm:shadow-2xl',
+      tall ? 'aspect-[3/4]' : 'aspect-[4/5]',
+      className
     )}
   >
     <img
@@ -38,7 +40,7 @@ const Tile: React.FC<{ src: string; tall?: boolean; alt: string }> = ({ src, tal
       loading="lazy"
       decoding="async"
       className="h-full w-full object-cover"
-      sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 50vw"
+      sizes="(min-width: 1024px) 20vw, (min-width: 640px) 28vw, 42vw"
     />
   </div>
 );
@@ -48,7 +50,7 @@ const Column: React.FC<{ children: React.ReactNode; offset?: string; hide?: stri
   offset = '',
   hide = '',
 }) => (
-  <div className={cn('flex min-w-0 flex-1 flex-col gap-3 sm:gap-4', offset, hide)}>{children}</div>
+  <div className={cn('flex min-w-0 flex-1 flex-col gap-2 sm:gap-3 md:gap-4', offset, hide)}>{children}</div>
 );
 
 export const TransformationsShowcase: React.FC<TransformationsShowcaseProps> = ({
@@ -102,14 +104,14 @@ export const TransformationsShowcase: React.FC<TransformationsShowcaseProps> = (
   const Card = (
     <div
       data-tile
-      className="reveal-tile flex h-full flex-col justify-center rounded-xl bg-[#0f1311] p-6 text-center sm:p-8"
+      className="reveal-tile flex flex-col justify-center rounded-lg sm:rounded-xl bg-[#0f1311]/95 backdrop-blur-md border border-neutral-800 p-4 sm:p-6 lg:p-5 xl:p-6 text-center shadow-lg sm:shadow-2xl"
     >
-      <span className="mx-auto mb-4 inline-flex items-center rounded-full border border-neutral-700 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-[#8cffdb]">
+      <span className="mx-auto mb-3 sm:mb-4 inline-flex items-center rounded-full border border-neutral-700 px-3 py-1 text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-[#8cffdb]">
         {lang === 'en' ? 'Transformations' : 'التحولات'}
       </span>
       <h2
         className={cn(
-          'text-2xl font-black leading-tight text-white sm:text-3xl [text-wrap:balance]',
+          'text-xl sm:text-2xl lg:text-xl xl:text-2xl font-black leading-tight text-white [text-wrap:balance]',
           lang === 'en' ? 'font-sport' : 'font-cairo'
         )}
       >
@@ -119,7 +121,7 @@ export const TransformationsShowcase: React.FC<TransformationsShowcaseProps> = (
           <>وثق بنا <span className="text-[#8cffdb]">أكثر من 500 متدرب</span> غيّروا شكل أجسامهم</>
         )}
       </h2>
-      <p className="mt-3 text-sm leading-relaxed text-neutral-300">
+      <p className="mt-2 sm:mt-3 text-xs sm:text-sm leading-relaxed text-neutral-300">
         {lang === 'en'
           ? 'Every photo here is a real client, coached end-to-end by Dr. Ahmed Assem.'
           : 'كل صورة هنا لمتدرب حقيقي، تابعه د. أحمد عاصم خطوة بخطوة من البداية للنهاية.'}
@@ -127,7 +129,7 @@ export const TransformationsShowcase: React.FC<TransformationsShowcaseProps> = (
       <button
         type="button"
         onClick={onOpenConsultation}
-        className="mx-auto mt-5 inline-flex min-h-[40px] items-center justify-center bg-[#8cffdb] px-5 py-2.5 text-xs font-black uppercase tracking-wider text-black transition-colors hover:bg-[#77d9ba]"
+        className="mx-auto mt-4 sm:mt-5 inline-flex min-h-[38px] sm:min-h-[40px] items-center justify-center bg-[#8cffdb] px-4 sm:px-5 py-2 sm:py-2.5 text-[11px] sm:text-xs font-black uppercase tracking-wider text-black transition-colors hover:bg-[#77d9ba] cursor-pointer whitespace-nowrap"
       >
         {t.hero.ctaStart}
       </button>
@@ -135,33 +137,48 @@ export const TransformationsShowcase: React.FC<TransformationsShowcaseProps> = (
   );
 
   return (
-    <section className="bg-[#090b0a] py-16 sm:py-20 md:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div ref={rootRef} className="relative">
-          {/* Mobile & tablet: the pitch sits above the strip of photos */}
-          <div className="mb-8 lg:hidden">{Card}</div>
+    <section className="relative overflow-hidden pt-16 sm:pt-20 md:pt-28 pb-16 sm:pb-20 md:pb-28">
+      {/* Backdrop photo, not fixed-attachment (iOS/mobile renders `background-attachment: fixed`
+          unreliably — it either glitches or silently falls back to scroll, and still costs the
+          same paint either way), faded top and bottom so it blends into the sections around it. */}
+      <img
+        src={personBg}
+        alt=""
+        loading="lazy"
+        decoding="async"
+        className="absolute inset-0 w-full object-cover object-[center_20%]"
+        aria-hidden="true"
+      />
+      <div className="absolute inset-0 bg-black/45 pointer-events-none" aria-hidden="true" />
+      <div className="absolute inset-x-0 top-0 h-28 sm:h-40 bg-gradient-to-b from-[#090b0a] to-transparent pointer-events-none" aria-hidden="true" />
+      <div className="absolute inset-x-0 bottom-0 h-28 sm:h-40 bg-gradient-to-t from-[#090b0a] to-transparent pointer-events-none" aria-hidden="true" />
 
-          <div className="flex gap-3 sm:gap-4">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div ref={rootRef} className="relative">
+          {/* Mobile & small tablet: the pitch card sits above a 2-column strip of photos */}
+          <div className="mb-6 sm:mb-8 lg:hidden">{Card}</div>
+
+          <div className="flex gap-2 sm:gap-3 md:gap-4">
             <Column>
-              {[0, 1, 2, 3, 4].map((i) => (
-                <Tile key={i} src={PHOTOS[i % PHOTOS.length]} alt="" />
+              {[0, 1, 2, 3].map((i) => (
+                <Tile key={i} src={PHOTOS[i % PHOTOS.length]} alt="" className={i === 4 ? 'hidden sm:block' : undefined} />
               ))}
             </Column>
 
-            <Column offset="mt-8 sm:mt-10">
-              {[5, 6, 7, 8].map((i) => (
-                <Tile key={i} src={PHOTOS[i % PHOTOS.length]} tall alt="" />
+            <Column offset="mt-6 sm:mt-8 md:mt-10">
+              {[4, 5, 6, 7].map((i) => (
+                <Tile key={i} src={PHOTOS[i % PHOTOS.length]} tall alt="" className={i === 8 ? 'hidden sm:block' : undefined} />
               ))}
             </Column>
 
             <Column hide="hidden lg:flex">
+              <Tile src={PHOTOS[8 % PHOTOS.length]} alt="" />
+              {Card}
               <Tile src={PHOTOS[9 % PHOTOS.length]} alt="" />
-              <div className="aspect-[3/4] w-full">{Card}</div>
-              <Tile src={PHOTOS[10 % PHOTOS.length]} alt="" />
             </Column>
 
-            <Column offset="mt-8 sm:mt-10" hide="hidden sm:flex">
-              {[11, 12, 13].map((i) => (
+            <Column offset="mt-6 sm:mt-8 md:mt-10" hide="hidden sm:flex">
+              {[10, 11, 12, 13].map((i) => (
                 <Tile key={i} src={PHOTOS[i % PHOTOS.length]} tall alt="" />
               ))}
             </Column>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Language, TranslationContent } from '../translations';
 import { cn } from '../utils/cn';
-import physiqueTransformationShowcaseImg from '../assets/images/physique_transformation_showcase_1791556772517.jpg';
+import physiqueTransformationShowcaseImg from '../assets/person/person_2.jpg';
 
 interface TransformationsGridProps {
   lang: Language;

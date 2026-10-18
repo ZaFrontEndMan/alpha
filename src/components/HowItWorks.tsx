@@ -1,6 +1,8 @@
 import React from 'react';
 import { TranslationContent, Language } from '../translations';
 import { cn } from '../utils/cn';
+import { SectionBackdrop } from './SectionBackdrop';
+import beachPhoto from '../assets/person/person_5.jpg';
 
 interface HowItWorksProps {
   t: TranslationContent;
@@ -14,8 +16,9 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
   onOpenConsultation,
 }) => {
   return (
-    <section className="py-20 md:py-28 bg-[#090b0a] @container">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden py-20 md:py-28 bg-[#090b0a] @container">
+      <SectionBackdrop src={beachPhoto} side className="object-[70%_30%] lg:object-[center_30%]" />
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
           <div className="text-xs font-bold tracking-widest text-[#8cffdb] uppercase mb-3">
@@ -34,7 +37,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
           {t.howItWorks.steps.map((st, idx) => (
             <div
               key={idx}
-              className="bg-[#0f1311] border border-neutral-800 p-6 sm:p-8 flex flex-col justify-between hover:border-neutral-700 transition-colors group relative"
+              className="bg-[#0f1311]/85 backdrop-blur-sm border border-neutral-800 p-6 sm:p-8 flex flex-col justify-between hover:border-neutral-700 transition-colors group relative"
             >
               <div>
                 <div className="flex items-center justify-between mb-6">

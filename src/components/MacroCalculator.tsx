@@ -592,7 +592,7 @@ Calculated at https://drahmedassem.com`;
   );
 
   return (
-    <section id="calculator" className="py-20 md:py-28 bg-[#0c0f0d] @container">
+    <section id="calculator" className="py-20 md:py-28 section-blend @container">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-10">

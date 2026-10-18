@@ -33,7 +33,7 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({
   };
 
   return (
-    <section id="packages" className="py-20 md:py-28 bg-[#0c0f0d] @container">
+    <section id="packages" className="py-20 md:py-28 section-blend @container">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header & Currency Switcher */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
