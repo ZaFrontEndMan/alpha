@@ -104,7 +104,7 @@ export const TransformationsShowcase: React.FC<TransformationsShowcaseProps> = (
   const Card = (
     <div
       data-tile
-      className="reveal-tile flex flex-col justify-center rounded-lg sm:rounded-xl bg-[#0f1311]/95 backdrop-blur-md border border-neutral-800 p-4 sm:p-6 lg:p-5 xl:p-6 text-center shadow-lg sm:shadow-2xl"
+      className="reveal-tile flex flex-col justify-center p-4 sm:p-6 lg:p-5 xl:p-6 text-center "
     >
       <span className="mx-auto mb-3 sm:mb-4 inline-flex items-center rounded-full border border-neutral-700 px-3 py-1 text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-[#8cffdb]">
         {lang === 'en' ? 'Transformations' : 'التحولات'}
