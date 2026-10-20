@@ -2,6 +2,18 @@ import React from 'react';
 import { TranslationContent, Language } from '../translations';
 import { cn } from '../utils/cn';
 
+/** Which client photo backs each review, by file name in assets/transformation (1.jpg, 2.jpg, …).
+ *  Swap these numbers so each quote shows its own client. */
+const REVIEW_PHOTO = [3, 6, 10];
+
+const PHOTOS = import.meta.glob('../assets/transformation/*.jpg', { eager: true, import: 'default' }) as Record<
+  string,
+  string
+>;
+
+const photoFor = (idx: number) =>
+  PHOTOS[`../assets/transformation/${REVIEW_PHOTO[idx % REVIEW_PHOTO.length]}.jpg`];
+
 interface TestimonialsProps {
   t: TranslationContent;
   lang: Language;
@@ -57,8 +69,22 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
               {/* Client Profile Lockup */}
               <div className="pt-4 border-t border-neutral-800 flex items-center gap-4">
                 {/* Client Avatar Graphic */}
-                <div className="w-12 h-12 bg-neutral-800 border border-neutral-700 flex items-center justify-center font-display font-black text-white text-base shrink-0 group-hover:border-[#8cffdb] transition-colors">
-                  {item.name.charAt(0)}
+                {/* Each source photo is a before/after pair, so the avatar zooms into the
+                    "after" side's head and shoulders — a plain crop would sit between the two. */}
+                {/* data-reveal-skip: the shared scroll-reveal observer needs 12% of an image in
+                    view, and this one is clipped to a sliver of its zoomed self, so it would
+                    never cross that threshold and would sit at opacity 0 forever. */}
+                <div
+                  data-reveal-skip
+                  className="w-14 h-14 shrink-0 overflow-hidden border border-neutral-700 group-hover:border-[#8cffdb] transition-colors"
+                >
+                  <img
+                    src={photoFor(idx)}
+                    alt={item.name}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover scale-[3] origin-[82%_12%]"
+                  />
                 </div>
 
                 <div>

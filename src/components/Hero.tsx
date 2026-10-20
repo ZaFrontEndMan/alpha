@@ -155,11 +155,11 @@ export const Hero: React.FC<HeroProps> = ({
             height={1350}
             loading="eager"
             fetchPriority="high"
-            className="hero-bg absolute inset-0 w-full h-full object-cover object-[center_35%] lg:object-[center_60%]"
+            className="hero-bg absolute inset-0 w-full h-full object-cover object-[center_30%] lg:object-[62%_42%]"
           />
           {/* Gradients for text contrast */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#090b0a] from-1% via-[#090b0a]/60 via-40% to-transparent to-90%" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#090b0a] via-[#090b0a]/30 to-black/35 lg:hidden" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#090b0a] from-1% via-[#090b0a]/45 via-32% to-transparent to-65%" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#090b0a] via-[#090b0a]/20 to-black/25 lg:hidden" />
         </div>
 
         {/* Credentials badge over the photo (desktop): anchored to the pinned frame itself
@@ -175,14 +175,14 @@ export const Hero: React.FC<HeroProps> = ({
               </div>
             </div>
             <div className="text-end">
-              <div className="text-[10px] text-neutral-400 uppercase">Dr. Ahmed Assem</div>
-              <div className="text-xs font-semibold text-[#8cffdb] font-mono">500+ Clients</div>
+              <div className="text-lg font-black text-[#8cffdb] font-mono leading-none">500+</div>
+              <div className="text-[10px] text-neutral-400 uppercase mt-1">{lang === 'en' ? 'Clients' : 'متدرب'}</div>
             </div>
           </div>
         </div>
 
         {/* Ambient bottom gradient inside the sticky frame, blending into the content below it */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 sm:h-48 md:h-64 bg-gradient-to-t from-[#090b0a] via-[#090b0a]/80 to-transparent z-10" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 sm:h-36 md:h-48 bg-gradient-to-t from-[#090b0a] via-[#090b0a]/70 to-transparent z-10" />
       </div>
 
       {/* Scrolling foreground, pulled up one screen to sit over the photo; the text travels up and clears it */}

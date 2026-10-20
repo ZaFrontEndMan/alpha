@@ -107,7 +107,7 @@ export const TransformationsShowcase: React.FC<TransformationsShowcaseProps> = (
       className="reveal-tile flex flex-col justify-center p-4 sm:p-6 lg:p-5 xl:p-6 text-center "
     >
       <span className="mx-auto mb-3 sm:mb-4 inline-flex items-center rounded-full border border-neutral-700 px-3 py-1 text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-[#8cffdb]">
-        {lang === 'en' ? 'Transformations' : 'التحولات'}
+        {lang === 'en' ? 'Transformation' : 'التحول'}
       </span>
       <h2
         className={cn(
@@ -137,7 +137,7 @@ export const TransformationsShowcase: React.FC<TransformationsShowcaseProps> = (
   );
 
   return (
-    <section className="relative overflow-hidden pt-16 sm:pt-20 md:pt-28 pb-16 sm:pb-20 md:pb-28">
+    <section id="transformations" className="relative overflow-hidden pt-16 sm:pt-20 md:pt-28 pb-16 sm:pb-20 md:pb-28">
       {/* Backdrop photo, not fixed-attachment (iOS/mobile renders `background-attachment: fixed`
           unreliably — it either glitches or silently falls back to scroll, and still costs the
           same paint either way), faded top and bottom so it blends into the sections around it. */}

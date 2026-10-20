@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { TransformationsGrid } from './components/TransformationsGrid';
 import { TransformationsShowcase } from './components/TransformationsShowcase';
+import { WorkoutsSection } from './components/WorkoutsSection';
 import { Testimonials } from './components/Testimonials';
 import { WhyChoose } from './components/WhyChoose';
 import { CoachShowcase } from './components/CoachShowcase';
@@ -77,7 +77,6 @@ export default function App() {
         lang={lang}
         t={t}
         onToggleLang={handleToggleLang}
-        onOpenConsultation={() => handleOpenConsultation()}
         onOpenCalculator={handleNavigateToCalculator}
       />
 
@@ -98,8 +97,8 @@ export default function App() {
           onOpenConsultation={() => handleOpenConsultation()}
         />
 
-        {/* 3. Transformations +500 Detailed Grid */}
-        <TransformationsGrid
+        {/* 3. Home or gym workouts + personalised program */}
+        <WorkoutsSection
           t={t}
           lang={lang}
           onOpenConsultation={() => handleOpenConsultation()}

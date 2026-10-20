@@ -6,10 +6,9 @@ export interface TranslationContent {
     packages: string;
     features: string;
     transformations: string;
+    workouts: string;
     comparison: string;
     faqs: string;
-    login: string;
-    register: string;
     calculator: string;
     langToggle: string;
   };
@@ -112,19 +111,6 @@ export interface TranslationContent {
     privacy: string;
     terms: string;
   };
-  auth: {
-    loginTitle: string;
-    registerTitle: string;
-    email: string;
-    password: string;
-    fullName: string;
-    phone: string;
-    submitLogin: string;
-    submitRegister: string;
-    or: string;
-    noAccount: string;
-    haveAccount: string;
-  };
 }
 
 export const translations: Record<Language, TranslationContent> = {
@@ -133,11 +119,10 @@ export const translations: Record<Language, TranslationContent> = {
       home: 'Home',
       packages: 'Packages',
       features: 'Features',
-      transformations: 'Transformations +500',
+      transformations: 'Transformation',
+      workouts: 'Workouts',
       comparison: 'System Comparison',
       faqs: 'FAQs',
-      login: 'Login',
-      register: 'Register',
       calculator: 'Macro Calculator',
       langToggle: 'العربية',
     },
@@ -437,30 +422,16 @@ export const translations: Record<Language, TranslationContent> = {
       privacy: 'Privacy Policy',
       terms: 'Terms and Conditions',
     },
-    auth: {
-      loginTitle: 'Client Portal Login',
-      registerTitle: 'Create Account',
-      email: 'Email Address',
-      password: 'Password',
-      fullName: 'Full Name',
-      phone: 'WhatsApp / Phone Number',
-      submitLogin: 'Login to Portal',
-      submitRegister: 'Create Account',
-      or: 'or',
-      noAccount: 'Don’t have an account? Register',
-      haveAccount: 'Already have an account? Login',
-    },
   },
   ar: {
     nav: {
       home: 'الرئيسية',
       packages: 'الباقات',
       features: 'المميزات',
-      transformations: 'التحولات +500',
+      transformations: 'التحول',
+      workouts: 'التدريب',
       comparison: 'مقارنة النظام',
       faqs: 'الأسئلة الشائعة',
-      login: 'تسجيل الدخول',
-      register: 'إنشاء حساب',
       calculator: 'حاسبة السعرات والماكروز',
       langToggle: 'English',
     },
@@ -759,19 +730,6 @@ export const translations: Record<Language, TranslationContent> = {
       rights: '© جميع الحقوق محفوظة 2026 د. أحمد عاصم.',
       privacy: 'سياسة الخصوصية',
       terms: 'الشروط والأحكام',
-    },
-    auth: {
-      loginTitle: 'تسجيل دخول المتدربين',
-      registerTitle: 'إنشاء حساب جديد في ألفا',
-      email: 'البريد الإلكتروني',
-      password: 'كلمة المرور',
-      fullName: 'الاسم بالكامل',
-      phone: 'رقم الواتساب / الهاتف',
-      submitLogin: 'دخول الحساب',
-      submitRegister: 'إنشاء الحساب',
-      or: 'أو',
-      noAccount: 'ليس لديك حساب؟ أنشئ حسابك الآن',
-      haveAccount: 'لديك حساب بالفعل؟ سجل دخولك',
     },
   },
 };
