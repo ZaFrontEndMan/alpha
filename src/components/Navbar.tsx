@@ -21,7 +21,7 @@ const NAV_LINKS: { href?: string; key: NavKey }[] = [
   { href: '#features', key: 'features' },
   { href: '#comparison', key: 'comparison' },
   { href: '#packages', key: 'packages' },
-  { key: 'calculator' },
+  { href: '/substitutions', key: 'calculator' },
   { href: '#faqs', key: 'faqs' },
 ];
 
@@ -30,25 +30,24 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, t, onToggleLang, onOpenCal
 
   /** One renderer for both the desktop bar and the mobile drawer. */
   const navItems = (itemClass: string, onPick?: () => void) =>
-    NAV_LINKS.map(({ href, key }) =>
-      href ? (
-        <a key={key} href={href} onClick={onPick} className={itemClass}>
-          {t.nav[key]}
-        </a>
-      ) : (
-        <button
-          key={key}
-          type="button"
-          onClick={() => {
+    NAV_LINKS.map(({ href, key }) => (
+      <a
+        key={key}
+        href={href}
+        onClick={(e) => {
+          if (key === 'calculator') {
+            e.preventDefault();
             onPick?.();
             onOpenCalculator();
-          }}
-          className={cn(itemClass, 'cursor-pointer text-start')}
-        >
-          {t.nav[key]}
-        </button>
-      )
-    );
+          } else {
+            onPick?.();
+          }
+        }}
+        className={itemClass}
+      >
+        {t.nav[key]}
+      </a>
+    ));
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
