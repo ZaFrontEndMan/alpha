@@ -13,82 +13,125 @@ export interface SubFood {
   typeAr: string;
   equalHundred: number;
   unit: FoodUnit;
+  noteEn?: string;
+  noteAr?: string;
 }
 
 export const EXACT_MEALS: SubFood[] = [
-  // ── Proteins ──
-  { titleEn: 'chicken breasts', titleAr: 'صدر دجاج', type: 'Proteins', typeAr: 'البروتينات', equalHundred: 320, unit: 'gm' },
-  { titleEn: 'lean beef', titleAr: 'لحم بقري خالي من الدهون', type: 'Proteins', typeAr: 'البروتينات', equalHundred: 300, unit: 'gm' },
-  { titleEn: 'beef liver', titleAr: 'كبدة', type: 'Proteins', typeAr: 'البروتينات', equalHundred: 340, unit: 'gm' },
-  { titleEn: 'white fish', titleAr: 'سمك أبيض', type: 'Proteins', typeAr: 'البروتينات', equalHundred: 370, unit: 'gm' },
-  { titleEn: 'tuna', titleAr: 'تونة', type: 'Proteins', typeAr: 'البروتينات', equalHundred: 410, unit: 'gm' },
-  { titleEn: 'shrimp', titleAr: 'جمبري', type: 'Proteins', typeAr: 'البروتينات', equalHundred: 480, unit: 'gm' },
-  { titleEn: 'turkey breast', titleAr: 'صدر ديك رومي', type: 'Proteins', typeAr: 'البروتينات', equalHundred: 330, unit: 'gm' },
-  { titleEn: 'whey protein', titleAr: 'بروتين مصل (واي)', type: 'Proteins', typeAr: 'البروتينات', equalHundred: 4, unit: 'Scoops' },
-  { titleEn: 'egg whites', titleAr: 'بياض البيض', type: 'Proteins', typeAr: 'البروتينات', equalHundred: 27, unit: 'Number' },
-  { titleEn: 'whole eggs', titleAr: 'بيض كامل', type: 'Proteins', typeAr: 'البروتينات', equalHundred: 10, unit: 'Number' },
+  // ── Proteins (per 100 gm protein) ──
+  { titleEn: 'chicken breast', titleAr: 'صدر دجاج', type: 'Proteins', typeAr: 'البروتينات', equalHundred: 320, unit: 'gm' },
+  { titleEn: 'turkey breast', titleAr: 'صدر ديك رومي', type: 'Proteins', typeAr: 'البروتينات', equalHundred: 335, unit: 'gm' },
+  { titleEn: 'beef steak', titleAr: 'ستيك لحم بقري', type: 'Proteins', typeAr: 'البروتينات', equalHundred: 380, unit: 'gm', noteEn: 'also ~65g fat', noteAr: 'أيضاً ~٦٥ جم دهون' },
+  { titleEn: 'beef liver', titleAr: 'كبدة بقري', type: 'Proteins', typeAr: 'البروتينات', equalHundred: 345, unit: 'gm' },
+  { titleEn: 'white fish (cod)', titleAr: 'سمك أبيض (قد)', type: 'Proteins', typeAr: 'البروتينات', equalHundred: 440, unit: 'gm' },
+  { titleEn: 'canned tuna in water (drained)', titleAr: 'تونة معلبة مصفاة بالماء', type: 'Proteins', typeAr: 'البروتينات', equalHundred: 390, unit: 'gm' },
+  { titleEn: 'shrimp', titleAr: 'جمبري', type: 'Proteins', typeAr: 'البروتينات', equalHundred: 420, unit: 'gm' },
+  { titleEn: 'salmon', titleAr: 'سلمون', type: 'Proteins', typeAr: 'البروتينات', equalHundred: 490, unit: 'gm', noteEn: 'also ~65g fat', noteAr: 'أيضاً ~٦٥ جم دهون' },
+  { titleEn: 'whey protein isolate', titleAr: 'واي بروتين أيزوليت', type: 'Proteins', typeAr: 'البروتينات', equalHundred: 116, unit: 'gm', noteEn: '~4 scoops', noteAr: '~٤ سكوب' },
+  { titleEn: 'egg whites', titleAr: 'بياض بيض', type: 'Proteins', typeAr: 'البروتينات', equalHundred: 28, unit: 'Number' },
+  { titleEn: 'boiled whole eggs', titleAr: 'بيض مسلوق كامل', type: 'Proteins', typeAr: 'البروتينات', equalHundred: 16, unit: 'Number', noteEn: 'also ~85g fat', noteAr: 'أيضاً ~٨٥ جم دهون' },
 
-  // ── High GI Carbohydrates ──
-  { titleEn: 'basmati rice', titleAr: 'أرز بسمتي', type: 'High GI Carbohydrates', typeAr: 'كربوهيدرات سريعة الامتصاص', equalHundred: 350, unit: 'gm' },
-  { titleEn: 'Egyptian rice', titleAr: 'أرز مصري', type: 'High GI Carbohydrates', typeAr: 'كربوهيدرات سريعة الامتصاص', equalHundred: 180, unit: 'gm' },
-  { titleEn: 'cream of rice', titleAr: 'كريمة الأرز', type: 'High GI Carbohydrates', typeAr: 'كربوهيدرات سريعة الامتصاص', equalHundred: 180, unit: 'gm' },
-  { titleEn: 'grilled potatoes', titleAr: 'بطاطا مشوية', type: 'High GI Carbohydrates', typeAr: 'كربوهيدرات سريعة الامتصاص', equalHundred: 440, unit: 'gm' },
-  { titleEn: 'sweet potatoes', titleAr: 'بطاطا حلوة', type: 'High GI Carbohydrates', typeAr: 'كربوهيدرات سريعة الامتصاص', equalHundred: 470, unit: 'gm' },
-  { titleEn: 'pasta', titleAr: 'مكرونة', type: 'High GI Carbohydrates', typeAr: 'كربوهيدرات سريعة الامتصاص', equalHundred: 120, unit: 'gm' },
+  // ── High GI Carbohydrates (per 100 gm carbs) ──
+  { titleEn: 'basmati rice', titleAr: 'أرز بسمتي', type: 'High GI Carbohydrates', typeAr: 'كربوهيدرات سريعة الامتصاص', equalHundred: 355, unit: 'gm' },
+  { titleEn: 'white rice', titleAr: 'أرز أبيض', type: 'High GI Carbohydrates', typeAr: 'كربوهيدرات سريعة الامتصاص', equalHundred: 355, unit: 'gm' },
+  { titleEn: 'cream of rice (raw)', titleAr: 'كريمة أرز (خام)', type: 'High GI Carbohydrates', typeAr: 'كربوهيدرات سريعة الامتصاص', equalHundred: 125, unit: 'gm' },
+  { titleEn: 'potatoes', titleAr: 'بطاطس', type: 'High GI Carbohydrates', typeAr: 'كربوهيدرات سريعة الامتصاص', equalHundred: 475, unit: 'gm' },
+  { titleEn: 'sweet potatoes', titleAr: 'بطاطا حلوة', type: 'High GI Carbohydrates', typeAr: 'كربوهيدرات سريعة الامتصاص', equalHundred: 485, unit: 'gm' },
+  { titleEn: 'white toast', titleAr: 'توست أبيض', type: 'High GI Carbohydrates', typeAr: 'كربوهيدرات سريعة الامتصاص', equalHundred: 7, unit: 'slices', noteEn: '~28g per slice', noteAr: '~٢٨ جم للشريحة' },
+  { titleEn: 'corn flakes', titleAr: 'رقائق الذرة (كورن فليكس)', type: 'High GI Carbohydrates', typeAr: 'كربوهيدرات سريعة الامتصاص', equalHundred: 120, unit: 'gm' },
+  { titleEn: 'rice cakes', titleAr: 'كعك الأرز (رايس كيك)', type: 'High GI Carbohydrates', typeAr: 'كربوهيدرات سريعة الامتصاص', equalHundred: 125, unit: 'gm', noteEn: '~14 cakes', noteAr: '~١٤ قطعة' },
+  { titleEn: 'honey', titleAr: 'عسل نحل', type: 'High GI Carbohydrates', typeAr: 'كربوهيدرات سريعة الامتصاص', equalHundred: 120, unit: 'gm' },
 
-  // ── Low GI and Snacks Carbohydrates ──
-  { titleEn: 'brown toast', titleAr: 'توست بني', type: 'Low GI and Snacks Carbohydrates', typeAr: 'كربوهيدرات بطيئة وسناكس', equalHundred: 7, unit: 'slices' },
-  { titleEn: 'corn flakes', titleAr: 'رقائق الذرة (كورن فليكس)', type: 'Low GI and Snacks Carbohydrates', typeAr: 'كربوهيدرات بطيئة وسناكس', equalHundred: 110, unit: 'gm' },
-  { titleEn: 'oats', titleAr: 'شوفان', type: 'Low GI and Snacks Carbohydrates', typeAr: 'كربوهيدرات بطيئة وسناكس', equalHundred: 130, unit: 'gm' },
-  { titleEn: 'corn tortilla', titleAr: 'تورتيلا الذرة', type: 'Low GI and Snacks Carbohydrates', typeAr: 'كربوهيدرات بطيئة وسناكس', equalHundred: 4, unit: 'slices' },
-  { titleEn: 'rice cake', titleAr: 'كعكة الأرز (رايس كيك)', type: 'Low GI and Snacks Carbohydrates', typeAr: 'كربوهيدرات بطيئة وسناكس', equalHundred: 120, unit: 'gm' },
+  // ── Low GI and snacks carbohydrates (per 100 gm carbs) ──
+  { titleEn: 'oats (raw)', titleAr: 'شوفان (خام)', type: 'Low GI and snacks carbohydrates', typeAr: 'كربوهيدرات بطيئة وسناكس', equalHundred: 150, unit: 'gm' },
+  { titleEn: 'pasta', titleAr: 'مكرونة', type: 'Low GI and snacks carbohydrates', typeAr: 'كربوهيدرات بطيئة وسناكس', equalHundred: 325, unit: 'gm' },
+  { titleEn: 'corn tortillas', titleAr: 'تورتيلا الذرة', type: 'Low GI and snacks carbohydrates', typeAr: 'كربوهيدرات بطيئة وسناكس', equalHundred: 225, unit: 'gm', noteEn: '~9 tortillas', noteAr: '~٩ قطع' },
+  { titleEn: 'granola', titleAr: 'جرانولا', type: 'Low GI and snacks carbohydrates', typeAr: 'كربوهيدرات بطيئة وسناكس', equalHundred: 155, unit: 'gm', noteEn: 'also ~30g fat', noteAr: 'أيضاً ~٣٠ جم دهون' },
+  { titleEn: 'Medjool dates, pitted', titleAr: 'تمر مجدول منزوع النوى', type: 'Low GI and snacks carbohydrates', typeAr: 'كربوهيدرات بطيئة وسناكس', equalHundred: 135, unit: 'gm' },
 
-  // ── Vegetables ──
+  // ── Vegetables (per 100 calories) ──
   { titleEn: 'green peas', titleAr: 'بازلاء خضراء', type: 'Vegetables', typeAr: 'الخضروات', equalHundred: 120, unit: 'gm' },
-  { titleEn: 'zucchini', titleAr: 'كوسا', type: 'Vegetables', typeAr: 'الخضروات', equalHundred: 550, unit: 'gm' },
-  { titleEn: 'green beans', titleAr: 'فاصوليا خضراء', type: 'Vegetables', typeAr: 'الخضروات', equalHundred: 250, unit: 'gm' },
-  { titleEn: 'asparagus', titleAr: 'هليون', type: 'Vegetables', typeAr: 'الخضروات', equalHundred: 360, unit: 'gm' },
-  { titleEn: 'cucumber', titleAr: 'خيار', type: 'Vegetables', typeAr: 'الخضروات', equalHundred: 550, unit: 'gm' },
-  { titleEn: 'mushroom', titleAr: 'فطر (مشروم)', type: 'Vegetables', typeAr: 'الخضروات', equalHundred: 300, unit: 'gm' },
-  { titleEn: 'lettuce', titleAr: 'خس', type: 'Vegetables', typeAr: 'الخضروات', equalHundred: 500, unit: 'gm' },
-  { titleEn: 'bell pepper', titleAr: 'فلفل رومي', type: 'Vegetables', typeAr: 'الخضروات', equalHundred: 320, unit: 'gm' },
-  { titleEn: 'tomatoes', titleAr: 'طماطم', type: 'Vegetables', typeAr: 'الخضروات', equalHundred: 500, unit: 'gm' },
-  { titleEn: 'carrot', titleAr: 'جزر', type: 'Vegetables', typeAr: 'الخضروات', equalHundred: 240, unit: 'gm' },
+  { titleEn: 'zucchini', titleAr: 'كوسا', type: 'Vegetables', typeAr: 'الخضروات', equalHundred: 590, unit: 'gm' },
+  { titleEn: 'green beans', titleAr: 'فاصوليا خضراء', type: 'Vegetables', typeAr: 'الخضروات', equalHundred: 285, unit: 'gm' },
+  { titleEn: 'asparagus', titleAr: 'هليون', type: 'Vegetables', typeAr: 'الخضروات', equalHundred: 455, unit: 'gm' },
+  { titleEn: 'mushroom', titleAr: 'مشروم', type: 'Vegetables', typeAr: 'الخضروات', equalHundred: 355, unit: 'gm' },
+  { titleEn: 'carrot', titleAr: 'جزر', type: 'Vegetables', typeAr: 'الخضروات', equalHundred: 285, unit: 'gm' },
+  { titleEn: 'red bell pepper (raw)', titleAr: 'فلفل أحمر حلو (خام)', type: 'Vegetables', typeAr: 'الخضروات', equalHundred: 320, unit: 'gm' },
+  { titleEn: 'tomatoes (raw)', titleAr: 'طماطم (خام)', type: 'Vegetables', typeAr: 'الخضروات', equalHundred: 555, unit: 'gm' },
+  { titleEn: 'cucumber (raw)', titleAr: 'خيار (خام)', type: 'Vegetables', typeAr: 'الخضروات', equalHundred: 665, unit: 'gm' },
+  { titleEn: 'lettuce (raw)', titleAr: 'خس (خام)', type: 'Vegetables', typeAr: 'الخضروات', equalHundred: 590, unit: 'gm' },
 
-  // ── Fruits ──
-  { titleEn: 'bananas', titleAr: 'موز', type: 'Fruits', typeAr: 'الفواكه', equalHundred: 110, unit: 'gm' },
-  { titleEn: 'apples', titleAr: 'تفاح', type: 'Fruits', typeAr: 'الفواكه', equalHundred: 190, unit: 'gm' },
-  { titleEn: 'pomegranate', titleAr: 'رمان', type: 'Fruits', typeAr: 'الفواكه', equalHundred: 110, unit: 'gm' },
-  { titleEn: 'oranges', titleAr: 'برتقال', type: 'Fruits', typeAr: 'الفواكه', equalHundred: 210, unit: 'gm' },
-  { titleEn: 'watermelon', titleAr: 'بطيخ', type: 'Fruits', typeAr: 'الفواكه', equalHundred: 300, unit: 'gm' },
-  { titleEn: 'strawberry', titleAr: 'فراولة', type: 'Fruits', typeAr: 'الفواكه', equalHundred: 300, unit: 'gm' },
-  { titleEn: 'kiwi', titleAr: 'كيوي', type: 'Fruits', typeAr: 'الفواكه', equalHundred: 165, unit: 'gm' },
+  // ── Fruits (per 100 calories, all in grams) ──
+  { titleEn: 'banana (peeled)', titleAr: 'موز (مقشر)', type: 'Fruits', typeAr: 'الفواكه', equalHundred: 110, unit: 'gm' },
+  { titleEn: 'apple', titleAr: 'تفاح', type: 'Fruits', typeAr: 'الفواكه', equalHundred: 190, unit: 'gm' },
+  { titleEn: 'pomegranate seeds', titleAr: 'حبوب رمان', type: 'Fruits', typeAr: 'الفواكه', equalHundred: 120, unit: 'gm' },
+  { titleEn: 'orange (peeled)', titleAr: 'برتقال (مقشر)', type: 'Fruits', typeAr: 'الفواكه', equalHundred: 210, unit: 'gm' },
+  { titleEn: 'watermelon', titleAr: 'بطيخ', type: 'Fruits', typeAr: 'الفواكه', equalHundred: 330, unit: 'gm' },
+  { titleEn: 'strawberry', titleAr: 'فراولة', type: 'Fruits', typeAr: 'الفواكه', equalHundred: 310, unit: 'gm' },
+  { titleEn: 'kiwi (peeled)', titleAr: 'كيوي (مقشر)', type: 'Fruits', typeAr: 'الفواكه', equalHundred: 165, unit: 'gm' },
+  { titleEn: 'cantaloupe', titleAr: 'كانتالوب (شمام)', type: 'Fruits', typeAr: 'الفواكه', equalHundred: 295, unit: 'gm' },
 
-  // ── Dairy ──
-  { titleEn: 'cottage cheese', titleAr: 'جبن قريش', type: 'Dairy', typeAr: 'الألبان', equalHundred: 900, unit: 'gm' },
-  { titleEn: 'greek yogurt', titleAr: 'زبادي يوناني', type: 'Dairy', typeAr: 'الألبان', equalHundred: 4, unit: 'CUP' },
+  // ── Healthy Fats (per 100 gm fat) ──
+  { titleEn: 'extra virgin olive oil', titleAr: 'زيت زيتون بكر ممتاز', type: 'Healthy Fats', typeAr: 'الدهون الصحية والزيوت', equalHundred: 100, unit: 'gm', noteEn: '~110 ml', noteAr: '~١١٠ مل' },
+  { titleEn: 'avocado', titleAr: 'أفوكادو', type: 'Healthy Fats', typeAr: 'الدهون الصحية والزيوت', equalHundred: 680, unit: 'gm' },
+  { titleEn: 'almonds', titleAr: 'لوز', type: 'Healthy Fats', typeAr: 'الدهون الصحية والزيوت', equalHundred: 200, unit: 'gm', noteEn: 'also ~42g protein', noteAr: 'أيضاً ~٤٢ جم بروتين' },
+  { titleEn: 'walnuts', titleAr: 'عين جمل (جوز)', type: 'Healthy Fats', typeAr: 'الدهون الصحية والزيوت', equalHundred: 155, unit: 'gm' },
+  { titleEn: 'cashews', titleAr: 'كاجو', type: 'Healthy Fats', typeAr: 'الدهون الصحية والزيوت', equalHundred: 230, unit: 'gm', noteEn: 'also ~70g carbs', noteAr: 'أيضاً ~٧٠ جم كربوهيدرات' },
+  { titleEn: 'macadamia nuts', titleAr: 'مكسرات ماكاديميا', type: 'Healthy Fats', typeAr: 'الدهون الصحية والزيوت', equalHundred: 130, unit: 'gm' },
+  { titleEn: 'peanut butter (no added sugar)', titleAr: 'زبدة فول سوداني (بدون سكر)', type: 'Healthy Fats', typeAr: 'الدهون الصحية والزيوت', equalHundred: 200, unit: 'gm', noteEn: 'also ~50g protein', noteAr: 'أيضاً ~٥٠ جم بروتين' },
+  { titleEn: 'pumpkin seeds', titleAr: 'بذور القرع (لب أبيض)', type: 'Healthy Fats', typeAr: 'الدهون الصحية والزيوت', equalHundred: 205, unit: 'gm', noteEn: 'also ~60g protein', noteAr: 'أيضاً ~٦٠ جم بروتين' },
+  { titleEn: 'flax seeds', titleAr: 'بذور الكتان', type: 'Healthy Fats', typeAr: 'الدهون الصحية والزيوت', equalHundred: 235, unit: 'gm' },
+  { titleEn: 'chia seeds', titleAr: 'بذور الشيا', type: 'Healthy Fats', typeAr: 'الدهون الصحية والزيوت', equalHundred: 325, unit: 'gm', noteEn: 'also ~135g carbs, fiber', noteAr: 'أيضاً ~١٣٥ جم كربوهيدرات وألياف' },
+  { titleEn: 'dark chocolate 70-85%', titleAr: 'شوكولاتة داكنة ٧٠-٨٥٪', type: 'Healthy Fats', typeAr: 'الدهون الصحية والزيوت', equalHundred: 235, unit: 'gm', noteEn: 'also ~110g carbs', noteAr: 'أيضاً ~١١٠ جم كربوهيدرات' },
+  { titleEn: 'dark chocolate 90%', titleAr: 'شوكولاتة داكنة ٩٠٪', type: 'Healthy Fats', typeAr: 'الدهون الصحية والزيوت', equalHundred: 205, unit: 'gm', noteEn: 'also ~70g carbs', noteAr: 'أيضاً ~٧٠ جم كربوهيدرات' },
+  { titleEn: 'wheat germ', titleAr: 'جنين القمح', type: 'Healthy Fats', typeAr: 'الدهون الصحية والزيوت', equalHundred: 1030, unit: 'gm', noteEn: 'also ~240g protein', noteAr: 'أيضاً ~٢٤٠ جم بروتين' },
+
+  // ── Dairy (per 100 gm protein) ──
+  { titleEn: 'cottage cheese, low fat', titleAr: 'جبن قريش قليل الدسم', type: 'Dairy', typeAr: 'منتجات الألبان', equalHundred: 900, unit: 'gm' },
+  { titleEn: 'greek yogurt 0%', titleAr: 'زبادي يوناني ٠٪', type: 'Dairy', typeAr: 'منتجات الألبان', equalHundred: 980, unit: 'gm' },
+  { titleEn: 'whole milk', titleAr: 'حليب كامل الدسم', type: 'Dairy', typeAr: 'منتجات الألبان', equalHundred: 3170, unit: 'ml', noteEn: 'also ~150g carbs, ~105g fat', noteAr: 'أيضاً ~١٥٠ جم كربوهيدرات، ~١٠٥ جم دهون' },
 ];
 
 export const CATEGORIES = [
   'Proteins',
   'High GI Carbohydrates',
-  'Low GI and Snacks Carbohydrates',
+  'Low GI and snacks carbohydrates',
   'Vegetables',
   'Fruits',
+  'Healthy Fats',
   'Dairy',
 ];
 
 export function getCategoryLabel(cat: string, lang: 'en' | 'ar'): string {
-  if (lang === 'en') return cat;
-  const match = EXACT_MEALS.find((m) => m.type === cat);
-  return match?.typeAr || cat;
+  if (lang === 'en') {
+    switch (cat) {
+      case 'Proteins': return 'Proteins';
+      case 'High GI Carbohydrates': return 'High GI Carbs';
+      case 'Low GI and snacks carbohydrates': return 'Low GI & Snacks';
+      case 'Vegetables': return 'Vegetables';
+      case 'Fruits': return 'Fruits';
+      case 'Healthy Fats': return 'Healthy Fats & Oils';
+      case 'Dairy': return 'Dairy';
+      default: return cat;
+    }
+  }
+  switch (cat) {
+    case 'Proteins': return 'البروتينات';
+    case 'High GI Carbohydrates': return 'كربوهيدرات سريعة';
+    case 'Low GI and snacks carbohydrates': return 'كربوهيدرات وسناكس';
+    case 'Vegetables': return 'الخضروات';
+    case 'Fruits': return 'الفواكه';
+    case 'Healthy Fats': return 'الدهون الصحية والزيوت';
+    case 'Dairy': return 'الألبان';
+    default: return cat;
+  }
 }
 
 export function getUnitLabel(unit: FoodUnit, lang: 'en' | 'ar', value: number = 1): string {
   if (lang === 'ar') {
     switch (unit) {
       case 'gm': return 'جرام';
-      case 'Number': return value === 1 ? 'قطعة' : 'قطع';
+      case 'Number': return value === 1 ? 'بيضة' : 'بيضات';
       case 'Scoops': return value === 1 ? 'سكوب' : 'سكوبات';
       case 'slices': return value === 1 ? 'شريحة' : 'شرائح';
       case 'CUP': return value === 1 ? 'كوب' : 'أكواب';
@@ -98,7 +141,7 @@ export function getUnitLabel(unit: FoodUnit, lang: 'en' | 'ar', value: number = 
   }
   switch (unit) {
     case 'gm': return 'gm';
-    case 'Number': return value === 1 ? 'piece' : 'pieces';
+    case 'Number': return value === 1 ? 'egg' : 'eggs';
     case 'Scoops': return value === 1 ? 'scoop' : 'scoops';
     case 'slices': return value === 1 ? 'slice' : 'slices';
     case 'CUP': return value === 1 ? 'cup' : 'cups';
@@ -191,8 +234,13 @@ function FoodSearchDropdown({
                   ({en ? selectedMeal.titleAr : selectedMeal.titleEn})
                 </span>
                 <span className="px-2 py-0.5 text-[10px] font-mono font-bold bg-[#8cffdb]/15 text-[#8cffdb] border border-[#8cffdb]/30">
-                  {en ? selectedMeal.type : selectedMeal.typeAr}
+                  {getCategoryLabel(selectedMeal.type, lang as 'en' | 'ar')}
                 </span>
+                {selectedMeal.noteEn && (
+                  <span className="text-[10px] text-neutral-400 font-mono">
+                    [{en ? selectedMeal.noteEn : selectedMeal.noteAr}]
+                  </span>
+                )}
               </div>
             ) : (
               <span className="text-sm text-neutral-400">
@@ -233,7 +281,7 @@ function FoodSearchDropdown({
         <div
           data-lenis-prevent
           className="absolute z-50 inset-x-0 top-full mt-2 bg-[#0d120f] border border-[#8cffdb]/40 shadow-2xl backdrop-blur-xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-150"
-          style={{ maxHeight: '420px' }}
+          style={{ maxHeight: '440px' }}
         >
           {/* Search Bar */}
           <div className="p-3 border-b border-neutral-800 bg-[#090c0a] sticky top-0 z-10 space-y-2.5">
@@ -246,7 +294,7 @@ function FoodSearchDropdown({
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder={en ? 'Type to search (e.g. chicken, rice, شوفان)...' : 'ابحث بالاسم (مثال: دجاج، أرز، شوفان)...'}
+                placeholder={en ? 'Type to search (e.g. olive oil, rice, شوفان, زيت)...' : 'ابحث بالاسم (مثال: زيت زيتون، أرز، شوفان)...'}
                 className="w-full h-10 ps-9 pe-8 bg-neutral-900 border border-neutral-700 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-[#8cffdb]"
               />
               {searchQuery && (
@@ -328,6 +376,11 @@ function FoodSearchDropdown({
                       </div>
                       <div className="text-[10px] text-neutral-400 font-mono">
                         {en ? food.titleAr : food.titleEn}
+                        {food.noteEn && (
+                          <span className="ms-1.5 text-neutral-500">
+                            ({en ? food.noteEn : food.noteAr})
+                          </span>
+                        )}
                       </div>
                     </div>
 
@@ -363,9 +416,9 @@ export const SubstitutionTool: React.FC<SubstitutionToolProps> = ({ lang }) => {
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [copied, setCopied] = useState<boolean>(false);
 
-  // Exact formula from drahmedassem.com/Asem/Substitutions:
-  // effectiveEnergy = ((enteredValue * 100) / filteredMeal.equalHundred);
-  // subs.value = Math.floor(effectiveEnergy * e.equalHundred / 100);
+  // Exact formula matching clinical exchanges:
+  // effectivePortion = enteredValue / equalHundred
+  // substitute.value = effectivePortion * substitute.equalHundred
   const results = useMemo(() => {
     if (!selectedMeal || !inputValue) return null;
     const entered = parseFloat(inputValue);
@@ -380,7 +433,7 @@ export const SubstitutionTool: React.FC<SubstitutionToolProps> = ({ lang }) => {
       const rawVal = (effectiveEnergy * m.equalHundred) / 100;
       const formatted = m.equalHundred < 10
         ? Math.round(rawVal * 10) / 10
-        : Math.floor(rawVal);
+        : Math.round(rawVal);
       return {
         meal: m,
         value: formatted,
@@ -391,7 +444,8 @@ export const SubstitutionTool: React.FC<SubstitutionToolProps> = ({ lang }) => {
   // Adjust amount stepper
   const handleStepAmount = (delta: number) => {
     const cur = parseFloat(inputValue) || 0;
-    const step = selectedMeal && selectedMeal.equalHundred < 10 ? 1 : 25;
+    const isSmallUnit = selectedMeal && (selectedMeal.unit === 'slices' || selectedMeal.unit === 'Number');
+    const step = isSmallUnit ? 1 : (selectedMeal?.type === 'Healthy Fats' ? 5 : 25);
     const nextVal = Math.max(step, cur + delta * step);
     setInputValue(String(nextVal));
   };
@@ -399,8 +453,11 @@ export const SubstitutionTool: React.FC<SubstitutionToolProps> = ({ lang }) => {
   // Quick preset pills
   const quickPills = useMemo(() => {
     if (!selectedMeal) return [50, 100, 150, 200, 250, 300];
-    if (selectedMeal.equalHundred < 10) {
+    if (selectedMeal.unit === 'slices' || selectedMeal.unit === 'Number') {
       return [1, 2, 3, 4, 6];
+    }
+    if (selectedMeal.type === 'Healthy Fats') {
+      return [10, 15, 20, 30, 50, 100];
     }
     return [50, 100, 150, 200, 250, 300];
   }, [selectedMeal]);
@@ -412,7 +469,7 @@ export const SubstitutionTool: React.FC<SubstitutionToolProps> = ({ lang }) => {
       `*Dr. Ahmed Assem - Food Substitutions*`,
       `Base: ${inputValue} ${getUnitLabel(selectedMeal.unit, lang as 'en' | 'ar', parseFloat(inputValue))} of ${en ? selectedMeal.titleEn : selectedMeal.titleAr}`,
       `Substitutes:`,
-      ...results.map((r) => `- ${r.value} ${getUnitLabel(r.meal.unit, lang as 'en' | 'ar', r.value)} ${en ? r.meal.titleEn : r.meal.titleAr}`),
+      ...results.map((r) => `- ${r.value} ${getUnitLabel(r.meal.unit, lang as 'en' | 'ar', r.value)} ${en ? r.meal.titleEn : r.meal.titleAr}${r.meal.noteEn ? ` (${en ? r.meal.noteEn : r.meal.noteAr})` : ''}`),
     ];
     navigator.clipboard.writeText(lines.join('\n'));
     setCopied(true);
@@ -430,7 +487,7 @@ export const SubstitutionTool: React.FC<SubstitutionToolProps> = ({ lang }) => {
 
   return (
     <div className="w-full">
-      {/* Clean Quick Examples Bar (No Emojis) */}
+      {/* Quick Examples Bar */}
       <div className="mb-6">
         <span className="block text-[11px] font-mono uppercase tracking-wider text-neutral-400 mb-2">
           {en ? 'Quick Examples' : 'أمثلة سريعة للتجربة'}:
@@ -440,13 +497,15 @@ export const SubstitutionTool: React.FC<SubstitutionToolProps> = ({ lang }) => {
           className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-thin text-xs"
         >
           {[
-            { label: '150g Chicken Breasts', title: 'chicken breasts', amt: '150' },
+            { label: '150g Chicken Breast', title: 'chicken breast', amt: '150' },
             { label: '100g Basmati Rice', title: 'basmati rice', amt: '100' },
-            { label: '60g Oats', title: 'oats', amt: '60' },
+            { label: '60g Oats', title: 'oats (raw)', amt: '60' },
+            { label: '20g Olive Oil', title: 'extra virgin olive oil', amt: '20' },
+            { label: '30g Almonds', title: 'almonds', amt: '30' },
+            { label: '150g Apple', title: 'apple', amt: '150' },
             { label: '200g Sweet Potatoes', title: 'sweet potatoes', amt: '200' },
-            { label: '150g Apples', title: 'apples', amt: '150' },
-            { label: '4 Whole Eggs', title: 'whole eggs', amt: '4' },
-            { label: '200g Cottage Cheese', title: 'cottage cheese', amt: '200' },
+            { label: '4 Boiled Eggs', title: 'boiled whole eggs', amt: '4' },
+            { label: '200g Cottage Cheese', title: 'cottage cheese, low fat', amt: '200' },
           ].map((ex) => (
             <button
               key={ex.title}
@@ -612,9 +671,14 @@ export const SubstitutionTool: React.FC<SubstitutionToolProps> = ({ lang }) => {
                     <div className="text-sm font-bold text-white group-hover:text-[#8cffdb] transition-colors truncate capitalize">
                       {en ? meal.titleEn : meal.titleAr}
                     </div>
-                    <div className="text-[11px] text-neutral-400 font-mono mt-1">
+                    <div className="text-[11px] text-neutral-400 font-mono mt-0.5">
                       {en ? meal.titleAr : meal.titleEn}
                     </div>
+                    {meal.noteEn && (
+                      <div className="text-[10px] text-[#8cffdb]/80 font-mono mt-1">
+                        {en ? meal.noteEn : meal.noteAr}
+                      </div>
+                    )}
                   </div>
 
                   <div className="text-end shrink-0 font-mono">
@@ -625,7 +689,7 @@ export const SubstitutionTool: React.FC<SubstitutionToolProps> = ({ lang }) => {
                       </span>
                     </div>
                     <div className="text-[10px] text-neutral-500 font-mono mt-0.5">
-                      {meal.equalHundred} {getUnitLabel(meal.unit, lang as 'en' | 'ar', meal.equalHundred)} standard
+                      {meal.equalHundred} {getUnitLabel(meal.unit, lang as 'en' | 'ar', meal.equalHundred)} ref
                     </div>
                   </div>
                 </div>
@@ -634,11 +698,11 @@ export const SubstitutionTool: React.FC<SubstitutionToolProps> = ({ lang }) => {
 
             {/* Note & Weighed Rules */}
             <div className="mt-6 p-4 bg-neutral-950/80 border border-neutral-800/80 text-xs text-neutral-400 leading-relaxed">
-              <span className="text-[#8cffdb] font-bold me-2 font-mono">[PROTOCOL]</span>
+              <span className="text-[#8cffdb] font-bold me-2 font-mono">[PROTOCOL NOTE]</span>
               <span>
                 {en
-                  ? 'All food weights are cooked weights, except oats and cream of rice which are weighed raw/dry. Fresh fruits and ready-to-eat foods are weighed as eaten.'
-                  : 'كل أوزان الأطعمة مطهية وجاهزة للأكل، ما عدا الشوفان وكريمة الأرز توزن جافة (خام). الفواكه الطازجة توزن كما تؤكل.'}
+                  ? 'All weights are cooked weights, except oats and cream of rice (raw / dry weight). Ready-to-eat foods (bread, cereals, fruits, dairy, nuts, oils, whey) are weighed as eaten. Proteins & dairy are per 100 gm protein, carbohydrates per 100 gm carbs, fats per 100 gm fat, vegetables & fruits per 100 calories.'
+                  : 'ملاحظة البروتوكول: كل الأوزان مطهية، ما عدا الشوفان وكريمة الأرز توزن خام (جافة). الأطعمة الجاهزة (الخبز، رقائق الذرة، الفواكه، الألبان، المكسرات، الزيوت، الواي) توزن كما تؤكل. البروتينات والألبان محسوبة لكل ١٠٠ جم بروتين، الكربوهيدرات لكل ١٠٠ جم كربوهيدرات، الدهون لكل ١٠٠ جم دهون، والخضار والفواكه لكل ١٠٠ سعر حراري.'}
               </span>
             </div>
           </div>
