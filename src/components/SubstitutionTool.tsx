@@ -56,13 +56,13 @@ export const EXACT_MEALS: SubFood[] = [
   { titleEn: 'carrot', titleAr: 'جزر', type: 'Vegetables', typeAr: 'الخضروات', equalHundred: 240, unit: 'gm' },
 
   // ── Fruits ──
-  { titleEn: 'bananas', titleAr: 'موز', type: 'Fruits', typeAr: 'الفواكه', equalHundred: 1.8, unit: 'Number' },
-  { titleEn: 'apples', titleAr: 'تفاح', type: 'Fruits', typeAr: 'الفواكه', equalHundred: 3, unit: 'Number' },
+  { titleEn: 'bananas', titleAr: 'موز', type: 'Fruits', typeAr: 'الفواكه', equalHundred: 110, unit: 'gm' },
+  { titleEn: 'apples', titleAr: 'تفاح', type: 'Fruits', typeAr: 'الفواكه', equalHundred: 190, unit: 'gm' },
   { titleEn: 'pomegranate', titleAr: 'رمان', type: 'Fruits', typeAr: 'الفواكه', equalHundred: 110, unit: 'gm' },
-  { titleEn: 'oranges', titleAr: 'برتقال', type: 'Fruits', typeAr: 'الفواكه', equalHundred: 3, unit: 'Number' },
+  { titleEn: 'oranges', titleAr: 'برتقال', type: 'Fruits', typeAr: 'الفواكه', equalHundred: 210, unit: 'gm' },
   { titleEn: 'watermelon', titleAr: 'بطيخ', type: 'Fruits', typeAr: 'الفواكه', equalHundred: 300, unit: 'gm' },
   { titleEn: 'strawberry', titleAr: 'فراولة', type: 'Fruits', typeAr: 'الفواكه', equalHundred: 300, unit: 'gm' },
-  { titleEn: 'kiwi', titleAr: 'كيوي', type: 'Fruits', typeAr: 'الفواكه', equalHundred: 3, unit: 'Number' },
+  { titleEn: 'kiwi', titleAr: 'كيوي', type: 'Fruits', typeAr: 'الفواكه', equalHundred: 165, unit: 'gm' },
 
   // ── Dairy ──
   { titleEn: 'cottage cheese', titleAr: 'جبن قريش', type: 'Dairy', typeAr: 'الألبان', equalHundred: 900, unit: 'gm' },
@@ -444,6 +444,7 @@ export const SubstitutionTool: React.FC<SubstitutionToolProps> = ({ lang }) => {
             { label: '100g Basmati Rice', title: 'basmati rice', amt: '100' },
             { label: '60g Oats', title: 'oats', amt: '60' },
             { label: '200g Sweet Potatoes', title: 'sweet potatoes', amt: '200' },
+            { label: '150g Apples', title: 'apples', amt: '150' },
             { label: '4 Whole Eggs', title: 'whole eggs', amt: '4' },
             { label: '200g Cottage Cheese', title: 'cottage cheese', amt: '200' },
           ].map((ex) => (
