@@ -17,6 +17,8 @@ const RATES: Record<CurrencyChoice, { rate: number; label: string }> = {
   SAR: { rate: 3.75 / 49.5, label: 'SAR' },
 };
 
+const WHATSAPP_NUMBER = '201002146690';
+
 export const PackagesSection: React.FC<PackagesSectionProps> = ({
   t,
   lang,
@@ -137,7 +139,7 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({
                   {lang === 'en' ? `SELECT ${pkg.name.toUpperCase()}` : `اشترك في ${pkg.name}`}
                 </button>
                 <a
-                  href={`https://wa.me/201099999999?text=${encodeURIComponent(`Hello Dr. Ahmed Assem! I'm interested in the ${pkg.name} package. Please guide me through the next steps.`)}`}
+                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hello Dr. Ahmed Assem! I'm interested in the ${pkg.name} package. Please guide me through the next steps.`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full flex items-center justify-center gap-2 py-2.5 px-4 min-h-[40px] text-xs font-bold border border-neutral-700 text-neutral-300 hover:border-[#25D366] hover:text-[#25D366] transition-all cursor-pointer"
@@ -196,7 +198,7 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({
                   {lang === 'en' ? 'BOOK STRATEGY CALL' : 'احجز جلستك الآن'}
                 </button>
                 <a
-                  href={`https://wa.me/201099999999?text=${encodeURIComponent(`Hello Dr. Ahmed Assem! I'd like to book a ${t.packages.items[3].name}. Please let me know the next steps.`)}`}
+                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hello Dr. Ahmed Assem! I'd like to book a ${t.packages.items[3].name}. Please let me know the next steps.`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto px-8 py-3 min-h-[44px] flex items-center justify-center gap-2 text-xs font-bold border border-neutral-700 text-neutral-300 hover:border-[#25D366] hover:text-[#25D366] transition-all cursor-pointer"
