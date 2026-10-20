@@ -123,7 +123,7 @@ export const translations: Record<Language, TranslationContent> = {
       workouts: 'Workouts',
       comparison: 'System Comparison',
       faqs: 'FAQs',
-      calculator: 'Macro Calculator',
+      calculator: 'Food Substitutions',
       langToggle: 'العربية',
     },
     hero: {
@@ -432,7 +432,7 @@ export const translations: Record<Language, TranslationContent> = {
       workouts: 'التدريب',
       comparison: 'مقارنة النظام',
       faqs: 'الأسئلة الشائعة',
-      calculator: 'حاسبة السعرات والماكروز',
+      calculator: 'بدائل الأطعمة',
       langToggle: 'English',
     },
     hero: {
