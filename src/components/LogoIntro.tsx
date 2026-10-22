@@ -1,21 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { LOGO_PATHS, LOGO_W, LOGO_H, LOGO_STYLE, logoColors } from './logoPaths';
 import { markIntroDone, prefersReducedMotion } from './fx';
 
 /**
  * Loader on pitch black. All of the motion is CSS (see .intro-* in index.css):
- *  0.10–1.00  the two pieces of the mark fly in from opposite corners, drawn as white outlines
- *  1.00–1.35  they lock together and fill white
- *  1.35–1.80  they turn to the brand colours (LOGO_STYLE), a light streak sweeps across
- *  1.40–2.10  AHMED ASSEM rises letter by letter, the tagline types in, counter runs to 100
+ *  0.10–1.10  the supplied wordmark fades and scales into place
+ *  1.40–2.10  the specialty types in and the counter runs to 100
  *  2.85       the whole panel slides up off the hero
  * Click, Esc, Enter or Space skips it.
  */
 
-const NAME = 'AHMED ASSEM'.split('');
-const TAGLINE = 'Personal trainer · IFBB Pro · M.D.';
 const TOTAL = 2850;
-const FINAL = logoColors(LOGO_STYLE);
 const EXIT_MS = 900;
 
 export const LogoIntro: React.FC = () => {
@@ -49,10 +43,8 @@ export const LogoIntro: React.FC = () => {
       const e = t - t0;
       const p = Math.min(1, e / 2100);
       const pct = Math.round(100 * (1 - Math.pow(1 - p, 2)));
-      const typed = Math.max(0, Math.min(TAGLINE.length, Math.floor((e - 1500) / 20)));
       if (countEl.current) countEl.current.textContent = String(pct).padStart(3, '0');
       if (barEl.current) barEl.current.style.transform = `scaleX(${pct / 100})`;
-      if (tagEl.current) tagEl.current.textContent = TAGLINE.slice(0, typed);
       if (p < 1 || e < 2300) raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
@@ -76,9 +68,8 @@ export const LogoIntro: React.FC = () => {
 
   return (
     <div
-      className={`intro fixed inset-0 z-[100] overflow-hidden bg-[#090b0a] text-white cursor-pointer select-none ${
-        phase === 'leave' ? 'intro-leave' : ''
-      }`}
+      className={`intro fixed inset-0 z-[100] overflow-hidden bg-[#090b0a] text-white cursor-pointer select-none ${phase === 'leave' ? 'intro-leave' : ''
+        }`}
       role="dialog"
       aria-label="Ahmed Assem intro"
       dir="ltr"
@@ -101,53 +92,13 @@ export const LogoIntro: React.FC = () => {
 
       {/* the mark */}
       <div className="absolute inset-0 flex flex-col items-center justify-center px-6">
-        <svg
-          viewBox={`-40 -40 ${LOGO_W + 80} ${LOGO_H + 80}`}
-          className="intro-mark w-[min(64vw,26rem)] h-auto overflow-visible"
-          aria-hidden="true"
-        >
-          <defs>
-            <linearGradient id="intro-streak" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stopColor="#fff" stopOpacity="0" />
-              <stop offset="0.5" stopColor="#fff" stopOpacity="0.85" />
-              <stop offset="1" stopColor="#fff" stopOpacity="0" />
-            </linearGradient>
-            <clipPath id="intro-clip">
-              <path d={LOGO_PATHS.stroke} />
-              <path d={LOGO_PATHS.body} />
-            </clipPath>
-          </defs>
-
-          <g className="intro-piece intro-stroke" style={{ ['--final' as any]: FINAL.stroke }}>
-            <path d={LOGO_PATHS.stroke} pathLength={1} />
-          </g>
-          <g className="intro-piece intro-body" style={{ ['--final' as any]: FINAL.body }}>
-            <path d={LOGO_PATHS.body} pathLength={1} />
-          </g>
-
-          {/* light streak across the finished mark */}
-          <g clipPath="url(#intro-clip)">
-            <rect className="intro-streak" x="-300" y="-40" width="260" height={LOGO_H + 80} fill="url(#intro-streak)" transform="skewX(-20)" />
-          </g>
-        </svg>
-
-        {/* the name */}
-        <h2
-          aria-label="Ahmed Assem"
-          className="font-sport mt-8 sm:mt-10 flex text-[clamp(2.6rem,10vw,6.5rem)] font-black leading-[0.85] tracking-[0.04em]"
-        >
-          {NAME.map((ch, i) => (
-            <span key={i} className="relative overflow-hidden pb-[0.06em]" aria-hidden="true">
-              <span className="intro-letter block" style={{ animationDelay: `${1400 + i * 45}ms` }}>
-                {ch === ' ' ? ' ' : ch}
-              </span>
-            </span>
-          ))}
-        </h2>
-
-        {/* rule + typed tagline */}
-        <span className="intro-rule block h-[2px] bg-[#8cffdb] mt-4 w-[min(80vw,30rem)] origin-left" aria-hidden="true" />
-        <p className="mt-3 w-[min(80vw,30rem)] font-mono text-[0.68rem] sm:text-sm uppercase tracking-[0.18em] text-[#8cffdb] h-[1.5em] text-center">
+        <img
+          src="/brand-logo.png"
+          alt="Dr. Ahmed Assem Cosmetic Dentist"
+          className="intro-mark w-[min(84vw,42rem)] h-auto mix-blend-screen"
+          style={{ mixBlendMode: 'screen' }}
+        />
+        <p className="mt-7 w-[min(80vw,30rem)] font-mono text-[0.68rem] sm:text-sm uppercase tracking-[0.18em] text-[#8cffdb] h-[1.5em] text-center">
           <span ref={tagEl} />
           <span className="inline-block w-[0.55em] h-[1em] -mb-[0.15em] ml-0.5 bg-[#8cffdb] animate-[caret-blink_900ms_steps(1)_infinite]" />
         </p>

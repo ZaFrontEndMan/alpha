@@ -130,13 +130,65 @@ html.lenis body {
   100% { fill: var(--final, #8cffdb); stroke: var(--final, #8cffdb); }
 }
 
-/* the mark gives a small "lock" pop as the pieces meet */
-.intro-mark {
-  animation: intro-lock 0.5s var(--intro-ease) 1.1s both;
+/* Ensure brand logo displays with blend mode to cleanly remove dark background */
+.brand-logo-blend,
+img[src*="brand-logo"] {
+  mix-blend-mode: screen;
 }
-@keyframes intro-lock {
-  0%, 100% { transform: scale(1); }
-  40% { transform: scale(1.045); }
+
+/* Intro loading screen: wordmark displays with a smooth fade from left to right */
+.intro-mark {
+  mix-blend-mode: screen;
+  will-change: mask-position, -webkit-mask-position, transform, opacity;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    #000 0%,
+    #000 40%,
+    rgba(0, 0, 0, 0.7) 48%,
+    rgba(0, 0, 0, 0.2) 58%,
+    transparent 68%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    #000 0%,
+    #000 40%,
+    rgba(0, 0, 0, 0.7) 48%,
+    rgba(0, 0, 0, 0.2) 58%,
+    transparent 68%,
+    transparent 100%
+  );
+  -webkit-mask-size: 300% 100%;
+  mask-size: 300% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  animation: intro-fade-ltr 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+@keyframes intro-fade-ltr {
+  0% {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+    opacity: 0;
+    transform: translateX(-35px);
+  }
+  20% {
+    opacity: 1;
+  }
+  85% {
+    -webkit-mask-position: 0% 0;
+    mask-position: 0% 0;
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-mask-position: 0% 0;
+    mask-position: 0% 0;
+    -webkit-mask: none;
+    mask: none;
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .intro-streak {

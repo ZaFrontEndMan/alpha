@@ -58,22 +58,9 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, t, onToggleLang, onOpenCal
         {/* Brand */}
         <a
           href="#"
-          className="flex items-center gap-3 shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8cffdb]"
+          className="shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8cffdb]"
         >
           <BrandLogo size={36} />
-          <div className="flex flex-col leading-none">
-            <span
-              className={cn(
-                'tracking-tight text-white text-base sm:text-lg group-hover:text-[#8cffdb] transition-colors font-extrabold',
-                lang === 'en' ? 'font-sport' : 'font-cairo'
-              )}
-            >
-              {lang === 'en' ? 'AHMED ASSEM' : 'د. أحمد عاصم'}
-            </span>
-            <span className="text-[10px] tracking-wider text-neutral-400 font-semibold uppercase mt-0.5">
-              IFBB PRO · M.D.
-            </span>
-          </div>
         </a>
 
         {/* Section links (desktop) */}

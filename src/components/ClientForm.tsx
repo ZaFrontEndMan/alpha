@@ -222,11 +222,8 @@ export const FormPage: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
           </button>
 
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2.5 shrink-0">
+          <a href="/" className="shrink-0">
             <BrandLogo size={28} />
-            <span className={cn('font-extrabold text-white text-sm tracking-tight', en ? 'font-sport' : 'font-cairo')}>
-              {en ? 'AHMED ASSEM' : 'د. أحمد عاصم'}
-            </span>
           </a>
 
           {/* Lang toggle */}

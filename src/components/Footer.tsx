@@ -15,19 +15,8 @@ export const Footer: React.FC<FooterProps> = ({ t, lang }) => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-neutral-800/80">
           {/* Brand Info */}
           <div className="md:col-span-5 space-y-4">
-            <div className="flex items-center gap-3">
+            <div>
               <BrandLogo size={40} />
-              <div className="flex flex-col leading-none">
-                <span className={cn(
-                  "tracking-tight text-white text-lg font-black",
-                  lang === 'en' ? 'font-sport' : 'font-cairo'
-                )}>
-                  {lang === 'en' ? 'AHMED ASSEM' : 'د. أحمد عاصم'}
-                </span>
-                <span className="text-[10px] tracking-wider text-[#8cffdb] font-semibold uppercase mt-0.5">
-                  IFBB PRO · MEDICAL DOCTOR
-                </span>
-              </div>
             </div>
 
             <p className="text-xs text-neutral-400 max-w-sm leading-relaxed mt-4">

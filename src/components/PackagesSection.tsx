@@ -5,7 +5,7 @@ import { cn } from '../utils/cn';
 interface PackagesSectionProps {
   t: TranslationContent;
   lang: Language;
-  onSelectPackage: (packageName: string) => void;
+  onStartPayment: (packageId: string) => void;
 }
 
 type CurrencyChoice = 'EGP' | 'USD' | 'AED' | 'SAR';
@@ -22,7 +22,7 @@ const WHATSAPP_NUMBER = '201002146690';
 export const PackagesSection: React.FC<PackagesSectionProps> = ({
   t,
   lang,
-  onSelectPackage,
+  onStartPayment,
 }) => {
   const [currency, setCurrency] = useState<CurrencyChoice>('EGP');
 
@@ -31,7 +31,12 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({
       return `${baseEgp.toFixed(2)} EGP`;
     }
     const converted = Math.round(baseEgp * RATES[currency].rate);
-    return `${converted.toLocaleString()} ${RATES[currency].label}`;
+    // International prices are always rounded up to a clean checkout amount:
+    // 91 → 100, 141 → 145, 334 → 335.
+    const rounded = converted < 100
+      ? Math.ceil(converted / 10) * 10
+      : Math.ceil(converted / 5) * 5;
+    return `${rounded.toLocaleString()} ${RATES[currency].label}`;
   };
 
   return (
@@ -128,7 +133,7 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({
               <div className="space-y-2">
                 <button
                   type="button"
-                  onClick={() => onSelectPackage(pkg.name)}
+                  onClick={() => onStartPayment(pkg.id)}
                   className={cn(
                     "w-full py-3.5 px-4 min-h-[44px] text-xs font-black uppercase tracking-wider transition-all cursor-pointer text-center",
                     pkg.popular
@@ -136,9 +141,9 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({
                       : "bg-neutral-900 border border-neutral-700 text-white hover:bg-neutral-800 hover:border-neutral-500"
                   )}
                 >
-                  {lang === 'en' ? `SELECT ${pkg.name.toUpperCase()}` : `اشترك في ${pkg.name}`}
+                  {lang === 'en' ? 'PAY NOW' : 'ادفع الآن'}
                 </button>
-                <a
+                {pkg.id !== 'starter' && <a
                   href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hello Dr. Ahmed Assem! I'm interested in the ${pkg.name} package. Please guide me through the next steps.`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -149,7 +154,7 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({
                     <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.534 5.863L.054 23.5l5.824-1.455A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.376l-.36-.213-3.728.931.977-3.592-.234-.369A9.818 9.818 0 012.182 12C2.182 6.568 6.568 2.182 12 2.182S21.818 6.568 21.818 12 17.432 21.818 12 21.818z"/>
                   </svg>
                   {lang === 'en' ? 'WhatsApp' : 'واتساب'}
-                </a>
+                </a>}
               </div>
             </div>
           ))}
@@ -192,10 +197,10 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({
               <div className="lg:col-span-4 flex flex-col justify-center items-stretch lg:items-end gap-2">
                 <button
                   type="button"
-                  onClick={() => onSelectPackage(t.packages.items[3].name)}
+                  onClick={() => onStartPayment(t.packages.items[3].id)}
                   className="w-full sm:w-auto px-8 py-4 min-h-[48px] text-xs font-black uppercase tracking-wider text-black bg-[#8cffdb] hover:bg-[#77d9ba] transition-colors cursor-pointer text-center"
                 >
-                  {lang === 'en' ? 'BOOK STRATEGY CALL' : 'احجز جلستك الآن'}
+                  {lang === 'en' ? 'PAY NOW' : 'ادفع الآن'}
                 </button>
                 <a
                   href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hello Dr. Ahmed Assem! I'd like to book a ${t.packages.items[3].name}. Please let me know the next steps.`)}`}
