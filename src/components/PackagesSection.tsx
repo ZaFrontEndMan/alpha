@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TranslationContent, Language } from '../translations';
 import { cn } from '../utils/cn';
 
@@ -17,6 +17,67 @@ const RATES: Record<CurrencyChoice, { rate: number; label: string }> = {
   SAR: { rate: 3.75 / 49.5, label: 'SAR' },
 };
 
+const countryToCurrency = (countryCode: string): CurrencyChoice => {
+  const code = countryCode.toUpperCase();
+  if (code === 'EG') return 'EGP';
+  if (code === 'SA' || code === 'KW' || code === 'QA' || code === 'BH' || code === 'OM') return 'SAR';
+  if (code === 'AE') return 'AED';
+  return 'USD';
+};
+
+const detectInitialCurrency = (): CurrencyChoice => {
+  if (typeof window === 'undefined') return 'EGP';
+
+  try {
+    const cached = window.sessionStorage.getItem('alpha_user_currency') as CurrencyChoice | null;
+    if (cached && (['EGP', 'USD', 'AED', 'SAR'] as CurrencyChoice[]).includes(cached)) {
+      return cached;
+    }
+
+    // 1. Timezone detection (fastest, synchronous, works offline)
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+    const tzLower = timeZone.toLowerCase();
+
+    if (tzLower.includes('cairo') || tzLower.includes('egypt')) {
+      return 'EGP';
+    }
+    if (tzLower.includes('riyadh')) {
+      return 'SAR';
+    }
+    if (tzLower.includes('dubai')) {
+      return 'AED';
+    }
+    if (
+      tzLower.includes('kuwait') ||
+      tzLower.includes('qatar') ||
+      tzLower.includes('bahrain') ||
+      tzLower.includes('muscat')
+    ) {
+      return 'SAR';
+    }
+
+    // 2. Locale / Language detection
+    const locales = [
+      navigator.language,
+      ...(navigator.languages || []),
+    ].filter(Boolean);
+
+    for (const loc of locales) {
+      const match = loc.match(/[-_]([A-Za-z]{2})$/);
+      if (match) {
+        const country = match[1].toUpperCase();
+        if (country === 'EG') return 'EGP';
+        if (country === 'SA' || country === 'KW' || country === 'QA' || country === 'BH' || country === 'OM') return 'SAR';
+        if (country === 'AE') return 'AED';
+      }
+    }
+  } catch {
+    // ignore
+  }
+
+  return 'USD';
+};
+
 const WHATSAPP_NUMBER = '201002146690';
 
 export const PackagesSection: React.FC<PackagesSectionProps> = ({
@@ -24,7 +85,39 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({
   lang,
   onStartPayment,
 }) => {
-  const [currency, setCurrency] = useState<CurrencyChoice>('EGP');
+  const [currency, setCurrency] = useState<CurrencyChoice>(detectInitialCurrency);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    if (window.sessionStorage.getItem('alpha_user_currency')) return;
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 2500);
+
+    fetch('https://api.country.is', { signal: controller.signal })
+      .then((res) => {
+        if (!res.ok) throw new Error('Country lookup failed');
+        return res.json() as Promise<{ country?: string }>;
+      })
+      .then((data) => {
+        if (data.country) {
+          const detected = countryToCurrency(data.country);
+          setCurrency(detected);
+          window.sessionStorage.setItem('alpha_user_currency', detected);
+        }
+      })
+      .catch(() => {
+        // Silently keep timezone/locale fallback
+      })
+      .finally(() => {
+        clearTimeout(timeoutId);
+      });
+
+    return () => {
+      controller.abort();
+      clearTimeout(timeoutId);
+    };
+  }, []);
 
   const formatPrice = (baseEgp: number) => {
     if (currency === 'EGP') {
@@ -42,38 +135,17 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({
   return (
     <section id="packages" className="py-20 md:py-28 section-blend @container">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header & Currency Switcher */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
-          <div className="max-w-3xl">
-            <div className="text-xs font-bold tracking-widest text-[#8cffdb] uppercase mb-3">
-              {t.packages.tag}
-            </div>
-            <h2 className={cn(
-              "text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight [text-wrap:balance]",
-              lang === 'en' ? 'font-sport' : 'font-cairo'
-            )}>
-              {t.packages.heading}
-            </h2>
+        {/* Header */}
+        <div className="mb-14 max-w-3xl">
+          <div className="text-xs font-bold tracking-widest text-[#8cffdb] uppercase mb-3">
+            {t.packages.tag}
           </div>
-
-          {/* Currency Toggle */}
-          <div className="flex items-center gap-1 p-1 bg-[#121614] border border-neutral-800 self-start md:self-end">
-            {(['EGP', 'USD', 'AED', 'SAR'] as CurrencyChoice[]).map((c) => (
-              <button
-                key={c}
-                type="button"
-                onClick={() => setCurrency(c)}
-                className={cn(
-                  "px-3 py-1.5 text-xs font-mono font-bold uppercase transition-colors min-h-[36px] cursor-pointer",
-                  currency === c
-                    ? "bg-[#8cffdb] text-black shadow-sm"
-                    : "text-neutral-400 hover:text-white"
-                )}
-              >
-                {c}
-              </button>
-            ))}
-          </div>
+          <h2 className={cn(
+            "text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight [text-wrap:balance]",
+            lang === 'en' ? 'font-sport' : 'font-cairo'
+          )}>
+            {t.packages.heading}
+          </h2>
         </div>
 
         {/* 3 Main Coaching Packages Grid */}
