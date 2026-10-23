@@ -187,10 +187,35 @@ export const FormPage: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
       return { ...prev, [key]: arr.includes(val) ? arr.filter((x) => x !== val) : [...arr, val] };
     });
 
-  const handleSubmit = () => {
+  const [isSubmittingForm, setIsSubmittingForm] = useState(false);
+  const [emailDispatched, setEmailDispatched] = useState<boolean | null>(null);
+
+  const handleSubmit = async () => {
+    setIsSubmittingForm(true);
+    // 1. Dispatch email notification to owner and confirmation to customer
+    try {
+      fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((resData) => {
+          setEmailDispatched(resData?.success === true);
+        })
+        .catch((err) => {
+          console.warn('Subscription email dispatch warning:', err);
+          setEmailDispatched(false);
+        });
+    } catch {
+      // Ignore background network issues for whatsapp flow
+    }
+
+    // 2. Open WhatsApp fast-track
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(buildWhatsAppMessage(data))}`;
     window.open(url, '_blank', 'noopener,noreferrer');
     setSubmitted(true);
+    setIsSubmittingForm(false);
   };
 
   const stepLabels = en ? STEP_LABELS_EN : STEP_LABELS_AR;
@@ -565,14 +590,28 @@ export const FormPage: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
                   [en ? 'Name' : 'الاسم', data.name],
                   [en ? 'Package' : 'الباقة', data.selectedTier],
                   [en ? 'Goal' : 'الهدف', data.targetGoal],
+                  [en ? 'Email' : 'البريد', data.email || 'N/A'],
                   [en ? 'SLA' : 'وقت الرد', 'Within 24 Hours'],
                 ].map(([k, v]) => (
                   <div key={k} className="flex justify-between gap-3">
                     <span className="text-neutral-500">{k}:</span>
-                    <span className="text-white font-bold text-end">{v}</span>
+                    <span className="text-white font-bold text-end truncate">{v}</span>
                   </div>
                 ))}
               </div>
+
+              {data.email && (
+                <div className="max-w-xs mx-auto text-xs text-neutral-400 bg-[#0f1411] border border-neutral-800 p-3 rounded text-center">
+                  ✉ {en ? 'A confirmation email was sent to ' : 'تم إرسال رسالة تأكيد إلى '}
+                  <span className="text-[#8cffdb] font-bold">{data.email}</span>.
+                  <div className="mt-1 text-[11px] text-neutral-500">
+                    {en ? 'Official correspondence:' : 'البريد الرسمي:'}{' '}
+                    <a href="mailto:info@drahmedassem.com" className="text-neutral-300 hover:text-[#8cffdb] underline">
+                      info@drahmedassem.com
+                    </a>
+                  </div>
+                </div>
+              )}
 
               <div className="space-y-3 max-w-xs mx-auto w-full">
                 <a

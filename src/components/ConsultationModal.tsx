@@ -46,6 +46,26 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    try {
+      fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.fullName,
+          email: formData.email,
+          phone: formData.whatsapp,
+          selectedTier: formData.selectedTier,
+          targetGoal: formData.targetGoal,
+          weight: formData.currentWeight,
+          age: formData.age,
+          location: formData.country,
+          medicalConditions: formData.medicalConditions || (formData.hasRecentBloodwork ? 'Bloodwork available' : 'Needs doctor guidance'),
+          customNotes: `Experience: ${formData.experienceLevel}. Timezone: ${formData.preferredTimezone}. Baseline: ${initialMacroSummary || 'None'}`,
+        }),
+      }).catch((err) => console.warn('Intake email notification warning:', err));
+    } catch {
+      // background network ignore
+    }
     setSubmitted(true);
   };
 

@@ -83,10 +83,10 @@ export const Footer: React.FC<FooterProps> = ({ t, lang }) => {
               <div>
                 <span className="text-neutral-500">Email:</span>{' '}
                 <a
-                  href="mailto:contact@drahmedassem.com"
+                  href="mailto:info@drahmedassem.com"
                   className="hover:text-[#8cffdb] transition-colors"
                 >
-                  contact@drahmedassem.com
+                  info@drahmedassem.com
                 </a>
               </div>
               <div>
