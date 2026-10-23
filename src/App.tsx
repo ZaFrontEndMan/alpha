@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { TransformationsShowcase } from './components/TransformationsShowcase';
@@ -232,6 +233,7 @@ export default function App() {
         <Route path="/substitutions" element={<SubstitutionsPage lang={lang} onToggleLang={handleToggleLang} />} />
         <Route path="/Asem/Substitutions" element={<SubstitutionsPage lang={lang} onToggleLang={handleToggleLang} />} />
       </Routes>
+      <Analytics />
     </BrowserRouter>
   );
 }
