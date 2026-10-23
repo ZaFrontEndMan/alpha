@@ -76,7 +76,7 @@ const TOTAL_STEPS = 6;
 const STEP_LABELS_EN = ['Personal Info', 'Body Metrics', 'Fitness Profile', 'Health & History', 'Extra Info', 'Nutrition'];
 const STEP_LABELS_AR = ['البيانات الشخصية', 'القياسات', 'الملف الرياضي', 'الصحة والتاريخ', 'معلومات إضافية', 'التفضيلات الغذائية'];
 
-const WHATSAPP_NUMBER = '201099999999';
+const WHATSAPP_NUMBER = '201002146690';
 
 // ─── WhatsApp Message Builder ─────────────────────────────────────────────────
 function buildWhatsAppMessage(d: FormData): string {

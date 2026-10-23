@@ -425,7 +425,7 @@ Looking forward to starting my 90-day transformation!`
             {/* Direct WhatsApp Fast-Track Button */}
             <div className="space-y-3 pt-2">
               <a
-                href={`https://wa.me/201099999999?text=${whatsappMessage}`}
+                href={`https://wa.me/201002146690?text=${whatsappMessage}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex w-full items-center justify-center gap-2 py-3.5 min-h-[48px] text-xs font-black uppercase tracking-wider text-black bg-[#8cffdb] hover:bg-[#77d9ba] cursor-pointer"
