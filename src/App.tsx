@@ -193,22 +193,7 @@ function LandingPage({ lang, onToggleLang }: { lang: Language; onToggleLang: () 
   );
 }
 
-function PaymentResult({ lang }: { lang: Language }) {
-  const success = new URLSearchParams(window.location.search).get('success') === 'true';
-  const en = lang === 'en';
-  return (
-    <div className={cn('min-h-screen bg-[#090b0a] text-neutral-100 grid place-items-center p-6 text-center', en ? 'font-sans' : 'font-cairo')}>
-      <div className="max-w-md border border-neutral-800 bg-[#0f1311] p-8">
-        <div className={cn('text-xs font-bold tracking-widest uppercase mb-3', success ? 'text-[#8cffdb]' : 'text-amber-300')}>
-          {success ? (en ? 'Payment received' : 'تم استلام الدفع') : (en ? 'Payment not completed' : 'لم تكتمل عملية الدفع')}
-        </div>
-        <h1 className="text-3xl font-black text-white mb-3">{success ? (en ? 'Thank you.' : 'شكراً لك.') : (en ? 'Please try again.' : 'يرجى المحاولة مرة أخرى.')}</h1>
-        <p className="text-sm text-neutral-400 mb-6">{success ? (en ? 'We will contact you shortly with the next steps.' : 'سنتواصل معك قريباً للخطوات التالية.') : (en ? 'No charge was confirmed. Return to the packages to start a new payment.' : 'لم يتم تأكيد أي دفعة. عد إلى الباقات لبدء دفع جديد.')}</p>
-        <a href="/#packages" className="inline-flex min-h-[44px] items-center px-5 bg-[#8cffdb] text-black text-xs font-black uppercase tracking-wider">{en ? 'View packages' : 'عرض الباقات'}</a>
-      </div>
-    </div>
-  );
-}
+import { PaymentStatus } from './components/PaymentStatus';
 
 // ─── Root App with Router ─────────────────────────────────────────────────────
 export default function App() {
@@ -229,7 +214,24 @@ export default function App() {
         <Route path="/form" element={<FormPage lang={lang} onToggleLang={handleToggleLang} />} />
         <Route path="/Asem/Form" element={<FormPage lang={lang} onToggleLang={handleToggleLang} />} />
         <Route path="/checkout" element={<PaymentCheckout lang={lang} onToggleLang={handleToggleLang} />} />
-        <Route path="/payment-result" element={<PaymentResult lang={lang} />} />
+
+        {/* Callback Routes matching Paymob redirection URL */}
+        <Route path="/Payment/Callback" element={<PaymentStatus lang={lang} onToggleLang={handleToggleLang} />} />
+        <Route path="/payment/callback" element={<PaymentStatus lang={lang} onToggleLang={handleToggleLang} />} />
+        <Route path="/Asem/Payment/Callback" element={<PaymentStatus lang={lang} onToggleLang={handleToggleLang} />} />
+        <Route path="/Asem/payment/callback" element={<PaymentStatus lang={lang} onToggleLang={handleToggleLang} />} />
+
+        {/* Explicit Payment Status Routes */}
+        <Route path="/payment/success" element={<PaymentStatus status="success" lang={lang} onToggleLang={handleToggleLang} />} />
+        <Route path="/payment/failed" element={<PaymentStatus status="failed" lang={lang} onToggleLang={handleToggleLang} />} />
+        <Route path="/payment/failure" element={<PaymentStatus status="failed" lang={lang} onToggleLang={handleToggleLang} />} />
+        <Route path="/payment/cancel" element={<PaymentStatus status="failed" lang={lang} onToggleLang={handleToggleLang} />} />
+        <Route path="/payment/pending" element={<PaymentStatus status="pending" lang={lang} onToggleLang={handleToggleLang} />} />
+        <Route path="/payment/status" element={<PaymentStatus lang={lang} onToggleLang={handleToggleLang} />} />
+        <Route path="/payment-result" element={<PaymentStatus lang={lang} onToggleLang={handleToggleLang} />} />
+        <Route path="/Asem/payment/success" element={<PaymentStatus status="success" lang={lang} onToggleLang={handleToggleLang} />} />
+        <Route path="/Asem/payment/failed" element={<PaymentStatus status="failed" lang={lang} onToggleLang={handleToggleLang} />} />
+
         <Route path="/substitutions" element={<SubstitutionsPage lang={lang} onToggleLang={handleToggleLang} />} />
         <Route path="/Asem/Substitutions" element={<SubstitutionsPage lang={lang} onToggleLang={handleToggleLang} />} />
       </Routes>

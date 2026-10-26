@@ -638,7 +638,7 @@ export const SubstitutionTool: React.FC<SubstitutionToolProps> = ({ lang }) => {
                 </button>
 
                 <a
-                  href={`https://wa.me/201002146690?text=${encodeURIComponent(
+                  href={`https://wa.me/201158997825?text=${encodeURIComponent(
                     `Hello Dr. Ahmed Assem! Here is my food substitution check:\n` +
                     `Base: ${inputValue} ${getUnitLabel(selectedMeal.unit, 'en', parseFloat(inputValue))} ${selectedMeal.titleEn}\n` +
                     `Top substitutes: ` +

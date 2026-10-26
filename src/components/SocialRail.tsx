@@ -35,7 +35,7 @@ const SOCIAL_LINKS = [
   { label: 'TikTok', href: 'https://www.tiktok.com/@dr_ahmedassem', Icon: TikTokIcon },
   { label: 'Facebook', href: 'https://www.facebook.com/Dr.AhmedAssem1', Icon: FacebookIcon },
   { label: 'YouTube', href: 'https://www.youtube.com/@Dr_ahmedassem/featured', Icon: YoutubeIcon },
-  { label: 'WhatsApp', href: 'https://wa.me/201002146690', Icon: WhatsappIcon },
+  { label: 'WhatsApp', href: 'https://wa.me/201158997825', Icon: WhatsappIcon },
   { label: 'Instagram', href: 'https://www.instagram.com/dr_ahmedassem/', Icon: InstagramIcon },
 ];
 

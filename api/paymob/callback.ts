@@ -19,6 +19,7 @@ export default function handler(request: any, response: any) {
   if (!isValid) return response.status(400).send('Invalid payment callback.');
 
   const success = requestUrl.searchParams.get('success') === 'true';
-  response.writeHead(302, { Location: `/payment-result?success=${success}` });
+  const search = requestUrl.search || `?success=${success}`;
+  response.writeHead(302, { Location: `/payment/callback${search}` });
   response.end();
 }

@@ -92,7 +92,7 @@ export const Footer: React.FC<FooterProps> = ({ t, lang }) => {
               <div>
                 <span className="text-neutral-500">WhatsApp:</span>{' '}
                 <a
-                  href="https://wa.me/201002146690"
+                  href="https://wa.me/201158997825"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-[#8cffdb] transition-colors"
