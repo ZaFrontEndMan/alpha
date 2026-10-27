@@ -479,3 +479,12 @@ img[src*="brand-logo"] {
 [data-typed='true'] .type-accent::after {
   transform: scaleX(1);
 }
+
+/* Horizontal sliders: scroll without a visible bar */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

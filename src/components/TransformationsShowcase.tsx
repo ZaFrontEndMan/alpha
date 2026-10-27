@@ -1,22 +1,39 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Language, TranslationContent } from '../translations';
 import { cn } from '../utils/cn';
 import { prefersReducedMotion } from './fx';
 import personBg from '../assets/person/person_3.jpg';
+import { TransformationsSlider } from './TransformationsSlider';
+import { TRANSFORMATION_SNAPSHOT } from '../data/transformationPhotos';
+import { cldSrcSet, cldUrl, isNearSquare, TransformationPhoto } from '../utils/cloudinary';
 
-/** Pulls every renamed client photo (1.jpg … n.jpg) in numeric order, no manual import list to maintain. */
-const photoModules = import.meta.glob('../assets/transformation/*.{jpg,jpeg,png,webp}', {
-  eager: true,
-  import: 'default',
-}) as Record<string, string>;
+/**
+ * Client photos come from the Cloudinary "assem" folder. The baked-in snapshot paints immediately;
+ * the live list from /api/transformations then replaces it, so new uploads appear without a deploy.
+ * One request per page load, shared by every consumer.
+ */
+let livePhotos: Promise<TransformationPhoto[] | null> | null = null;
+const loadLivePhotos = () =>
+  (livePhotos ??= fetch('/api/transformations')
+    .then((r) => (r.ok ? r.json() : null))
+    .then((d) => (Array.isArray(d?.photos) && d.photos.length > 0 ? (d.photos as TransformationPhoto[]) : null))
+    .catch(() => null));
 
-const PHOTOS = Object.entries(photoModules)
-  .sort(([a], [b]) => {
-    const na = parseInt(a.match(/(\d+)\.\w+$/)?.[1] ?? '0', 10);
-    const nb = parseInt(b.match(/(\d+)\.\w+$/)?.[1] ?? '0', 10);
-    return na - nb;
-  })
-  .map(([, url]) => url);
+function useTransformationPhotos() {
+  const [photos, setPhotos] = useState<TransformationPhoto[]>(TRANSFORMATION_SNAPSHOT);
+  useEffect(() => {
+    let alive = true;
+    loadLivePhotos().then((live) => {
+      if (alive && live) setPhotos(live);
+    });
+    return () => {
+      alive = false;
+    };
+  }, []);
+  return photos;
+}
+
+const DESKTOP_TILE_COUNT = 18;
 
 interface TransformationsShowcaseProps {
   lang: Language;
@@ -25,22 +42,22 @@ interface TransformationsShowcaseProps {
 }
 
 /** One photo tile. Reveals once via the shared observer below, then stays put — never re-measured, never re-animated. */
-const Tile: React.FC<{ src: string; tall?: boolean; alt: string; className?: string }> = ({ src, tall, alt, className }) => (
+const Tile: React.FC<{ photo: TransformationPhoto; alt: string; className?: string }> = ({ photo, alt, className }) => (
   <div
     data-tile
     className={cn(
-      'reveal-tile relative w-full overflow-hidden rounded-lg sm:rounded-xl bg-[#121614] border border-neutral-800/80 shadow-md sm:shadow-2xl',
-      tall ? 'aspect-[3/4]' : 'aspect-[4/5]',
+      'reveal-tile relative w-full aspect-square overflow-hidden rounded-lg sm:rounded-xl bg-[#121614] border border-neutral-800/80 shadow-md sm:shadow-2xl',
       className
     )}
   >
     <img
-      src={src}
+      src={cldUrl(photo, 400, 'fill')}
+      srcSet={cldSrcSet(photo, [300, 400, 600, 800], 'fill')}
+      sizes="(min-width: 1280px) 256px, 20vw"
       alt={alt}
       loading="lazy"
       decoding="async"
       className="h-full w-full object-cover"
-      sizes="(min-width: 1024px) 20vw, (min-width: 640px) 28vw, 42vw"
     />
   </div>
 );
@@ -59,6 +76,13 @@ export const TransformationsShowcase: React.FC<TransformationsShowcaseProps> = (
   onOpenConsultation,
 }) => {
   const rootRef = useRef<HTMLDivElement | null>(null);
+  const photos = useTransformationPhotos();
+
+  // Desktop collage: square shots crop cleanly into square tiles; the wider before/after
+  // composites stay in the mobile slider, where they're shown whole.
+  const squares = photos.filter(isNearSquare);
+  const grid = (squares.length >= DESKTOP_TILE_COUNT ? squares : photos).slice(0, DESKTOP_TILE_COUNT);
+  const gridKey = grid.map((p) => p.id).join('|');
 
   // Scroll-triggered reveal: each tile gets a fixed 0.2s step, but the steps are shuffled across
   // the tiles first, so the grid doesn't visibly sweep left-to-right — it pops in at random.
@@ -66,7 +90,7 @@ export const TransformationsShowcase: React.FC<TransformationsShowcaseProps> = (
     const root = rootRef.current;
     if (!root) return;
 
-    const tiles = Array.from(root.querySelectorAll<HTMLElement>('[data-tile]'));
+    const tiles = Array.from(root.querySelectorAll<HTMLElement>('[data-tile]:not(.is-in)'));
     if (tiles.length === 0) return;
 
     if (prefersReducedMotion()) {
@@ -99,7 +123,8 @@ export const TransformationsShowcase: React.FC<TransformationsShowcaseProps> = (
 
     tiles.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, []);
+    // re-run when the live list swaps in different photos (new tile elements)
+  }, [gridKey]);
 
   const Card = (
     <div
@@ -136,6 +161,9 @@ export const TransformationsShowcase: React.FC<TransformationsShowcaseProps> = (
     </div>
   );
 
+  const altText = lang === 'en' ? 'Client transformation' : 'تحول المتدرب';
+  const at = (i: number) => grid[i % grid.length];
+
   return (
     <section id="transformations" className="relative overflow-hidden pt-16 sm:pt-20 md:pt-28 pb-16 sm:pb-20 md:pb-28">
       {/* Backdrop photo, not fixed-attachment (iOS/mobile renders `background-attachment: fixed`
@@ -146,7 +174,7 @@ export const TransformationsShowcase: React.FC<TransformationsShowcaseProps> = (
         alt=""
         loading="lazy"
         decoding="async"
-        className="absolute inset-0 w-full object-cover object-[center_20%]"
+        className="absolute inset-0 h-full w-full object-cover object-[center_20%]"
         aria-hidden="true"
       />
       <div className="absolute inset-0 bg-black/45 pointer-events-none" aria-hidden="true" />
@@ -155,40 +183,46 @@ export const TransformationsShowcase: React.FC<TransformationsShowcaseProps> = (
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div ref={rootRef} className="relative">
-          {/* Mobile & small tablet: the pitch card sits above a 2-column strip of photos */}
-          <div className="mb-6 sm:mb-8 lg:hidden">{Card}</div>
-
-          <div className="flex gap-2 sm:gap-3 md:gap-4">
-            <Column>
-              {[0, 1, 2, 3].map((i) => (
-                <Tile key={i} src={PHOTOS[i % PHOTOS.length]} alt="" className={i === 4 ? 'hidden sm:block' : undefined} />
-              ))}
-            </Column>
-
-            <Column offset="mt-6 sm:mt-8 md:mt-10">
-              {[4, 5, 6, 7].map((i) => (
-                <Tile key={i} src={PHOTOS[i % PHOTOS.length]} tall alt="" className={i === 8 ? 'hidden sm:block' : undefined} />
-              ))}
-            </Column>
-
-            <Column hide="hidden lg:flex">
-              <Tile src={PHOTOS[8 % PHOTOS.length]} alt="" />
-              {Card}
-              <Tile src={PHOTOS[9 % PHOTOS.length]} alt="" />
-            </Column>
-
-            <Column offset="mt-6 sm:mt-8 md:mt-10" hide="hidden sm:flex">
-              {[10, 11, 12, 13].map((i) => (
-                <Tile key={i} src={PHOTOS[i % PHOTOS.length]} tall alt="" />
-              ))}
-            </Column>
-
-            <Column hide="hidden lg:flex">
-              {[14, 15, 16, 17].map((i) => (
-                <Tile key={i} src={PHOTOS[i % PHOTOS.length]} alt="" />
-              ))}
-            </Column>
+          {/* Mobile & tablet (< lg): pitch card, then a swipeable slider with every photo */}
+          <div className="lg:hidden">
+            <div className="mb-6 sm:mb-8">{Card}</div>
+            <TransformationsSlider photos={photos} lang={lang} />
           </div>
+
+          {/* Desktop (lg+): 5-column collage with the card in the centre */}
+          {grid.length > 0 && (
+            <div className="hidden lg:flex gap-2 sm:gap-3 md:gap-4">
+              <Column>
+                {[0, 1, 2, 3].map((i) => (
+                  <Tile key={`d1-${i}`} photo={at(i)} alt={altText} />
+                ))}
+              </Column>
+
+              <Column offset="mt-6 sm:mt-8 md:mt-10">
+                {[4, 5, 6, 7].map((i) => (
+                  <Tile key={`d2-${i}`} photo={at(i)} alt={altText} />
+                ))}
+              </Column>
+
+              <Column>
+                <Tile photo={at(8)} alt={altText} />
+                {Card}
+                <Tile photo={at(9)} alt={altText} />
+              </Column>
+
+              <Column offset="mt-6 sm:mt-8 md:mt-10">
+                {[10, 11, 12, 13].map((i) => (
+                  <Tile key={`d4-${i}`} photo={at(i)} alt={altText} />
+                ))}
+              </Column>
+
+              <Column>
+                {[14, 15, 16, 17].map((i) => (
+                  <Tile key={`d5-${i}`} photo={at(i)} alt={altText} />
+                ))}
+              </Column>
+            </div>
+          )}
         </div>
       </div>
     </section>
