@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { cn } from '../utils/cn';
 import { Language } from '../translations';
 import { BrandLogo } from './BrandLogo';
+import { WhatsappIcon } from './WhatsappIcon';
 
 interface FormPageProps {
   lang: Language;
@@ -543,9 +544,10 @@ export const FormPage: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
                   <button
                     type="button"
                     onClick={handleSubmit}
-                    className="flex-1 py-4 min-h-[52px] text-sm font-black uppercase tracking-wider text-black bg-[#8cffdb] hover:bg-[#77d9ba] shadow-[0_0_24px_rgba(140,255,219,0.35)] transition-colors cursor-pointer"
+                    className="flex-1 py-4 min-h-[52px] text-sm font-black uppercase tracking-wider text-black bg-[#8cffdb] hover:bg-[#77d9ba] shadow-[0_0_24px_rgba(140,255,219,0.35)] transition-colors cursor-pointer flex items-center justify-center gap-2"
                   >
-                    {en ? '📲 Submit via WhatsApp →' : '📲 إرسال عبر واتساب ←'}
+                    <WhatsappIcon className="w-5 h-5 shrink-0" />
+                    <span>{en ? 'Submit via WhatsApp →' : 'إرسال عبر واتساب ←'}</span>
                   </button>
                 )}
               </div>
@@ -620,7 +622,8 @@ export const FormPage: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
                   rel="noopener noreferrer"
                   className="flex w-full items-center justify-center gap-2.5 py-4 min-h-[52px] text-xs font-black uppercase tracking-wider text-black bg-[#8cffdb] hover:bg-[#77d9ba] transition-colors cursor-pointer"
                 >
-                  💬 {en ? 'Resend via WhatsApp' : 'إعادة الإرسال عبر واتساب'}
+                  <WhatsappIcon className="w-4 h-4 shrink-0" />
+                  <span>{en ? 'Resend via WhatsApp' : 'إعادة الإرسال عبر واتساب'}</span>
                 </a>
                 <button
                   type="button"

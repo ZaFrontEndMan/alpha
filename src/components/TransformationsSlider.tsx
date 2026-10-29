@@ -51,6 +51,20 @@ function scrollToIndex(scroller: HTMLElement, index: number, smooth = true) {
   const r = slide.getBoundingClientRect();
   const delta = r.left + r.width / 2 - (box.left + box.width / 2);
   if (smooth && !prefersReducedMotion()) {
+    if (Math.abs(delta) > box.width * 1.5) {
+      scroller.style.scrollSnapType = 'none';
+      scroller.scrollBy({ left: delta, behavior: 'smooth' });
+      let done = false;
+      const restore = () => {
+        if (done) return;
+        done = true;
+        scroller.style.scrollSnapType = '';
+        scroller.removeEventListener('scrollend', restore);
+      };
+      scroller.addEventListener('scrollend', restore);
+      window.setTimeout(restore, 700);
+      return;
+    }
     scroller.scrollBy({ left: delta, behavior: 'smooth' });
     return;
   }
@@ -303,10 +317,7 @@ const Lightbox: React.FC<{
       aria-label={en ? 'Transformation photos' : 'صور التحولات'}
       className="fixed inset-0 z-[70] flex flex-col bg-black/95 backdrop-blur-sm overscroll-contain"
     >
-      <div className="relative z-10 flex items-center justify-between px-4 pt-[max(0.75rem,env(safe-area-inset-top))] pb-2">
-        <span className="text-xs font-bold tabular-nums tracking-widest text-neutral-300" aria-live="polite">
-          {active + 1} / {photos.length}
-        </span>
+      <div className="relative z-10 flex items-center justify-end px-4 pt-[max(0.75rem,env(safe-area-inset-top))] pb-2">
         <button
           ref={closeRef}
           type="button"
@@ -362,10 +373,84 @@ export const TransformationsSlider: React.FC<{ photos: TransformationPhoto[]; la
   const en = lang === 'en';
   const count = photos.length;
 
+  const pauseUntil = useRef(0);
+  const isInteracting = useRef(false);
+  const [isInView, setIsInView] = useState(false);
+  const activeRef = useRef(active);
+  activeRef.current = active;
+
   const go = (i: number) => {
+    pauseUntil.current = Date.now() + 4000;
     const el = scrollerRef.current;
     if (el) scrollToIndex(el, Math.max(0, Math.min(count - 1, i)));
   };
+
+  // Only auto-slide when the section is in the viewport
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') {
+      setIsInView(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsInView(entry.isIntersecting);
+        });
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Pause auto-sliding while the user is actively swiping or touching
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+
+    const onTouchStart = () => {
+      isInteracting.current = true;
+    };
+    const onTouchEnd = () => {
+      isInteracting.current = false;
+      pauseUntil.current = Date.now() + 3500;
+    };
+
+    el.addEventListener('touchstart', onTouchStart, { passive: true });
+    el.addEventListener('touchend', onTouchEnd, { passive: true });
+    el.addEventListener('touchcancel', onTouchEnd, { passive: true });
+    el.addEventListener('pointerdown', onTouchStart, { passive: true });
+    el.addEventListener('pointerup', onTouchEnd, { passive: true });
+    el.addEventListener('pointercancel', onTouchEnd, { passive: true });
+
+    return () => {
+      el.removeEventListener('touchstart', onTouchStart);
+      el.removeEventListener('touchend', onTouchEnd);
+      el.removeEventListener('touchcancel', onTouchEnd);
+      el.removeEventListener('pointerdown', onTouchStart);
+      el.removeEventListener('pointerup', onTouchEnd);
+      el.removeEventListener('pointercancel', onTouchEnd);
+    };
+  }, []);
+
+  // Smooth automatic sliding
+  useEffect(() => {
+    if (viewer !== null || !isInView || count <= 1 || prefersReducedMotion()) return;
+
+    const timer = window.setInterval(() => {
+      if (isInteracting.current || Date.now() < pauseUntil.current || document.hidden) {
+        return;
+      }
+      const el = scrollerRef.current;
+      if (!el) return;
+
+      const next = (activeRef.current + 1) % count;
+      scrollToIndex(el, next, true);
+    }, 1000);
+
+    return () => window.clearInterval(timer);
+  }, [viewer, isInView, count]);
 
   // closing the viewer leaves the slider on the photo you ended on
   const closeViewer = useCallback((i: number) => {
@@ -407,7 +492,7 @@ export const TransformationsSlider: React.FC<{ photos: TransformationPhoto[]; la
             className={cn(
               'relative aspect-square w-[80vw] sm:w-[48vw] md:w-[38vw] shrink-0 snap-center snap-always overflow-hidden',
               'rounded-xl border border-neutral-800/80 bg-[#121614] shadow-2xl cursor-pointer',
-              'transition-[transform,opacity] duration-300 ease-out',
+              'transition-[transform,opacity] duration-500 ease-out',
               i === active ? 'opacity-100' : 'scale-[0.94] opacity-60'
             )}
           >
@@ -435,9 +520,6 @@ export const TransformationsSlider: React.FC<{ photos: TransformationPhoto[]; la
             style={{ width: `${((active + 1) / count) * 100}%` }}
           />
         </div>
-        <span className="min-w-[3.5rem] text-center text-xs font-bold tabular-nums text-neutral-300" aria-live="polite">
-          {active + 1} / {count}
-        </span>
         <NavButton dir="next" disabled={active === count - 1} onClick={() => go(active + 1)} label={en ? 'Next photo' : 'الصورة التالية'} />
       </div>
 

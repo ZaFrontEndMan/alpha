@@ -7,7 +7,6 @@ import {
   ArrowLeft,
   ArrowRight,
   RotateCcw,
-  MessageCircle,
   Copy,
   Check,
   CreditCard,
@@ -20,6 +19,7 @@ import {
 import { BrandLogo } from './BrandLogo';
 import { Language, translations } from '../translations';
 import { cn } from '../utils/cn';
+import { WhatsappIcon } from './WhatsappIcon';
 
 interface PaymentStatusProps {
   status?: 'success' | 'failed' | 'pending';
@@ -288,8 +288,8 @@ export const PaymentStatus: React.FC<PaymentStatusProps> = ({
               {effectiveStatus === 'failed' && humanized.desc}
               {effectiveStatus === 'pending' &&
                 (en
-                  ? 'Your transaction is being confirmed by the payment gateway or bank. If you selected cash/kiosk, please fulfill the payment before it expires.'
-                  : 'معاملتك قيد التأكيد من قِبل بوابة الدفع أو البنك. إذا اخترت الدفع عبر منافذ فوري/أمان، يرجى السداد قبل انتهاء صلاحية الكود.')}
+                  ? 'Your transaction is being confirmed by the payment gateway or bank.'
+                  : 'معاملتك قيد التأكيد من قِبل بوابة الدفع أو البنك.')}
             </p>
 
             {/* Package & Amount Highlight Banner */}
@@ -399,7 +399,7 @@ export const PaymentStatus: React.FC<PaymentStatusProps> = ({
                 rel="noopener noreferrer"
                 className="min-h-[50px] bg-[#8cffdb] text-black font-black text-xs sm:text-sm uppercase tracking-wider hover:bg-[#77d9ba] flex items-center justify-center gap-2 rounded-xl transition-all shadow-[0_0_25px_rgba(140,255,219,0.3)] cursor-pointer"
               >
-                <MessageCircle className="w-4 h-4 fill-black" />
+                <WhatsappIcon className="w-4 h-4 shrink-0 text-black" />
                 <span>{en ? 'Chat on WhatsApp to Start' : 'تواصل مع د. أحمد عبر واتساب'}</span>
               </a>
 
@@ -433,7 +433,7 @@ export const PaymentStatus: React.FC<PaymentStatusProps> = ({
                   rel="noopener noreferrer"
                   className="min-h-[50px] bg-[#25D366]/20 border border-[#25D366]/50 hover:bg-[#25D366]/30 text-[#8cffdb] font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 rounded-xl transition-colors cursor-pointer"
                 >
-                  <MessageCircle className="w-4 h-4 fill-[#25D366]" />
+                  <WhatsappIcon className="w-4 h-4 shrink-0 text-[#25D366]" />
                   <span>{en ? 'Pay via InstaPay / WhatsApp' : 'الدفع عبر إنستاباي / واتساب'}</span>
                 </a>
               </div>
@@ -466,7 +466,7 @@ export const PaymentStatus: React.FC<PaymentStatusProps> = ({
                 rel="noopener noreferrer"
                 className="min-h-[50px] bg-neutral-900 border border-neutral-700 hover:border-neutral-500 text-white font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 rounded-xl transition-colors cursor-pointer"
               >
-                <MessageCircle className="w-4 h-4 text-[#8cffdb]" />
+                <WhatsappIcon className="w-4 h-4 shrink-0 text-[#8cffdb]" />
                 <span>{en ? 'Contact Support on WhatsApp' : 'مساعدة عبر واتساب'}</span>
               </a>
             </div>

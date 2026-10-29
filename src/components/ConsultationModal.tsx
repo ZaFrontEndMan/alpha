@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ConsultationFormData } from '../types';
 import { Language } from '../translations';
 import { cn } from '../utils/cn';
+import { WhatsappIcon } from './WhatsappIcon';
 
 interface ConsultationModalProps {
   isOpen: boolean;
@@ -426,7 +427,8 @@ Looking forward to starting my 90-day transformation!`
                 rel="noopener noreferrer"
                 className="inline-flex w-full items-center justify-center gap-2 py-3.5 min-h-[48px] text-xs font-black uppercase tracking-wider text-black bg-[#8cffdb] hover:bg-[#77d9ba] cursor-pointer"
               >
-                {lang === 'en' ? 'Fast-Track via WhatsApp Direct' : 'محادثة سريعة عبر الواتساب مباشرة'}
+                <WhatsappIcon className="w-4 h-4 shrink-0 text-black" />
+                <span>{lang === 'en' ? 'Fast-Track via WhatsApp Direct' : 'محادثة سريعة عبر الواتساب مباشرة'}</span>
               </a>
 
               <button

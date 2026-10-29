@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CreditCard, Store, Copy, Check, MessageCircle, ArrowLeft, ArrowRight, ShieldCheck } from 'lucide-react';
+import { CreditCard, Copy, Check, ArrowLeft, ArrowRight, ShieldCheck } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
 import { translations, Language } from '../translations';
 import { cn } from '../utils/cn';
 import instapayIcon from '../assets/images/instapay.png';
+import { WhatsappIcon } from './WhatsappIcon';
 
-type PaymentMethod = 'card' | 'instapay' | 'cash';
+type PaymentMethod = 'card' | 'instapay';
 
 interface PaymentCheckoutProps {
   lang: Language;
@@ -14,8 +15,8 @@ interface PaymentCheckoutProps {
 }
 
 const PACKAGE_IDS = new Set(['starter', 'elite', 'alpha-vip', 'consultation']);
-const INSTAPAY_NUMBER = '01002146690';
-const WHATSAPP_NUMBER = '201002146690';
+const INSTAPAY_NUMBER = '01063920763';
+const WHATSAPP_NUMBER = '201063920763';
 
 export const PaymentCheckout: React.FC<PaymentCheckoutProps> = ({ lang, onToggleLang }) => {
   const navigate = useNavigate();
@@ -150,7 +151,7 @@ export const PaymentCheckout: React.FC<PaymentCheckoutProps> = ({ lang, onToggle
             <legend className="text-xs font-bold text-neutral-300 mb-2.5">
               {en ? '1. Select payment method' : '١. اختر وسيلة الدفع'}
             </legend>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {/* Card Option */}
               <button
                 type="button"
@@ -179,21 +180,6 @@ export const PaymentCheckout: React.FC<PaymentCheckoutProps> = ({ lang, onToggle
               >
                 <img src={instapayIcon} alt="InstaPay" className="h-5 w-auto object-contain" />
                 <span>{en ? 'InstaPay' : 'إنستاباي'}</span>
-              </button>
-
-              {/* Cash / Kiosk Option */}
-              <button
-                type="button"
-                onClick={() => setMethod('cash')}
-                className={cn(
-                  'min-h-[52px] px-3.5 py-2.5 border rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer',
-                  method === 'cash'
-                    ? 'border-[#8cffdb] bg-[#8cffdb]/10 text-[#8cffdb] shadow-[0_0_15px_rgba(140,255,219,0.15)]'
-                    : 'border-neutral-700 bg-neutral-900/50 text-neutral-300 hover:border-neutral-600'
-                )}
-              >
-                <Store className="w-4 h-4" />
-                <span>{en ? 'Cash / Kiosk' : 'نقدي / كشك (فوري)'}</span>
               </button>
             </div>
           </fieldset>
@@ -330,7 +316,7 @@ export const PaymentCheckout: React.FC<PaymentCheckoutProps> = ({ lang, onToggle
               type="submit"
               className="w-full min-h-[52px] bg-[#25D366] hover:bg-[#20ba59] text-black font-black text-sm uppercase tracking-wider rounded-xl transition-all shadow-[0_0_20px_rgba(37,211,102,0.3)] flex items-center justify-center gap-2 cursor-pointer"
             >
-              <MessageCircle className="w-5 h-5 fill-black" />
+              <WhatsappIcon className="w-5 h-5 shrink-0" />
               <span>{en ? 'Confirm on WhatsApp & Send Receipt' : 'تأكيد التحويل عبر واتساب وإرسال الإيصال'}</span>
             </button>
           ) : (
