@@ -4,7 +4,7 @@ import { cn } from '../utils/cn';
 
 /** Which client photo backs each review, by file name in assets/transformation (1.jpg, 2.jpg, …).
  *  Swap these numbers so each quote shows its own client. */
-const REVIEW_PHOTO = [3, 6, 10];
+const REVIEW_PHOTO = [16, 17, 18]; // Zeyad, Sisi, Nizar
 
 const PHOTOS = import.meta.glob('../assets/transformation/*.jpg', { eager: true, import: 'default' }) as Record<
   string,
@@ -26,7 +26,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
   onOpenConsultation,
 }) => {
   return (
-    <section className="py-20 md:py-28 section-blend @container">
+    <section id="reviews" className="py-20 md:py-28 section-blend @container">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-14">
@@ -51,6 +51,17 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
               key={idx}
               className="bg-[#090b0a] border border-neutral-800 p-8 flex flex-col justify-between hover:border-neutral-700 transition-colors relative group"
             >
+              {/* Full before/after photo — shown whole, never cropped */}
+              <div data-reveal-skip className="-mx-8 -mt-8 mb-6 border-b border-neutral-800 bg-black">
+                <img
+                  src={photoFor(idx)}
+                  alt={item.name}
+                  loading="lazy"
+                  decoding="async"
+                  className="block w-full h-auto"
+                />
+              </div>
+
               {/* Highlight badge at top */}
               <div className="flex items-center justify-between pb-4 mb-4 border-b border-neutral-800">
                 <span className="text-xs font-mono font-bold text-[#8cffdb]">
@@ -68,25 +79,6 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
 
               {/* Client Profile Lockup */}
               <div className="pt-4 border-t border-neutral-800 flex items-center gap-4">
-                {/* Client Avatar Graphic */}
-                {/* Each source photo is a before/after pair, so the avatar zooms into the
-                    "after" side's head and shoulders — a plain crop would sit between the two. */}
-                {/* data-reveal-skip: the shared scroll-reveal observer needs 12% of an image in
-                    view, and this one is clipped to a sliver of its zoomed self, so it would
-                    never cross that threshold and would sit at opacity 0 forever. */}
-                <div
-                  data-reveal-skip
-                  className="w-14 h-14 shrink-0 overflow-hidden border border-neutral-700 group-hover:border-[#8cffdb] transition-colors"
-                >
-                  <img
-                    src={photoFor(idx)}
-                    alt={item.name}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover scale-[3] origin-[82%_12%]"
-                  />
-                </div>
-
                 <div>
                   <div className="text-base font-bold text-white leading-tight">
                     {item.name}

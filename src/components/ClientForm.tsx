@@ -4,6 +4,7 @@ import { cn } from '../utils/cn';
 import { Language } from '../translations';
 import { BrandLogo } from './BrandLogo';
 import { WhatsappIcon } from './WhatsappIcon';
+import { getFormAccess, clearFormAccess } from '../utils/paymentAccess';
 
 interface FormPageProps {
   lang: Language;
@@ -150,7 +151,75 @@ const CheckOption: React.FC<{
 );
 
 // ─── Main Page ───────────────────────────────────────────────────────────────
-export const FormPage: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
+// ─── Payment gate: the form is only available after a successful payment ────
+export const FormPage: React.FC<FormPageProps> = (props) => {
+  const [hasAccess] = useState(() => getFormAccess() !== null);
+  return hasAccess ? <FormPageContent {...props} /> : <PaymentRequired {...props} />;
+};
+
+const PaymentRequired: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
+  const navigate = useNavigate();
+  const en = lang === 'en';
+
+  useEffect(() => {
+    document.documentElement.setAttribute('dir', en ? 'ltr' : 'rtl');
+    document.documentElement.setAttribute('lang', lang);
+  }, [lang, en]);
+
+  return (
+    <div className={cn('min-h-screen w-full bg-[#090b0a] text-neutral-100 flex flex-col', en ? 'font-sans' : 'font-cairo')}>
+      <header className="sticky top-0 z-40 bg-[#090b0a]/95 backdrop-blur-md border-b border-neutral-800">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+          <button
+            type="button"
+            onClick={() => navigate('/')}
+            className="flex items-center gap-2 text-neutral-400 hover:text-white transition-colors text-sm font-semibold cursor-pointer"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            {en ? 'Back to site' : 'العودة للموقع'}
+          </button>
+          <a href="/" className="shrink-0">
+            <BrandLogo size={28} />
+          </a>
+          <button
+            type="button"
+            onClick={onToggleLang}
+            className="px-3 py-1.5 text-xs font-bold border border-neutral-700 bg-neutral-900/80 hover:border-[#8cffdb] hover:text-[#8cffdb] text-neutral-300 transition-colors cursor-pointer min-h-[36px]"
+          >
+            {en ? 'عربي' : 'EN'}
+          </button>
+        </div>
+      </header>
+
+      <main className="flex-1 flex items-center justify-center px-4 sm:px-6 py-16">
+        <div className="w-full max-w-md text-center border border-neutral-800 bg-[#0f1311] p-8 sm:p-10">
+          <div className="text-xs font-mono font-bold uppercase tracking-widest text-[#8cffdb] mb-3">
+            {en ? 'Payment required' : 'الدفع مطلوب'}
+          </div>
+          <h1 className={cn('text-2xl sm:text-3xl font-black text-white mb-3', en ? 'font-sport' : 'font-cairo')}>
+            {en ? 'Choose your package first' : 'اختر باقتك أولاً'}
+          </h1>
+          <p className="text-sm text-neutral-400 leading-relaxed mb-8">
+            {en
+              ? 'The intake form unlocks right after your payment is completed successfully.'
+              : 'تُفتح استمارة المشترك مباشرة بعد إتمام عملية الدفع بنجاح.'}
+          </p>
+          <button
+            type="button"
+            onClick={() => navigate('/#packages')}
+            className="w-full px-8 py-4 min-h-[48px] text-xs sm:text-sm font-black uppercase tracking-wider text-black bg-[#8cffdb] hover:bg-[#77d9ba] transition-colors cursor-pointer"
+          >
+            {en ? 'View Packages' : 'استعراض الباقات'}
+          </button>
+        </div>
+      </main>
+    </div>
+  );
+};
+
+const FormPageContent: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
   const navigate = useNavigate();
   const en = lang === 'en';
   const [step, setStep] = useState(1);
@@ -217,6 +286,8 @@ export const FormPage: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
     window.open(url, '_blank', 'noopener,noreferrer');
     setSubmitted(true);
     setIsSubmittingForm(false);
+    // One form per payment
+    clearFormAccess();
   };
 
   const stepLabels = en ? STEP_LABELS_EN : STEP_LABELS_AR;

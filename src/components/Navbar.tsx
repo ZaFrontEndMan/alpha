@@ -12,15 +12,16 @@ interface NavbarProps {
 
 /** Same order as the sections on the page, so the nav reads top-to-bottom like the page scrolls.
  *  `calculator` scrolls through the same helper the hero button uses, hence no href. */
-type NavKey = 'home' | 'transformations' | 'workouts' | 'features' | 'comparison' | 'packages' | 'calculator' | 'faqs';
+type NavKey = 'home' | 'transformations' | 'reviews' | 'workouts' | 'features' | 'comparison' | 'packages' | 'calculator' | 'faqs';
 
 const NAV_LINKS: { href?: string; key: NavKey }[] = [
   { href: '#', key: 'home' },
   { href: '#transformations', key: 'transformations' },
+  { href: '#packages', key: 'packages' },
+  { href: '#reviews', key: 'reviews' },
   { href: '#workouts', key: 'workouts' },
   { href: '#features', key: 'features' },
   { href: '#comparison', key: 'comparison' },
-  { href: '#packages', key: 'packages' },
   { href: '/substitutions', key: 'calculator' },
   { href: '#faqs', key: 'faqs' },
 ];

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -21,7 +21,7 @@ import { PaymentCheckout } from './components/PaymentCheckout';
 import { translations, Language } from './translations';
 import { LogoIntro } from './components/LogoIntro';
 import { SocialRail } from './components/SocialRail';
-import { startScroll, useParallax, useScrollReveal, useSmoothScroll } from './components/fx';
+import { scrollToId, startScroll, useParallax, useScrollReveal, useSmoothScroll } from './components/fx';
 import { cn } from './utils/cn';
 
 // ─── Landing Page ─────────────────────────────────────────────────────────────
@@ -30,9 +30,9 @@ function LandingPage({ lang, onToggleLang }: { lang: Language; onToggleLang: () 
   const navigate = useNavigate();
   const en = lang === 'en';
 
-  const handleOpenForm = (tier?: string) => {
-    const params = tier ? `?tier=${encodeURIComponent(tier)}` : '';
-    navigate(`/form${params}`);
+  // "Start Now" CTAs scroll to the packages — the intake form unlocks after payment.
+  const handleOpenForm = () => {
+    scrollToId('packages');
   };
 
   const handleStartPayment = (packageId: string) => {
@@ -51,6 +51,15 @@ function LandingPage({ lang, onToggleLang }: { lang: Language; onToggleLang: () 
   useEffect(() => {
     startScroll();
   }, []);
+
+  // Support deep links like /#packages (used by checkout / payment pages)
+  const location = useLocation();
+  useEffect(() => {
+    const id = location.hash.replace('#', '');
+    if (!id) return;
+    const timer = window.setTimeout(() => scrollToId(id), 400);
+    return () => window.clearTimeout(timer);
+  }, [location.hash]);
 
   return (
     <div className={`min-h-screen w-full overflow-x-clip bg-[#090b0a] text-neutral-100 flex flex-col selection:bg-[#8cffdb] selection:text-black ${lang === 'ar' ? 'font-cairo' : 'font-sans'}`}>
@@ -78,6 +87,19 @@ function LandingPage({ lang, onToggleLang }: { lang: Language; onToggleLang: () 
           onOpenConsultation={() => handleOpenForm()}
         />
 
+        {/* Packages — payment starts in a secure Paymob checkout flow. */}
+        <PackagesSection
+          t={t}
+          lang={lang}
+          onStartPayment={handleStartPayment}
+        />
+
+        <Testimonials
+          t={t}
+          lang={lang}
+          onOpenConsultation={() => handleOpenForm()}
+        />
+
         <WorkoutsSection
           t={t}
           lang={lang}
@@ -85,12 +107,6 @@ function LandingPage({ lang, onToggleLang }: { lang: Language; onToggleLang: () 
         />
 
         <InspirationBanner
-          t={t}
-          lang={lang}
-          onOpenConsultation={() => handleOpenForm()}
-        />
-
-        <Testimonials
           t={t}
           lang={lang}
           onOpenConsultation={() => handleOpenForm()}
@@ -118,13 +134,6 @@ function LandingPage({ lang, onToggleLang }: { lang: Language; onToggleLang: () 
           t={t}
           lang={lang}
           onOpenConsultation={() => handleOpenForm()}
-        />
-
-        {/* Packages — payment starts in a secure Paymob checkout flow. */}
-        <PackagesSection
-          t={t}
-          lang={lang}
-          onStartPayment={handleStartPayment}
         />
 
         <HowItWorks

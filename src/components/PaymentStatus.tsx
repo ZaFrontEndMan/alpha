@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import {
   CheckCircle2,
@@ -20,6 +20,7 @@ import { BrandLogo } from './BrandLogo';
 import { Language, translations } from '../translations';
 import { cn } from '../utils/cn';
 import { WhatsappIcon } from './WhatsappIcon';
+import { grantFormAccess } from '../utils/paymentAccess';
 
 interface PaymentStatusProps {
   status?: 'success' | 'failed' | 'pending';
@@ -88,6 +89,15 @@ export const PaymentStatus: React.FC<PaymentStatusProps> = ({
   }
 
   const packageName = matchedPackage?.name || (amountNumeric ? `${amountNumeric.toLocaleString()} ${currency}` : (en ? 'Transformation Coaching' : 'برنامج التدريب والمتابعة'));
+
+  // A successful payment unlocks the intake form on /form
+  useEffect(() => {
+    if (effectiveStatus !== 'success') return;
+    grantFormAccess({
+      packageId: matchedPackage?.id || packageParam,
+      ref: merchantOrderId || orderId || transactionId,
+    });
+  }, [effectiveStatus, matchedPackage?.id, packageParam, merchantOrderId, orderId, transactionId]);
 
   const handleCopy = (text: string, field: string) => {
     if (!text) return;
@@ -405,7 +415,7 @@ export const PaymentStatus: React.FC<PaymentStatusProps> = ({
 
               <button
                 type="button"
-                onClick={() => navigate('/form')}
+                onClick={() => navigate(matchedPackage ? `/form?tier=${encodeURIComponent(`${matchedPackage.name.replace('Dr. Ahmed Assem ', '')} (${matchedPackage.priceNumeric} EGP)`)}` : '/form')}
                 className="min-h-[50px] bg-neutral-900 border border-neutral-700 hover:border-neutral-500 text-white font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 rounded-xl transition-colors cursor-pointer"
               >
                 <span>{en ? 'Complete Intake Form' : 'تعبئة استمارة المشترك'}</span>

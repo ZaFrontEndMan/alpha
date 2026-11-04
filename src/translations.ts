@@ -7,6 +7,7 @@ export interface TranslationContent {
     features: string;
     transformations: string;
     workouts: string;
+    reviews: string;
     comparison: string;
     faqs: string;
     calculator: string;
@@ -121,6 +122,7 @@ export const translations: Record<Language, TranslationContent> = {
       features: 'Features',
       transformations: 'Transformation',
       workouts: 'Workouts',
+      reviews: 'Reviews',
       comparison: 'System Comparison',
       faqs: 'FAQs',
       calculator: 'Food Substitutions',
@@ -430,6 +432,7 @@ export const translations: Record<Language, TranslationContent> = {
       features: 'المميزات',
       transformations: 'التحول',
       workouts: 'التدريب',
+      reviews: 'آراء العملاء',
       comparison: 'مقارنة النظام',
       faqs: 'الأسئلة الشائعة',
       calculator: 'بدائل الأطعمة',

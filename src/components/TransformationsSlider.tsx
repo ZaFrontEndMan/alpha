@@ -512,16 +512,7 @@ export const TransformationsSlider: React.FC<{ photos: TransformationPhoto[]; la
         ))}
       </div>
 
-      <div className="mt-5 flex items-center gap-3">
-        <NavButton dir="prev" disabled={active === 0} onClick={() => go(active - 1)} label={en ? 'Previous photo' : 'الصورة السابقة'} />
-        <div className="relative h-1 flex-1 overflow-hidden rounded-full bg-neutral-800" aria-hidden="true">
-          <div
-            className="absolute inset-y-0 start-0 rounded-full bg-[#8cffdb] transition-[width] duration-300 ease-out"
-            style={{ width: `${((active + 1) / count) * 100}%` }}
-          />
-        </div>
-        <NavButton dir="next" disabled={active === count - 1} onClick={() => go(active + 1)} label={en ? 'Next photo' : 'الصورة التالية'} />
-      </div>
+
 
       {viewer !== null && <Lightbox photos={photos} start={viewer} lang={lang} onClose={closeViewer} />}
     </div>
