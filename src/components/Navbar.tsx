@@ -20,9 +20,9 @@ const NAV_LINKS: { href?: string; key: NavKey }[] = [
   { href: '#packages', key: 'packages' },
   { href: '#reviews', key: 'reviews' },
   { href: '#workouts', key: 'workouts' },
+  { href: '/substitutions', key: 'calculator' },
   { href: '#features', key: 'features' },
   { href: '#comparison', key: 'comparison' },
-  { href: '/substitutions', key: 'calculator' },
   { href: '#faqs', key: 'faqs' },
 ];
 

@@ -106,6 +106,40 @@ function LandingPage({ lang, onToggleLang }: { lang: Language; onToggleLang: () 
           onOpenConsultation={() => handleOpenForm()}
         />
 
+        {/* Food Substitution Feature Section */}
+        <section id="substitutions" className="py-20 md:py-28 section-blend @container">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+              <div>
+                <div className="text-xs font-bold tracking-widest text-[#8cffdb] uppercase mb-3">
+                  {en ? 'NUTRITION PROTOCOL' : 'بروتوكول التغذية الرياضية'}
+                </div>
+                <h2 className={cn(
+                  'text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight [text-wrap:balance]',
+                  en ? 'font-sport' : 'font-cairo'
+                )}>
+                  {en ? 'Exact Food Substitution System' : 'نظام بدائل الأطعمة الدقيق'}
+                </h2>
+                <p className="mt-3 text-neutral-400 text-sm max-w-2xl leading-relaxed">
+                  {en
+                    ? 'Swap any food with equal macro equivalents calculated from Dr. Ahmed Assem’s clinical nutrition database.'
+                    : 'استبدل أي طعام ببديله الدقيق من قاعدة بيانات د. أحمد عاصم الرياضية والطبية.'}
+                </p>
+              </div>
+
+              <button
+                type="button"
+                onClick={handleNavigateToSubstitutions}
+                className="px-5 py-3 text-xs font-black uppercase tracking-wider text-black bg-[#8cffdb] hover:bg-[#77d9ba] transition-colors cursor-pointer self-start md:self-end whitespace-nowrap"
+              >
+                {en ? 'Open Fullscreen Tool ↗' : 'فتح الأداة بالكامل ↗'}
+              </button>
+            </div>
+
+            <SubstitutionTool lang={lang} />
+          </div>
+        </section>
+
         <InspirationBanner
           t={t}
           lang={lang}
@@ -141,40 +175,6 @@ function LandingPage({ lang, onToggleLang }: { lang: Language; onToggleLang: () 
           lang={lang}
           onOpenConsultation={() => handleOpenForm()}
         />
-
-        {/* Food Substitution Feature Section */}
-        <section id="substitutions" className="py-20 md:py-28 section-blend @container">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
-              <div>
-                <div className="text-xs font-bold tracking-widest text-[#8cffdb] uppercase mb-3">
-                  {en ? 'NUTRITION PROTOCOL' : 'بروتوكول التغذية الرياضية'}
-                </div>
-                <h2 className={cn(
-                  'text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight [text-wrap:balance]',
-                  en ? 'font-sport' : 'font-cairo'
-                )}>
-                  {en ? 'Exact Food Substitution System' : 'نظام بدائل الأطعمة الدقيق'}
-                </h2>
-                <p className="mt-3 text-neutral-400 text-sm max-w-2xl leading-relaxed">
-                  {en
-                    ? 'Swap any food with equal macro equivalents calculated from Dr. Ahmed Assem’s clinical nutrition database.'
-                    : 'استبدل أي طعام ببديله الدقيق من قاعدة بيانات د. أحمد عاصم الرياضية والطبية.'}
-                </p>
-              </div>
-
-              <button
-                type="button"
-                onClick={handleNavigateToSubstitutions}
-                className="px-5 py-3 text-xs font-black uppercase tracking-wider text-black bg-[#8cffdb] hover:bg-[#77d9ba] transition-colors cursor-pointer self-start md:self-end whitespace-nowrap"
-              >
-                {en ? 'Open Fullscreen Tool ↗' : 'فتح الأداة بالكامل ↗'}
-              </button>
-            </div>
-
-            <SubstitutionTool lang={lang} />
-          </div>
-        </section>
 
         <FAQSection t={t} lang={lang} />
       </main>
