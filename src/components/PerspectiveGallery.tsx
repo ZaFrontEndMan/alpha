@@ -181,7 +181,7 @@ export const PerspectiveGallery: React.FC<{ photos: TransformationPhoto[]; alt: 
           ref={(el) => {
             cardRefs.current[i] = el;
           }}
-          className="absolute left-0 top-1/2 overflow-hidden rounded-xl sm:rounded-2xl bg-[#121614] border border-neutral-800/80 shadow-2xl will-change-transform"
+          className="absolute left-0 top-1/2 overflow-hidden rounded-xl sm:rounded-2xl bg-[#262A30] border border-neutral-800/80 shadow-2xl will-change-transform"
           style={{ visibility: 'hidden' }}
         >
           <img

@@ -14,11 +14,11 @@ export const ComparisonSection: React.FC<ComparisonSectionProps> = ({
   onOpenConsultation,
 }) => {
   return (
-    <section id="comparison" className="py-20 md:py-28 bg-[#090b0a] @container">
+    <section id="comparison" className="py-20 md:py-28 bg-[#1C1F24] @container">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-14">
-          <div className="text-xs font-bold tracking-widest text-[#8cffdb] uppercase mb-3">
+          <div className="text-xs font-bold tracking-widest text-[#E5484D] uppercase mb-3">
             {t.comparison.tag}
           </div>
           <h2 className={cn(
@@ -33,13 +33,13 @@ export const ComparisonSection: React.FC<ComparisonSectionProps> = ({
         </div>
 
         {/* Comparison Table / Container-responsive cards */}
-        <div className="border border-neutral-800 bg-[#0c0f0d] overflow-hidden">
+        <div className="border border-neutral-800 bg-[#1E2126] overflow-hidden">
           {/* Table Header Row (Desktop) */}
-          <div className="hidden md:grid md:grid-cols-12 bg-[#121614] border-b border-neutral-800 text-xs font-bold uppercase tracking-wider font-mono">
+          <div className="hidden md:grid md:grid-cols-12 bg-[#262A30] border-b border-neutral-800 text-xs font-bold uppercase tracking-wider font-mono">
             <div className="p-4 md:col-span-4 text-neutral-300">
               {lang === 'en' ? 'EVALUATION CRITERIA' : 'معايير التقييم والمقارنة'}
             </div>
-            <div className="p-4 md:col-span-4 text-[#8cffdb] bg-[#161d18] border-x border-neutral-800 flex items-center gap-2">
+            <div className="p-4 md:col-span-4 text-[#E5484D] bg-[#2B2F35] border-x border-neutral-800 flex items-center gap-2">
               <span>★</span>
               <span>{lang === 'en' ? "DR. AHMED ASSEM'S SYSTEM" : 'نظام د. أحمد عاصم'}</span>
             </div>
@@ -58,14 +58,14 @@ export const ComparisonSection: React.FC<ComparisonSectionProps> = ({
                 {/* Column 1: Criteria */}
                 <div className="p-4 md:col-span-4 font-bold text-white flex items-center">
                   <div className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 bg-[#8cffdb] rounded-none shrink-0" />
+                    <span className="w-1.5 h-1.5 bg-[#B8232F] rounded-none shrink-0" />
                     <span>{row.criteria}</span>
                   </div>
                 </div>
 
                 {/* Column 2: Dr. Ahmed Assem System */}
-                <div className="p-4 md:col-span-4 text-neutral-100 bg-[#141a16]/60 md:border-x border-neutral-800/90 flex items-start gap-2.5">
-                  <span className="text-[#8cffdb] font-bold font-mono text-sm shrink-0">✓</span>
+                <div className="p-4 md:col-span-4 text-neutral-100 bg-[#292D33]/60 md:border-x border-neutral-800/90 flex items-start gap-2.5">
+                  <span className="text-[#E5484D] font-bold font-mono text-sm shrink-0">✓</span>
                   <span className="leading-relaxed font-medium">{row.drAssem}</span>
                 </div>
 
@@ -80,7 +80,7 @@ export const ComparisonSection: React.FC<ComparisonSectionProps> = ({
         </div>
 
         {/* CTA Bar */}
-        <div className="mt-10 p-6 bg-[#111713] border border-neutral-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-10 p-6 bg-[#262A30] border border-neutral-800 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-xs sm:text-sm text-neutral-300 text-center sm:text-start">
             {lang === 'en'
               ? 'Don’t gamble your health and hard work with unproven guesswork. Work directly with a doctor and pro athlete.'
@@ -89,7 +89,7 @@ export const ComparisonSection: React.FC<ComparisonSectionProps> = ({
           <button
             type="button"
             onClick={onOpenConsultation}
-            className="w-full sm:w-auto px-7 py-3 min-h-[44px] text-xs font-black uppercase tracking-wider text-black bg-[#8cffdb] hover:bg-[#77d9ba] transition-colors cursor-pointer text-center whitespace-nowrap"
+            className="w-full sm:w-auto px-7 py-3 min-h-[44px] text-xs font-black uppercase tracking-wider text-[#E9E9E4] bg-[#B8232F] hover:bg-[#9C1D28] transition-colors cursor-pointer text-center whitespace-nowrap"
           >
             {t.hero.ctaStart}
           </button>

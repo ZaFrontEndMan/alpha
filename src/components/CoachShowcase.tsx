@@ -15,11 +15,11 @@ interface CoachShowcaseProps {
  */
 export const CoachShowcase: React.FC<CoachShowcaseProps> = ({ t, lang, onOpenConsultation }) => {
   return (
-    <section className="relative isolate overflow-hidden bg-[#090b0a] py-16 sm:py-24 md:py-32 @container">
+    <section className="relative isolate overflow-hidden bg-[#1C1F24] py-16 sm:py-24 md:py-32 @container">
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-end gap-8 px-4 sm:px-6 lg:grid-cols-12 lg:gap-6 lg:px-8">
         {/* Copy column */}
         <div className="order-2 lg:order-1 lg:col-span-6 xl:col-span-5">
-          <div className="text-xs font-bold tracking-widest text-[#8cffdb] uppercase mb-3">
+          <div className="text-xs font-bold tracking-widest text-[#E5484D] uppercase mb-3">
             {lang === 'en' ? 'THE MAN BEHIND THE SYSTEM' : 'الرجل وراء النظام'}
           </div>
           <h2
@@ -40,7 +40,7 @@ export const CoachShowcase: React.FC<CoachShowcaseProps> = ({ t, lang, onOpenCon
 
           <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4 font-mono">
             <div>
-              <div className="text-2xl sm:text-3xl font-black text-[#8cffdb] tabular-nums">
+              <div className="text-2xl sm:text-3xl font-black text-[#E5484D] tabular-nums">
                 {t.stats.experienceYears}
               </div>
               <div className="text-xs text-neutral-400 uppercase mt-0.5">{t.stats.experienceLabel}</div>
@@ -56,7 +56,7 @@ export const CoachShowcase: React.FC<CoachShowcaseProps> = ({ t, lang, onOpenCon
           <button
             type="button"
             onClick={onOpenConsultation}
-            className="mt-8 inline-flex min-h-[44px] items-center justify-center bg-[#8cffdb] px-7 py-3 text-xs sm:text-sm font-black uppercase tracking-wider text-black transition-colors hover:bg-[#77d9ba] cursor-pointer"
+            className="mt-8 inline-flex min-h-[44px] items-center justify-center bg-[#B8232F] px-7 py-3 text-xs sm:text-sm font-black uppercase tracking-wider text-[#E9E9E4] transition-colors hover:bg-[#9C1D28] cursor-pointer"
           >
             {t.hero.ctaStart}
           </button>
@@ -69,7 +69,7 @@ export const CoachShowcase: React.FC<CoachShowcaseProps> = ({ t, lang, onOpenCon
           <div
             className={cn(
               'pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 select-none text-center leading-none whitespace-nowrap',
-              'text-[30vw] sm:text-[22vw] lg:text-[13vw] font-black tracking-tighter text-[#8cffdb]/[0.09]',
+              'text-[30vw] sm:text-[22vw] lg:text-[13vw] font-black tracking-tighter text-[#E5484D]/[0.09]',
               lang === 'en' ? 'font-sport' : 'font-cairo'
             )}
             aria-hidden="true"

@@ -4,9 +4,9 @@
 //   body   = top bar, vertical, arrow notch and the second stroke
 export const LOGO_W = 909;
 export const LOGO_H = 544;
-export const LOGO_LIME = '#8cffdb';
+export const LOGO_LIME = '#B8232F';
 export const LOGO_WHITE = '#FFFFFF';
-export const LOGO_INK = '#111613';
+export const LOGO_INK = '#262A30';
 
 export type LogoPiece = 'stroke' | 'body';
 

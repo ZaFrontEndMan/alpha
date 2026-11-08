@@ -138,7 +138,7 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-14 max-w-3xl">
-          <div className="text-xs font-bold tracking-widest text-[#8cffdb] uppercase mb-3">
+          <div className="text-xs font-bold tracking-widest text-[#E5484D] uppercase mb-3">
             {t.packages.tag}
           </div>
           <h2 className={cn(
@@ -157,13 +157,13 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({
               className={cn(
                 "p-8 border flex flex-col justify-between transition-all relative",
                 pkg.popular
-                  ? "bg-[#111713] border-[#8cffdb] shadow-[0_0_30px_rgba(140,255,219,0.12)]"
-                  : "bg-[#090b0a] border-neutral-800 hover:border-neutral-700"
+                  ? "bg-[#262A30] border-[#B8232F] shadow-[0_0_30px_rgba(184,35,47,0.12)]"
+                  : "bg-[#1C1F24] border-neutral-800 hover:border-neutral-700"
               )}
             >
               {/* Popular Badge */}
               {pkg.popular && (
-                <div className="absolute -top-3.5 start-8 bg-[#8cffdb] text-black px-3.5 py-0.5 text-[11px] font-black uppercase tracking-wider">
+                <div className="absolute -top-3.5 start-8 bg-[#B8232F] text-[#E9E9E4] px-3.5 py-0.5 text-[11px] font-black uppercase tracking-wider">
                   {lang === 'en' ? 'RECOMMENDED · ELITE' : 'الباقة الأكثر طلباً · تميز'}
                 </div>
               )}
@@ -182,7 +182,7 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({
 
                 {/* Price Display */}
                 <div className="pb-6 mb-6 border-b border-neutral-800">
-                  <div className="text-3xl sm:text-4xl font-black text-white font-mono tabular-nums text-[#8cffdb]">
+                  <div className="text-3xl sm:text-4xl font-black text-white font-mono tabular-nums text-[#E5484D]">
                     {formatPrice(pkg.priceNumeric)}
                   </div>
                   <div className="text-[11px] text-neutral-400 mt-1">
@@ -196,7 +196,7 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({
                 <ul className="space-y-2.5 text-xs text-neutral-300 mb-8">
                   {pkg.features.map((feat, idx) => (
                     <li key={idx} className="flex items-start gap-2.5">
-                      <span className="text-[#8cffdb] font-bold font-mono text-sm shrink-0">✓</span>
+                      <span className="text-[#E5484D] font-bold font-mono text-sm shrink-0">✓</span>
                       <span className="leading-relaxed">{feat}</span>
                     </li>
                   ))}
@@ -210,7 +210,7 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({
                   className={cn(
                     "w-full py-3.5 px-4 min-h-[44px] text-xs font-black uppercase tracking-wider transition-all cursor-pointer text-center",
                     pkg.popular
-                      ? "bg-[#8cffdb] text-black hover:bg-[#77d9ba] shadow-[0_0_20px_rgba(140,255,219,0.3)]"
+                      ? "bg-[#B8232F] text-[#E9E9E4] hover:bg-[#9C1D28] shadow-[0_0_20px_rgba(184,35,47,0.3)]"
                       : "bg-neutral-900 border border-neutral-700 text-white hover:bg-neutral-800 hover:border-neutral-500"
                   )}
                 >
@@ -232,10 +232,10 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({
 
         {/* 4th Package: 1-on-1 Consultation Session Card */}
         {t.packages.items.length >= 4 && (
-          <div className="bg-[#121614] border border-neutral-800 p-8 sm:p-10 relative overflow-hidden">
+          <div className="bg-[#262A30] border border-neutral-800 p-8 sm:p-10 relative overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               <div className="lg:col-span-8">
-                <div className="text-xs font-mono font-bold text-[#8cffdb] uppercase tracking-wider mb-2">
+                <div className="text-xs font-mono font-bold text-[#E5484D] uppercase tracking-wider mb-2">
                   {lang === 'en' ? 'PRIVATE 1-ON-1 STRATEGY CALL' : 'جلسة استشارية خاصة فردية'}
                 </div>
                 <h3 className={cn(
@@ -249,7 +249,7 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({
                 </p>
 
                 {t.packages.items[3].note && (
-                  <div className="p-3 bg-[#18201a] border border-[#8cffdb]/30 text-xs text-[#8cffdb] font-semibold mb-6">
+                  <div className="p-3 bg-[#2E3238] border border-[#B8232F]/30 text-xs text-[#E5484D] font-semibold mb-6">
                     {t.packages.items[3].note}
                   </div>
                 )}
@@ -257,7 +257,7 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-neutral-300 font-medium">
                   {t.packages.items[3].features.map((f, i) => (
                     <div key={i} className="flex items-center gap-2">
-                      <span className="text-[#8cffdb] font-mono font-bold">›</span>
+                      <span className="text-[#E5484D] font-mono font-bold">›</span>
                       <span>{f}</span>
                     </div>
                   ))}
@@ -268,7 +268,7 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({
                 <button
                   type="button"
                   onClick={() => onStartPayment(t.packages.items[3].id)}
-                  className="w-full sm:w-auto px-8 py-4 min-h-[48px] text-xs font-black uppercase tracking-wider text-black bg-[#8cffdb] hover:bg-[#77d9ba] transition-colors cursor-pointer text-center"
+                  className="w-full sm:w-auto px-8 py-4 min-h-[48px] text-xs font-black uppercase tracking-wider text-[#E9E9E4] bg-[#B8232F] hover:bg-[#9C1D28] transition-colors cursor-pointer text-center"
                 >
                   {lang === 'en' ? 'PAY NOW' : 'ادفع الآن'}
                 </button>

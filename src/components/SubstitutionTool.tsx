@@ -217,12 +217,12 @@ function FoodSearchDropdown({
         className={cn(
           'w-full min-h-[52px] px-4 py-2.5 bg-neutral-900 border text-start transition-all cursor-pointer flex items-center justify-between gap-3',
           isOpen
-            ? 'border-[#8cffdb] ring-2 ring-[#8cffdb]/20 bg-[#0f1411]'
+            ? 'border-[#B8232F] ring-2 ring-[#B8232F]/20 bg-[#23262B]'
             : 'border-neutral-700 hover:border-neutral-500 bg-neutral-900'
         )}
       >
         <div className="flex items-center gap-3 min-w-0">
-          <svg className="w-4 h-4 text-[#8cffdb] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-4 h-4 text-[#E5484D] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
           <div className="min-w-0">
@@ -234,7 +234,7 @@ function FoodSearchDropdown({
                 <span className="text-xs text-neutral-400 font-mono">
                   ({en ? selectedMeal.titleAr : selectedMeal.titleEn})
                 </span>
-                <span className="px-2 py-0.5 text-[10px] font-mono font-bold bg-[#8cffdb]/15 text-[#8cffdb] border border-[#8cffdb]/30">
+                <span className="px-2 py-0.5 text-[10px] font-mono font-bold bg-[#B8232F]/15 text-[#E5484D] border border-[#B8232F]/30">
                   {getCategoryLabel(selectedMeal.type, lang as 'en' | 'ar')}
                 </span>
                 {selectedMeal.noteEn && (
@@ -267,7 +267,7 @@ function FoodSearchDropdown({
             </span>
           )}
           <svg
-            className={cn('w-4 h-4 text-neutral-400 transition-transform duration-200', isOpen && 'rotate-180 text-[#8cffdb]')}
+            className={cn('w-4 h-4 text-neutral-400 transition-transform duration-200', isOpen && 'rotate-180 text-[#E5484D]')}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -281,11 +281,11 @@ function FoodSearchDropdown({
       {isOpen && (
         <div
           data-lenis-prevent
-          className="absolute z-50 inset-x-0 top-full mt-2 bg-[#0d120f] border border-[#8cffdb]/40 shadow-2xl backdrop-blur-xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-150"
+          className="absolute z-50 inset-x-0 top-full mt-2 bg-[#212429] border border-[#B8232F]/40 shadow-2xl backdrop-blur-xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-150"
           style={{ maxHeight: '440px' }}
         >
           {/* Search Bar */}
-          <div className="p-3 border-b border-neutral-800 bg-[#090c0a] sticky top-0 z-10 space-y-2.5">
+          <div className="p-3 border-b border-neutral-800 bg-[#1C1F24] sticky top-0 z-10 space-y-2.5">
             <div className="relative flex items-center">
               <svg className="absolute start-3 w-3.5 h-3.5 text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -296,7 +296,7 @@ function FoodSearchDropdown({
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={en ? 'Type to search (e.g. olive oil, rice, شوفان, زيت)...' : 'ابحث بالاسم (مثال: زيت زيتون، أرز، شوفان)...'}
-                className="w-full h-10 ps-9 pe-8 bg-neutral-900 border border-neutral-700 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-[#8cffdb]"
+                className="w-full h-10 ps-9 pe-8 bg-neutral-900 border border-neutral-700 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-[#B8232F]"
               />
               {searchQuery && (
                 <button
@@ -320,7 +320,7 @@ function FoodSearchDropdown({
                 className={cn(
                   'px-2.5 py-1 font-bold whitespace-nowrap transition-colors cursor-pointer border',
                   activeCategory === 'All'
-                    ? 'bg-[#8cffdb] text-black border-[#8cffdb]'
+                    ? 'bg-[#B8232F] text-[#E9E9E4] border-[#B8232F]'
                     : 'bg-neutral-900 text-neutral-400 border-neutral-800 hover:text-white'
                 )}
               >
@@ -334,7 +334,7 @@ function FoodSearchDropdown({
                   className={cn(
                     'px-2.5 py-1 font-bold whitespace-nowrap transition-colors cursor-pointer border',
                     activeCategory === cat
-                      ? 'bg-[#8cffdb] text-black border-[#8cffdb]'
+                      ? 'bg-[#B8232F] text-[#E9E9E4] border-[#B8232F]'
                       : 'bg-neutral-900 text-neutral-400 border-neutral-800 hover:text-white'
                   )}
                 >
@@ -367,12 +367,12 @@ function FoodSearchDropdown({
                     className={cn(
                       'w-full px-3.5 py-2.5 flex items-center justify-between text-start transition-colors cursor-pointer group',
                       isSelected
-                        ? 'bg-[#8cffdb]/15 text-[#8cffdb]'
+                        ? 'bg-[#B8232F]/15 text-[#E5484D]'
                         : 'hover:bg-neutral-800/70 text-neutral-200'
                     )}
                   >
                     <div className="min-w-0">
-                      <div className="text-xs font-bold capitalize text-white group-hover:text-[#8cffdb] transition-colors truncate">
+                      <div className="text-xs font-bold capitalize text-white group-hover:text-[#E5484D] transition-colors truncate">
                         {en ? food.titleEn : food.titleAr}
                       </div>
                       <div className="text-[10px] text-neutral-400 font-mono">
@@ -390,7 +390,7 @@ function FoodSearchDropdown({
                         {getCategoryLabel(food.type, lang as 'en' | 'ar')}
                       </span>
                       {isSelected && (
-                        <span className="text-xs text-[#8cffdb] font-bold">✓</span>
+                        <span className="text-xs text-[#E5484D] font-bold">✓</span>
                       )}
                     </div>
                   </button>
@@ -512,7 +512,7 @@ export const SubstitutionTool: React.FC<SubstitutionToolProps> = ({ lang }) => {
               key={ex.title}
               type="button"
               onClick={() => handleApplyPreset(ex.title, ex.amt)}
-              className="px-3 py-1.5 bg-neutral-900 border border-neutral-800 hover:border-[#8cffdb] hover:text-[#8cffdb] text-neutral-300 font-medium whitespace-nowrap transition-colors cursor-pointer"
+              className="px-3 py-1.5 bg-neutral-900 border border-neutral-800 hover:border-[#B8232F] hover:text-[#E5484D] text-neutral-300 font-medium whitespace-nowrap transition-colors cursor-pointer"
             >
               {ex.label}
             </button>
@@ -521,8 +521,8 @@ export const SubstitutionTool: React.FC<SubstitutionToolProps> = ({ lang }) => {
       </div>
 
       {/* Main Control Box */}
-      <div className="bg-[#121614] border border-neutral-800 p-6 sm:p-8 relative shadow-2xl">
-        <div className="pointer-events-none absolute -top-24 -end-24 w-80 h-80 bg-[#8cffdb]/5 rounded-full blur-3xl" />
+      <div className="bg-[#262A30] border border-neutral-800 p-6 sm:p-8 relative shadow-2xl">
+        <div className="pointer-events-none absolute -top-24 -end-24 w-80 h-80 bg-[#B8232F]/5 rounded-full blur-3xl" />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           {/* Left: Food Selector Dropdown with Search */}
@@ -550,7 +550,7 @@ export const SubstitutionTool: React.FC<SubstitutionToolProps> = ({ lang }) => {
               <button
                 type="button"
                 onClick={() => handleStepAmount(-1)}
-                className="w-12 h-[52px] bg-neutral-900 border border-neutral-700 hover:border-[#8cffdb] text-neutral-200 hover:text-[#8cffdb] text-lg font-bold flex items-center justify-center cursor-pointer transition-colors"
+                className="w-12 h-[52px] bg-neutral-900 border border-neutral-700 hover:border-[#B8232F] text-neutral-200 hover:text-[#E5484D] text-lg font-bold flex items-center justify-center cursor-pointer transition-colors"
                 title={en ? 'Decrease amount' : 'تقليل'}
               >
                 −
@@ -566,9 +566,9 @@ export const SubstitutionTool: React.FC<SubstitutionToolProps> = ({ lang }) => {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   placeholder={en ? 'e.g. 150' : 'مثال: ١٥٠'}
-                  className="w-full h-[52px] bg-neutral-900 border border-neutral-700 px-4 pe-20 text-base font-mono font-bold text-white placeholder-neutral-500 focus:outline-none focus:border-[#8cffdb]"
+                  className="w-full h-[52px] bg-neutral-900 border border-neutral-700 px-4 pe-20 text-base font-mono font-bold text-white placeholder-neutral-500 focus:outline-none focus:border-[#B8232F]"
                 />
-                <span className="absolute end-3 top-1/2 -translate-y-1/2 text-xs font-mono font-bold text-[#8cffdb] px-2 py-1 bg-neutral-800 border border-neutral-700">
+                <span className="absolute end-3 top-1/2 -translate-y-1/2 text-xs font-mono font-bold text-[#E5484D] px-2 py-1 bg-neutral-800 border border-neutral-700">
                   {selectedMeal ? getUnitLabel(selectedMeal.unit, lang as 'en' | 'ar', parseFloat(inputValue) || 1) : (en ? 'gm' : 'جرام')}
                 </span>
               </div>
@@ -577,7 +577,7 @@ export const SubstitutionTool: React.FC<SubstitutionToolProps> = ({ lang }) => {
               <button
                 type="button"
                 onClick={() => handleStepAmount(1)}
-                className="w-12 h-[52px] bg-neutral-900 border border-neutral-700 hover:border-[#8cffdb] text-neutral-200 hover:text-[#8cffdb] text-lg font-bold flex items-center justify-center cursor-pointer transition-colors"
+                className="w-12 h-[52px] bg-neutral-900 border border-neutral-700 hover:border-[#B8232F] text-neutral-200 hover:text-[#E5484D] text-lg font-bold flex items-center justify-center cursor-pointer transition-colors"
                 title={en ? 'Increase amount' : 'زيادة'}
               >
                 +
@@ -597,7 +597,7 @@ export const SubstitutionTool: React.FC<SubstitutionToolProps> = ({ lang }) => {
                   className={cn(
                     'px-2.5 py-0.5 text-[11px] font-mono border transition-colors cursor-pointer shrink-0',
                     inputValue === String(val)
-                      ? 'bg-[#8cffdb] text-black border-[#8cffdb] font-bold'
+                      ? 'bg-[#B8232F] text-[#E9E9E4] border-[#B8232F] font-bold'
                       : 'bg-neutral-900 text-neutral-400 border-neutral-800 hover:text-white hover:border-neutral-600'
                   )}
                 >
@@ -614,12 +614,12 @@ export const SubstitutionTool: React.FC<SubstitutionToolProps> = ({ lang }) => {
             {/* Header with Title and Copy / Share Actions */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
               <div>
-                <div className="text-[11px] font-mono uppercase tracking-widest text-[#8cffdb]">
+                <div className="text-[11px] font-mono uppercase tracking-widest text-[#E5484D]">
                   {en ? 'MATCHING SUBSTITUTES' : 'البدائل المعادلة في نفس المجموعة'}
                 </div>
                 <h3 className={cn('text-xl sm:text-2xl font-black text-white mt-1', en ? 'font-sport' : 'font-cairo')}>
                   {en ? 'Equivalent to' : 'يعادل'}{' '}
-                  <span className="text-[#8cffdb]">
+                  <span className="text-[#E5484D]">
                     {inputValue} {getUnitLabel(selectedMeal.unit, lang as 'en' | 'ar', parseFloat(inputValue) || 1)} {en ? selectedMeal.titleEn : selectedMeal.titleAr}
                   </span>
                 </h3>
@@ -630,7 +630,7 @@ export const SubstitutionTool: React.FC<SubstitutionToolProps> = ({ lang }) => {
                 <button
                   type="button"
                   onClick={handleCopySummary}
-                  className="px-3.5 py-2 bg-neutral-900 border border-neutral-700 hover:border-[#8cffdb] hover:text-[#8cffdb] text-neutral-300 text-xs font-mono font-bold flex items-center gap-2 cursor-pointer transition-colors"
+                  className="px-3.5 py-2 bg-neutral-900 border border-neutral-700 hover:border-[#B8232F] hover:text-[#E5484D] text-neutral-300 text-xs font-mono font-bold flex items-center gap-2 cursor-pointer transition-colors"
                 >
                   <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
@@ -663,24 +663,24 @@ export const SubstitutionTool: React.FC<SubstitutionToolProps> = ({ lang }) => {
               {results.map(({ meal, value }) => (
                 <div
                   key={meal.titleEn}
-                  className="p-4 bg-gradient-to-br from-neutral-900/90 to-[#0e1310] border border-neutral-800 hover:border-[#8cffdb]/60 transition-all flex items-center justify-between gap-3 group relative overflow-hidden"
+                  className="p-4 bg-gradient-to-br from-neutral-900/90 to-[#22252A] border border-neutral-800 hover:border-[#B8232F]/60 transition-all flex items-center justify-between gap-3 group relative overflow-hidden"
                 >
                   <div className="min-w-0">
-                    <div className="text-sm font-bold text-white group-hover:text-[#8cffdb] transition-colors truncate capitalize">
+                    <div className="text-sm font-bold text-white group-hover:text-[#E5484D] transition-colors truncate capitalize">
                       {en ? meal.titleEn : meal.titleAr}
                     </div>
                     <div className="text-[11px] text-neutral-400 font-mono mt-0.5">
                       {en ? meal.titleAr : meal.titleEn}
                     </div>
                     {meal.noteEn && (
-                      <div className="text-[10px] text-[#8cffdb]/80 font-mono mt-1">
+                      <div className="text-[10px] text-[#E5484D]/80 font-mono mt-1">
                         {en ? meal.noteEn : meal.noteAr}
                       </div>
                     )}
                   </div>
 
                   <div className="text-end shrink-0 font-mono">
-                    <div className="text-xl font-black text-[#8cffdb] tabular-nums tracking-tight">
+                    <div className="text-xl font-black text-[#E5484D] tabular-nums tracking-tight">
                       {value}
                       <span className="text-xs ms-1 text-neutral-400 font-normal">
                         {getUnitLabel(meal.unit, lang as 'en' | 'ar', value)}
@@ -696,7 +696,7 @@ export const SubstitutionTool: React.FC<SubstitutionToolProps> = ({ lang }) => {
 
             {/* Note & Weighed Rules */}
             <div className="mt-6 p-4 bg-neutral-950/80 border border-neutral-800/80 text-xs text-neutral-400 leading-relaxed">
-              <span className="text-[#8cffdb] font-bold me-2 font-mono">[PROTOCOL NOTE]</span>
+              <span className="text-[#E5484D] font-bold me-2 font-mono">[PROTOCOL NOTE]</span>
               <span>
                 {en
                   ? 'All weights are cooked weights, except oats and cream of rice (raw / dry weight). Ready-to-eat foods (bread, cereals, fruits, dairy, nuts, oils, whey) are weighed as eaten. Proteins & dairy are per 100 gm protein, carbohydrates per 100 gm carbs, fats per 100 gm fat, vegetables & fruits per 100 calories.'
@@ -723,17 +723,17 @@ export const SubstitutionsPage: React.FC<SubstitutionsPageProps> = ({ lang, onTo
   return (
     <div
       className={cn(
-        'min-h-screen bg-[#090b0a] text-neutral-100 flex flex-col selection:bg-[#8cffdb] selection:text-black',
+        'min-h-screen bg-[#1C1F24] text-neutral-100 flex flex-col selection:bg-[#B8232F] selection:text-[#E9E9E4]',
         lang === 'ar' ? 'font-cairo' : 'font-sans'
       )}
     >
       {/* Top Header */}
-      <header className="sticky top-0 z-40 bg-[#090b0a]/90 backdrop-blur-md border-b border-neutral-800">
+      <header className="sticky top-0 z-40 bg-[#1C1F24]/90 backdrop-blur-md border-b border-neutral-800">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-18 flex items-center justify-between gap-4">
           <button
             type="button"
             onClick={() => navigate('/')}
-            className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-neutral-300 hover:text-[#8cffdb] transition-colors cursor-pointer"
+            className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-neutral-300 hover:text-[#E5484D] transition-colors cursor-pointer"
           >
             <span className="text-base">{en ? '←' : '→'}</span>
             <span>{en ? 'Back to Home' : 'الرئيسية'}</span>
@@ -747,14 +747,14 @@ export const SubstitutionsPage: React.FC<SubstitutionsPageProps> = ({ lang, onTo
             <button
               type="button"
               onClick={onToggleLang}
-              className="px-3 py-1.5 text-xs font-bold border border-neutral-700 bg-neutral-900/80 hover:border-[#8cffdb] hover:text-[#8cffdb] text-neutral-200 transition-colors cursor-pointer"
+              className="px-3 py-1.5 text-xs font-bold border border-neutral-700 bg-neutral-900/80 hover:border-[#B8232F] hover:text-[#E5484D] text-neutral-200 transition-colors cursor-pointer"
             >
               {en ? 'العربية' : 'English'}
             </button>
             <button
               type="button"
               onClick={() => navigate('/form')}
-              className="hidden sm:inline-flex px-3.5 py-1.5 text-xs font-black uppercase tracking-wider text-black bg-[#8cffdb] hover:bg-[#77d9ba] cursor-pointer"
+              className="hidden sm:inline-flex px-3.5 py-1.5 text-xs font-black uppercase tracking-wider text-[#E9E9E4] bg-[#B8232F] hover:bg-[#9C1D28] cursor-pointer"
             >
               {en ? 'Apply Now' : 'قدم الآن'}
             </button>
@@ -765,7 +765,7 @@ export const SubstitutionsPage: React.FC<SubstitutionsPageProps> = ({ lang, onTo
       {/* Main Content */}
       <main className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-12">
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <div className="inline-block px-3 py-1 bg-[#8cffdb]/10 border border-[#8cffdb]/30 text-xs font-mono font-bold text-[#8cffdb] uppercase tracking-widest mb-4">
+          <div className="inline-block px-3 py-1 bg-[#B8232F]/10 border border-[#B8232F]/30 text-xs font-mono font-bold text-[#E5484D] uppercase tracking-widest mb-4">
             {en ? 'Dr.AHMED ASSEM NUTRITION PROTOCOL' : 'بروتوكول د.أحمد عاصم للتغذية الرياضية'}
           </div>
           <h1
@@ -787,7 +787,7 @@ export const SubstitutionsPage: React.FC<SubstitutionsPageProps> = ({ lang, onTo
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-neutral-800 py-8 bg-[#060807] text-center text-xs text-neutral-500 font-mono">
+      <footer className="border-t border-neutral-800 py-8 bg-[#15171B] text-center text-xs text-neutral-500 font-mono">
         <p>© {new Date().getFullYear()} Dr. Ahmed Assem. IFBB Pro & Clinical Nutritionist. All rights reserved.</p>
       </footer>
     </div>

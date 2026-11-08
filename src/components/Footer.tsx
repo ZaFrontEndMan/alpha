@@ -10,7 +10,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ t, lang }) => {
   return (
-    <footer className="bg-gradient-to-b from-[#090b0a] to-[#070908] text-neutral-400 py-16 @container">
+    <footer className="bg-gradient-to-b from-[#1C1F24] to-[#16191D] text-neutral-400 py-16 @container">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-neutral-800/80">
           {/* Brand Info */}
@@ -25,7 +25,7 @@ export const Footer: React.FC<FooterProps> = ({ t, lang }) => {
                 : 'غيّر حياتك بالكامل في 90 يوماً بنظام مصمم طبياً. مئات المتدربين غيروا أجسامهم بنظام مثبت علمياً بدون أي عشوائية.'}
             </p>
 
-            <div className="text-[11px] font-mono text-[#8cffdb]">
+            <div className="text-[11px] font-mono text-[#E5484D]">
               Official Platform · drahmedassem.com
             </div>
           </div>
@@ -84,7 +84,7 @@ export const Footer: React.FC<FooterProps> = ({ t, lang }) => {
                 <span className="text-neutral-500">Email:</span>{' '}
                 <a
                   href="mailto:info@drahmedassem.com"
-                  className="hover:text-[#8cffdb] transition-colors"
+                  className="hover:text-[#E5484D] transition-colors"
                 >
                   info@drahmedassem.com
                 </a>
@@ -95,7 +95,7 @@ export const Footer: React.FC<FooterProps> = ({ t, lang }) => {
                   href="https://wa.me/201158997825"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#8cffdb] transition-colors"
+                  className="hover:text-[#E5484D] transition-colors"
                 >
                   {lang === 'en' ? 'Direct Physician Desk' : 'مكتب الدكتور المباشر'}
                 </a>

@@ -43,7 +43,7 @@ const Field: React.FC<{
         min={min}
         max={max}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full bg-[#0f1311] border border-neutral-800 focus:border-[#8cffdb] focus:outline-none text-white text-lg font-bold px-3 py-2.5 min-h-[46px] transition-colors tabular-nums"
+        className="w-full bg-[#23262B] border border-neutral-800 focus:border-[#B8232F] focus:outline-none text-white text-lg font-bold px-3 py-2.5 min-h-[46px] transition-colors tabular-nums"
       />
       {suffix && (
         <span className="pointer-events-none absolute inset-y-0 end-3 flex items-center text-xs font-mono text-neutral-500">
@@ -73,8 +73,8 @@ const Choice: React.FC<{
           className={cn(
             'px-3 py-2.5 min-h-[46px] text-xs font-bold transition-colors cursor-pointer border text-start',
             value === o.id
-              ? 'bg-[#8cffdb] text-black border-[#8cffdb]'
-              : 'bg-[#0f1311] text-neutral-300 border-neutral-800 hover:border-neutral-600'
+              ? 'bg-[#B8232F] text-[#E9E9E4] border-[#B8232F]'
+              : 'bg-[#23262B] text-neutral-300 border-neutral-800 hover:border-neutral-600'
           )}
         >
           {o.label}
@@ -134,7 +134,7 @@ export const MacroCalculator: React.FC<MacroCalculatorProps> = ({ lang, onApplyW
     <section id="calculator" className="py-20 md:py-28 section-blend @container">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mb-10">
-          <div className="text-xs font-bold tracking-widest text-[#8cffdb] uppercase mb-3">
+          <div className="text-xs font-bold tracking-widest text-[#E5484D] uppercase mb-3">
             {en ? 'MACRO CALCULATOR' : 'حاسبة الماكروز'}
           </div>
           <h2
@@ -154,7 +154,7 @@ export const MacroCalculator: React.FC<MacroCalculatorProps> = ({ lang, onApplyW
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* Inputs */}
-          <div className="lg:col-span-5 bg-[#090b0a] border border-neutral-800 p-5 sm:p-6 space-y-5">
+          <div className="lg:col-span-5 bg-[#1C1F24] border border-neutral-800 p-5 sm:p-6 space-y-5">
             <Choice
               label={en ? 'Gender' : 'النوع'}
               value={gender}
@@ -190,7 +190,7 @@ export const MacroCalculator: React.FC<MacroCalculatorProps> = ({ lang, onApplyW
 
           {/* Results */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="bg-[#0f1311] border border-neutral-800 p-5 sm:p-6">
+            <div className="bg-[#23262B] border border-neutral-800 p-5 sm:p-6">
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 font-mono">
                 {macros.map((m) => (
                   <div key={m.label}>
@@ -198,7 +198,7 @@ export const MacroCalculator: React.FC<MacroCalculatorProps> = ({ lang, onApplyW
                     <div
                       className={cn(
                         'mt-1 text-2xl sm:text-3xl font-black tabular-nums',
-                        m.accent ? 'text-[#8cffdb]' : 'text-white'
+                        m.accent ? 'text-[#E5484D]' : 'text-white'
                       )}
                     >
                       {m.value}
@@ -221,7 +221,7 @@ export const MacroCalculator: React.FC<MacroCalculatorProps> = ({ lang, onApplyW
                       `${r.calories} kcal (P: ${r.protein}g, C: ${r.carbs}g, F: ${r.fat}g) for ${goal.replace(/_/g, ' ')}`
                     )
                   }
-                  className="w-full sm:w-auto px-5 py-2.5 min-h-[40px] text-xs font-black uppercase tracking-wider text-black bg-[#8cffdb] hover:bg-[#77d9ba] transition-colors cursor-pointer"
+                  className="w-full sm:w-auto px-5 py-2.5 min-h-[40px] text-xs font-black uppercase tracking-wider text-[#E9E9E4] bg-[#B8232F] hover:bg-[#9C1D28] transition-colors cursor-pointer"
                 >
                   {en ? 'Apply with a coach' : 'ابدأ بهذه الأرقام'}
                 </button>
@@ -229,7 +229,7 @@ export const MacroCalculator: React.FC<MacroCalculatorProps> = ({ lang, onApplyW
             </div>
 
             {/* Substitution list, scaled to the targets above */}
-            <div className="bg-[#0f1311] border border-neutral-800 p-5 sm:p-6">
+            <div className="bg-[#23262B] border border-neutral-800 p-5 sm:p-6">
               <div className="flex flex-wrap items-baseline justify-between gap-2 mb-4">
                 <h3 className={cn('text-lg font-black text-white', en ? 'font-sport' : 'font-cairo')}>
                   {en ? 'Hit it with real food' : 'حقق أرقامك بأكل حقيقي'}
@@ -254,8 +254,8 @@ export const MacroCalculator: React.FC<MacroCalculatorProps> = ({ lang, onApplyW
                     className={cn(
                       'px-3 py-2 min-h-[38px] text-xs font-bold transition-colors cursor-pointer border',
                       group.id === g.id
-                        ? 'bg-[#8cffdb] text-black border-[#8cffdb]'
-                        : 'bg-[#090b0a] text-neutral-400 border-neutral-800 hover:text-white hover:border-neutral-600'
+                        ? 'bg-[#B8232F] text-[#E9E9E4] border-[#B8232F]'
+                        : 'bg-[#1C1F24] text-neutral-400 border-neutral-800 hover:text-white hover:border-neutral-600'
                     )}
                   >
                     {en ? g.en : g.ar}
@@ -289,7 +289,7 @@ export const MacroCalculator: React.FC<MacroCalculatorProps> = ({ lang, onApplyW
                         {note && <span className="block text-[11px] text-neutral-500">{note}</span>}
                       </div>
                       <div className="text-end shrink-0 font-mono">
-                        <span className="text-sm font-bold text-[#8cffdb] tabular-nums">
+                        <span className="text-sm font-bold text-[#E5484D] tabular-nums">
                           {scaled} {unit}
                         </span>
                         <span className="block text-[10px] text-neutral-500 tabular-nums">

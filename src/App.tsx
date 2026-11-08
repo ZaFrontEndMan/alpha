@@ -62,7 +62,7 @@ function LandingPage({ lang, onToggleLang }: { lang: Language; onToggleLang: () 
   }, [location.hash]);
 
   return (
-    <div className={`min-h-screen w-full overflow-x-clip bg-[#090b0a] text-neutral-100 flex flex-col selection:bg-[#8cffdb] selection:text-black ${lang === 'ar' ? 'font-cairo' : 'font-sans'}`}>
+    <div className={`min-h-screen w-full overflow-x-clip bg-[#1C1F24] text-neutral-100 flex flex-col selection:bg-[#B8232F] selection:text-[#E9E9E4] ${lang === 'ar' ? 'font-cairo' : 'font-sans'}`}>
       <LogoIntro />
       <SocialRail />
 
@@ -111,7 +111,7 @@ function LandingPage({ lang, onToggleLang }: { lang: Language; onToggleLang: () 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
               <div>
-                <div className="text-xs font-bold tracking-widest text-[#8cffdb] uppercase mb-3">
+                <div className="text-xs font-bold tracking-widest text-[#E5484D] uppercase mb-3">
                   {en ? 'NUTRITION PROTOCOL' : 'بروتوكول التغذية الرياضية'}
                 </div>
                 <h2 className={cn(
@@ -130,7 +130,7 @@ function LandingPage({ lang, onToggleLang }: { lang: Language; onToggleLang: () 
               <button
                 type="button"
                 onClick={handleNavigateToSubstitutions}
-                className="px-5 py-3 text-xs font-black uppercase tracking-wider text-black bg-[#8cffdb] hover:bg-[#77d9ba] transition-colors cursor-pointer self-start md:self-end whitespace-nowrap"
+                className="px-5 py-3 text-xs font-black uppercase tracking-wider text-[#E9E9E4] bg-[#B8232F] hover:bg-[#9C1D28] transition-colors cursor-pointer self-start md:self-end whitespace-nowrap"
               >
                 {en ? 'Open Fullscreen Tool ↗' : 'فتح الأداة بالكامل ↗'}
               </button>
@@ -182,7 +182,7 @@ function LandingPage({ lang, onToggleLang }: { lang: Language; onToggleLang: () 
       <Footer t={t} lang={lang} />
 
       {/* Mobile Sticky Quick Action Bar */}
-      <div className="sm:hidden fixed bottom-0 inset-x-0 z-40 bg-[#090b0a]/95 backdrop-blur-md border-t border-neutral-800 px-3 py-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] flex items-center gap-2">
+      <div className="sm:hidden fixed bottom-0 inset-x-0 z-40 bg-[#1C1F24]/95 backdrop-blur-md border-t border-neutral-800 px-3 py-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] flex items-center gap-2">
         <button
           type="button"
           onClick={handleNavigateToSubstitutions}
@@ -193,7 +193,7 @@ function LandingPage({ lang, onToggleLang }: { lang: Language; onToggleLang: () 
         <button
           type="button"
           onClick={() => handleOpenForm()}
-          className="flex-1 py-2 px-2 min-h-[38px] text-[0.68rem] font-black uppercase tracking-wider text-black bg-[#8cffdb] hover:bg-[#77d9ba] text-center shadow-[0_0_12px_rgba(140,255,219,0.25)] whitespace-nowrap cursor-pointer"
+          className="flex-1 py-2 px-2 min-h-[38px] text-[0.68rem] font-black uppercase tracking-wider text-[#E9E9E4] bg-[#B8232F] hover:bg-[#9C1D28] text-center shadow-[0_0_12px_rgba(184,35,47,0.25)] whitespace-nowrap cursor-pointer"
         >
           {t.hero.ctaStart}
         </button>

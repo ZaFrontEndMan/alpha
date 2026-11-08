@@ -30,7 +30,7 @@ export const WorkoutsSection: React.FC<WorkoutsSectionProps> = ({ t, lang, onOpe
   ];
 
   return (
-    <section id="workouts" className="relative overflow-hidden py-20 md:py-28 bg-[#090b0a] @container">
+    <section id="workouts" className="relative overflow-hidden py-20 md:py-28 bg-[#1C1F24] @container">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           {/* Photo */}
@@ -43,14 +43,14 @@ export const WorkoutsSection: React.FC<WorkoutsSectionProps> = ({ t, lang, onOpe
               className="w-full aspect-[4/5] sm:aspect-[3/2] lg:aspect-[4/5] object-cover rounded-xl"
             />
             <div
-              className="pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-t from-[#090b0a]/70 via-transparent to-transparent"
+              className="pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-t from-[#1C1F24]/70 via-transparent to-transparent"
               aria-hidden="true"
             />
           </div>
 
           {/* Copy */}
           <div className="lg:col-span-7">
-            <div className="text-xs font-bold tracking-widest text-[#8cffdb] uppercase mb-3">
+            <div className="text-xs font-bold tracking-widest text-[#E5484D] uppercase mb-3">
               {en ? 'TRAINING' : 'التدريب'}
             </div>
 
@@ -63,7 +63,7 @@ export const WorkoutsSection: React.FC<WorkoutsSectionProps> = ({ t, lang, onOpe
                       en ? 'font-sport' : 'font-cairo'
                     )}
                   >
-                    <span className="text-[#8cffdb]">{card.titleLead}</span> {card.title}
+                    <span className="text-[#E5484D]">{card.titleLead}</span> {card.title}
                   </h3>
                   <p className="mt-3 text-base sm:text-lg text-neutral-300 leading-relaxed max-w-2xl">{card.body}</p>
                 </div>
@@ -73,7 +73,7 @@ export const WorkoutsSection: React.FC<WorkoutsSectionProps> = ({ t, lang, onOpe
             <button
               type="button"
               onClick={onOpenConsultation}
-              className="mt-9 inline-flex min-h-[44px] items-center justify-center bg-[#8cffdb] px-7 py-3 text-xs sm:text-sm font-black uppercase tracking-wider text-black transition-colors hover:bg-[#77d9ba] cursor-pointer"
+              className="mt-9 inline-flex min-h-[44px] items-center justify-center bg-[#B8232F] px-7 py-3 text-xs sm:text-sm font-black uppercase tracking-wider text-[#E9E9E4] transition-colors hover:bg-[#9C1D28] cursor-pointer"
             >
               {t.hero.ctaStart}
             </button>

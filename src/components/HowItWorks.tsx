@@ -16,12 +16,12 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
   onOpenConsultation,
 }) => {
   return (
-    <section className="relative overflow-hidden py-20 md:py-28 bg-[#090b0a] @container">
+    <section className="relative overflow-hidden py-20 md:py-28 bg-[#1C1F24] @container">
       <SectionBackdrop src={beachPhoto} side className="object-[70%_30%] lg:object-[center_30%]" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
-          <div className="text-xs font-bold tracking-widest text-[#8cffdb] uppercase mb-3">
+          <div className="text-xs font-bold tracking-widest text-[#E5484D] uppercase mb-3">
             {t.howItWorks.tag}
           </div>
           <h2 className={cn(
@@ -37,11 +37,11 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
           {t.howItWorks.steps.map((st, idx) => (
             <div
               key={idx}
-              className="bg-[#0f1311]/85 backdrop-blur-sm border border-neutral-800 p-6 sm:p-8 flex flex-col justify-between hover:border-neutral-700 transition-colors group relative"
+              className="bg-[#23262B]/85 backdrop-blur-sm border border-neutral-800 p-6 sm:p-8 flex flex-col justify-between hover:border-neutral-700 transition-colors group relative"
             >
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <span className="font-display font-black text-2xl sm:text-3xl text-[#8cffdb] font-mono tabular-nums">
+                  <span className="font-display font-black text-2xl sm:text-3xl text-[#E5484D] font-mono tabular-nums">
                     {st.step}
                   </span>
                   <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-500">
@@ -50,7 +50,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
                 </div>
 
                 <h3 className={cn(
-                  "text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-[#8cffdb] transition-colors",
+                  "text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-[#E5484D] transition-colors",
                   lang === 'en' ? 'font-sport' : 'font-cairo'
                 )}>
                   {st.title}
@@ -63,7 +63,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
 
               <div className="mt-6 pt-4 border-t border-neutral-800/80 flex items-center justify-between text-[11px] text-neutral-400 font-mono">
                 <span>{lang === 'en' ? 'STEP' : 'الخطوة'} {st.step}</span>
-                <span className="text-[#8cffdb]">✓ SYSTEM PROTOCOL</span>
+                <span className="text-[#E5484D]">✓ SYSTEM PROTOCOL</span>
               </div>
             </div>
           ))}
@@ -74,7 +74,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
           <button
             type="button"
             onClick={onOpenConsultation}
-            className="w-full sm:w-auto px-8 py-4 min-h-[48px] text-xs sm:text-sm font-black uppercase tracking-wider text-black bg-[#8cffdb] hover:bg-[#77d9ba] transition-colors cursor-pointer text-center"
+            className="w-full sm:w-auto px-8 py-4 min-h-[48px] text-xs sm:text-sm font-black uppercase tracking-wider text-[#E9E9E4] bg-[#B8232F] hover:bg-[#9C1D28] transition-colors cursor-pointer text-center"
           >
             {t.hero.ctaStart}
           </button>

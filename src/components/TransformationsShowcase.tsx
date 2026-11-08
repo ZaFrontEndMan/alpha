@@ -49,7 +49,7 @@ export const TransformationsShowcase: React.FC<TransformationsShowcaseProps> = (
     <div
       className="mx-auto max-w-xl flex flex-col justify-center px-4 text-center"
     >
-      <span className="mx-auto mb-3 sm:mb-4 inline-flex items-center rounded-full border border-neutral-700 px-3 py-1 text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-[#8cffdb]">
+      <span className="mx-auto mb-3 sm:mb-4 inline-flex items-center rounded-full border border-neutral-700 px-3 py-1 text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-[#E5484D]">
         {lang === 'en' ? 'Transformation' : 'التحول'}
       </span>
       <h2
@@ -59,9 +59,9 @@ export const TransformationsShowcase: React.FC<TransformationsShowcaseProps> = (
         )}
       >
         {lang === 'en' ? (
-          <>Trusted by <span className="text-[#8cffdb]">500+ clients</span> who changed their physique</>
+          <>Trusted by <span className="text-[#E5484D]">500+ clients</span> who changed their physique</>
         ) : (
-          <>وثق بنا <span className="text-[#8cffdb]">أكثر من 500 متدرب</span> غيّروا شكل أجسامهم</>
+          <>وثق بنا <span className="text-[#E5484D]">أكثر من 500 متدرب</span> غيّروا شكل أجسامهم</>
         )}
       </h2>
       <p className="mt-2 sm:mt-3 text-xs sm:text-sm leading-relaxed text-neutral-300">
@@ -72,7 +72,7 @@ export const TransformationsShowcase: React.FC<TransformationsShowcaseProps> = (
       <button
         type="button"
         onClick={onOpenConsultation}
-        className="mx-auto mt-4 sm:mt-5 inline-flex min-h-[38px] sm:min-h-[40px] items-center justify-center bg-[#8cffdb] px-4 sm:px-5 py-2 sm:py-2.5 text-[11px] sm:text-xs font-black uppercase tracking-wider text-black transition-colors hover:bg-[#77d9ba] cursor-pointer whitespace-nowrap"
+        className="mx-auto mt-4 sm:mt-5 inline-flex min-h-[38px] sm:min-h-[40px] items-center justify-center bg-[#B8232F] px-4 sm:px-5 py-2 sm:py-2.5 text-[11px] sm:text-xs font-black uppercase tracking-wider text-[#E9E9E4] transition-colors hover:bg-[#9C1D28] cursor-pointer whitespace-nowrap"
       >
         {t.hero.ctaStart}
       </button>
@@ -95,8 +95,8 @@ export const TransformationsShowcase: React.FC<TransformationsShowcaseProps> = (
         aria-hidden="true"
       />
       <div className="absolute inset-0 bg-black/45 pointer-events-none" aria-hidden="true" />
-      <div className="absolute inset-x-0 top-0 h-28 sm:h-40 bg-gradient-to-b from-[#090b0a] to-transparent pointer-events-none" aria-hidden="true" />
-      <div className="absolute inset-x-0 bottom-0 h-28 sm:h-40 bg-gradient-to-t from-[#090b0a] to-transparent pointer-events-none" aria-hidden="true" />
+      <div className="absolute inset-x-0 top-0 h-28 sm:h-40 bg-gradient-to-b from-[#1C1F24] to-transparent pointer-events-none" aria-hidden="true" />
+      <div className="absolute inset-x-0 bottom-0 h-28 sm:h-40 bg-gradient-to-t from-[#1C1F24] to-transparent pointer-events-none" aria-hidden="true" />
 
       <div className="relative">
         <div className="mb-8 sm:mb-10">{Card}</div>

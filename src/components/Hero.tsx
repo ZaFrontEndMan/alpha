@@ -113,7 +113,7 @@ const TypedHeadline: React.FC<{ tokens: { w: string; accent?: boolean }[]; run: 
       <span aria-hidden="true">
         {tokens.map((tok, i) => (
           <React.Fragment key={i}>
-            <span className={cn('inline-block whitespace-nowrap', tok.accent && 'type-accent text-[#8cffdb]')}>
+            <span className={cn('inline-block whitespace-nowrap', tok.accent && 'type-accent text-[#E5484D]')}>
               {Array.from(tok.w).map((c, ci) => (
                 <span key={ci} className="type-ch" data-on="false">
                   {c === ' ' ? '\u00a0' : c}
@@ -158,16 +158,16 @@ export const Hero: React.FC<HeroProps> = ({
             className="hero-bg absolute inset-0 w-full h-full object-cover object-[center_30%] lg:object-[62%_42%]"
           />
           {/* Gradients for text contrast */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#090b0a] from-1% via-[#090b0a]/45 via-32% to-transparent to-65%" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#090b0a] via-[#090b0a]/20 to-black/25 lg:hidden" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1C1F24] from-1% via-[#1C1F24]/45 via-32% to-transparent to-65%" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1C1F24] via-[#1C1F24]/20 to-black/25 lg:hidden" />
         </div>
 
         {/* Credentials badge over the photo (desktop): anchored to the pinned frame itself
             (not the scrolling text below) so it always sits on-screen, never scrolled out of view. */}
-        <div className="hero-badge pointer-events-auto hidden lg:block absolute bottom-12 end-8 xl:end-12 w-80 p-4 bg-[#090b0a]/85 backdrop-blur-md border border-neutral-800 z-20">
+        <div className="hero-badge pointer-events-auto hidden lg:block absolute bottom-12 end-8 xl:end-12 w-80 p-4 bg-[#1C1F24]/85 backdrop-blur-md border border-neutral-800 z-20">
           <div className="flex items-center justify-between">
             <div>
-              <div className="text-[11px] font-mono uppercase tracking-wider text-[#8cffdb]">
+              <div className="text-[11px] font-mono uppercase tracking-wider text-[#E5484D]">
                 {t.stats.doctorLabel}
               </div>
               <div className="text-sm font-bold text-white mt-0.5">
@@ -175,14 +175,14 @@ export const Hero: React.FC<HeroProps> = ({
               </div>
             </div>
             <div className="text-end">
-              <div className="text-lg font-black text-[#8cffdb] font-mono leading-none">500+</div>
+              <div className="text-lg font-black text-[#E5484D] font-mono leading-none">500+</div>
               <div className="text-[10px] text-neutral-400 uppercase mt-1">{lang === 'en' ? 'Clients' : 'متدرب'}</div>
             </div>
           </div>
         </div>
 
         {/* Ambient bottom gradient inside the sticky frame, blending into the content below it */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 sm:h-36 md:h-48 bg-gradient-to-t from-[#090b0a] via-[#090b0a]/70 to-transparent z-10" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 sm:h-36 md:h-48 bg-gradient-to-t from-[#1C1F24] via-[#1C1F24]/70 to-transparent z-10" />
       </div>
 
       {/* Scrolling foreground, pulled up one screen to sit over the photo; the text travels up and clears it */}
@@ -220,7 +220,7 @@ export const Hero: React.FC<HeroProps> = ({
                     <React.Fragment key={`${lang}-${i}`}>
                       <span className="hero-word">
                         <span
-                          className={cn(tok.accent && 'hero-accent text-[#8cffdb] whitespace-nowrap')}
+                          className={cn(tok.accent && 'hero-accent text-[#E5484D] whitespace-nowrap')}
                           style={{ animationDelay: `${0.5 + i * 0.06}s` }}
                         >
                           {tok.w}
@@ -241,7 +241,7 @@ export const Hero: React.FC<HeroProps> = ({
                 <button
                   type="button"
                   onClick={onOpenConsultation}
-                  className="hero-cta relative overflow-hidden inline-flex items-center justify-center py-2.5 sm:py-4 px-4 sm:px-7 min-h-[38px] sm:min-h-[48px] text-[0.68rem] sm:text-sm font-black uppercase tracking-wider text-black bg-[#8cffdb] hover:bg-[#77d9ba] active:scale-[0.98] transition-all shadow-[0_0_16px_rgba(140,255,219,0.25)] sm:shadow-[0_0_24px_rgba(140,255,219,0.3)] whitespace-nowrap cursor-pointer"
+                  className="hero-cta relative overflow-hidden inline-flex items-center justify-center py-2.5 sm:py-4 px-4 sm:px-7 min-h-[38px] sm:min-h-[48px] text-[0.68rem] sm:text-sm font-black uppercase tracking-wider text-[#E9E9E4] bg-[#B8232F] hover:bg-[#9C1D28] active:scale-[0.98] transition-all shadow-[0_0_16px_rgba(184,35,47,0.25)] sm:shadow-[0_0_24px_rgba(184,35,47,0.3)] whitespace-nowrap cursor-pointer"
                 >
                   <span className="relative z-10">{t.hero.ctaStart}</span>
                 </button>
@@ -258,7 +258,7 @@ export const Hero: React.FC<HeroProps> = ({
               {/* Inline Unboxed Trust Metrics (count up) */}
               <div className="hero-fade mt-7 lg:mt-8 pt-5 lg:pt-6 border-t border-neutral-800 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-neutral-400 font-mono" style={{ ['--d' as any]: 0.8 }}>
                 <div className="flex items-center gap-1.5">
-                  <Count to={500} suffix="+" run={ready} delay={1300} className="font-bold text-[#8cffdb] text-sm tabular-nums" />
+                  <Count to={500} suffix="+" run={ready} delay={1300} className="font-bold text-[#E5484D] text-sm tabular-nums" />
                   <span>{t.stats.transformationsLabel}</span>
                 </div>
                 <span className="text-neutral-700" aria-hidden="true">/</span>

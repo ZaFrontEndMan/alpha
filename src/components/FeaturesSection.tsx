@@ -18,7 +18,7 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
-          <div className="text-xs font-bold tracking-widest text-[#8cffdb] uppercase mb-3">
+          <div className="text-xs font-bold tracking-widest text-[#E5484D] uppercase mb-3">
             {t.features.tag}
           </div>
           <h2 className={cn(
@@ -32,10 +32,10 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = ({
         {/* 3 Core Features Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           {/* Feature 1: Meal Plan */}
-          <div className="bg-[#090b0a] border border-neutral-800 p-8 flex flex-col justify-between hover:border-neutral-700 transition-colors group">
+          <div className="bg-[#1C1F24] border border-neutral-800 p-8 flex flex-col justify-between hover:border-neutral-700 transition-colors group">
             <div>
               {/* Feature Icon Header */}
-              <div className="w-12 h-12 bg-[#121614] border border-neutral-800 flex items-center justify-center text-[#8cffdb] font-mono font-bold mb-6 group-hover:border-[#8cffdb] transition-colors">
+              <div className="w-12 h-12 bg-[#262A30] border border-neutral-800 flex items-center justify-center text-[#E5484D] font-mono font-bold mb-6 group-hover:border-[#B8232F] transition-colors">
                 01
               </div>
 
@@ -53,14 +53,14 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = ({
 
             <div className="mt-8 pt-4 border-t border-neutral-800 flex items-center justify-between text-xs text-neutral-400 font-mono">
               <span>{lang === 'en' ? 'DIET FRAMEWORKS:' : 'الأنظمة المتاحة:'}</span>
-              <span className="text-[#8cffdb] font-bold">Balanced · Carb Cycling · Advanced</span>
+              <span className="text-[#E5484D] font-bold">Balanced · Carb Cycling · Advanced</span>
             </div>
           </div>
 
           {/* Feature 2: Workout Program */}
-          <div className="bg-[#090b0a] border border-neutral-800 p-8 flex flex-col justify-between hover:border-neutral-700 transition-colors group">
+          <div className="bg-[#1C1F24] border border-neutral-800 p-8 flex flex-col justify-between hover:border-neutral-700 transition-colors group">
             <div>
-              <div className="w-12 h-12 bg-[#121614] border border-neutral-800 flex items-center justify-center text-[#8cffdb] font-mono font-bold mb-6 group-hover:border-[#8cffdb] transition-colors">
+              <div className="w-12 h-12 bg-[#262A30] border border-neutral-800 flex items-center justify-center text-[#E5484D] font-mono font-bold mb-6 group-hover:border-[#B8232F] transition-colors">
                 02
               </div>
 
@@ -78,14 +78,14 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = ({
 
             <div className="mt-8 pt-4 border-t border-neutral-800 flex items-center justify-between text-xs text-neutral-400 font-mono">
               <span>{lang === 'en' ? 'VIDEO LIBRARY:' : 'مكتبة الفيديوهات:'}</span>
-              <span className="text-[#8cffdb] font-bold">HD Form Demonstrations</span>
+              <span className="text-[#E5484D] font-bold">HD Form Demonstrations</span>
             </div>
           </div>
 
           {/* Feature 3: Home or Gym */}
-          <div className="bg-[#090b0a] border border-neutral-800 p-8 flex flex-col justify-between hover:border-neutral-700 transition-colors group">
+          <div className="bg-[#1C1F24] border border-neutral-800 p-8 flex flex-col justify-between hover:border-neutral-700 transition-colors group">
             <div>
-              <div className="w-12 h-12 bg-[#121614] border border-neutral-800 flex items-center justify-center text-[#8cffdb] font-mono font-bold mb-6 group-hover:border-[#8cffdb] transition-colors">
+              <div className="w-12 h-12 bg-[#262A30] border border-neutral-800 flex items-center justify-center text-[#E5484D] font-mono font-bold mb-6 group-hover:border-[#B8232F] transition-colors">
                 03
               </div>
 
@@ -103,15 +103,15 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = ({
 
             <div className="mt-8 pt-4 border-t border-neutral-800 flex items-center justify-between text-xs text-neutral-400 font-mono">
               <span>{lang === 'en' ? 'FLEXIBILITY:' : 'مرونة التدريب:'}</span>
-              <span className="text-[#8cffdb] font-bold">Home Equipment & Full Gym</span>
+              <span className="text-[#E5484D] font-bold">Home Equipment & Full Gym</span>
             </div>
           </div>
         </div>
 
         {/* START NOW CTA Box */}
-        <div className="mt-16 bg-[#111713] border border-[#8cffdb]/40 p-8 sm:p-12 text-center relative overflow-hidden">
+        <div className="mt-16 bg-[#262A30] border border-[#B8232F]/40 p-8 sm:p-12 text-center relative overflow-hidden">
           <div className="max-w-2xl mx-auto space-y-4">
-            <div className="text-xs font-mono font-bold uppercase tracking-widest text-[#8cffdb]">
+            <div className="text-xs font-mono font-bold uppercase tracking-widest text-[#E5484D]">
               DR. AHMED ASSEM EXCLUSIVE SYSTEM
             </div>
             <h3 className={cn(
@@ -129,7 +129,7 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = ({
               <button
                 type="button"
                 onClick={onOpenConsultation}
-                className="w-full sm:w-auto px-8 py-4 min-h-[48px] text-xs sm:text-sm font-black uppercase tracking-wider text-black bg-[#8cffdb] hover:bg-[#77d9ba] active:scale-[0.98] transition-all shadow-[0_0_25px_rgba(140,255,219,0.35)] cursor-pointer"
+                className="w-full sm:w-auto px-8 py-4 min-h-[48px] text-xs sm:text-sm font-black uppercase tracking-wider text-[#E9E9E4] bg-[#B8232F] hover:bg-[#9C1D28] active:scale-[0.98] transition-all shadow-[0_0_25px_rgba(184,35,47,0.35)] cursor-pointer"
               >
                 {t.hero.ctaStart}
               </button>

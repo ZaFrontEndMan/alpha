@@ -29,14 +29,14 @@ export const InspirationBanner: React.FC<InspirationBannerProps> = ({
           decoding="async"
           className="absolute inset-0 h-full w-full object-cover object-[center_25%] lg:object-[75%_center] opacity-65 lg:opacity-85"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#090b0a]/90 via-[#090b0a]/50 to-transparent lg:via-[#090b0a]/35" />
-        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#090b0a] to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#090b0a] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1C1F24]/90 via-[#1C1F24]/50 to-transparent lg:via-[#1C1F24]/35" />
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#1C1F24] to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#1C1F24] to-transparent" />
       </div>
 
       {/* Ambient background glow */}
       <div
-        className="pointer-events-none absolute bottom-0 inset-x-0 mx-auto w-3/4 h-64 bg-[#8cffdb]/5 blur-[120px]"
+        className="pointer-events-none absolute bottom-0 inset-x-0 mx-auto w-3/4 h-64 bg-[#B8232F]/5 blur-[120px]"
         aria-hidden="true"
       />
 
@@ -45,7 +45,7 @@ export const InspirationBanner: React.FC<InspirationBannerProps> = ({
         <div className="max-w-3xl space-y-6 sm:space-y-8 text-start">
           {/* Header row: title pill + blend mode switcher */}
           <div className="flex flex-wrap items-center gap-3">
-            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-[#8cffdb] bg-black/55 px-3 py-1.5 rounded-full border border-neutral-800 backdrop-blur-md">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-[#E5484D] bg-black/55 px-3 py-1.5 rounded-full border border-neutral-800 backdrop-blur-md">
               <span>{t.banner.title}</span>
               <span className="text-neutral-600">·</span>
               <span>DR. AHMED ASSEM</span>
@@ -75,7 +75,7 @@ export const InspirationBanner: React.FC<InspirationBannerProps> = ({
                 key={idx}
                 className="px-4 py-2 bg-black/60 border border-neutral-700/80 backdrop-blur-md flex items-center gap-2 rounded-lg"
               >
-                <span className="text-[#8cffdb] font-mono">✓</span>
+                <span className="text-[#E5484D] font-mono">✓</span>
                 <span>{pill}</span>
               </div>
             ))}
@@ -84,7 +84,7 @@ export const InspirationBanner: React.FC<InspirationBannerProps> = ({
           {/* Key Stat Blocks */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 pt-6 border-t border-neutral-700/60 font-mono">
             <div>
-              <div className="text-3xl sm:text-4xl font-black text-[#8cffdb] tabular-nums">
+              <div className="text-3xl sm:text-4xl font-black text-[#E5484D] tabular-nums">
                 {t.stats.weeksChange}
               </div>
               <div className="text-xs text-neutral-300 mt-1 uppercase font-semibold">
@@ -116,7 +116,7 @@ export const InspirationBanner: React.FC<InspirationBannerProps> = ({
             <button
               type="button"
               onClick={onOpenConsultation}
-              className="w-full sm:w-auto px-10 py-4 min-h-[48px] text-xs sm:text-sm font-black uppercase tracking-wider text-black bg-[#8cffdb] hover:bg-[#77d9ba] active:scale-[0.98] transition-all shadow-[0_0_25px_rgba(140,255,219,0.35)] cursor-pointer"
+              className="w-full sm:w-auto px-10 py-4 min-h-[48px] text-xs sm:text-sm font-black uppercase tracking-wider text-[#E9E9E4] bg-[#B8232F] hover:bg-[#9C1D28] active:scale-[0.98] transition-all shadow-[0_0_25px_rgba(184,35,47,0.35)] cursor-pointer"
             >
               {t.banner.cta}
             </button>

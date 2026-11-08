@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+/* Clinical Red palette: Graphite #1C1F24 · Chalk #E9E9E4 · Red #B8232F · Tint #262A30.
+   Neutrals are re-tuned to cool graphite greys so every neutral-* / white class matches. */
+@theme {
+  --color-white: #E9E9E4;
+  --color-neutral-50: #F4F4F1;
+  --color-neutral-100: #E9E9E4;
+  --color-neutral-200: #D6D7D3;
+  --color-neutral-300: #BFC1BF;
+  --color-neutral-400: #A0A3A8;
+  --color-neutral-500: #7F838A;
+  --color-neutral-600: #5D6168;
+  --color-neutral-700: #43474E;
+  --color-neutral-800: #32363C;
+  --color-neutral-900: #262A30;
+  --color-neutral-950: #16191D;
+}
+
 @layer base {
   html {
     color-scheme: dark;
@@ -7,8 +24,8 @@
   }
 
   body {
-    background-color: #090b0a;
-    color: #f3f4f6;
+    background-color: #1C1F24;
+    color: #E9E9E4;
     overflow-x: clip;
     width: 100%;
   }
@@ -41,10 +58,10 @@
   }
 }
 
-/* Solid sections: lighter in the middle, but every edge is exactly the page base (#090b0a),
+/* Solid sections: lighter in the middle, but every edge is exactly the page base (#1C1F24),
    so neighbouring sections always meet on the same colour — no flat cut between them. */
 .section-blend {
-  background: linear-gradient(to bottom, #090b0a 0%, #0d110f 18%, #0d110f 82%, #090b0a 100%);
+  background: linear-gradient(to bottom, #1C1F24 0%, #212429 18%, #212429 82%, #1C1F24 100%);
 }
 
 /* ------------------------------------------------------------------ */
@@ -106,7 +123,7 @@ html.lenis body {
   to { transform: none; opacity: 1; }
 }
 
-/* outline draws itself in white, fills white, then turns lime */
+/* outline draws itself in white, fills white, then turns red */
 .intro-piece path {
   fill: transparent;
   stroke: #ffffff;
@@ -127,7 +144,7 @@ html.lenis body {
 @keyframes intro-fill {
   0% { fill: rgba(255, 255, 255, 0); stroke: #ffffff; }
   35% { fill: #ffffff; stroke: #ffffff; }
-  100% { fill: var(--final, #8cffdb); stroke: var(--final, #8cffdb); }
+  100% { fill: var(--final, #B8232F); stroke: var(--final, #B8232F); }
 }
 
 /* Ensure brand logo displays with blend mode to cleanly remove dark background */
@@ -316,7 +333,7 @@ img[src*="brand-logo"] {
   to { transform: none; }
 }
 
-/* the lime phrase gets an underline that sweeps in after the words land */
+/* the red phrase gets an underline that sweeps in after the words land */
 .hero-accent {
   position: relative;
 }
@@ -326,7 +343,7 @@ img[src*="brand-logo"] {
   inset-inline: 0;
   bottom: 0.02em;
   height: 0.09em;
-  background: #8cffdb;
+  background: #B8232F;
   transform: scaleX(0);
   transform-origin: left;
 }
@@ -457,7 +474,7 @@ img[src*="brand-logo"] {
   bottom: 0.08em;
   width: 0.09em;
   margin-inline-start: 0.04em;
-  background: #8cffdb;
+  background: #B8232F;
 }
 .type-accent {
   position: relative;
@@ -468,7 +485,7 @@ img[src*="brand-logo"] {
   inset-inline: 0;
   bottom: 0.02em;
   height: 0.09em;
-  background: #8cffdb;
+  background: #B8232F;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.6s var(--intro-ease);

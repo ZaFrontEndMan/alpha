@@ -15,12 +15,12 @@ export const WhyChoose: React.FC<WhyChooseProps> = ({
   onOpenConsultation,
 }) => {
   return (
-    <section className="py-20 md:py-28 bg-[#090b0a] @container">
+    <section className="py-20 md:py-28 bg-[#1C1F24] @container">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header + the coach with his IFBB medal */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-end mb-16">
           <div className="lg:col-span-7 max-w-3xl">
-            <div className="text-xs font-bold tracking-widest text-[#8cffdb] uppercase mb-3">
+            <div className="text-xs font-bold tracking-widest text-[#E5484D] uppercase mb-3">
               {t.whyChoose.tag}
             </div>
             <h2 className={cn(
@@ -45,10 +45,10 @@ export const WhyChoose: React.FC<WhyChooseProps> = ({
                 decoding="async"
                 className="absolute inset-0 w-full h-full object-cover object-[50%_35%]"
               />
-              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#090b0a] to-transparent" aria-hidden="true" />
+              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#1C1F24] to-transparent" aria-hidden="true" />
             </div>
-            <figcaption className="absolute bottom-4 inset-x-4 flex items-center justify-between gap-3 p-3 bg-[#090b0a]/90 backdrop-blur-md border border-neutral-800 text-xs font-mono">
-              <span className="text-[#8cffdb] font-bold uppercase tracking-wider">IFBB Federation</span>
+            <figcaption className="absolute bottom-4 inset-x-4 flex items-center justify-between gap-3 p-3 bg-[#1C1F24]/90 backdrop-blur-md border border-neutral-800 text-xs font-mono">
+              <span className="text-[#E5484D] font-bold uppercase tracking-wider">IFBB Federation</span>
               <span className="text-neutral-300">{lang === 'en' ? 'Medalist' : 'حاصل على ميدالية'}</span>
             </figcaption>
           </figure>
@@ -59,14 +59,14 @@ export const WhyChoose: React.FC<WhyChooseProps> = ({
           {t.whyChoose.pillars.map((pillar, idx) => (
             <div
               key={idx}
-              className="bg-[#0f1311] border border-neutral-800 p-8 flex flex-col justify-between hover:border-neutral-700 transition-colors relative group"
+              className="bg-[#23262B] border border-neutral-800 p-8 flex flex-col justify-between hover:border-neutral-700 transition-colors relative group"
             >
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <span className="font-display font-black text-3xl sm:text-4xl text-[#8cffdb] font-mono tabular-nums">
+                  <span className="font-display font-black text-3xl sm:text-4xl text-[#E5484D] font-mono tabular-nums">
                     {pillar.number}
                   </span>
-                  <div className="w-10 h-10 bg-[#161c18] border border-neutral-800 flex items-center justify-center text-xs font-mono text-neutral-400">
+                  <div className="w-10 h-10 bg-[#2B2F35] border border-neutral-800 flex items-center justify-center text-xs font-mono text-neutral-400">
                     AA
                   </div>
                 </div>
@@ -85,16 +85,16 @@ export const WhyChoose: React.FC<WhyChooseProps> = ({
 
               <div className="mt-8 pt-4 border-t border-neutral-800/80 flex items-center justify-between text-xs text-neutral-400 font-mono">
                 <span>{lang === 'en' ? 'CLINICAL INTEGRATION' : 'إشراف طبي متكامل'}</span>
-                <span className="text-[#8cffdb]">100% EVIDENCE-BASED</span>
+                <span className="text-[#E5484D]">100% EVIDENCE-BASED</span>
               </div>
             </div>
           ))}
         </div>
 
         {/* 500+ Track Record Spotlight Banner */}
-        <div className="mt-12 p-8 bg-[#121614] border border-neutral-800 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-12 p-8 bg-[#262A30] border border-neutral-800 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-6">
-            <div className="font-display font-black text-5xl sm:text-6xl text-[#8cffdb] font-mono tabular-nums">
+            <div className="font-display font-black text-5xl sm:text-6xl text-[#E5484D] font-mono tabular-nums">
               500+
             </div>
             <div>
@@ -112,7 +112,7 @@ export const WhyChoose: React.FC<WhyChooseProps> = ({
           <button
             type="button"
             onClick={onOpenConsultation}
-            className="w-full md:w-auto px-8 py-3.5 min-h-[44px] text-xs font-black uppercase tracking-wider text-black bg-[#8cffdb] hover:bg-[#77d9ba] transition-colors cursor-pointer text-center whitespace-nowrap"
+            className="w-full md:w-auto px-8 py-3.5 min-h-[44px] text-xs font-black uppercase tracking-wider text-[#E9E9E4] bg-[#B8232F] hover:bg-[#9C1D28] transition-colors cursor-pointer text-center whitespace-nowrap"
           >
             {t.hero.ctaStart}
           </button>
