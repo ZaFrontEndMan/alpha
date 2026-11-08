@@ -417,7 +417,7 @@ export const SubstitutionTool: React.FC<SubstitutionToolProps> = ({ lang }) => {
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [copied, setCopied] = useState<boolean>(false);
 
-  // Exact formula matching clinical exchanges:
+  // Exact formula matching nutrition exchanges:
   // effectivePortion = enteredValue / equalHundred
   // substitute.value = effectivePortion * substitute.equalHundred
   const results = useMemo(() => {
@@ -778,7 +778,7 @@ export const SubstitutionsPage: React.FC<SubstitutionsPageProps> = ({ lang, onTo
           </h1>
           <p className="mt-4 text-sm sm:text-base text-neutral-400 leading-relaxed">
             {en
-              ? 'Select or search any food in your diet plan to get instant equivalent portions calculated from Dr. Ahmed Assem’s clinical nutrition protocol.'
+              ? 'Select or search any food in your diet plan to get instant equivalent portions calculated from Dr. Ahmed Assem’s nutrition protocol.'
               : 'اختر أو ابحث عن أي طعام في نظامك الغذائي للحصول فوراً على بدائل دقيقة محسوبة من بروتوكول التغذية الرياضية لدكتور أحمد عاصم.'}
           </p>
         </div>
@@ -788,7 +788,7 @@ export const SubstitutionsPage: React.FC<SubstitutionsPageProps> = ({ lang, onTo
 
       {/* Footer */}
       <footer className="border-t border-neutral-800 py-8 bg-[#15171B] text-center text-xs text-neutral-500 font-mono">
-        <p>© {new Date().getFullYear()} Dr. Ahmed Assem. IFBB Pro & Clinical Nutritionist. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Dr. Ahmed Assem. IFBB Pro & Nutrition Coach. All rights reserved.</p>
       </footer>
     </div>
   );

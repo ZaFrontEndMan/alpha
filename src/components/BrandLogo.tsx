@@ -6,7 +6,7 @@ interface BrandLogoProps {
   style?: React.CSSProperties;
 }
 
-/** Dr. Ahmed Assem's supplied cosmetic-dentist wordmark. */
+/** Dr. Ahmed Assem's supplied wordmark. */
 export const BrandLogo: React.FC<BrandLogoProps> = ({
   className = '',
   size = 36,
@@ -15,7 +15,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
   return (
     <img
       src="/brand-logo.png"
-      alt="Dr. Ahmed Assem Cosmetic Dentist"
+      alt="Dr. Ahmed Assem"
       className={`block w-auto max-w-none object-contain mix-blend-screen transition-transform duration-300 hover:scale-105 ${className}`}
       style={{
         height: typeof size === 'number' ? `${size}px` : size,

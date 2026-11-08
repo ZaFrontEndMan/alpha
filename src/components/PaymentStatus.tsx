@@ -293,8 +293,8 @@ export const PaymentStatus: React.FC<PaymentStatusProps> = ({
             <p className="text-sm sm:text-base text-neutral-300 max-w-xl mx-auto leading-relaxed mb-6">
               {effectiveStatus === 'success' &&
                 (en
-                  ? 'Your payment was processed successfully. Our coaching and medical team will contact you within 24 hours to begin your tailored protocol.'
-                  : 'تم استلام وتأكيد دفعتك بنجاح. سيتواصل معك الفريق الطبي والتدريبي خلال 24 ساعة للبدء في خطتك المخصصة.')}
+                  ? 'Your payment was processed successfully. Our coaching team will contact you within 24 hours to begin your tailored protocol.'
+                  : 'تم استلام وتأكيد دفعتك بنجاح. سيتواصل معك فريق التدريب خلال 24 ساعة للبدء في خطتك المخصصة.')}
               {effectiveStatus === 'failed' && humanized.desc}
               {effectiveStatus === 'pending' &&
                 (en

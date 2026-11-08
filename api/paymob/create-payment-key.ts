@@ -9,7 +9,7 @@ type BillingRequest = {
 const packages: Record<string, { name: string; amountCents: number }> = {
   starter: { name: 'Transformation System', amountCents: 450000 },
   elite: { name: 'Elite Coaching', amountCents: 700000 },
-  'alpha-vip': { name: 'Dr. Ahmed Assem VIP Medical Mastery', amountCents: 1200000 },
+  'alpha-vip': { name: 'Dr. Ahmed Assem VIP Mastery', amountCents: 1200000 },
   consultation: { name: '1-on-1 Strategy Consultation', amountCents: 200000 },
 };
 

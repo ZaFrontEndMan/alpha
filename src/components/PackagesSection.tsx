@@ -187,8 +187,8 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({
                   </div>
                   <div className="text-[11px] text-neutral-400 mt-1">
                     {lang === 'en'
-                      ? 'All-inclusive medical coaching protocol'
-                      : 'إشراف طبي وتدريبي كامل متكامل'}
+                      ? 'All-inclusive VIP coaching protocol'
+                      : 'إشراف تدريبي كامل ومتكامل'}
                   </div>
                 </div>
 

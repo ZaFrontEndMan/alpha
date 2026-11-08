@@ -29,13 +29,13 @@ export const CoachShowcase: React.FC<CoachShowcaseProps> = ({ t, lang, onOpenCon
             )}
           >
             {lang === 'en'
-              ? 'IFBB Pro Physique, Medical Doctor, Your Coach'
-              : 'بطل IFBB برو محترف، طبيب بشري، ومدربك الشخصي'}
+              ? 'IFBB Pro Physique Athlete, Your Coach'
+              : 'بطل IFBB برو محترف ومدربك الشخصي'}
           </h2>
           <p className="mt-4 max-w-md text-base sm:text-lg text-neutral-300 leading-relaxed">
             {lang === 'en'
-              ? 'Dr. Ahmed Assem built his own physique the same way he builds yours — with lab work, periodized training, and zero guesswork.'
-              : 'د. أحمد عاصم بنى جسمه بنفس الطريقة اللي هيبني بيها جسمك — بتحاليل طبية، وتدريب مبرمج علمياً، وبدون أي عشوائية.'}
+              ? 'Dr. Ahmed Assem built his own physique the same way he builds yours — with precise tracking, periodized training, and zero guesswork.'
+              : 'د. أحمد عاصم بنى جسمه بنفس الطريقة اللي هيبني بيها جسمك — بمتابعة دقيقة، وتدريب مبرمج علمياً، وبدون أي عشوائية.'}
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4 font-mono">

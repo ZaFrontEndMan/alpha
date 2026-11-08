@@ -171,7 +171,7 @@ export const Hero: React.FC<HeroProps> = ({
                 {t.stats.doctorLabel}
               </div>
               <div className="text-sm font-bold text-white mt-0.5">
-                {lang === 'en' ? 'IFBB PRO ATHLETE & M.D.' : 'بطل محترف IFBB Pro وطبيب بشري'}
+                {lang === 'en' ? 'IFBB PRO ATHLETE & COACH' : 'بطل محترف IFBB Pro ومدرب'}
               </div>
             </div>
             <div className="text-end">
@@ -269,7 +269,7 @@ export const Hero: React.FC<HeroProps> = ({
                 <span className="text-neutral-700" aria-hidden="true">/</span>
                 <div className="flex items-center gap-1.5">
                   <Count to={100} suffix="%" run={ready} delay={1600} className="font-bold text-white text-sm tabular-nums" />
-                  <span>M.D. Supervised</span>
+                  <span>Personally Coached</span>
                 </div>
               </div>
             </div>

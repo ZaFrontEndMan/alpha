@@ -105,22 +105,22 @@ function buildCustomerWelcomeHtml(data: SubscriptionIntakeData): string {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to Dr. Ahmed Assem Coaching</title>
   <style>
-    body { margin: 0; padding: 0; background-color: #090b0a; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #e5e5e5; }
+    body { margin: 0; padding: 0; background-color: #1C1F24; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #e5e5e5; }
     .wrapper { max-width: 620px; margin: 0 auto; background-color: #0c0f0d; border: 1px solid #1f2723; border-radius: 8px; overflow: hidden; }
     .header { padding: 36px 32px 24px; text-align: center; background: radial-gradient(circle at top, #15221b 0%, #0c0f0d 100%); border-bottom: 1px solid #1f2723; }
     .brand-title { color: #ffffff; font-size: 24px; font-weight: 900; letter-spacing: -0.5px; margin: 0; text-transform: uppercase; }
-    .brand-badge { display: inline-block; margin-top: 8px; padding: 4px 12px; font-size: 11px; font-weight: 700; color: #8cffdb; background: rgba(140, 255, 219, 0.1); border: 1px solid rgba(140, 255, 219, 0.3); border-radius: 4px; letter-spacing: 1.5px; text-transform: uppercase; }
+    .brand-badge { display: inline-block; margin-top: 8px; padding: 4px 12px; font-size: 11px; font-weight: 700; color: #B8232F; background: rgba(140, 255, 219, 0.1); border: 1px solid rgba(140, 255, 219, 0.3); border-radius: 4px; letter-spacing: 1.5px; text-transform: uppercase; }
     .content { padding: 32px; font-size: 15px; line-height: 1.6; color: #d4d4d4; }
-    .highlight-card { background: #121815; border-left: 3px solid #8cffdb; padding: 18px 20px; margin: 24px 0; border-radius: 0 6px 6px 0; }
+    .highlight-card { background: #121815; border-left: 3px solid #B8232F; padding: 18px 20px; margin: 24px 0; border-radius: 0 6px 6px 0; }
     .field-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #1a221e; font-size: 14px; }
     .field-label { color: #888888; }
     .field-value { color: #ffffff; font-weight: 600; text-align: right; }
     .steps-list { margin: 20px 0; padding-left: 0; list-style: none; }
     .step-item { display: flex; margin-bottom: 14px; align-items: flex-start; }
-    .step-num { width: 24px; height: 24px; border-radius: 50%; background: #8cffdb; color: #000; font-weight: 800; font-size: 12px; display: inline-flex; align-items: center; justify-content: center; margin-right: 12px; flex-shrink: 0; margin-top: 2px; }
-    .button { display: inline-block; background-color: #8cffdb; color: #000000; font-weight: 800; font-size: 14px; text-decoration: none; padding: 14px 28px; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px; margin-top: 16px; text-align: center; }
+    .step-num { width: 24px; height: 24px; border-radius: 50%; background: #B8232F; color: #000; font-weight: 800; font-size: 12px; display: inline-flex; align-items: center; justify-content: center; margin-right: 12px; flex-shrink: 0; margin-top: 2px; }
+    .button { display: inline-block; background-color: #B8232F; color: #000000; font-weight: 800; font-size: 14px; text-decoration: none; padding: 14px 28px; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px; margin-top: 16px; text-align: center; }
     .footer { padding: 24px 32px; background-color: #070908; border-top: 1px solid #1a221e; text-align: center; font-size: 12px; color: #737373; }
-    .footer a { color: #8cffdb; text-decoration: none; }
+    .footer a { color: #B8232F; text-decoration: none; }
   </style>
 </head>
 <body>
@@ -136,7 +136,7 @@ function buildCustomerWelcomeHtml(data: SubscriptionIntakeData): string {
           Welcome, ${customerName}!
         </p>
         <p>
-          Thank you for taking the decisive step towards your transformation. Your comprehensive intake application has been received and logged directly into Dr. Ahmed Assem's medical coaching portal.
+          Thank you for taking the decisive step towards your transformation. Your comprehensive intake application has been received and logged directly into Dr. Ahmed Assem's coaching portal.
         </p>
 
         <div class="highlight-card">
@@ -146,11 +146,11 @@ function buildCustomerWelcomeHtml(data: SubscriptionIntakeData): string {
           </div>
           <div class="field-row">
             <span class="field-label">Primary Target Goal:</span>
-            <span class="field-value" style="color: #8cffdb;">${goal}</span>
+            <span class="field-value" style="color: #B8232F;">${goal}</span>
           </div>
           <div class="field-row" style="border-bottom: none;">
             <span class="field-label">Intake Status:</span>
-            <span class="field-value" style="color: #8cffdb;">In Physician Review</span>
+            <span class="field-value" style="color: #B8232F;">In Coach Review</span>
           </div>
         </div>
 
@@ -158,7 +158,7 @@ function buildCustomerWelcomeHtml(data: SubscriptionIntakeData): string {
         <div class="steps-list">
           <div class="step-item">
             <div class="step-num">1</div>
-            <div><strong>Clinical Review:</strong> Dr. Ahmed Assem personally reviews your biometrics, medical history, and nutrition preferences within 24 hours.</div>
+            <div><strong>Personal Review:</strong> Dr. Ahmed Assem personally reviews your body metrics, health history, and nutrition preferences within 24 hours.</div>
           </div>
           <div class="step-item">
             <div class="step-num">2</div>
@@ -176,7 +176,7 @@ function buildCustomerWelcomeHtml(data: SubscriptionIntakeData): string {
       </div>
 
       <div class="footer">
-        <p style="margin: 0 0 8px 0;">Official Coaching Platform of Dr. Ahmed Assem · IFBB Pro & Clinical Nutritionist</p>
+        <p style="margin: 0 0 8px 0;">Official Coaching Platform of Dr. Ahmed Assem · IFBB Pro & Nutrition Coach</p>
         <p style="margin: 0;">Inquiries: <a href="mailto:info@drahmedassem.com">info@drahmedassem.com</a> · Website: <a href="https://drahmedassem.com">drahmedassem.com</a></p>
       </div>
     </div>
@@ -213,24 +213,24 @@ function buildOwnerNotificationHtml(data: SubscriptionIntakeData): string {
 </head>
 <body style="margin:0; padding:20px; background:#080a09; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #f3f4f6;">
   <div style="max-width: 680px; margin: 0 auto; background: #0f1411; border: 1px solid #232b26; border-radius: 8px; overflow: hidden;">
-    <div style="padding: 24px; background: #131c17; border-bottom: 2px solid #8cffdb;">
-      <div style="color: #8cffdb; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;">New Client Alert</div>
+    <div style="padding: 24px; background: #131c17; border-bottom: 2px solid #B8232F;">
+      <div style="color: #B8232F; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;">New Client Alert</div>
       <h2 style="margin: 6px 0 0; color: #ffffff; font-size: 22px;">${data.name || 'Anonymous Client'} Subscribed</h2>
       <div style="color: #9ca3af; font-size: 12px; margin-top: 4px;">Received: ${dateStr}</div>
     </div>
 
     <div style="padding: 24px;">
       <div style="margin-bottom: 24px; display: flex; gap: 12px;">
-        <a href="mailto:${data.email}" style="display:inline-block; padding: 10px 18px; background: #1b2620; border: 1px solid #8cffdb; color: #8cffdb; text-decoration: none; font-size: 12px; font-weight: bold; border-radius: 4px;">
+        <a href="mailto:${data.email}" style="display:inline-block; padding: 10px 18px; background: #1b2620; border: 1px solid #B8232F; color: #B8232F; text-decoration: none; font-size: 12px; font-weight: bold; border-radius: 4px;">
           ✉ Email Client (${data.email})
         </a>
         ${cleanPhone ? `
-        <a href="https://wa.me/${cleanPhone}" target="_blank" style="display:inline-block; padding: 10px 18px; background: #8cffdb; color: #000000; text-decoration: none; font-size: 12px; font-weight: 800; border-radius: 4px; margin-left: 10px;">
+        <a href="https://wa.me/${cleanPhone}" target="_blank" style="display:inline-block; padding: 10px 18px; background: #B8232F; color: #000000; text-decoration: none; font-size: 12px; font-weight: 800; border-radius: 4px; margin-left: 10px;">
           💬 WhatsApp Client
         </a>` : ''}
       </div>
 
-      <h3 style="color: #8cffdb; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; border-bottom: 1px solid #232b26; padding-bottom: 6px;">Client Profile & Package</h3>
+      <h3 style="color: #B8232F; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; border-bottom: 1px solid #232b26; padding-bottom: 6px;">Client Profile & Package</h3>
       <table style="width: 100%; border-collapse: collapse; margin-bottom: 24px;">
         <tbody>
           ${renderRow('Full Name', data.name)}
@@ -247,7 +247,7 @@ function buildOwnerNotificationHtml(data: SubscriptionIntakeData): string {
         </tbody>
       </table>
 
-      <h3 style="color: #8cffdb; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; border-bottom: 1px solid #232b26; padding-bottom: 6px;">Lifestyle & Training</h3>
+      <h3 style="color: #B8232F; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; border-bottom: 1px solid #232b26; padding-bottom: 6px;">Lifestyle & Training</h3>
       <table style="width: 100%; border-collapse: collapse; margin-bottom: 24px;">
         <tbody>
           ${renderRow('Daily Activity', data.dailyActivity)}
@@ -259,14 +259,14 @@ function buildOwnerNotificationHtml(data: SubscriptionIntakeData): string {
           ${renderRow('Barbell Rows Max', data.barbellRowsMax)}
           ${renderRow('Cardio Machines', data.cardioMachines)}
           ${renderRow('Online Coaching Exp.', data.onlineCoachingExp)}
-          ${renderRow('Medical Conditions', data.medicalConditions)}
+          ${renderRow('Health Conditions', data.medicalConditions)}
           ${renderRow('How they found you', data.reachSource)}
           ${renderRow('Reason for Subscribing', data.subscriptionReason)}
         </tbody>
       </table>
 
       ${(data.proteins?.length || data.carbs?.length || data.fruits?.length || data.veggies?.length || data.healthyFats?.length) ? `
-      <h3 style="color: #8cffdb; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; border-bottom: 1px solid #232b26; padding-bottom: 6px;">Dietary Preferences</h3>
+      <h3 style="color: #B8232F; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; border-bottom: 1px solid #232b26; padding-bottom: 6px;">Dietary Preferences</h3>
       <table style="width: 100%; border-collapse: collapse; margin-bottom: 24px;">
         <tbody>
           ${renderRow('Preferred Proteins', data.proteins)}
@@ -279,7 +279,7 @@ function buildOwnerNotificationHtml(data: SubscriptionIntakeData): string {
       ` : ''}
 
       ${data.customNotes ? `
-      <div style="padding: 14px; background: #151c17; border-left: 3px solid #8cffdb; color: #d1d5db; font-size: 13px;">
+      <div style="padding: 14px; background: #151c17; border-left: 3px solid #B8232F; color: #d1d5db; font-size: 13px;">
         <strong>Additional Notes:</strong><br/>${data.customNotes}
       </div>
       ` : ''}

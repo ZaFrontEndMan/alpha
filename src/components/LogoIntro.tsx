@@ -94,7 +94,7 @@ export const LogoIntro: React.FC = () => {
       <div className="absolute inset-0 flex flex-col items-center justify-center px-6">
         <img
           src="/brand-logo.png"
-          alt="Dr. Ahmed Assem Cosmetic Dentist"
+          alt="Dr. Ahmed Assem"
           className="intro-mark w-[min(84vw,42rem)] h-auto mix-blend-screen"
           style={{ mixBlendMode: 'screen' }}
         />

@@ -61,7 +61,7 @@ export const InspirationBanner: React.FC<InspirationBannerProps> = ({
           >
             {lang === 'en'
               ? 'Build Your Best Shape With The Right System, Team, And Guidance'
-              : 'ابنِ أفضل نسخة من جسمك مع النظام الصحيح، الفريق المناسب، والتوجيه الطبي'}
+              : 'ابنِ أفضل نسخة من جسمك مع النظام الصحيح، الفريق المناسب، والتوجيه الصحيح'}
           </h2>
 
           <p className="text-base sm:text-lg text-neutral-200 leading-relaxed max-w-2xl">
@@ -106,7 +106,7 @@ export const InspirationBanner: React.FC<InspirationBannerProps> = ({
                 {t.stats.doctorLabel}
               </div>
               <div className="text-xs text-neutral-300 mt-1 uppercase font-semibold">
-                IFBB PRO & M.D.
+                IFBB PRO & COACH
               </div>
             </div>
           </div>

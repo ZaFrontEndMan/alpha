@@ -70,7 +70,7 @@ const FAT_OPTIONS = ['Almonds', 'Cashews', 'Pecan', 'Pistachio', 'Avocado', 'Oli
 const PACKAGES = [
   'Transformation System (4500 EGP)',
   'Elite Coaching (7000 EGP)',
-  'VIP Medical Mastery (12000 EGP)',
+  'VIP Mastery (12000 EGP)',
   '1-on-1 Strategy Consultation (2000 EGP)',
 ];
 
@@ -104,7 +104,7 @@ function buildWhatsAppMessage(d: FormData): string {
 - *Max Squats:* ${d.squatsMax} kg
 - *Max Barbell Rows:* ${d.barbellRowsMax} kg
 *Health & History:*
-- *Medical Conditions:* ${d.medicalConditions}
+- *Health Conditions:* ${d.medicalConditions}
 - *Online Coaching Exp:* ${d.onlineCoachingExp}
 - *Sleep Hours:* ${d.sleepHours} hrs
 - *Sleep Quality:* ${d.sleepQuality}/10
@@ -495,7 +495,7 @@ const FormPageContent: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
                 {step === 4 && (
                   <div className="space-y-6">
                     <div>
-                      <label className={labelCls}>{en ? 'Medical Conditions / Allergies?' : 'مشكلات صحية أو حساسية؟'}</label>
+                      <label className={labelCls}>{en ? 'Health Conditions / Allergies?' : 'مشكلات صحية أو حساسية؟'}</label>
                       <div className="grid grid-cols-2 gap-2">
                         {(['Yes', 'No'] as const).map((v) => (
                           <CheckOption key={v} type="radio"

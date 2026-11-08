@@ -21,8 +21,8 @@ export const Footer: React.FC<FooterProps> = ({ t, lang }) => {
 
             <p className="text-xs text-neutral-400 max-w-sm leading-relaxed mt-4">
               {lang === 'en'
-                ? 'Transform your whole life in 90 days with a medically designed system. Hundreds of clients transformed using science — not guesswork.'
-                : 'غيّر حياتك بالكامل في 90 يوماً بنظام مصمم طبياً. مئات المتدربين غيروا أجسامهم بنظام مثبت علمياً بدون أي عشوائية.'}
+                ? 'Transform your whole life in 90 days with a science-based system. Hundreds of clients transformed using science — not guesswork.'
+                : 'غيّر حياتك بالكامل في 90 يوماً بنظام مصمم علمياً. مئات المتدربين غيروا أجسامهم بنظام مثبت علمياً بدون أي عشوائية.'}
             </p>
 
             <div className="text-[11px] font-mono text-[#E5484D]">
@@ -76,8 +76,8 @@ export const Footer: React.FC<FooterProps> = ({ t, lang }) => {
             </div>
             <p className="text-xs text-neutral-400 leading-relaxed">
               {lang === 'en'
-                ? 'Client intake reviews, athlete prep, and physician consultations:'
-                : 'استفسارات الاشتراكات، تحضير البطولات، والاستشارات الطبية:'}
+                ? 'Client intake reviews, athlete prep, and 1-on-1 consultations:'
+                : 'استفسارات الاشتراكات، تحضير البطولات، والاستشارات الفردية:'}
             </p>
             <div className="space-y-1.5 text-xs font-mono text-neutral-300">
               <div>
@@ -97,7 +97,7 @@ export const Footer: React.FC<FooterProps> = ({ t, lang }) => {
                   rel="noopener noreferrer"
                   className="hover:text-[#E5484D] transition-colors"
                 >
-                  {lang === 'en' ? 'Direct Physician Desk' : 'مكتب الدكتور المباشر'}
+                  {lang === 'en' ? 'Direct Line to Dr. Assem' : 'مكتب الدكتور المباشر'}
                 </a>
               </div>
               <div>

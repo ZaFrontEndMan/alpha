@@ -129,7 +129,7 @@ export const translations: Record<Language, TranslationContent> = {
       langToggle: 'العربية',
     },
     hero: {
-      headline: 'Transform your whole life in 12 weeks with a medically designed system',
+      headline: 'Transform your whole life in 12 weeks with a science-based system',
       subheadline: 'Hundreds of clients transformed their bodies using a proven system — not guesswork',
       ctaStart: 'START NOW',
       ctaPackages: 'VIEW PACKAGES',
@@ -139,9 +139,9 @@ export const translations: Record<Language, TranslationContent> = {
       transformationsLabel: 'Real Transformations',
       weeksChange: '12',
       weeksLabel: 'Weeks To Change',
-      doctorLabel: 'Dr Ahmed Assem, M.D.',
+      doctorLabel: 'Dr Ahmed Assem',
       experienceYears: '14+',
-      experienceLabel: 'IFBB Pro & Clinical Experience',
+      experienceLabel: 'IFBB Pro Coaching Experience',
     },
     testimonials: {
       title: 'TESTIMONIALS',
@@ -181,9 +181,9 @@ export const translations: Record<Language, TranslationContent> = {
       pillars: [
         {
           number: '01',
-          title: 'Medically Guided Approach',
+          title: 'Science-Based Approach',
           description:
-            'As a doctor, every plan is built with a deep understanding of Hormones, Metabolism, Recovery, and Long-term health. No random plans. No guesswork.',
+            'Every plan is built with a deep understanding of Metabolism, Recovery, and Long-term results. No random plans. No guesswork.',
         },
         {
           number: '02',
@@ -201,7 +201,7 @@ export const translations: Record<Language, TranslationContent> = {
           number: '04',
           title: 'Fully Customized — No Templates',
           description:
-            'Your plan is built based on your body, your lifestyle, your goal, and your blood work. Not copied. Not reused.',
+            'Your plan is built based on your body, your lifestyle, your goal, and your progress. Not copied. Not reused.',
         },
       ],
     },
@@ -221,17 +221,17 @@ export const translations: Record<Language, TranslationContent> = {
     comparison: {
       tag: 'SYSTEM ADVANTAGE',
       heading: 'Dr. Ahmed Assem vs Conventional Coaching',
-      subheading: 'See the clinical difference between a doctor-guided protocol and cookie-cutter social media plans.',
+      subheading: 'See the real difference between an expert-built system and cookie-cutter social media plans.',
       table: [
         {
-          criteria: 'Medical Doctor Supervision (M.D.)',
-          drAssem: 'Yes — Full endocrine, metabolic, and biomarker oversight',
+          criteria: 'Direct 1-on-1 Expert Supervision',
+          drAssem: 'Yes — Every detail of your plan reviewed personally',
           others: 'None — Uncertified gym trainers or fitness influencers',
         },
         {
-          criteria: 'Hormonal & Bloodwork Analysis',
-          drAssem: 'Comprehensive lab reviews (Thyroid, Lipids, Liver, Androgens)',
-          others: 'Ignored or dangerous guesswork',
+          criteria: 'Progress Data Analysis',
+          drAssem: 'Detailed tracking of weight, measurements, photos & performance',
+          others: 'Ignored or pure guesswork',
         },
         {
           criteria: 'Competitive IFBB Pro Credentials',
@@ -240,12 +240,12 @@ export const translations: Record<Language, TranslationContent> = {
         },
         {
           criteria: 'Plan Customization',
-          drAssem: '100% Bespoke — built around your metabolism, schedule & bloodwork',
+          drAssem: '100% Bespoke — built around your metabolism, schedule & food preferences',
           others: 'Generic copy-pasted PDF templates',
         },
         {
           criteria: 'Follow-ups & Accountability',
-          drAssem: 'Weekly detailed video audits & direct physician WhatsApp hotline',
+          drAssem: 'Weekly detailed video audits & a direct WhatsApp line with Dr. Assem',
           others: 'Sporadic copy-paste text or automated bots',
         },
         {
@@ -286,14 +286,14 @@ export const translations: Record<Language, TranslationContent> = {
           priceNumeric: 7000,
           popular: true,
           description:
-            'A premium coaching experience combining medical knowledge, structured follow-ups, and continuous optimization to deliver real transformations',
+            'A premium coaching experience combining expert knowledge, structured follow-ups, and continuous optimization to deliver real transformations',
           features: [
             '2 Check-ins per Week with Detailed Analysis',
             'Advanced Nutrition System (Flexible & Macro and micro -Based)',
             'Continuous Plan Adjustments Based on Progress',
             'Meal Alternatives & Food Substitution System',
             'Customized Training Program with Video Demonstrations',
-            'Supplements and PEDs Guidance Based on Your Needs',
+            'Supplement Guidance Based on Your Needs',
             'Accountability System & Progress Tracking',
             'Priority Daily Support',
             'Lifestyle & Habit Optimization Guidance',
@@ -301,11 +301,11 @@ export const translations: Record<Language, TranslationContent> = {
         },
         {
           id: 'alpha-vip',
-          name: 'Dr. Ahmed Assem VIP Medical Mastery',
+          name: 'Dr. Ahmed Assem VIP Mastery',
           price: '12000.00 EGP',
           priceNumeric: 12000,
           description:
-            'A high-level coaching experience designed for serious individuals who want maximum results with full medical guidance, close monitoring, and elite-level customization.',
+            'A high-level coaching experience designed for serious individuals who want maximum results with full expert guidance, close monitoring, and elite-level customization.',
           features: [
             'Everything in Elite Coaching',
             'Daily Check-ins & Close Monitoring',
@@ -313,8 +313,8 @@ export const translations: Record<Language, TranslationContent> = {
             'Direct WhatsApp And Calls Support (Fast Response Priority)',
             'Advanced Nutrition System (Fully Customized)',
             'Advanced Training Program with Continuous Optimization',
-            'Medical Guidance & Hormonal Awareness',
-            'Blood Test Guidance & Interpretation',
+            'Expert Recovery & Performance Optimization',
+            'Body Composition Tracking & Analysis',
             'Supplement Protocol (Precise & Personalized)',
             'Lifestyle Optimization & Habit Coaching',
             'Peak Week Strategy (if needed)',
@@ -371,7 +371,7 @@ export const translations: Record<Language, TranslationContent> = {
         {
           step: '06',
           title: 'Look better within 12 weeks',
-          desc: 'Witness drastic fat loss, dense muscle gains, and elevated health biomarkers.',
+          desc: 'Witness drastic fat loss, dense muscle gains, and a stronger, healthier body.',
         },
       ],
     },
@@ -439,7 +439,7 @@ export const translations: Record<Language, TranslationContent> = {
       langToggle: 'English',
     },
     hero: {
-      headline: 'غيّر حياتك بالكامل في 12 أسبوعاً بنظام مصمم طبياً',
+      headline: 'غيّر حياتك بالكامل في 12 أسبوعاً بنظام مصمم علمياً',
       subheadline: 'مئات المتدربين غيروا أجسامهم بنظام مثبت علمياً — بدون أي عشوائية',
       ctaStart: 'ابدأ الآن',
       ctaPackages: 'استعرض الباقات',
@@ -451,7 +451,7 @@ export const translations: Record<Language, TranslationContent> = {
       weeksLabel: 'أسبوعاً للتحول الكامل',
       doctorLabel: 'د. أحمد عاصم',
       experienceYears: '+14',
-      experienceLabel: 'سنة خبرة طبية واحتراف IFBB',
+      experienceLabel: 'سنة خبرة واحتراف IFBB',
     },
     testimonials: {
       title: 'آراء وتقييمات الأبطال',
@@ -491,9 +491,9 @@ export const translations: Record<Language, TranslationContent> = {
       pillars: [
         {
           number: '01',
-          title: 'منهجية بإشراف طبي (Medically Guided)',
+          title: 'منهجية علمية مدروسة',
           description:
-            'بصفتي طبيباً بشرياً، كل خطة تُبنى بفهم عميق للهرمونات، معدل الحرق والتمثيل الغذائي، الاستشفاء، والصحة العامة على المدى الطويل. لا خطط عشوائية ولا تجارب.',
+            'كل خطة تُبنى بفهم عميق لمعدل الحرق والتمثيل الغذائي، الاستشفاء، والصحة العامة على المدى الطويل. لا خطط عشوائية ولا تجارب.',
         },
         {
           number: '02',
@@ -511,7 +511,7 @@ export const translations: Record<Language, TranslationContent> = {
           number: '04',
           title: 'تخصيص كامل 100% — بدون قوالب جاهزة',
           description:
-            'خطتك تُصمم خصيصاً لجسمك، أسلوب حياتك، أهدافك، وتحاليلك الطبية. ليست منسوخة وليست قالباً مكرراً.',
+            'خطتك تُصمم خصيصاً لجسمك، أسلوب حياتك، أهدافك، ومستوى تقدمك. ليست منسوخة وليست قالباً مكرراً.',
         },
       ],
     },
@@ -531,17 +531,17 @@ export const translations: Record<Language, TranslationContent> = {
     comparison: {
       tag: 'المقارنة العلمية',
       heading: 'نظام د. أحمد عاصم مقابل التدريب التقليدي',
-      subheading: 'اكتشف الفارق الجوهري بين إشراف طبيب ومحترف دولي وبين الخطط العشوائية المنسوخة.',
+      subheading: 'اكتشف الفارق الجوهري بين إشراف محترف دولي وبين الخطط العشوائية المنسوخة.',
       table: [
         {
-          criteria: 'إشراف طبيب بشري متخصص (M.D.)',
-          drAssem: 'نعم — فهم كامل للغدد والهرمونات والكيمياء الحيوية ومعدل الحرق',
+          criteria: 'إشراف شخصي مباشر من خبير',
+          drAssem: 'نعم — مراجعة شخصية لكل تفاصيل خطتك',
           others: 'لا يوجد — مدربون غير معتمدين أو هواة سوشيال ميديا',
         },
         {
-          criteria: 'قراءة وفحص التحاليل الطبية',
-          drAssem: 'تحليل دوري شامل (الغدة الدرقية، دهون الدم، وظائف الكبد، التستوستيرون)',
-          others: 'تجاهل تام للتحاليل أو وصف عشوائي مضر بالصحة',
+          criteria: 'تحليل بيانات التقدم',
+          drAssem: 'متابعة دقيقة للوزن والمقاسات والصور والأداء',
+          others: 'تجاهل تام للمتابعة أو تخمين عشوائي',
         },
         {
           criteria: 'اعتماد رسمي كلاعب محترف IFBB Pro',
@@ -596,26 +596,26 @@ export const translations: Record<Language, TranslationContent> = {
           priceNumeric: 7000,
           popular: true,
           description:
-            'تجربة تدريب استثنائية تجمع بين المعرفة الطبية، المتابعة الدقيقة، والتطوير المستمر لتحقيق تحول حقيقي وفارق.',
+            'تجربة تدريب استثنائية تجمع بين الخبرة العلمية، المتابعة الدقيقة، والتطوير المستمر لتحقيق تحول حقيقي وفارق.',
           features: [
             'متابعتان أسبوعياً (2 Check-ins) مع تحليل تفصيلي للتطور',
             'نظام تغذية متقدم (مرن ومعتمد على الماكروز والميكروز بدقة)',
             'تعديلات دورية مستمرة على الخطة وفقاً للتقدم',
             'نظام بدائل وجبات واسع وخيارات متنوعة',
             'برنامج تدريبي مخصص مع فيديوهات أداء واضحة',
-            'توجيه وإشراف كامل على المكملات الغذائية ومحسنات الأداء (PEDs)',
-            'نظام محاسبة وتتبع دقيق للمؤشرات الحيوية',
+            'توجيه كامل للمكملات الغذائية حسب احتياجك',
+            'نظام محاسبة وتتبع دقيق لمؤشرات التقدم',
             'دعم يومي ذو أولوية وسرعة في الرد',
             'توجيه لضبط النوم والاستشفاء والعادات الصحية',
           ],
         },
         {
           id: 'alpha-vip',
-          name: 'تدريب النخبة الطبي مع د. أحمد عاصم',
+          name: 'باقة VIP مع د. أحمد عاصم',
           price: '12000.00 EGP',
           priceNumeric: 12000,
           description:
-            'أعلى مستويات التدريب والمتابعة للمتدربين الجادين الراغبين في أقصى نتيجة ممكنة بإشراف طبي كامل وتواصل مباشر ولحظي.',
+            'أعلى مستويات التدريب والمتابعة للمتدربين الجادين الراغبين في أقصى نتيجة ممكنة بإشراف كامل وتواصل مباشر ولحظي.',
           features: [
             'كل مميزات باقة الـ Elite Coaching',
             'متابعة وتقييم يومي دقيق',
@@ -623,8 +623,8 @@ export const translations: Record<Language, TranslationContent> = {
             'دعم واتساب ومكالمات مباشرة (أولوية رد فائقة السرعة)',
             'نظام تغذية فائق التخصيص والدقة',
             'برنامج تدريبي متقدم مع تطوير مستمر للأحمال والأداء',
-            'توجيه طبي وفهم عميق للاتزان الهرموني',
-            'طلب وقراءة وتفسير التحاليل الطبية الشاملة دورياً',
+            'توجيه متخصص لتحسين الاستشفاء والأداء',
+            'تتبع وتحليل دوري لتكوين الجسم',
             'بروتوكول مكملات دقيق ومخصص لأعلى استفادة بأمان',
             'تطوير أسلوب الحياة والنوم وإدارة التوتر',
             'استراتيجية أسبوع الذروة (Peak Week) في حال الاستعداد للبطولات أو المناسبات',
@@ -656,7 +656,7 @@ export const translations: Record<Language, TranslationContent> = {
         {
           step: '01',
           title: 'املأ الاستمارة وارفع صورك',
-          desc: 'املأ استمارة البيانات الطبية والرياضية وارفع صورك الحالية لتحديد نقطة البداية بدقة.',
+          desc: 'املأ استمارة بياناتك الرياضية وارفع صورك الحالية لتحديد نقطة البداية بدقة.',
         },
         {
           step: '02',
@@ -688,7 +688,7 @@ export const translations: Record<Language, TranslationContent> = {
     banner: {
       title: 'ابدأ الآن',
       quote:
-        'ابنِ أفضل نسخة من جسمك مع النظام الصحيح، الفريق المناسب، والتوجيه الطبي الدقيق. بانضمامك لفريقي ستحصل على التوجيه السليم، المعرفة الحقيقية، والأهم من ذلك العقلية التي ستختصر طريقك للنتائج مهما كان هدفك.',
+        'ابنِ أفضل نسخة من جسمك مع النظام الصحيح، الفريق المناسب، والتوجيه الدقيق. بانضمامك لفريقي ستحصل على التوجيه السليم، المعرفة الحقيقية، والأهم من ذلك العقلية التي ستختصر طريقك للنتائج مهما كان هدفك.',
       pills: ['خطة مخصصة', 'متابعة أسبوعية', 'نتائج حقيقية'],
       cta: 'انضم لفريق د. أحمد عاصم الآن',
     },

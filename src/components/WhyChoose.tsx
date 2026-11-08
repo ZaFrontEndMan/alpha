@@ -84,7 +84,7 @@ export const WhyChoose: React.FC<WhyChooseProps> = ({
               </div>
 
               <div className="mt-8 pt-4 border-t border-neutral-800/80 flex items-center justify-between text-xs text-neutral-400 font-mono">
-                <span>{lang === 'en' ? 'CLINICAL INTEGRATION' : 'إشراف طبي متكامل'}</span>
+                <span>{lang === 'en' ? 'SCIENCE-BACKED SYSTEM' : 'نظام مبني على العلم'}</span>
                 <span className="text-[#E5484D]">100% EVIDENCE-BASED</span>
               </div>
             </div>

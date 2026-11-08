@@ -60,7 +60,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
           weight: formData.currentWeight,
           age: formData.age,
           location: formData.country,
-          medicalConditions: formData.medicalConditions || (formData.hasRecentBloodwork ? 'Bloodwork available' : 'Needs doctor guidance'),
+          medicalConditions: formData.medicalConditions || (formData.hasRecentBloodwork ? 'Has coaching experience' : 'Needs guidance'),
           customNotes: `Experience: ${formData.experienceLevel}. Timezone: ${formData.preferredTimezone}. Baseline: ${initialMacroSummary || 'None'}`,
         }),
       }).catch((err) => console.warn('Intake email notification warning:', err));
@@ -75,7 +75,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
 Name: ${formData.fullName}
 Goal: ${formData.targetGoal}
 Current Weight: ${formData.currentWeight} kg
-Recent Bloodwork: ${formData.hasRecentBloodwork ? 'Available' : 'Needs Doctor Guidance'}
+Coached Before: ${formData.hasRecentBloodwork ? 'Yes' : 'No'}
 ${initialMacroSummary ? `Calculated Baseline: ${initialMacroSummary}` : ''}
 Looking forward to starting my 90-day transformation!`
   );
@@ -98,7 +98,7 @@ Looking forward to starting my 90-day transformation!`
             {/* Modal Header */}
             <div className="mb-6 pe-8">
               <div className="text-xs font-mono uppercase text-[#E5484D] tracking-wider">
-                {lang === 'en' ? `Step ${step} of 3 · Physician Intake` : `الخطوة ${step} من 3 · التقييم الطبي`}
+                {lang === 'en' ? `Step ${step} of 3 · Coaching Intake` : `الخطوة ${step} من 3 · تقييم المتدرب`}
               </div>
               <h3 className={cn(
                 "text-2xl sm:text-3xl font-black text-white mt-1",
@@ -108,7 +108,7 @@ Looking forward to starting my 90-day transformation!`
               </h3>
               <p className="text-xs text-neutral-400 mt-1">
                 {lang === 'en'
-                  ? 'Dr. Ahmed Assem reviews all intake applications personally to assess medical suitability.'
+                  ? 'Dr. Ahmed Assem reviews all intake applications personally to make sure the program fits you.'
                   : 'يقوم د. أحمد عاصم بمراجعة كافة الاستمارات شخصياً لتقييم الحالة وتحديد البروتوكول الأنسب.'}
               </p>
             </div>
@@ -139,7 +139,7 @@ Looking forward to starting my 90-day transformation!`
                     >
                       <option value="Transformation System (4500 EGP)">Transformation System (4500.00 EGP)</option>
                       <option value="Elite Coaching (7000 EGP)">Elite Coaching (7000.00 EGP) — Recommended</option>
-                      <option value="Dr. Ahmed Assem VIP Medical Mastery (12000 EGP)">Dr. Ahmed Assem VIP Medical Mastery (12000.00 EGP)</option>
+                      <option value="Dr. Ahmed Assem VIP Mastery (12000 EGP)">Dr. Ahmed Assem VIP Mastery (12000.00 EGP)</option>
                       <option value="1-on-1 Strategy Consultation (2000 EGP)">1-on-1 Strategy Consultation (2000.00 EGP)</option>
                     </select>
                   </div>
@@ -212,7 +212,7 @@ Looking forward to starting my 90-day transformation!`
                       onClick={() => setStep(2)}
                       className="w-full py-3.5 min-h-[48px] text-xs font-black uppercase tracking-wider text-[#E9E9E4] bg-[#B8232F] hover:bg-[#9C1D28] cursor-pointer"
                     >
-                      {lang === 'en' ? 'Continue to Medical Profile →' : 'الانتقال للبيانات الطبية ←'}
+                      {lang === 'en' ? 'Continue to Training Profile →' : 'الانتقال لبيانات التدريب ←'}
                     </button>
                   </div>
                 </div>
@@ -238,7 +238,7 @@ Looking forward to starting my 90-day transformation!`
 
                   <div>
                     <label className="block text-xs font-bold text-neutral-300 uppercase tracking-wider mb-1.5">
-                      {lang === 'en' ? 'Do you have bloodwork from past 6 months?' : 'هل لديك تحاليل دم من الـ 6 أشهر الماضية؟'}
+                      {lang === 'en' ? 'Have you followed a coaching plan before?' : 'هل اتبعت خطة تدريب من قبل؟'}
                     </label>
                     <div className="flex gap-2">
                       <button
@@ -259,14 +259,14 @@ Looking forward to starting my 90-day transformation!`
                             : 'border-neutral-800 bg-[#262A30] text-neutral-400'
                           }`}
                       >
-                        {lang === 'en' ? 'No, need doctor to order' : 'لا، أريد طلب التحاليل'}
+                        {lang === 'en' ? 'No, first time' : 'لا، أول مرة'}
                       </button>
                     </div>
                   </div>
 
                   <div>
                     <label className="block text-xs font-bold text-neutral-300 uppercase tracking-wider mb-1.5">
-                      {lang === 'en' ? 'Injuries or Medical Conditions (Optional)' : 'أي إصابات أو مشكلات صحية سابقة (اختياري)'}
+                      {lang === 'en' ? 'Injuries or Health Conditions (Optional)' : 'أي إصابات أو مشكلات صحية سابقة (اختياري)'}
                     </label>
                     <textarea
                       rows={3}
@@ -373,7 +373,7 @@ Looking forward to starting my 90-day transformation!`
                       type="submit"
                       className="flex-1 py-3.5 min-h-[48px] text-xs font-black uppercase tracking-wider text-[#E9E9E4] bg-[#B8232F] hover:bg-[#9C1D28] shadow-[0_0_20px_rgba(184,35,47,0.3)] cursor-pointer"
                     >
-                      {lang === 'en' ? 'Submit Intake Application →' : 'إرسال الاستمارة الطبية ←'}
+                      {lang === 'en' ? 'Submit Intake Application →' : 'إرسال الاستمارة ←'}
                     </button>
                   </div>
                 </div>

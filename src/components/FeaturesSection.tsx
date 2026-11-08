@@ -122,8 +122,8 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = ({
             </h3>
             <p className="text-sm sm:text-base text-neutral-300">
               {lang === 'en'
-                ? 'Join Dr. Ahmed Assem and transform your physique with 1-on-1 direct physician guidance.'
-                : 'انضم للدكتور أحمد عاصم وحقق أفضل شكل لجسمك بإشراف طبيب ومحترف IFBB Pro.'}
+                ? 'Join Dr. Ahmed Assem and transform your physique with 1-on-1 direct expert guidance.'
+                : 'انضم للدكتور أحمد عاصم وحقق أفضل شكل لجسمك بإشراف محترف IFBB Pro.'}
             </p>
             <div className="pt-2">
               <button

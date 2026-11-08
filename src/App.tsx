@@ -122,8 +122,8 @@ function LandingPage({ lang, onToggleLang }: { lang: Language; onToggleLang: () 
                 </h2>
                 <p className="mt-3 text-neutral-400 text-sm max-w-2xl leading-relaxed">
                   {en
-                    ? 'Swap any food with equal macro equivalents calculated from Dr. Ahmed Assem’s clinical nutrition database.'
-                    : 'استبدل أي طعام ببديله الدقيق من قاعدة بيانات د. أحمد عاصم الرياضية والطبية.'}
+                    ? 'Swap any food with equal macro equivalents calculated from Dr. Ahmed Assem’s nutrition database.'
+                    : 'استبدل أي طعام ببديله الدقيق من قاعدة بيانات د. أحمد عاصم للتغذية الرياضية.'}
                 </p>
               </div>
 
