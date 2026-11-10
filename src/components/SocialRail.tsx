@@ -1,5 +1,6 @@
 import React from 'react';
 import { WhatsappIcon } from './WhatsappIcon';
+import { useSiteConfig } from '../config/SiteConfigContext';
 
 /** Brand marks as inline SVG — no icon-library dependency, crisp at any size, zero extra requests. */
 const TikTokIcon: React.FC<{ className?: string }> = ({ className }) => (
@@ -26,38 +27,54 @@ const InstagramIcon: React.FC<{ className?: string }> = ({ className }) => (
   </svg>
 );
 
-const SOCIAL_LINKS = [
-  { label: 'TikTok', href: 'https://www.tiktok.com/@dr_ahmedassem', Icon: TikTokIcon },
-  { label: 'Facebook', href: 'https://www.facebook.com/Dr.AhmedAssem1', Icon: FacebookIcon },
-  { label: 'YouTube', href: 'https://www.youtube.com/@Dr_ahmedassem/featured', Icon: YoutubeIcon },
-  { label: 'WhatsApp', href: 'https://wa.me/201158997825', Icon: WhatsappIcon },
-  { label: 'Instagram', href: 'https://www.instagram.com/dr_ahmedassem/', Icon: InstagramIcon },
-];
+/** Icon per social id. A link added in the dashboard with an unknown id falls back to a generic link icon. */
+const ICONS: Record<string, React.FC<{ className?: string }>> = {
+  tiktok: TikTokIcon,
+  facebook: FacebookIcon,
+  youtube: YoutubeIcon,
+  whatsapp: WhatsappIcon,
+  instagram: InstagramIcon,
+};
+
+const LinkIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+    <path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5" />
+    <path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5" />
+  </svg>
+);
 
 /**
  * Fixed social rail: vertically centered on the content edge, on top of every section,
  * on both desktop and mobile. Uses CSS logical `end` so it mirrors correctly in Arabic (RTL).
  */
 export const SocialRail: React.FC = () => {
+  const { cfg } = useSiteConfig();
+  const socials = cfg.contact.socials.filter((s) => s.visible);
+  if (socials.length === 0) return null;
   return (
     <div
-      className="social-rail-fixed fixed top-1/2 end-0 z-30 flex -translate-y-1/2 flex-col gap-0.5 sm:gap-2 rounded-s-lg sm:rounded-s-xl border border-e-0 border-neutral-800/80 bg-[#1C1F24]/80 p-1 sm:p-2 shadow-[0_8px_24px_rgba(0,0,0,0.35)] backdrop-blur-md"
+      className="social-rail-fixed fixed top-1/2 end-0 z-30 flex -translate-y-1/2 flex-col gap-0.5 sm:gap-2 rounded-s-lg sm:rounded-s-xl border border-e-0 border-neutral-800/80 bg-canvas/80 p-1 sm:p-2 shadow-[0_8px_24px_rgba(0,0,0,0.35)] backdrop-blur-md"
       role="navigation"
       aria-label="Social media"
     >
-      {SOCIAL_LINKS.map(({ label, href, Icon }) => (
+      {socials.map(({ id, label, href }) => {
+        const Icon = ICONS[id] ?? LinkIcon;
+        // one WhatsApp number for the whole site (Contact settings in the dashboard)
+        const url = id === 'whatsapp' ? `https://wa.me/${cfg.contact.whatsapp}` : href;
+        return (
         <a
-          key={label}
-          href={href}
+          key={id}
+          href={url}
           target="_blank"
           rel="noopener noreferrer"
           aria-label={label}
           title={label}
-          className="flex h-7 w-7 items-center justify-center text-neutral-300 transition-colors hover:text-[#E5484D] active:scale-90 sm:h-9 sm:w-9"
+          className="flex h-7 w-7 items-center justify-center text-neutral-300 transition-colors hover:text-accent active:scale-90 sm:h-9 sm:w-9"
         >
           <Icon className="h-3.5 w-3.5 sm:h-[18px] sm:w-[18px]" />
         </a>
-      ))}
+        );
+      })}
     </div>
   );
 };

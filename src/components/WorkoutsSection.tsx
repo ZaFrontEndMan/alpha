@@ -1,7 +1,8 @@
 import React from 'react';
 import { TranslationContent, Language } from '../translations';
 import { cn } from '../utils/cn';
-import workoutPhoto from '../assets/person/person_2.jpg';
+import { useSiteConfig } from '../config/SiteConfigContext';
+import { tx } from '../config/siteConfig';
 
 interface WorkoutsSectionProps {
   t: TranslationContent;
@@ -10,48 +11,45 @@ interface WorkoutsSectionProps {
 }
 
 export const WorkoutsSection: React.FC<WorkoutsSectionProps> = ({ t, lang, onOpenConsultation }) => {
+  const { cfg, img } = useSiteConfig();
   const en = lang === 'en';
 
   const cards = [
     {
-      titleLead: en ? 'HOME OR GYM' : 'في البيت أو الجيم',
-      title: en ? 'WORKOUTS' : 'تمارين',
-      body: en
-        ? 'Workout wherever is most convenient for you with home or gym workout options!'
-        : 'تدرب في المكان الأنسب لك — خيارات تمارين للبيت أو للجيم!',
+      titleLead: tx(cfg.content.workouts.cards[0].titleLead, lang),
+      title: tx(cfg.content.workouts.cards[0].title, lang),
+      body: tx(cfg.content.workouts.cards[0].body, lang),
     },
     {
-      titleLead: en ? 'Personalised' : 'برنامج تدريبي',
-      title: en ? 'WORKOUT PROGRAM' : 'مخصص لك',
-      body: en
-        ? 'Workout program just for you! I will customise your own ongoing training program. All exercises have been filmed to demonstrate how to perform them correctly.'
-        : 'برنامج تدريبي لك وحدك! سأصمم لك برنامجاً مستمراً يناسبك، وكل تمرين مصوّر بالفيديو ليوضح الأداء الصحيح.',
+      titleLead: tx(cfg.content.workouts.cards[1].titleLead, lang),
+      title: tx(cfg.content.workouts.cards[1].title, lang),
+      body: tx(cfg.content.workouts.cards[1].body, lang),
     },
   ];
 
   return (
-    <section id="workouts" className="relative overflow-hidden py-20 md:py-28 bg-[#1C1F24] @container">
+    <section id="workouts" className="relative overflow-hidden py-20 md:py-28 bg-canvas @container">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           {/* Photo */}
           <div className="lg:col-span-5 relative">
             <img
-              src={workoutPhoto}
-              alt={en ? 'Training session' : 'جلسة تدريب'}
+              src={img(cfg.content.workouts.image)}
+              alt={tx(cfg.content.workouts.image.alt, lang)}
               loading="lazy"
               decoding="async"
               className="w-full aspect-[4/5] sm:aspect-[3/2] lg:aspect-[4/5] object-cover rounded-xl"
             />
             <div
-              className="pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-t from-[#1C1F24]/70 via-transparent to-transparent"
+              className="pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-t from-canvas/70 via-transparent to-transparent"
               aria-hidden="true"
             />
           </div>
 
           {/* Copy */}
           <div className="lg:col-span-7">
-            <div className="text-xs font-bold tracking-widest text-[#E5484D] uppercase mb-3">
-              {en ? 'TRAINING' : 'التدريب'}
+            <div className="text-xs font-bold tracking-widest text-accent uppercase mb-3">
+              {tx(cfg.content.workouts.badge, lang)}
             </div>
 
             <div className="space-y-8">
@@ -63,20 +61,22 @@ export const WorkoutsSection: React.FC<WorkoutsSectionProps> = ({ t, lang, onOpe
                       en ? 'font-sport' : 'font-cairo'
                     )}
                   >
-                    <span className="text-[#E5484D]">{card.titleLead}</span> {card.title}
+                    <span className="text-accent">{card.titleLead}</span> {card.title}
                   </h3>
                   <p className="mt-3 text-base sm:text-lg text-neutral-300 leading-relaxed max-w-2xl">{card.body}</p>
                 </div>
               ))}
             </div>
 
-            <button
-              type="button"
-              onClick={onOpenConsultation}
-              className="mt-9 inline-flex min-h-[44px] items-center justify-center bg-[#B8232F] px-7 py-3 text-xs sm:text-sm font-black uppercase tracking-wider text-[#E9E9E4] transition-colors hover:bg-[#9C1D28] cursor-pointer"
-            >
-              {t.hero.ctaStart}
-            </button>
+            {cfg.ctas.start.visible && (
+              <button
+                type="button"
+                onClick={onOpenConsultation}
+                className="mt-9 inline-flex min-h-[44px] items-center justify-center bg-brand px-7 py-3 text-xs sm:text-sm font-black uppercase tracking-wider text-white transition-colors hover:bg-brand-hover cursor-pointer"
+              >
+                {t.hero.ctaStart}
+              </button>
+            )}
           </div>
         </div>
       </div>

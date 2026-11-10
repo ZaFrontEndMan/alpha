@@ -1,18 +1,9 @@
 import React from 'react';
 import { TranslationContent, Language } from '../translations';
 import { cn } from '../utils/cn';
+import { useSiteConfig } from '../config/SiteConfigContext';
+import { tx } from '../config/siteConfig';
 
-/** Which client photo backs each review, by file name in assets/transformation (1.jpg, 2.jpg, …).
- *  Swap these numbers so each quote shows its own client. */
-const REVIEW_PHOTO = [16, 17, 18]; // Zeyad, Sisi, Nizar
-
-const PHOTOS = import.meta.glob('../assets/transformation/*.jpg', { eager: true, import: 'default' }) as Record<
-  string,
-  string
->;
-
-const photoFor = (idx: number) =>
-  PHOTOS[`../assets/transformation/${REVIEW_PHOTO[idx % REVIEW_PHOTO.length]}.jpg`];
 
 interface TestimonialsProps {
   t: TranslationContent;
@@ -25,12 +16,15 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
   lang,
   onOpenConsultation,
 }) => {
+  const { cfg, img } = useSiteConfig();
+  // same filter buildTranslations uses, so review idx lines up with its photo
+  const visibleReviews = cfg.content.testimonials.reviews.filter((r) => r.visible !== false);
   return (
     <section id="reviews" className="py-20 md:py-28 section-blend @container">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-14">
-          <div className="text-xs font-bold tracking-widest text-[#E5484D] uppercase mb-3">
+          <div className="text-xs font-bold tracking-widest text-accent uppercase mb-3">
             {t.testimonials.title}
           </div>
           <h2 className={cn(
@@ -49,12 +43,12 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
           {t.testimonials.reviews.map((item, idx) => (
             <div
               key={idx}
-              className="bg-[#1C1F24] border border-neutral-800 p-8 flex flex-col justify-between hover:border-neutral-700 transition-colors relative group"
+              className="bg-canvas border border-neutral-800 p-8 flex flex-col justify-between hover:border-neutral-700 transition-colors relative group"
             >
               {/* Full before/after photo — shown whole, never cropped */}
               <div data-reveal-skip className="-mx-8 -mt-8 mb-6 border-b border-neutral-800 bg-black">
                 <img
-                  src={photoFor(idx)}
+                  src={img(visibleReviews[idx]?.photo)}
                   alt={item.name}
                   loading="lazy"
                   decoding="async"
@@ -64,7 +58,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
 
               {/* Highlight badge at top */}
               <div className="flex items-center justify-between pb-4 mb-4 border-b border-neutral-800">
-                <span className="text-xs font-mono font-bold text-[#E5484D]">
+                <span className="text-xs font-mono font-bold text-accent">
                   {item.stats}
                 </span>
                 <span className="text-xs font-mono text-neutral-400">
@@ -83,7 +77,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
                   <div className="text-base font-bold text-white leading-tight">
                     {item.name}
                   </div>
-                  <div className="text-xs text-[#E5484D] font-mono mt-0.5">
+                  <div className="text-xs text-accent font-mono mt-0.5">
                     {item.highlight}
                   </div>
                 </div>
@@ -95,17 +89,17 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
         {/* Trust CTA bar */}
         <div className="mt-12 pt-8 border-t border-neutral-800 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-xs text-neutral-400 text-center sm:text-start">
-            {lang === 'en'
-              ? 'Over 500+ real client transformations logged. Join Dr. Ahmed Assem today.'
-              : 'أكثر من 500 تحول حقيقي موثق بالنتائج. انضم إلى د. أحمد عاصم اليوم.'}
+            {tx(cfg.content.testimonials.footerNote, lang)}
           </div>
-          <button
-            type="button"
-            onClick={onOpenConsultation}
-            className="w-full sm:w-auto px-6 py-3 min-h-[44px] text-xs font-black uppercase tracking-wider text-[#E9E9E4] bg-[#B8232F] hover:bg-[#9C1D28] transition-colors cursor-pointer text-center"
-          >
-            {t.hero.ctaStart}
-          </button>
+          {cfg.ctas.start.visible && (
+            <button
+              type="button"
+              onClick={onOpenConsultation}
+              className="w-full sm:w-auto px-6 py-3 min-h-[44px] text-xs font-black uppercase tracking-wider text-white bg-brand hover:bg-brand-hover transition-colors cursor-pointer text-center"
+            >
+              {t.hero.ctaStart}
+            </button>
+          )}
         </div>
       </div>
     </section>

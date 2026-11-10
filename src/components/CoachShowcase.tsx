@@ -1,7 +1,8 @@
 import React from 'react';
 import { TranslationContent, Language } from '../translations';
 import { cn } from '../utils/cn';
-import personCoach from '../assets/person/person_4.jpg';
+import { useSiteConfig } from '../config/SiteConfigContext';
+import { tx } from '../config/siteConfig';
 
 interface CoachShowcaseProps {
   t: TranslationContent;
@@ -14,13 +15,14 @@ interface CoachShowcaseProps {
  * with a giant ghost word behind him.
  */
 export const CoachShowcase: React.FC<CoachShowcaseProps> = ({ t, lang, onOpenConsultation }) => {
+  const { cfg, img } = useSiteConfig();
   return (
-    <section className="relative isolate overflow-hidden bg-[#1C1F24] py-16 sm:py-24 md:py-32 @container">
+    <section className="relative isolate overflow-hidden bg-canvas py-16 sm:py-24 md:py-32 @container">
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-end gap-8 px-4 sm:px-6 lg:grid-cols-12 lg:gap-6 lg:px-8">
         {/* Copy column */}
         <div className="order-2 lg:order-1 lg:col-span-6 xl:col-span-5">
-          <div className="text-xs font-bold tracking-widest text-[#E5484D] uppercase mb-3">
-            {lang === 'en' ? 'THE MAN BEHIND THE SYSTEM' : 'الرجل وراء النظام'}
+          <div className="text-xs font-bold tracking-widest text-accent uppercase mb-3">
+            {tx(cfg.content.coach.tag, lang)}
           </div>
           <h2
             className={cn(
@@ -28,19 +30,15 @@ export const CoachShowcase: React.FC<CoachShowcaseProps> = ({ t, lang, onOpenCon
               lang === 'en' ? 'font-sport' : 'font-cairo'
             )}
           >
-            {lang === 'en'
-              ? 'IFBB Pro Physique Athlete, Your Coach'
-              : 'بطل IFBB برو محترف ومدربك الشخصي'}
+            {tx(cfg.content.coach.heading, lang)}
           </h2>
           <p className="mt-4 max-w-md text-base sm:text-lg text-neutral-300 leading-relaxed">
-            {lang === 'en'
-              ? 'Dr. Ahmed Assem built his own physique the same way he builds yours — with precise tracking, periodized training, and zero guesswork.'
-              : 'د. أحمد عاصم بنى جسمه بنفس الطريقة اللي هيبني بيها جسمك — بمتابعة دقيقة، وتدريب مبرمج علمياً، وبدون أي عشوائية.'}
+            {tx(cfg.content.coach.text, lang)}
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4 font-mono">
             <div>
-              <div className="text-2xl sm:text-3xl font-black text-[#E5484D] tabular-nums">
+              <div className="text-2xl sm:text-3xl font-black text-accent tabular-nums">
                 {t.stats.experienceYears}
               </div>
               <div className="text-xs text-neutral-400 uppercase mt-0.5">{t.stats.experienceLabel}</div>
@@ -53,13 +51,15 @@ export const CoachShowcase: React.FC<CoachShowcaseProps> = ({ t, lang, onOpenCon
             </div>
           </div>
 
-          <button
-            type="button"
-            onClick={onOpenConsultation}
-            className="mt-8 inline-flex min-h-[44px] items-center justify-center bg-[#B8232F] px-7 py-3 text-xs sm:text-sm font-black uppercase tracking-wider text-[#E9E9E4] transition-colors hover:bg-[#9C1D28] cursor-pointer"
-          >
-            {t.hero.ctaStart}
-          </button>
+          {cfg.ctas.start.visible && (
+            <button
+              type="button"
+              onClick={onOpenConsultation}
+              className="mt-8 inline-flex min-h-[44px] items-center justify-center bg-brand px-7 py-3 text-xs sm:text-sm font-black uppercase tracking-wider text-white transition-colors hover:bg-brand-hover cursor-pointer"
+            >
+              {t.hero.ctaStart}
+            </button>
+          )}
         </div>
 
         {/* Coach photo. `mix-blend-lighten` drops his pure-black studio backdrop into the section
@@ -69,16 +69,16 @@ export const CoachShowcase: React.FC<CoachShowcaseProps> = ({ t, lang, onOpenCon
           <div
             className={cn(
               'pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 select-none text-center leading-none whitespace-nowrap',
-              'text-[30vw] sm:text-[22vw] lg:text-[13vw] font-black tracking-tighter text-[#E5484D]/[0.09]',
+              'text-[30vw] sm:text-[22vw] lg:text-[13vw] font-black tracking-tighter text-accent/[0.09]',
               lang === 'en' ? 'font-sport' : 'font-cairo'
             )}
             aria-hidden="true"
           >
-            {lang === 'en' ? 'RESULTS' : 'نتائج'}
+            {tx(cfg.content.coach.badge, lang)}
           </div>
           <img
-            src={personCoach}
-            alt={lang === 'en' ? 'Dr. Ahmed Assem, IFBB Pro physique athlete' : 'د. أحمد عاصم، بطل فيزيك IFBB برو'}
+            src={img(cfg.content.coach.image)}
+            alt={tx(cfg.content.coach.image.alt, lang)}
             loading="lazy"
             decoding="async"
             className="relative h-[52vh] sm:h-[62vh] lg:h-[72vh] w-auto max-w-full object-contain object-bottom mix-blend-lighten [mask-image:linear-gradient(to_bottom,black_78%,transparent)]"

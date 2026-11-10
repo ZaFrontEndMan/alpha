@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { BrandLogo } from './BrandLogo';
 import { Language, TranslationContent } from '../translations';
 import { cn } from '../utils/cn';
+import { useSiteConfig } from '../config/SiteConfigContext';
+import { tx } from '../config/siteConfig';
 
 interface NavbarProps {
   lang: Language;
@@ -10,28 +12,15 @@ interface NavbarProps {
   onOpenCalculator: () => void;
 }
 
-/** Same order as the sections on the page, so the nav reads top-to-bottom like the page scrolls.
- *  `calculator` scrolls through the same helper the hero button uses, hence no href. */
-type NavKey = 'home' | 'transformations' | 'reviews' | 'workouts' | 'features' | 'comparison' | 'packages' | 'calculator' | 'faqs';
-
-const NAV_LINKS: { href?: string; key: NavKey }[] = [
-  { href: '#', key: 'home' },
-  { href: '#transformations', key: 'transformations' },
-  { href: '#packages', key: 'packages' },
-  { href: '#reviews', key: 'reviews' },
-  { href: '#workouts', key: 'workouts' },
-  { href: '/substitutions', key: 'calculator' },
-  { href: '#features', key: 'features' },
-  { href: '#comparison', key: 'comparison' },
-  { href: '#faqs', key: 'faqs' },
-];
-
 export const Navbar: React.FC<NavbarProps> = ({ lang, t, onToggleLang, onOpenCalculator }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { cfg } = useSiteConfig();
+  // Links, their order, labels and visibility come from the dashboard.
+  const links = cfg.navbar.links.filter((l) => l.visible);
 
   /** One renderer for both the desktop bar and the mobile drawer. */
   const navItems = (itemClass: string, onPick?: () => void) =>
-    NAV_LINKS.map(({ href, key }) => (
+    links.map(({ href, key, label }) => (
       <a
         key={key}
         href={href}
@@ -46,7 +35,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, t, onToggleLang, onOpenCal
         }}
         className={itemClass}
       >
-        {t.nav[key]}
+        {tx(label, lang)}
       </a>
     ));
 
@@ -59,7 +48,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, t, onToggleLang, onOpenCal
         {/* Brand */}
         <a
           href="#"
-          className="shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B8232F]"
+          className="shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
         >
           <BrandLogo size={36} />
         </a>
@@ -67,7 +56,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, t, onToggleLang, onOpenCal
         {/* Section links (desktop) */}
         <nav className="hidden xl:flex items-center gap-5 text-xs lg:text-sm font-semibold text-neutral-300">
           {navItems(
-            'hover:text-white transition-colors whitespace-nowrap hover:underline underline-offset-8 decoration-[#B8232F] decoration-2'
+            'hover:text-white transition-colors whitespace-nowrap hover:underline underline-offset-8 decoration-brand decoration-2'
           )}
         </nav>
 
@@ -76,7 +65,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, t, onToggleLang, onOpenCal
           <button
             type="button"
             onClick={onToggleLang}
-            className="px-2.5 sm:px-3 py-1.5 text-xs font-bold border border-neutral-700 bg-neutral-900/80 hover:border-[#B8232F] hover:text-[#E5484D] text-neutral-200 transition-colors cursor-pointer flex items-center gap-1.5 min-h-[38px] sm:min-h-[36px]"
+            className="px-2.5 sm:px-3 py-1.5 text-xs font-bold border border-neutral-700 bg-neutral-900/80 hover:border-brand hover:text-accent text-neutral-200 transition-colors cursor-pointer flex items-center gap-1.5 min-h-[38px] sm:min-h-[36px]"
             title="Switch Language"
           >
             <span className="text-[11px] font-mono">🌐</span>
@@ -86,7 +75,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, t, onToggleLang, onOpenCal
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="xl:hidden p-2 text-neutral-300 hover:text-white min-h-[44px] min-w-[44px] flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B8232F]"
+            className="xl:hidden p-2 text-neutral-300 hover:text-white min-h-[44px] min-w-[44px] flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
             aria-label="Toggle navigation menu"
             aria-expanded={mobileMenuOpen}
           >
@@ -105,7 +94,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, t, onToggleLang, onOpenCal
       {mobileMenuOpen && (
         <div className="relative xl:hidden border-b border-neutral-800 bg-black/90 backdrop-blur-xl px-4 pt-4 pb-6 space-y-3">
           {navItems(
-            'block w-full text-sm font-semibold text-neutral-200 hover:text-[#E5484D] py-1.5',
+            'block w-full text-sm font-semibold text-neutral-200 hover:text-accent py-1.5',
             () => setMobileMenuOpen(false)
           )}
         </div>

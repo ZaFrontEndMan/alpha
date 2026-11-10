@@ -17,7 +17,8 @@ import {
   ChevronUp,
 } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
-import { Language, translations } from '../translations';
+import { Language } from '../translations';
+import { useSiteConfig, useTranslations } from '../config/SiteConfigContext';
 import { cn } from '../utils/cn';
 import { WhatsappIcon } from './WhatsappIcon';
 import { grantFormAccess } from '../utils/paymentAccess';
@@ -28,7 +29,6 @@ interface PaymentStatusProps {
   onToggleLang: () => void;
 }
 
-const WHATSAPP_NUMBER = '201158997825';
 
 export const PaymentStatus: React.FC<PaymentStatusProps> = ({
   status: forcedStatus,
@@ -41,7 +41,9 @@ export const PaymentStatus: React.FC<PaymentStatusProps> = ({
   const [showTroubleshooting, setShowTroubleshooting] = useState(false);
 
   const en = lang === 'en';
-  const t = translations[lang];
+  const { cfg } = useSiteConfig();
+  const t = useTranslations(lang);
+  const WHATSAPP_NUMBER = cfg.contact.whatsapp;
 
   // Parse all query parameters from Paymob callback
   const searchParams = new URLSearchParams(location.search);
@@ -189,12 +191,12 @@ export const PaymentStatus: React.FC<PaymentStatusProps> = ({
   return (
     <div
       className={cn(
-        'min-h-screen bg-[#1C1F24] text-neutral-100 flex flex-col selection:bg-[#B8232F] selection:text-[#E9E9E4]',
+        'min-h-screen bg-canvas text-neutral-100 flex flex-col selection:bg-brand selection:text-white',
         en ? 'font-sans' : 'font-cairo'
       )}
     >
       {/* Top Header */}
-      <header className="border-b border-neutral-800/80 bg-[#1C1F24]/90 backdrop-blur-md sticky top-0 z-30">
+      <header className="border-b border-neutral-800/80 bg-canvas/90 backdrop-blur-md sticky top-0 z-30">
         <div className="max-w-4xl mx-auto h-16 px-4 sm:px-6 flex items-center justify-between gap-4">
           <button
             type="button"
@@ -210,7 +212,7 @@ export const PaymentStatus: React.FC<PaymentStatusProps> = ({
           <button
             type="button"
             onClick={onToggleLang}
-            className="text-xs font-bold text-neutral-300 border border-neutral-700 hover:border-[#B8232F] hover:text-[#E5484D] px-3 py-1.5 transition-colors cursor-pointer"
+            className="text-xs font-bold text-neutral-300 border border-neutral-700 hover:border-brand hover:text-accent px-3 py-1.5 transition-colors cursor-pointer"
           >
             {en ? 'عربي' : 'EN'}
           </button>
@@ -224,7 +226,7 @@ export const PaymentStatus: React.FC<PaymentStatusProps> = ({
           <div
             className={cn(
               'absolute -top-12 left-1/2 -translate-x-1/2 w-72 h-72 rounded-full blur-[110px] pointer-events-none opacity-40',
-              effectiveStatus === 'success' && 'bg-[#B8232F]',
+              effectiveStatus === 'success' && 'bg-brand',
               effectiveStatus === 'failed' && 'bg-rose-500',
               effectiveStatus === 'pending' && 'bg-amber-400'
             )}
@@ -234,7 +236,7 @@ export const PaymentStatus: React.FC<PaymentStatusProps> = ({
           <div
             className={cn(
               'relative rounded-2xl border p-6 sm:p-10 text-center backdrop-blur-xl transition-all',
-              effectiveStatus === 'success' && 'border-[#B8232F]/40 bg-[#212429]/95 shadow-[0_0_50px_rgba(184,35,47,0.12)]',
+              effectiveStatus === 'success' && 'border-brand/40 bg-[#212429]/95 shadow-[0_0_50px_color-mix(in_srgb,var(--color-brand)_12%,transparent)]',
               effectiveStatus === 'failed' && 'border-rose-500/40 bg-[#140b0d]/95 shadow-[0_0_50px_rgba(244,63,94,0.12)]',
               effectiveStatus === 'pending' && 'border-amber-400/40 bg-[#14120b]/95 shadow-[0_0_50px_rgba(251,191,36,0.12)]'
             )}
@@ -244,7 +246,7 @@ export const PaymentStatus: React.FC<PaymentStatusProps> = ({
               <div
                 className={cn(
                   'relative w-20 h-20 rounded-full flex items-center justify-center border',
-                  effectiveStatus === 'success' && 'border-[#B8232F]/60 bg-[#B8232F]/10 text-[#E5484D]',
+                  effectiveStatus === 'success' && 'border-brand/60 bg-brand/10 text-accent',
                   effectiveStatus === 'failed' && 'border-rose-500/60 bg-rose-500/10 text-rose-400',
                   effectiveStatus === 'pending' && 'border-amber-400/60 bg-amber-400/10 text-amber-300'
                 )}
@@ -252,7 +254,7 @@ export const PaymentStatus: React.FC<PaymentStatusProps> = ({
                 <div
                   className={cn(
                     'absolute inset-0 rounded-full animate-ping opacity-25',
-                    effectiveStatus === 'success' && 'bg-[#B8232F]',
+                    effectiveStatus === 'success' && 'bg-brand',
                     effectiveStatus === 'failed' && 'bg-rose-500',
                     effectiveStatus === 'pending' && 'bg-amber-400'
                   )}
@@ -266,7 +268,7 @@ export const PaymentStatus: React.FC<PaymentStatusProps> = ({
             {/* Status Pill Badge */}
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[0.7rem] font-black uppercase tracking-widest mb-4 border">
               {effectiveStatus === 'success' && (
-                <span className="text-[#E5484D] border-[#B8232F]/30 bg-[#B8232F]/10 px-3 py-1 rounded-full">
+                <span className="text-accent border-brand/30 bg-brand/10 px-3 py-1 rounded-full">
                   {en ? 'Payment Confirmed' : 'تم استلام وتأكيد الدفع'}
                 </span>
               )}
@@ -303,7 +305,7 @@ export const PaymentStatus: React.FC<PaymentStatusProps> = ({
             </p>
 
             {/* Package & Amount Highlight Banner */}
-            <div className="border border-neutral-800 bg-[#1C1F24]/80 rounded-xl p-4 sm:p-5 max-w-lg mx-auto flex items-center justify-between gap-4 text-start">
+            <div className="border border-neutral-800 bg-canvas/80 rounded-xl p-4 sm:p-5 max-w-lg mx-auto flex items-center justify-between gap-4 text-start">
               <div>
                 <div className="text-[0.7rem] uppercase tracking-wider text-neutral-400 font-bold">
                   {en ? 'Package' : 'الباقة المحددة'}
@@ -315,7 +317,7 @@ export const PaymentStatus: React.FC<PaymentStatusProps> = ({
                   <div className="text-[0.7rem] uppercase tracking-wider text-neutral-400 font-bold">
                     {en ? 'Amount' : 'المبلغ'}
                   </div>
-                  <div className="font-mono font-black text-lg sm:text-xl text-[#E5484D] whitespace-nowrap">
+                  <div className="font-mono font-black text-lg sm:text-xl text-accent whitespace-nowrap">
                     {amountNumeric.toLocaleString()} {currency}
                   </div>
                 </div>
@@ -328,7 +330,7 @@ export const PaymentStatus: React.FC<PaymentStatusProps> = ({
         {(transactionId || orderId || merchantOrderId || cardPan || cardSubType) && (
           <div className="mt-6 border border-neutral-800 bg-[#23262B] rounded-2xl p-5 sm:p-7">
             <h2 className="text-xs font-mono font-bold tracking-widest text-neutral-400 uppercase mb-4 flex items-center gap-2">
-              <CreditCard className="w-4 h-4 text-[#E5484D]" />
+              <CreditCard className="w-4 h-4 text-accent" />
               <span>{en ? 'Transaction Details' : 'تفاصيل المعاملة'}</span>
             </h2>
 
@@ -341,10 +343,10 @@ export const PaymentStatus: React.FC<PaymentStatusProps> = ({
                     <button
                       type="button"
                       onClick={() => handleCopy(merchantOrderId, 'merchant_order_id')}
-                      className="p-1 hover:text-[#E5484D] text-neutral-400 transition-colors cursor-pointer"
+                      className="p-1 hover:text-accent text-neutral-400 transition-colors cursor-pointer"
                       title={en ? 'Copy reference' : 'نسخ رقم المرجع'}
                     >
-                      {copiedField === 'merchant_order_id' ? <Check className="w-3.5 h-3.5 text-[#E5484D]" /> : <Copy className="w-3.5 h-3.5" />}
+                      {copiedField === 'merchant_order_id' ? <Check className="w-3.5 h-3.5 text-accent" /> : <Copy className="w-3.5 h-3.5" />}
                     </button>
                   </div>
                 </div>
@@ -358,10 +360,10 @@ export const PaymentStatus: React.FC<PaymentStatusProps> = ({
                     <button
                       type="button"
                       onClick={() => handleCopy(transactionId, 'transaction_id')}
-                      className="p-1 hover:text-[#E5484D] text-neutral-400 transition-colors cursor-pointer"
+                      className="p-1 hover:text-accent text-neutral-400 transition-colors cursor-pointer"
                       title={en ? 'Copy ID' : 'نسخ رقم المعاملة'}
                     >
-                      {copiedField === 'transaction_id' ? <Check className="w-3.5 h-3.5 text-[#E5484D]" /> : <Copy className="w-3.5 h-3.5" />}
+                      {copiedField === 'transaction_id' ? <Check className="w-3.5 h-3.5 text-accent" /> : <Copy className="w-3.5 h-3.5" />}
                     </button>
                   </div>
                 </div>
@@ -407,7 +409,7 @@ export const PaymentStatus: React.FC<PaymentStatusProps> = ({
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="min-h-[50px] bg-[#B8232F] text-[#E9E9E4] font-black text-xs sm:text-sm uppercase tracking-wider hover:bg-[#9C1D28] flex items-center justify-center gap-2 rounded-xl transition-all shadow-[0_0_25px_rgba(184,35,47,0.3)] cursor-pointer"
+                className="min-h-[50px] bg-brand text-white font-black text-xs sm:text-sm uppercase tracking-wider hover:bg-brand-hover flex items-center justify-center gap-2 rounded-xl transition-all shadow-[0_0_25px_color-mix(in_srgb,var(--color-brand)_30%,transparent)] cursor-pointer"
               >
                 <WhatsappIcon className="w-4 h-4 shrink-0 text-black" />
                 <span>{en ? 'Chat on WhatsApp to Start' : 'تواصل مع د. أحمد عبر واتساب'}</span>
@@ -431,7 +433,7 @@ export const PaymentStatus: React.FC<PaymentStatusProps> = ({
                 <button
                   type="button"
                   onClick={() => navigate(retryUrl)}
-                  className="min-h-[50px] bg-[#B8232F] text-[#E9E9E4] font-black text-xs sm:text-sm uppercase tracking-wider hover:bg-[#9C1D28] flex items-center justify-center gap-2 rounded-xl transition-all shadow-[0_0_20px_rgba(184,35,47,0.2)] cursor-pointer"
+                  className="min-h-[50px] bg-brand text-white font-black text-xs sm:text-sm uppercase tracking-wider hover:bg-brand-hover flex items-center justify-center gap-2 rounded-xl transition-all shadow-[0_0_20px_color-mix(in_srgb,var(--color-brand)_20%,transparent)] cursor-pointer"
                 >
                   <RotateCcw className="w-4 h-4" />
                   <span>{en ? 'Retry Payment / Change Card' : 'إعادة المحاولة / تغيير البطاقة'}</span>
@@ -441,7 +443,7 @@ export const PaymentStatus: React.FC<PaymentStatusProps> = ({
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="min-h-[50px] bg-[#25D366]/20 border border-[#25D366]/50 hover:bg-[#25D366]/30 text-[#E5484D] font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 rounded-xl transition-colors cursor-pointer"
+                  className="min-h-[50px] bg-[#25D366]/20 border border-[#25D366]/50 hover:bg-[#25D366]/30 text-accent font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 rounded-xl transition-colors cursor-pointer"
                 >
                   <WhatsappIcon className="w-4 h-4 shrink-0 text-[#25D366]" />
                   <span>{en ? 'Pay via InstaPay / WhatsApp' : 'الدفع عبر إنستاباي / واتساب'}</span>
@@ -476,7 +478,7 @@ export const PaymentStatus: React.FC<PaymentStatusProps> = ({
                 rel="noopener noreferrer"
                 className="min-h-[50px] bg-neutral-900 border border-neutral-700 hover:border-neutral-500 text-white font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 rounded-xl transition-colors cursor-pointer"
               >
-                <WhatsappIcon className="w-4 h-4 shrink-0 text-[#E5484D]" />
+                <WhatsappIcon className="w-4 h-4 shrink-0 text-accent" />
                 <span>{en ? 'Contact Support on WhatsApp' : 'مساعدة عبر واتساب'}</span>
               </a>
             </div>
@@ -492,7 +494,7 @@ export const PaymentStatus: React.FC<PaymentStatusProps> = ({
               className="w-full flex items-center justify-between text-start cursor-pointer"
             >
               <div className="flex items-center gap-2 text-sm font-bold text-neutral-200">
-                <HelpCircle className="w-4 h-4 text-[#E5484D]" />
+                <HelpCircle className="w-4 h-4 text-accent" />
                 <span>{en ? 'Why did my payment fail? Quick solutions' : 'لماذا لم تكتمل العملية؟ حلول سريعة'}</span>
               </div>
               {showTroubleshooting ? <ChevronUp className="w-4 h-4 text-neutral-400" /> : <ChevronDown className="w-4 h-4 text-neutral-400" />}
@@ -524,8 +526,8 @@ export const PaymentStatus: React.FC<PaymentStatusProps> = ({
                   </li>
                 </ul>
 
-                <div className="rounded-xl border border-[#B8232F]/30 bg-[#B8232F]/5 p-3 sm:p-4 text-neutral-300">
-                  <div className="font-bold text-[#E5484D] mb-1 flex items-center gap-1.5">
+                <div className="rounded-xl border border-brand/30 bg-brand/5 p-3 sm:p-4 text-neutral-300">
+                  <div className="font-bold text-accent mb-1 flex items-center gap-1.5">
                     <ShieldAlert className="w-4 h-4" />
                     <span>{en ? 'Alternative Direct Methods' : 'طرق دفع بديلة ومباشرة'}</span>
                   </div>

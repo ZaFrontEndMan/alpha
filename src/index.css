@@ -4,6 +4,11 @@
    Neutrals are re-tuned to cool graphite greys so every neutral-* / white class matches. */
 @theme {
   --color-white: #E9E9E4;
+  /* Brand tokens — overridden at runtime from the dashboard (SiteConfigContext.applyTheme) */
+  --color-brand: #B8232F;
+  --color-brand-hover: #9C1D28;
+  --color-accent: #E5484D;
+  --color-canvas: #1C1F24;
   --color-neutral-50: #F4F4F1;
   --color-neutral-100: #E9E9E4;
   --color-neutral-200: #D6D7D3;
@@ -24,8 +29,8 @@
   }
 
   body {
-    background-color: #1C1F24;
-    color: #E9E9E4;
+    background-color: var(--color-canvas);
+    color: var(--color-white);
     overflow-x: clip;
     width: 100%;
   }
@@ -61,7 +66,7 @@
 /* Solid sections: lighter in the middle, but every edge is exactly the page base (#1C1F24),
    so neighbouring sections always meet on the same colour — no flat cut between them. */
 .section-blend {
-  background: linear-gradient(to bottom, #1C1F24 0%, #212429 18%, #212429 82%, #1C1F24 100%);
+  background: linear-gradient(to bottom, var(--color-canvas) 0%, color-mix(in srgb, var(--color-canvas) 98%, white) 18%, color-mix(in srgb, var(--color-canvas) 98%, white) 82%, var(--color-canvas) 100%);
 }
 
 /* ------------------------------------------------------------------ */
@@ -144,7 +149,7 @@ html.lenis body {
 @keyframes intro-fill {
   0% { fill: rgba(255, 255, 255, 0); stroke: #ffffff; }
   35% { fill: #ffffff; stroke: #ffffff; }
-  100% { fill: var(--final, #B8232F); stroke: var(--final, #B8232F); }
+  100% { fill: var(--final, var(--color-brand)); stroke: var(--final, var(--color-brand)); }
 }
 
 /* Ensure brand logo displays with blend mode to cleanly remove dark background */
@@ -343,7 +348,7 @@ img[src*="brand-logo"] {
   inset-inline: 0;
   bottom: 0.02em;
   height: 0.09em;
-  background: #B8232F;
+  background: var(--color-brand);
   transform: scaleX(0);
   transform-origin: left;
 }
@@ -474,7 +479,7 @@ img[src*="brand-logo"] {
   bottom: 0.08em;
   width: 0.09em;
   margin-inline-start: 0.04em;
-  background: #B8232F;
+  background: var(--color-brand);
 }
 .type-accent {
   position: relative;
@@ -485,7 +490,7 @@ img[src*="brand-logo"] {
   inset-inline: 0;
   bottom: 0.02em;
   height: 0.09em;
-  background: #B8232F;
+  background: var(--color-brand);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.6s var(--intro-ease);

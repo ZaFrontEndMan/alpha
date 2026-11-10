@@ -2,7 +2,8 @@ import React from 'react';
 import { TranslationContent, Language } from '../translations';
 import { cn } from '../utils/cn';
 import { SectionBackdrop } from './SectionBackdrop';
-import beachPhoto from '../assets/person/person_5.jpg';
+import { useSiteConfig } from '../config/SiteConfigContext';
+import { tx } from '../config/siteConfig';
 
 interface HowItWorksProps {
   t: TranslationContent;
@@ -15,13 +16,14 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
   lang,
   onOpenConsultation,
 }) => {
+  const { cfg, img } = useSiteConfig();
   return (
-    <section className="relative overflow-hidden py-20 md:py-28 bg-[#1C1F24] @container">
-      <SectionBackdrop src={beachPhoto} side className="object-[70%_30%] lg:object-[center_30%]" />
+    <section className="relative overflow-hidden py-20 md:py-28 bg-canvas @container">
+      <SectionBackdrop src={img(cfg.content.howItWorks.image)} side className="object-[70%_30%] lg:object-[center_30%]" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
-          <div className="text-xs font-bold tracking-widest text-[#E5484D] uppercase mb-3">
+          <div className="text-xs font-bold tracking-widest text-accent uppercase mb-3">
             {t.howItWorks.tag}
           </div>
           <h2 className={cn(
@@ -41,7 +43,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
             >
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <span className="font-display font-black text-2xl sm:text-3xl text-[#E5484D] font-mono tabular-nums">
+                  <span className="font-display font-black text-2xl sm:text-3xl text-accent font-mono tabular-nums">
                     {st.step}
                   </span>
                   <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-500">
@@ -50,7 +52,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
                 </div>
 
                 <h3 className={cn(
-                  "text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-[#E5484D] transition-colors",
+                  "text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors",
                   lang === 'en' ? 'font-sport' : 'font-cairo'
                 )}>
                   {st.title}
@@ -62,8 +64,8 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
               </div>
 
               <div className="mt-6 pt-4 border-t border-neutral-800/80 flex items-center justify-between text-[11px] text-neutral-400 font-mono">
-                <span>{lang === 'en' ? 'STEP' : 'الخطوة'} {st.step}</span>
-                <span className="text-[#E5484D]">✓ SYSTEM PROTOCOL</span>
+                <span>{tx(cfg.content.howItWorks.stepLabel, lang)} {st.step}</span>
+                <span className="text-accent">✓ SYSTEM PROTOCOL</span>
               </div>
             </div>
           ))}
@@ -71,13 +73,15 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
 
         {/* CTA Bar */}
         <div className="mt-14 text-center">
-          <button
-            type="button"
-            onClick={onOpenConsultation}
-            className="w-full sm:w-auto px-8 py-4 min-h-[48px] text-xs sm:text-sm font-black uppercase tracking-wider text-[#E9E9E4] bg-[#B8232F] hover:bg-[#9C1D28] transition-colors cursor-pointer text-center"
-          >
-            {t.hero.ctaStart}
-          </button>
+          {cfg.ctas.start.visible && (
+            <button
+              type="button"
+              onClick={onOpenConsultation}
+              className="w-full sm:w-auto px-8 py-4 min-h-[48px] text-xs sm:text-sm font-black uppercase tracking-wider text-white bg-brand hover:bg-brand-hover transition-colors cursor-pointer text-center"
+            >
+              {t.hero.ctaStart}
+            </button>
+          )}
         </div>
       </div>
     </section>

@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CreditCard, Copy, Check, ArrowLeft, ArrowRight, ShieldCheck } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
-import { translations, Language } from '../translations';
+import { Language } from '../translations';
+import { useSiteConfig, useTranslations } from '../config/SiteConfigContext';
 import { cn } from '../utils/cn';
 import instapayIcon from '../assets/images/instapay.png';
 import { WhatsappIcon } from './WhatsappIcon';
@@ -16,12 +17,14 @@ interface PaymentCheckoutProps {
 
 const PACKAGE_IDS = new Set(['starter', 'elite', 'alpha-vip', 'consultation']);
 const INSTAPAY_NUMBER = '01063920763';
-const WHATSAPP_NUMBER = '201063920763';
 
 export const PaymentCheckout: React.FC<PaymentCheckoutProps> = ({ lang, onToggleLang }) => {
   const navigate = useNavigate();
   const en = lang === 'en';
-  const t = translations[lang];
+  const { cfg } = useSiteConfig();
+  const t = useTranslations(lang);
+  // WhatsApp line shown on the payment page (InstaPay / cash instructions)
+  const WHATSAPP_NUMBER = cfg.contact.paymentWhatsapp;
   const packageId = new URLSearchParams(window.location.search).get('package') ?? 'elite';
   const selectedPackage = t.packages.items.find((item) => item.id === packageId);
   const [name, setName] = useState('');
@@ -75,8 +78,8 @@ export const PaymentCheckout: React.FC<PaymentCheckoutProps> = ({ lang, onToggle
 
   if (!selectedPackage) {
     return (
-      <div className="min-h-screen bg-[#1C1F24] text-white grid place-items-center p-6">
-        <button type="button" onClick={() => navigate('/')} className="text-[#E5484D] underline">
+      <div className="min-h-screen bg-canvas text-white grid place-items-center p-6">
+        <button type="button" onClick={() => navigate('/')} className="text-accent underline">
           {en ? 'Return to packages' : 'العودة إلى الباقات'}
         </button>
       </div>
@@ -84,11 +87,11 @@ export const PaymentCheckout: React.FC<PaymentCheckoutProps> = ({ lang, onToggle
   }
 
   const fieldClass =
-    'w-full min-h-[48px] bg-[#23262B] border border-neutral-800 text-white px-4 text-sm focus:border-[#B8232F] focus:outline-none placeholder:text-neutral-600 rounded-lg transition-colors';
+    'w-full min-h-[48px] bg-[#23262B] border border-neutral-800 text-white px-4 text-sm focus:border-brand focus:outline-none placeholder:text-neutral-600 rounded-lg transition-colors';
 
   return (
-    <div className={cn('min-h-screen bg-[#1C1F24] text-neutral-100 flex flex-col', en ? 'font-sans' : 'font-cairo')}>
-      <header className="border-b border-neutral-800 bg-[#1C1F24]/95 sticky top-0 z-30 backdrop-blur-md">
+    <div className={cn('min-h-screen bg-canvas text-neutral-100 flex flex-col', en ? 'font-sans' : 'font-cairo')}>
+      <header className="border-b border-neutral-800 bg-canvas/95 sticky top-0 z-30 backdrop-blur-md">
         <div className="max-w-2xl mx-auto h-16 px-4 flex items-center justify-between gap-4">
           <button
             type="button"
@@ -102,7 +105,7 @@ export const PaymentCheckout: React.FC<PaymentCheckoutProps> = ({ lang, onToggle
           <button
             type="button"
             onClick={onToggleLang}
-            className="text-xs font-bold text-neutral-300 border border-neutral-700 hover:border-[#B8232F] hover:text-[#E5484D] px-3 py-1.5 transition-colors cursor-pointer rounded"
+            className="text-xs font-bold text-neutral-300 border border-neutral-700 hover:border-brand hover:text-accent px-3 py-1.5 transition-colors cursor-pointer rounded"
           >
             {en ? 'عربي' : 'EN'}
           </button>
@@ -110,7 +113,7 @@ export const PaymentCheckout: React.FC<PaymentCheckoutProps> = ({ lang, onToggle
       </header>
 
       <main className="flex-1 max-w-2xl w-full mx-auto px-4 py-10 sm:py-14">
-        <div className="text-xs font-mono font-bold tracking-widest text-[#E5484D] uppercase mb-2">
+        <div className="text-xs font-mono font-bold tracking-widest text-accent uppercase mb-2">
           {en ? 'Secure Checkout' : 'دفع آمن ومباشر'}
         </div>
         <h1 className="text-2xl sm:text-4xl font-black text-white mb-2">
@@ -127,7 +130,7 @@ export const PaymentCheckout: React.FC<PaymentCheckoutProps> = ({ lang, onToggle
         </p>
 
         {/* Selected Package Banner */}
-        <div className="border border-[#B8232F]/40 bg-[#262A30] rounded-xl p-5 mb-6 flex items-start justify-between gap-4">
+        <div className="border border-brand/40 bg-neutral-900 rounded-xl p-5 mb-6 flex items-start justify-between gap-4">
           <div>
             <div className="font-bold text-white text-base sm:text-lg">{selectedPackage.name}</div>
             <div className="text-xs text-neutral-400 mt-1">
@@ -140,7 +143,7 @@ export const PaymentCheckout: React.FC<PaymentCheckoutProps> = ({ lang, onToggle
                   : 'تتم معالجة الدفع بالجنيه المصري عبر Paymob بأمان.'}
             </div>
           </div>
-          <div className="font-mono font-black text-xl text-[#E5484D] whitespace-nowrap">
+          <div className="font-mono font-black text-xl text-accent whitespace-nowrap">
             {selectedPackage.priceNumeric.toLocaleString()} EGP
           </div>
         </div>
@@ -159,7 +162,7 @@ export const PaymentCheckout: React.FC<PaymentCheckoutProps> = ({ lang, onToggle
                 className={cn(
                   'min-h-[52px] px-3.5 py-2.5 border rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer',
                   method === 'card'
-                    ? 'border-[#B8232F] bg-[#B8232F]/10 text-[#E5484D] shadow-[0_0_15px_rgba(184,35,47,0.15)]'
+                    ? 'border-brand bg-brand/10 text-accent shadow-[0_0_15px_color-mix(in_srgb,var(--color-brand)_15%,transparent)]'
                     : 'border-neutral-700 bg-neutral-900/50 text-neutral-300 hover:border-neutral-600'
                 )}
               >
@@ -200,7 +203,7 @@ export const PaymentCheckout: React.FC<PaymentCheckoutProps> = ({ lang, onToggle
               </div>
 
               {/* Prominent Number & Copy Action */}
-              <div className="border border-neutral-700/80 bg-[#1C1F24] rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="border border-neutral-700/80 bg-canvas rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
                   <div className="text-[0.7rem] uppercase tracking-wider text-neutral-400 font-bold">
                     {en ? 'InstaPay Mobile Number' : 'رقم الهاتف المسجل على إنستاباي'}
@@ -323,7 +326,7 @@ export const PaymentCheckout: React.FC<PaymentCheckoutProps> = ({ lang, onToggle
             <button
               disabled={isSubmitting}
               type="submit"
-              className="w-full min-h-[52px] bg-[#B8232F] text-[#E9E9E4] font-black text-sm uppercase tracking-wider hover:bg-[#9C1D28] disabled:opacity-60 cursor-pointer disabled:cursor-wait rounded-xl transition-all shadow-[0_0_20px_rgba(184,35,47,0.25)] flex items-center justify-center gap-2"
+              className="w-full min-h-[52px] bg-brand text-white font-black text-sm uppercase tracking-wider hover:bg-brand-hover disabled:opacity-60 cursor-pointer disabled:cursor-wait rounded-xl transition-all shadow-[0_0_20px_color-mix(in_srgb,var(--color-brand)_25%,transparent)] flex items-center justify-center gap-2"
             >
               <ShieldCheck className="w-5 h-5" />
               <span>

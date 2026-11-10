@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrandLogo } from './BrandLogo';
 import { TranslationContent, Language } from '../translations';
-import { cn } from '../utils/cn';
+import { useSiteConfig } from '../config/SiteConfigContext';
+import { tx } from '../config/siteConfig';
 
 interface FooterProps {
   t: TranslationContent;
@@ -9,8 +10,12 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ t, lang }) => {
+  const { cfg } = useSiteConfig();
+  const f = cfg.footer;
+  const contact = cfg.contact;
+  const links = f.links.filter((l) => l.visible);
   return (
-    <footer className="bg-gradient-to-b from-[#1C1F24] to-[#16191D] text-neutral-400 py-16 @container">
+    <footer className="bg-gradient-to-b from-canvas to-[#16191D] text-neutral-400 py-16 @container">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-neutral-800/80">
           {/* Brand Info */}
@@ -20,89 +25,64 @@ export const Footer: React.FC<FooterProps> = ({ t, lang }) => {
             </div>
 
             <p className="text-xs text-neutral-400 max-w-sm leading-relaxed mt-4">
-              {lang === 'en'
-                ? 'Transform your whole life in 90 days with a science-based system. Hundreds of clients transformed using science — not guesswork.'
-                : 'غيّر حياتك بالكامل في 90 يوماً بنظام مصمم علمياً. مئات المتدربين غيروا أجسامهم بنظام مثبت علمياً بدون أي عشوائية.'}
+              {tx(f.description, lang)}
             </p>
 
-            <div className="text-[11px] font-mono text-[#E5484D]">
-              Official Platform · drahmedassem.com
+            <div className="text-[11px] font-mono text-accent">
+              {f.platformLabel}
             </div>
           </div>
 
           {/* Quick Navigation Links */}
           <div className="md:col-span-3 space-y-3">
             <div className="text-xs font-bold uppercase tracking-wider text-white">
-              {lang === 'en' ? 'Navigation' : 'روابط سريعة'}
+              {tx(f.navTitle, lang)}
             </div>
             <ul className="space-y-2 text-xs">
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  {t.nav.home}
-                </a>
-              </li>
-              <li>
-                <a href="#packages" className="hover:text-white transition-colors">
-                  {t.nav.packages}
-                </a>
-              </li>
-              <li>
-                <a href="#features" className="hover:text-white transition-colors">
-                  {t.nav.features}
-                </a>
-              </li>
-              <li>
-                <a href="#transformations" className="hover:text-white transition-colors">
-                  {t.nav.transformations}
-                </a>
-              </li>
-              <li>
-                <a href="#comparison" className="hover:text-white transition-colors">
-                  {t.nav.comparison}
-                </a>
-              </li>
-              <li>
-                <a href="#faqs" className="hover:text-white transition-colors">
-                  {t.nav.faqs}
-                </a>
-              </li>
+              {links.map((l) => (
+                <li key={l.key}>
+                  <a href={l.href} className="hover:text-white transition-colors">
+                    {tx(l.label, lang)}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Channels & Support */}
           <div className="md:col-span-4 space-y-3">
             <div className="text-xs font-bold uppercase tracking-wider text-white">
-              {lang === 'en' ? 'Direct Channels & WhatsApp' : 'التواصل المباشر والواتساب'}
+              {tx(f.channelsTitle, lang)}
             </div>
             <p className="text-xs text-neutral-400 leading-relaxed">
-              {lang === 'en'
-                ? 'Client intake reviews, athlete prep, and 1-on-1 consultations:'
-                : 'استفسارات الاشتراكات، تحضير البطولات، والاستشارات الفردية:'}
+              {tx(f.channelsText, lang)}
             </p>
             <div className="space-y-1.5 text-xs font-mono text-neutral-300">
               <div>
                 <span className="text-neutral-500">Email:</span>{' '}
                 <a
-                  href="mailto:info@drahmedassem.com"
-                  className="hover:text-[#E5484D] transition-colors"
+                  href={`mailto:${contact.email}`}
+                  className="hover:text-accent transition-colors"
                 >
-                  info@drahmedassem.com
+                  {contact.email}
                 </a>
               </div>
-              <div>
-                <span className="text-neutral-500">WhatsApp:</span>{' '}
-                <a
-                  href="https://wa.me/201158997825"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#E5484D] transition-colors"
-                >
-                  {lang === 'en' ? 'Direct Line to Dr. Assem' : 'مكتب الدكتور المباشر'}
-                </a>
-              </div>
+              {cfg.ctas.footerWhatsapp.visible && (
+                <div>
+                  <span className="text-neutral-500">WhatsApp:</span>{' '}
+                  <a
+                    href={`https://wa.me/${contact.whatsapp}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-accent transition-colors"
+                  >
+                    {tx(cfg.ctas.footerWhatsapp.label, lang)}
+                  </a>
+                </div>
+              )}
               <div>
                 <span className="text-neutral-500">Instagram:</span>{' '}
-                <span className="text-white">@drahmedassem_ifbbpro</span>
+                <span className="text-white">{contact.instagramHandle}</span>
               </div>
             </div>
           </div>

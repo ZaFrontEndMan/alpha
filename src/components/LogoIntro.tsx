@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { markIntroDone, prefersReducedMotion } from './fx';
+import { useSiteConfig } from '../config/SiteConfigContext';
 
 /**
  * Loader on pitch black. All of the motion is CSS (see .intro-* in index.css):
@@ -13,6 +14,7 @@ const TOTAL = 2850;
 const EXIT_MS = 900;
 
 export const LogoIntro: React.FC = () => {
+  const { cfg, img } = useSiteConfig();
   const [phase, setPhase] = useState<'play' | 'leave' | 'gone'>(() =>
     prefersReducedMotion() ? 'gone' : 'play'
   );
@@ -68,7 +70,7 @@ export const LogoIntro: React.FC = () => {
 
   return (
     <div
-      className={`intro fixed inset-0 z-[100] overflow-hidden bg-[#1C1F24] text-white cursor-pointer select-none ${phase === 'leave' ? 'intro-leave' : ''
+      className={`intro fixed inset-0 z-[100] overflow-hidden bg-canvas text-white cursor-pointer select-none ${phase === 'leave' ? 'intro-leave' : ''
         }`}
       role="dialog"
       aria-label="Ahmed Assem intro"
@@ -84,7 +86,7 @@ export const LogoIntro: React.FC = () => {
             e.stopPropagation();
             leave();
           }}
-          className="uppercase underline underline-offset-4 decoration-[#B8232F] decoration-2 hover:text-[#E5484D] cursor-pointer"
+          className="uppercase underline underline-offset-4 decoration-brand decoration-2 hover:text-accent cursor-pointer"
         >
           Skip intro
         </button>
@@ -93,14 +95,14 @@ export const LogoIntro: React.FC = () => {
       {/* the mark */}
       <div className="absolute inset-0 flex flex-col items-center justify-center px-6">
         <img
-          src="/brand-logo.png"
-          alt="Dr. Ahmed Assem"
+          src={img(cfg.site.logo)}
+          alt={cfg.site.logo.alt?.en || cfg.site.name}
           className="intro-mark w-[min(84vw,42rem)] h-auto mix-blend-screen"
           style={{ mixBlendMode: 'screen' }}
         />
-        <p className="mt-7 w-[min(80vw,30rem)] font-mono text-[0.68rem] sm:text-sm uppercase tracking-[0.18em] text-[#E5484D] h-[1.5em] text-center">
+        <p className="mt-7 w-[min(80vw,30rem)] font-mono text-[0.68rem] sm:text-sm uppercase tracking-[0.18em] text-accent h-[1.5em] text-center">
           <span ref={tagEl} />
-          <span className="inline-block w-[0.55em] h-[1em] -mb-[0.15em] ml-0.5 bg-[#B8232F] animate-[caret-blink_900ms_steps(1)_infinite]" />
+          <span className="inline-block w-[0.55em] h-[1em] -mb-[0.15em] ml-0.5 bg-brand animate-[caret-blink_900ms_steps(1)_infinite]" />
         </p>
       </div>
 
@@ -119,7 +121,7 @@ export const LogoIntro: React.FC = () => {
       </div>
       <span
         ref={barEl}
-        className="absolute left-0 bottom-0 h-1.5 w-full bg-[#B8232F] origin-left"
+        className="absolute left-0 bottom-0 h-1.5 w-full bg-brand origin-left"
         style={{ transform: 'scaleX(0)' }}
         aria-hidden="true"
       />

@@ -2,7 +2,8 @@ import React, { useEffect, useMemo, useRef } from 'react';
 import { TranslationContent, Language } from '../translations';
 import { cn } from '../utils/cn';
 import { prefersReducedMotion, useIntroDone } from './fx';
-import coachHeader from '../assets/person/person_1.jpg';
+import { useSiteConfig } from '../config/SiteConfigContext';
+import { tx } from '../config/siteConfig';
 
 interface HeroProps {
   t: TranslationContent;
@@ -11,12 +12,11 @@ interface HeroProps {
   onOpenCalculator: () => void;
 }
 
-/** Phrases in the headline that get the lime highlight + underline sweep. */
-const ACCENTS = ['12 weeks', '12 أسبوعاً'];
 
 /** Splits the headline into words; the accent phrase stays one unbreakable token. */
-function headlineTokens(text: string) {
-  const accent = ACCENTS.find((a) => text.includes(a));
+function headlineTokens(text: string, accentPhrase: string) {
+  /** The phrase in the headline that gets the highlight + underline sweep (set in the dashboard). */
+  const accent = accentPhrase && text.includes(accentPhrase) ? accentPhrase : undefined;
   const parts = accent ? text.split(accent) : [text];
   const tokens: { w: string; accent?: boolean }[] = [];
   parts.forEach((part, i) => {
@@ -29,9 +29,16 @@ function headlineTokens(text: string) {
   return tokens;
 }
 
+/** Stat values are free text in the dashboard: '500+' -> 500 with suffix '+', '+500' -> prefix '+' and 500, '12' -> 12. */
+const statParts = (v: string) => {
+  const m = v.match(/^([^\d]*)(\d[\d,.]*)(.*)$/s);
+  return m ? { prefix: m[1], num: parseInt(m[2].replace(/[,.]/g, ''), 10) || 0, suffix: m[3] } : { prefix: '', num: 0, suffix: v };
+};
+
 /** Counts up once the hero plays. Writes straight to the DOM, no re-renders. */
-const Count: React.FC<{ to: number; suffix?: string; run: boolean; delay?: number; className?: string }> = ({
+const Count: React.FC<{ to: number; prefix?: string; suffix?: string; run: boolean; delay?: number; className?: string }> = ({
   to,
+  prefix = '',
   suffix = '',
   run,
   delay = 0,
@@ -42,7 +49,7 @@ const Count: React.FC<{ to: number; suffix?: string; run: boolean; delay?: numbe
     const node = el.current;
     if (!node) return;
     if (!run || prefersReducedMotion()) {
-      node.textContent = `${run || prefersReducedMotion() ? to : 0}${suffix}`;
+      node.textContent = `${prefix}${run || prefersReducedMotion() ? to : 0}${suffix}`;
       return;
     }
     let raf = 0;
@@ -50,15 +57,15 @@ const Count: React.FC<{ to: number; suffix?: string; run: boolean; delay?: numbe
     const tick = (t: number) => {
       if (!t0) t0 = t + delay;
       const p = Math.max(0, Math.min(1, (t - t0) / 1300));
-      node.textContent = `${Math.round(to * (1 - Math.pow(1 - p, 3)))}${suffix}`;
+      node.textContent = `${prefix}${Math.round(to * (1 - Math.pow(1 - p, 3)))}${suffix}`;
       if (p < 1) raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [run, to, suffix, delay]);
+  }, [run, to, prefix, suffix, delay]);
   return (
     <span ref={el} className={className}>
-      0{suffix}
+      {prefix}0{suffix}
     </span>
   );
 };
@@ -113,7 +120,7 @@ const TypedHeadline: React.FC<{ tokens: { w: string; accent?: boolean }[]; run: 
       <span aria-hidden="true">
         {tokens.map((tok, i) => (
           <React.Fragment key={i}>
-            <span className={cn('inline-block whitespace-nowrap', tok.accent && 'type-accent text-[#E5484D]')}>
+            <span className={cn('inline-block whitespace-nowrap', tok.accent && 'type-accent text-accent')}>
               {Array.from(tok.w).map((c, ci) => (
                 <span key={ci} className="type-ch" data-on="false">
                   {c === ' ' ? '\u00a0' : c}
@@ -133,8 +140,12 @@ export const Hero: React.FC<HeroProps> = ({
   onOpenConsultation,
   onOpenCalculator,
 }) => {
+  const { cfg, img } = useSiteConfig();
   const ready = useIntroDone();
-  const tokens = useMemo(() => headlineTokens(t.hero.headline), [t.hero.headline]);
+  const tokens = useMemo(
+    () => headlineTokens(t.hero.headline, tx(cfg.content.hero.headlineAccent, lang)),
+    [t.hero.headline, cfg.content.hero.headlineAccent, lang]
+  );
   const wordsEnd = 0.6 + tokens.length * 0.07; // when the last word has started rising (s)
 
   return (
@@ -149,7 +160,7 @@ export const Hero: React.FC<HeroProps> = ({
       <div className="sticky top-0 h-[100svh] w-full overflow-hidden pointer-events-none">
         <div className="absolute inset-0 rtl:-scale-x-100" aria-hidden="true">
           <img
-            src={coachHeader}
+            src={img(cfg.content.hero.image)}
             alt=""
             width={2400}
             height={1350}
@@ -158,31 +169,31 @@ export const Hero: React.FC<HeroProps> = ({
             className="hero-bg absolute inset-0 w-full h-full object-cover object-[center_30%] lg:object-[62%_42%]"
           />
           {/* Gradients for text contrast */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1C1F24] from-1% via-[#1C1F24]/45 via-32% to-transparent to-65%" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1C1F24] via-[#1C1F24]/20 to-black/25 lg:hidden" />
+          <div className="absolute inset-0 bg-gradient-to-r from-canvas from-1% via-canvas/45 via-32% to-transparent to-65%" />
+          <div className="absolute inset-0 bg-gradient-to-t from-canvas via-canvas/20 to-black/25 lg:hidden" />
         </div>
 
         {/* Credentials badge over the photo (desktop): anchored to the pinned frame itself
             (not the scrolling text below) so it always sits on-screen, never scrolled out of view. */}
-        <div className="hero-badge pointer-events-auto hidden lg:block absolute bottom-12 end-8 xl:end-12 w-80 p-4 bg-[#1C1F24]/85 backdrop-blur-md border border-neutral-800 z-20">
+        <div className="hero-badge pointer-events-auto hidden lg:block absolute bottom-12 end-8 xl:end-12 w-80 p-4 bg-canvas/85 backdrop-blur-md border border-neutral-800 z-20">
           <div className="flex items-center justify-between">
             <div>
-              <div className="text-[11px] font-mono uppercase tracking-wider text-[#E5484D]">
+              <div className="text-[11px] font-mono uppercase tracking-wider text-accent">
                 {t.stats.doctorLabel}
               </div>
               <div className="text-sm font-bold text-white mt-0.5">
-                {lang === 'en' ? 'IFBB PRO ATHLETE & COACH' : 'بطل محترف IFBB Pro ومدرب'}
+                {tx(cfg.content.hero.badge, lang)}
               </div>
             </div>
             <div className="text-end">
-              <div className="text-lg font-black text-[#E5484D] font-mono leading-none">500+</div>
-              <div className="text-[10px] text-neutral-400 uppercase mt-1">{lang === 'en' ? 'Clients' : 'متدرب'}</div>
+              <div className="text-lg font-black text-accent font-mono leading-none">{t.stats.transformationsCount}</div>
+              <div className="text-[10px] text-neutral-400 uppercase mt-1">{tx(cfg.content.hero.badgeClients, lang)}</div>
             </div>
           </div>
         </div>
 
         {/* Ambient bottom gradient inside the sticky frame, blending into the content below it */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 sm:h-36 md:h-48 bg-gradient-to-t from-[#1C1F24] via-[#1C1F24]/70 to-transparent z-10" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 sm:h-36 md:h-48 bg-gradient-to-t from-canvas via-canvas/70 to-transparent z-10" />
       </div>
 
       {/* Scrolling foreground, pulled up one screen to sit over the photo; the text travels up and clears it */}
@@ -220,7 +231,7 @@ export const Hero: React.FC<HeroProps> = ({
                     <React.Fragment key={`${lang}-${i}`}>
                       <span className="hero-word">
                         <span
-                          className={cn(tok.accent && 'hero-accent text-[#E5484D] whitespace-nowrap')}
+                          className={cn(tok.accent && 'hero-accent text-accent whitespace-nowrap')}
                           style={{ animationDelay: `${0.5 + i * 0.06}s` }}
                         >
                           {tok.w}
@@ -238,14 +249,17 @@ export const Hero: React.FC<HeroProps> = ({
 
               {/* Actions */}
               <div className="hero-fade mt-5 lg:mt-8 flex flex-row items-center gap-2 sm:gap-4" style={{ ['--d' as any]: 0.55 }}>
-                <button
-                  type="button"
-                  onClick={onOpenConsultation}
-                  className="hero-cta relative overflow-hidden inline-flex items-center justify-center py-2.5 sm:py-4 px-4 sm:px-7 min-h-[38px] sm:min-h-[48px] text-[0.68rem] sm:text-sm font-black uppercase tracking-wider text-[#E9E9E4] bg-[#B8232F] hover:bg-[#9C1D28] active:scale-[0.98] transition-all shadow-[0_0_16px_rgba(184,35,47,0.25)] sm:shadow-[0_0_24px_rgba(184,35,47,0.3)] whitespace-nowrap cursor-pointer"
-                >
-                  <span className="relative z-10">{t.hero.ctaStart}</span>
-                </button>
+                {cfg.ctas.start.visible && (
+                  <button
+                    type="button"
+                    onClick={onOpenConsultation}
+                    className="hero-cta relative overflow-hidden inline-flex items-center justify-center py-2.5 sm:py-4 px-4 sm:px-7 min-h-[38px] sm:min-h-[48px] text-[0.68rem] sm:text-sm font-black uppercase tracking-wider text-white bg-brand hover:bg-brand-hover active:scale-[0.98] transition-all shadow-[0_0_16px_color-mix(in_srgb,var(--color-brand)_25%,transparent)] sm:shadow-[0_0_24px_color-mix(in_srgb,var(--color-brand)_30%,transparent)] whitespace-nowrap cursor-pointer"
+                  >
+                    <span className="relative z-10">{t.hero.ctaStart}</span>
+                  </button>
+                )}
 
+                {cfg.navbar.links.some((l) => l.key === 'calculator' && l.visible) && (
                 <button
                   type="button"
                   onClick={onOpenCalculator}
@@ -253,23 +267,24 @@ export const Hero: React.FC<HeroProps> = ({
                 >
                   {t.nav.calculator}
                 </button>
+                )}
               </div>
 
               {/* Inline Unboxed Trust Metrics (count up) */}
               <div className="hero-fade mt-7 lg:mt-8 pt-5 lg:pt-6 border-t border-neutral-800 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-neutral-400 font-mono" style={{ ['--d' as any]: 0.8 }}>
                 <div className="flex items-center gap-1.5">
-                  <Count to={500} suffix="+" run={ready} delay={1300} className="font-bold text-[#E5484D] text-sm tabular-nums" />
+                  <Count to={statParts(t.stats.transformationsCount).num} prefix={statParts(t.stats.transformationsCount).prefix} suffix={statParts(t.stats.transformationsCount).suffix} run={ready} delay={1300} className="font-bold text-accent text-sm tabular-nums" />
                   <span>{t.stats.transformationsLabel}</span>
                 </div>
                 <span className="text-neutral-700" aria-hidden="true">/</span>
                 <div className="flex items-center gap-1.5">
-                  <Count to={12} run={ready} delay={1450} className="font-bold text-white text-sm tabular-nums" />
+                  <Count to={statParts(t.stats.weeksChange).num} prefix={statParts(t.stats.weeksChange).prefix} suffix={statParts(t.stats.weeksChange).suffix} run={ready} delay={1450} className="font-bold text-white text-sm tabular-nums" />
                   <span>{t.stats.weeksLabel}</span>
                 </div>
                 <span className="text-neutral-700" aria-hidden="true">/</span>
                 <div className="flex items-center gap-1.5">
-                  <Count to={100} suffix="%" run={ready} delay={1600} className="font-bold text-white text-sm tabular-nums" />
-                  <span>Personally Coached</span>
+                  <Count to={statParts(tx(cfg.content.hero.coachedStat.value, lang)).num} prefix={statParts(tx(cfg.content.hero.coachedStat.value, lang)).prefix} suffix={statParts(tx(cfg.content.hero.coachedStat.value, lang)).suffix} run={ready} delay={1600} className="font-bold text-white text-sm tabular-nums" />
+                  <span>{tx(cfg.content.hero.coachedStat.label, lang)}</span>
                 </div>
               </div>
             </div>

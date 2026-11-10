@@ -19,11 +19,11 @@ export const SectionBackdrop: React.FC<{ src: string; className?: string; side?:
       decoding="async"
       className={cn('absolute inset-0 h-full w-full object-cover', className)}
     />
-    <div className="absolute inset-0 bg-[#1C1F24]/70" />
+    <div className="absolute inset-0 bg-canvas/70" />
     {side && (
-      <div className="absolute inset-0 bg-gradient-to-r from-[#1C1F24] via-[#1C1F24]/70 to-transparent rtl:bg-gradient-to-l" />
+      <div className="absolute inset-0 bg-gradient-to-r from-canvas via-canvas/70 to-transparent rtl:bg-gradient-to-l" />
     )}
-    <div className="absolute inset-x-0 top-0 h-32 sm:h-48 bg-gradient-to-b from-[#1C1F24] to-transparent" />
-    <div className="absolute inset-x-0 bottom-0 h-32 sm:h-48 bg-gradient-to-t from-[#1C1F24] to-transparent" />
+    <div className="absolute inset-x-0 top-0 h-32 sm:h-48 bg-gradient-to-b from-canvas to-transparent" />
+    <div className="absolute inset-x-0 bottom-0 h-32 sm:h-48 bg-gradient-to-t from-canvas to-transparent" />
   </div>
 );

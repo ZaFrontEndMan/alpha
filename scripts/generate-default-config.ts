@@ -63,7 +63,10 @@ const config = {
   },
 
   contact: {
+    // booking / chat WhatsApp (site-wide)
     whatsapp: '201158997825',
+    // number shown on the payment pages (InstaPay / cash instructions)
+    paymentWhatsapp: '201063920763',
     email: 'info@drahmedassem.com',
     instagramHandle: '@drahmedassem_ifbbpro',
     socials: [
@@ -124,6 +127,8 @@ const config = {
       subheadline: T.hero.subheadline,
       badge: L('IFBB PRO ATHLETE & COACH', 'بطل محترف IFBB Pro ومدرب'),
       doctorLabel: T.stats.doctorLabel,
+      badgeClients: L('Clients', 'متدرب'),
+      coachedStat: { value: L('100%', '100%'), label: L('Personally Coached', 'بإشراف شخصي') },
       stats: {
         transformations: { value: T.stats.transformationsCount, label: T.stats.transformationsLabel },
         weeks: { value: T.stats.weeksChange, label: T.stats.weeksLabel },
@@ -153,7 +158,22 @@ const config = {
       currency: T.packages.currency,
       // Prices in EGP; other currencies are derived from these rates (EGP per 1 unit inverted).
       exchangeRates: { EGP: 1, USD: 1 / 49.5, AED: 3.67 / 49.5, SAR: 3.75 / 49.5 },
-      items: T.packages.items.map((p: any) => ({ ...p, visible: true })),
+      items: T.packages.items.map((p: any) => ({
+        ...p,
+        // English keeps "EGP"; Arabic reads "جنيه مصري"
+        price: L(p.price.en, p.price.en.replace(' EGP', ' جنيه مصري')),
+        visible: true,
+      })),
+      // how the EGP currency label reads next to a price
+      currencyLabel: L('EGP', 'جنيه مصري'),
+      labels: {
+        recommended: L('RECOMMENDED · ELITE', 'الباقة الأكثر طلباً · تميز'),
+        tagline: L('All-inclusive VIP coaching protocol', 'إشراف تدريبي كامل ومتكامل'),
+        payNow: L('PAY NOW', 'ادفع الآن'),
+        whatsapp: L('WhatsApp', 'واتساب'),
+        consultationTag: L('PRIVATE 1-ON-1 STRATEGY CALL', 'جلسة استشارية خاصة فردية'),
+        whatsappDirect: L('WhatsApp Us Directly', 'تواصل عبر واتساب'),
+      },
     },
 
     testimonials: {
@@ -209,6 +229,8 @@ const config = {
     banner: {
       image: { asset: 'coach-header' },
       title: T.banner.title,
+      brandName: L('DR. AHMED ASSEM', 'DR. AHMED ASSEM'),
+      roleLabel: L('IFBB PRO & COACH', 'IFBB PRO & COACH'),
       headline: L(
         'Build Your Best Shape With The Right System, Team, And Guidance',
         'ابنِ أفضل نسخة من جسمك مع النظام الصحيح، الفريق المناسب، والتوجيه الصحيح'
@@ -223,6 +245,7 @@ const config = {
       tag: T.whyChoose.tag,
       heading: T.whyChoose.heading,
       subheading: T.whyChoose.subheading,
+      medal: { brand: L('IFBB Federation', 'IFBB Federation'), label: L('Medalist', 'حاصل على ميدالية') },
       pillarFooter: { label: L('SCIENCE-BACKED SYSTEM', 'نظام مبني على العلم'), value: L('100% EVIDENCE-BASED', '100% EVIDENCE-BASED') },
       pillars: T.whyChoose.pillars,
       spotlight: {
@@ -290,8 +313,6 @@ const config = {
       heading: T.howItWorks.heading,
       stepLabel: L('STEP', 'الخطوة'),
       steps: T.howItWorks.steps,
-      pills: T.howItWorks.pills,
-      cta: T.howItWorks.cta,
     },
 
     faqs: {
@@ -303,8 +324,8 @@ const config = {
 
   footer: {
     description: L(
-      'Transform your whole life in 90 days with a science-based system. Hundreds of clients transformed using science — not guesswork.',
-      'غيّر حياتك بالكامل في 90 يوماً بنظام مصمم علمياً. مئات المتدربين غيروا أجسامهم بنظام مثبت علمياً بدون أي عشوائية.'
+      'Transform your whole life in 12 weeks with a science-based system. Hundreds of clients transformed using science — not guesswork.',
+      'غيّر حياتك بالكامل في 12 أسبوعاً بنظام مصمم علمياً. مئات المتدربين غيروا أجسامهم بنظام مثبت علمياً بدون أي عشوائية.'
     ),
     navTitle: L('Navigation', 'روابط سريعة'),
     channelsTitle: L('Direct Channels & WhatsApp', 'التواصل المباشر والواتساب'),

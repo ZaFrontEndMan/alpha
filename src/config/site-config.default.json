@@ -38,6 +38,7 @@
   },
   "contact": {
     "whatsapp": "201158997825",
+    "paymentWhatsapp": "201063920763",
     "email": "info@drahmedassem.com",
     "instagramHandle": "@drahmedassem_ifbbpro",
     "socials": [
@@ -293,6 +294,20 @@
         "en": "Dr Ahmed Assem",
         "ar": "د. أحمد عاصم"
       },
+      "badgeClients": {
+        "en": "Clients",
+        "ar": "متدرب"
+      },
+      "coachedStat": {
+        "value": {
+          "en": "100%",
+          "ar": "100%"
+        },
+        "label": {
+          "en": "Personally Coached",
+          "ar": "بإشراف شخصي"
+        }
+      },
       "stats": {
         "transformations": {
           "value": {
@@ -381,7 +396,7 @@
           },
           "price": {
             "en": "4500.00 EGP",
-            "ar": "4500.00 EGP"
+            "ar": "4500.00 جنيه مصري"
           },
           "priceNumeric": 4500,
           "description": {
@@ -436,7 +451,7 @@
           },
           "price": {
             "en": "7000.00 EGP",
-            "ar": "7000.00 EGP"
+            "ar": "7000.00 جنيه مصري"
           },
           "priceNumeric": 7000,
           "popular": true,
@@ -492,7 +507,7 @@
           },
           "price": {
             "en": "12000.00 EGP",
-            "ar": "12000.00 EGP"
+            "ar": "12000.00 جنيه مصري"
           },
           "priceNumeric": 12000,
           "description": {
@@ -555,7 +570,7 @@
           },
           "price": {
             "en": "2000.00 EGP",
-            "ar": "2000.00 EGP"
+            "ar": "2000.00 جنيه مصري"
           },
           "priceNumeric": 2000,
           "description": {
@@ -594,7 +609,37 @@
           ],
           "visible": true
         }
-      ]
+      ],
+      "currencyLabel": {
+        "en": "EGP",
+        "ar": "جنيه مصري"
+      },
+      "labels": {
+        "recommended": {
+          "en": "RECOMMENDED · ELITE",
+          "ar": "الباقة الأكثر طلباً · تميز"
+        },
+        "tagline": {
+          "en": "All-inclusive VIP coaching protocol",
+          "ar": "إشراف تدريبي كامل ومتكامل"
+        },
+        "payNow": {
+          "en": "PAY NOW",
+          "ar": "ادفع الآن"
+        },
+        "whatsapp": {
+          "en": "WhatsApp",
+          "ar": "واتساب"
+        },
+        "consultationTag": {
+          "en": "PRIVATE 1-ON-1 STRATEGY CALL",
+          "ar": "جلسة استشارية خاصة فردية"
+        },
+        "whatsappDirect": {
+          "en": "WhatsApp Us Directly",
+          "ar": "تواصل عبر واتساب"
+        }
+      }
     },
     "testimonials": {
       "title": {
@@ -763,6 +808,14 @@
         "en": "START NOW",
         "ar": "ابدأ الآن"
       },
+      "brandName": {
+        "en": "DR. AHMED ASSEM",
+        "ar": "DR. AHMED ASSEM"
+      },
+      "roleLabel": {
+        "en": "IFBB PRO & COACH",
+        "ar": "IFBB PRO & COACH"
+      },
       "headline": {
         "en": "Build Your Best Shape With The Right System, Team, And Guidance",
         "ar": "ابنِ أفضل نسخة من جسمك مع النظام الصحيح، الفريق المناسب، والتوجيه الصحيح"
@@ -809,6 +862,16 @@
       "subheading": {
         "en": "Not Just Ordinary Coaching — A Complete System Built with Science & Experience",
         "ar": "ليس مجرد تدريب عادي — نظام متكامل مبني على العلم والخبرة العملية"
+      },
+      "medal": {
+        "brand": {
+          "en": "IFBB Federation",
+          "ar": "IFBB Federation"
+        },
+        "label": {
+          "en": "Medalist",
+          "ar": "حاصل على ميدالية"
+        }
       },
       "pillarFooter": {
         "label": {
@@ -1314,8 +1377,8 @@
   },
   "footer": {
     "description": {
-      "en": "Transform your whole life in 90 days with a science-based system. Hundreds of clients transformed using science — not guesswork.",
-      "ar": "غيّر حياتك بالكامل في 90 يوماً بنظام مصمم علمياً. مئات المتدربين غيروا أجسامهم بنظام مثبت علمياً بدون أي عشوائية."
+      "en": "Transform your whole life in 12 weeks with a science-based system. Hundreds of clients transformed using science — not guesswork.",
+      "ar": "غيّر حياتك بالكامل في 12 أسبوعاً بنظام مصمم علمياً. مئات المتدربين غيروا أجسامهم بنظام مثبت علمياً بدون أي عشوائية."
     },
     "navTitle": {
       "en": "Navigation",

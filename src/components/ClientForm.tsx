@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { cn } from '../utils/cn';
 import { Language } from '../translations';
+import { useSiteConfig, useTranslations } from '../config/SiteConfigContext';
 import { BrandLogo } from './BrandLogo';
 import { WhatsappIcon } from './WhatsappIcon';
 import { getFormAccess, clearFormAccess } from '../utils/paymentAccess';
@@ -78,7 +79,6 @@ const TOTAL_STEPS = 6;
 const STEP_LABELS_EN = ['Personal Info', 'Body Metrics', 'Fitness Profile', 'Health & History', 'Extra Info', 'Nutrition'];
 const STEP_LABELS_AR = ['البيانات الشخصية', 'القياسات', 'الملف الرياضي', 'الصحة والتاريخ', 'معلومات إضافية', 'التفضيلات الغذائية'];
 
-const WHATSAPP_NUMBER = '201158997825';
 
 // ─── WhatsApp Message Builder ─────────────────────────────────────────────────
 function buildWhatsAppMessage(d: FormData): string {
@@ -135,13 +135,13 @@ const CheckOption: React.FC<{
     className={cn(
       'flex items-center gap-3 w-full text-start px-4 py-3.5 border text-sm transition-all cursor-pointer',
       checked
-        ? 'border-[#B8232F] bg-[#B8232F]/10 text-[#E5484D] font-semibold'
+        ? 'border-brand bg-brand/10 text-accent font-semibold'
         : 'border-neutral-800 bg-[#23262B] text-neutral-300 hover:border-neutral-600 hover:text-white'
     )}
   >
     <span className={cn(
       'w-5 h-5 shrink-0 border-2 flex items-center justify-center text-[11px] font-black transition-all',
-      checked ? 'border-[#B8232F] bg-[#B8232F] text-[#E9E9E4]' : 'border-neutral-600',
+      checked ? 'border-brand bg-brand text-white' : 'border-neutral-600',
       type === 'radio' ? 'rounded-full' : 'rounded-sm'
     )}>
       {checked && (type === 'radio' ? '●' : '✓')}
@@ -167,8 +167,8 @@ const PaymentRequired: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
   }, [lang, en]);
 
   return (
-    <div className={cn('min-h-screen w-full bg-[#1C1F24] text-neutral-100 flex flex-col', en ? 'font-sans' : 'font-cairo')}>
-      <header className="sticky top-0 z-40 bg-[#1C1F24]/95 backdrop-blur-md border-b border-neutral-800">
+    <div className={cn('min-h-screen w-full bg-canvas text-neutral-100 flex flex-col', en ? 'font-sans' : 'font-cairo')}>
+      <header className="sticky top-0 z-40 bg-canvas/95 backdrop-blur-md border-b border-neutral-800">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
           <button
             type="button"
@@ -186,7 +186,7 @@ const PaymentRequired: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
           <button
             type="button"
             onClick={onToggleLang}
-            className="px-3 py-1.5 text-xs font-bold border border-neutral-700 bg-neutral-900/80 hover:border-[#B8232F] hover:text-[#E5484D] text-neutral-300 transition-colors cursor-pointer min-h-[36px]"
+            className="px-3 py-1.5 text-xs font-bold border border-neutral-700 bg-neutral-900/80 hover:border-brand hover:text-accent text-neutral-300 transition-colors cursor-pointer min-h-[36px]"
           >
             {en ? 'عربي' : 'EN'}
           </button>
@@ -195,7 +195,7 @@ const PaymentRequired: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
 
       <main className="flex-1 flex items-center justify-center px-4 sm:px-6 py-16">
         <div className="w-full max-w-md text-center border border-neutral-800 bg-[#23262B] p-8 sm:p-10">
-          <div className="text-xs font-mono font-bold uppercase tracking-widest text-[#E5484D] mb-3">
+          <div className="text-xs font-mono font-bold uppercase tracking-widest text-accent mb-3">
             {en ? 'Payment required' : 'الدفع مطلوب'}
           </div>
           <h1 className={cn('text-2xl sm:text-3xl font-black text-white mb-3', en ? 'font-sport' : 'font-cairo')}>
@@ -209,7 +209,7 @@ const PaymentRequired: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
           <button
             type="button"
             onClick={() => navigate('/#packages')}
-            className="w-full px-8 py-4 min-h-[48px] text-xs sm:text-sm font-black uppercase tracking-wider text-[#E9E9E4] bg-[#B8232F] hover:bg-[#9C1D28] transition-colors cursor-pointer"
+            className="w-full px-8 py-4 min-h-[48px] text-xs sm:text-sm font-black uppercase tracking-wider text-white bg-brand hover:bg-brand-hover transition-colors cursor-pointer"
           >
             {en ? 'View Packages' : 'استعراض الباقات'}
           </button>
@@ -220,6 +220,8 @@ const PaymentRequired: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
 };
 
 const FormPageContent: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
+  const { cfg } = useSiteConfig();
+  const WHATSAPP_NUMBER = cfg.contact.whatsapp;
   const navigate = useNavigate();
   const en = lang === 'en';
   const [step, setStep] = useState(1);
@@ -293,18 +295,18 @@ const FormPageContent: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
   const stepLabels = en ? STEP_LABELS_EN : STEP_LABELS_AR;
 
   // Shared class names
-  const fieldCls = 'w-full bg-[#23262B] border border-neutral-800 text-white px-4 py-3 min-h-[48px] text-sm focus:border-[#B8232F] focus:outline-none transition-colors placeholder:text-neutral-600';
+  const fieldCls = 'w-full bg-[#23262B] border border-neutral-800 text-white px-4 py-3 min-h-[48px] text-sm focus:border-brand focus:outline-none transition-colors placeholder:text-neutral-600';
   const labelCls = 'block text-[11px] font-mono uppercase tracking-wider text-neutral-400 mb-2';
 
   return (
     <div
       className={cn(
-        'min-h-screen w-full bg-[#1C1F24] text-neutral-100 flex flex-col',
+        'min-h-screen w-full bg-canvas text-neutral-100 flex flex-col',
         en ? 'font-sans' : 'font-cairo'
       )}
     >
       {/* ── Top Bar ─────────────────────────────────────────────────────── */}
-      <header className="sticky top-0 z-40 bg-[#1C1F24]/95 backdrop-blur-md border-b border-neutral-800">
+      <header className="sticky top-0 z-40 bg-canvas/95 backdrop-blur-md border-b border-neutral-800">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
           {/* Back button */}
           <button
@@ -327,7 +329,7 @@ const FormPageContent: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
           <button
             type="button"
             onClick={onToggleLang}
-            className="px-3 py-1.5 text-xs font-bold border border-neutral-700 bg-neutral-900/80 hover:border-[#B8232F] hover:text-[#E5484D] text-neutral-300 transition-colors cursor-pointer min-h-[36px]"
+            className="px-3 py-1.5 text-xs font-bold border border-neutral-700 bg-neutral-900/80 hover:border-brand hover:text-accent text-neutral-300 transition-colors cursor-pointer min-h-[36px]"
           >
             {en ? 'عربي' : 'EN'}
           </button>
@@ -341,7 +343,7 @@ const FormPageContent: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
             <>
               {/* Heading */}
               <div className="mb-8">
-                <div className="text-xs font-mono text-[#E5484D] uppercase tracking-widest mb-2">
+                <div className="text-xs font-mono text-accent uppercase tracking-widest mb-2">
                   {en ? 'New Client Application' : 'استمارة عميل جديد'}
                 </div>
                 <h1 className={cn('text-3xl sm:text-4xl font-black text-white tracking-tight', en ? 'font-sport' : 'font-cairo')}>
@@ -360,7 +362,7 @@ const FormPageContent: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
                   <span className="text-[11px] font-mono text-neutral-400 uppercase tracking-wider">
                     {en ? `Step ${step} of ${TOTAL_STEPS}` : `الخطوة ${step} من ${TOTAL_STEPS}`}
                   </span>
-                  <span className="text-[11px] font-mono text-[#E5484D] font-bold">
+                  <span className="text-[11px] font-mono text-accent font-bold">
                     {stepLabels[step - 1]}
                   </span>
                 </div>
@@ -371,7 +373,7 @@ const FormPageContent: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
                       key={i}
                       className={cn(
                         'h-1 flex-1 transition-all duration-300',
-                        i + 1 <= step ? 'bg-[#B8232F]' : 'bg-neutral-800'
+                        i + 1 <= step ? 'bg-brand' : 'bg-neutral-800'
                       )}
                     />
                   ))}
@@ -607,7 +609,7 @@ const FormPageContent: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
                   <button
                     type="button"
                     onClick={() => setStep((s) => s + 1)}
-                    className="flex-1 py-3.5 min-h-[50px] text-xs font-black uppercase tracking-wider text-[#E9E9E4] bg-[#B8232F] hover:bg-[#9C1D28] transition-colors cursor-pointer"
+                    className="flex-1 py-3.5 min-h-[50px] text-xs font-black uppercase tracking-wider text-white bg-brand hover:bg-brand-hover transition-colors cursor-pointer"
                   >
                     {en ? 'Continue →' : '→ التالي'}
                   </button>
@@ -615,7 +617,7 @@ const FormPageContent: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
                   <button
                     type="button"
                     onClick={handleSubmit}
-                    className="flex-1 py-4 min-h-[52px] text-sm font-black uppercase tracking-wider text-[#E9E9E4] bg-[#B8232F] hover:bg-[#9C1D28] shadow-[0_0_24px_rgba(184,35,47,0.35)] transition-colors cursor-pointer flex items-center justify-center gap-2"
+                    className="flex-1 py-4 min-h-[52px] text-sm font-black uppercase tracking-wider text-white bg-brand hover:bg-brand-hover shadow-[0_0_24px_color-mix(in_srgb,var(--color-brand)_35%,transparent)] transition-colors cursor-pointer flex items-center justify-center gap-2"
                   >
                     <WhatsappIcon className="w-5 h-5 shrink-0" />
                     <span>{en ? 'Submit via WhatsApp →' : 'إرسال عبر واتساب ←'}</span>
@@ -632,7 +634,7 @@ const FormPageContent: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
                     onClick={() => setStep(i + 1)}
                     className={cn(
                       'w-2 h-2 rounded-full transition-all cursor-pointer',
-                      i + 1 === step ? 'bg-[#B8232F] w-4' : i + 1 < step ? 'bg-[#B8232F]/50' : 'bg-neutral-700'
+                      i + 1 === step ? 'bg-brand w-4' : i + 1 < step ? 'bg-brand/50' : 'bg-neutral-700'
                     )}
                   />
                 ))}
@@ -641,11 +643,11 @@ const FormPageContent: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
           ) : (
             /* ── Confirmation ── */
             <div className="text-center py-16 space-y-7">
-              <div className="w-20 h-20 mx-auto bg-[#B8232F]/10 border-2 border-[#B8232F] flex items-center justify-center text-3xl text-[#E5484D]">
+              <div className="w-20 h-20 mx-auto bg-brand/10 border-2 border-brand flex items-center justify-center text-3xl text-accent">
                 ✓
               </div>
               <div>
-                <div className="text-xs font-mono uppercase text-[#E5484D] tracking-widest mb-2">
+                <div className="text-xs font-mono uppercase text-accent tracking-widest mb-2">
                   {en ? 'APPLICATION SUBMITTED' : 'تم إرسال الاستمارة'}
                 </div>
                 <h2 className={cn('text-3xl font-black text-white', en ? 'font-sport' : 'font-cairo')}>
@@ -676,11 +678,11 @@ const FormPageContent: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
               {data.email && (
                 <div className="max-w-xs mx-auto text-xs text-neutral-400 bg-[#23262B] border border-neutral-800 p-3 rounded text-center">
                   ✉ {en ? 'A confirmation email was sent to ' : 'تم إرسال رسالة تأكيد إلى '}
-                  <span className="text-[#E5484D] font-bold">{data.email}</span>.
+                  <span className="text-accent font-bold">{data.email}</span>.
                   <div className="mt-1 text-[11px] text-neutral-500">
                     {en ? 'Official correspondence:' : 'البريد الرسمي:'}{' '}
-                    <a href="mailto:info@drahmedassem.com" className="text-neutral-300 hover:text-[#E5484D] underline">
-                      info@drahmedassem.com
+                    <a href={`mailto:${cfg.contact.email}`} className="text-neutral-300 hover:text-accent underline">
+                      {cfg.contact.email}
                     </a>
                   </div>
                 </div>
@@ -691,7 +693,7 @@ const FormPageContent: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
                   href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(buildWhatsAppMessage(data))}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex w-full items-center justify-center gap-2.5 py-4 min-h-[52px] text-xs font-black uppercase tracking-wider text-[#E9E9E4] bg-[#B8232F] hover:bg-[#9C1D28] transition-colors cursor-pointer"
+                  className="flex w-full items-center justify-center gap-2.5 py-4 min-h-[52px] text-xs font-black uppercase tracking-wider text-white bg-brand hover:bg-brand-hover transition-colors cursor-pointer"
                 >
                   <WhatsappIcon className="w-4 h-4 shrink-0" />
                   <span>{en ? 'Resend via WhatsApp' : 'إعادة الإرسال عبر واتساب'}</span>

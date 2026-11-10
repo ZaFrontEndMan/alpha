@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ConsultationFormData } from '../types';
 import { Language } from '../translations';
+import { useSiteConfig } from '../config/SiteConfigContext';
 import { cn } from '../utils/cn';
 import { WhatsappIcon } from './WhatsappIcon';
 
@@ -19,6 +20,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
   initialTier = 'Elite Coaching (7000 EGP)',
   initialMacroSummary = '',
 }) => {
+  const { cfg } = useSiteConfig();
   const [step, setStep] = useState<number>(1);
   const [submitted, setSubmitted] = useState<boolean>(false);
 
@@ -97,7 +99,7 @@ Looking forward to starting my 90-day transformation!`
           <div>
             {/* Modal Header */}
             <div className="mb-6 pe-8">
-              <div className="text-xs font-mono uppercase text-[#E5484D] tracking-wider">
+              <div className="text-xs font-mono uppercase text-accent tracking-wider">
                 {lang === 'en' ? `Step ${step} of 3 · Coaching Intake` : `الخطوة ${step} من 3 · تقييم المتدرب`}
               </div>
               <h3 className={cn(
@@ -118,7 +120,7 @@ Looking forward to starting my 90-day transformation!`
               {[1, 2, 3].map((s) => (
                 <div
                   key={s}
-                  className={`h-1 flex-1 transition-all ${step >= s ? 'bg-[#B8232F]' : 'bg-neutral-800'
+                  className={`h-1 flex-1 transition-all ${step >= s ? 'bg-brand' : 'bg-neutral-800'
                     }`}
                 />
               ))}
@@ -135,7 +137,7 @@ Looking forward to starting my 90-day transformation!`
                     <select
                       value={formData.selectedTier}
                       onChange={(e) => setFormData({ ...formData, selectedTier: e.target.value })}
-                      className="w-full bg-[#262A30] border border-neutral-800 text-white p-3 text-xs focus:border-[#B8232F] focus:outline-none"
+                      className="w-full bg-neutral-900 border border-neutral-800 text-white p-3 text-xs focus:border-brand focus:outline-none"
                     >
                       <option value="Transformation System (4500 EGP)">Transformation System (4500.00 EGP)</option>
                       <option value="Elite Coaching (7000 EGP)">Elite Coaching (7000.00 EGP) — Recommended</option>
@@ -154,7 +156,7 @@ Looking forward to starting my 90-day transformation!`
                         required
                         value={formData.currentWeight}
                         onChange={(e) => setFormData({ ...formData, currentWeight: e.target.value })}
-                        className="w-full bg-[#262A30] border border-neutral-800 text-white p-3 text-xs font-mono focus:border-[#B8232F] focus:outline-none"
+                        className="w-full bg-neutral-900 border border-neutral-800 text-white p-3 text-xs font-mono focus:border-brand focus:outline-none"
                       />
                     </div>
                     <div>
@@ -166,7 +168,7 @@ Looking forward to starting my 90-day transformation!`
                         required
                         value={formData.age}
                         onChange={(e) => setFormData({ ...formData, age: e.target.value })}
-                        className="w-full bg-[#262A30] border border-neutral-800 text-white p-3 text-xs font-mono focus:border-[#B8232F] focus:outline-none"
+                        className="w-full bg-neutral-900 border border-neutral-800 text-white p-3 text-xs font-mono focus:border-brand focus:outline-none"
                       />
                     </div>
                   </div>
@@ -187,8 +189,8 @@ Looking forward to starting my 90-day transformation!`
                           type="button"
                           onClick={() => setFormData({ ...formData, targetGoal: g.en })}
                           className={`p-2.5 text-xs text-start border transition-colors cursor-pointer min-h-[42px] ${formData.targetGoal === g.en
-                              ? 'border-[#B8232F] bg-[#292D33] text-[#E5484D] font-bold'
-                              : 'border-neutral-800 bg-[#262A30] text-neutral-300 hover:text-white'
+                              ? 'border-brand bg-[#292D33] text-accent font-bold'
+                              : 'border-neutral-800 bg-neutral-900 text-neutral-300 hover:text-white'
                             }`}
                         >
                           {lang === 'en' ? g.en : g.ar}
@@ -202,7 +204,7 @@ Looking forward to starting my 90-day transformation!`
                       <span className="text-neutral-400 block font-mono">
                         {lang === 'en' ? 'Calculator Baseline:' : 'بيانات حاسبة السعرات:'}
                       </span>
-                      <span className="text-[#E5484D] font-bold font-mono">{initialMacroSummary}</span>
+                      <span className="text-accent font-bold font-mono">{initialMacroSummary}</span>
                     </div>
                   )}
 
@@ -210,7 +212,7 @@ Looking forward to starting my 90-day transformation!`
                     <button
                       type="button"
                       onClick={() => setStep(2)}
-                      className="w-full py-3.5 min-h-[48px] text-xs font-black uppercase tracking-wider text-[#E9E9E4] bg-[#B8232F] hover:bg-[#9C1D28] cursor-pointer"
+                      className="w-full py-3.5 min-h-[48px] text-xs font-black uppercase tracking-wider text-white bg-brand hover:bg-brand-hover cursor-pointer"
                     >
                       {lang === 'en' ? 'Continue to Training Profile →' : 'الانتقال لبيانات التدريب ←'}
                     </button>
@@ -228,7 +230,7 @@ Looking forward to starting my 90-day transformation!`
                     <select
                       value={formData.experienceLevel}
                       onChange={(e) => setFormData({ ...formData, experienceLevel: e.target.value })}
-                      className="w-full bg-[#262A30] border border-neutral-800 text-white p-3 text-xs focus:border-[#B8232F] focus:outline-none"
+                      className="w-full bg-neutral-900 border border-neutral-800 text-white p-3 text-xs focus:border-brand focus:outline-none"
                     >
                       <option value="Beginner (< 1 year)">Beginner (&lt; 1 year / مبتدئ)</option>
                       <option value="Intermediate (2-4 years)">Intermediate (2-4 years / متوسط)</option>
@@ -245,8 +247,8 @@ Looking forward to starting my 90-day transformation!`
                         type="button"
                         onClick={() => setFormData({ ...formData, hasRecentBloodwork: true })}
                         className={`flex-1 p-3 text-xs border font-bold transition-colors cursor-pointer min-h-[44px] ${formData.hasRecentBloodwork
-                            ? 'border-[#B8232F] bg-[#292D33] text-[#E5484D]'
-                            : 'border-neutral-800 bg-[#262A30] text-neutral-400'
+                            ? 'border-brand bg-[#292D33] text-accent'
+                            : 'border-neutral-800 bg-neutral-900 text-neutral-400'
                           }`}
                       >
                         {lang === 'en' ? 'Yes, available' : 'نعم، متوفرة لدي'}
@@ -255,8 +257,8 @@ Looking forward to starting my 90-day transformation!`
                         type="button"
                         onClick={() => setFormData({ ...formData, hasRecentBloodwork: false })}
                         className={`flex-1 p-3 text-xs border font-bold transition-colors cursor-pointer min-h-[44px] ${!formData.hasRecentBloodwork
-                            ? 'border-[#B8232F] bg-[#292D33] text-[#E5484D]'
-                            : 'border-neutral-800 bg-[#262A30] text-neutral-400'
+                            ? 'border-brand bg-[#292D33] text-accent'
+                            : 'border-neutral-800 bg-neutral-900 text-neutral-400'
                           }`}
                       >
                         {lang === 'en' ? 'No, first time' : 'لا، أول مرة'}
@@ -273,7 +275,7 @@ Looking forward to starting my 90-day transformation!`
                       value={formData.medicalConditions}
                       onChange={(e) => setFormData({ ...formData, medicalConditions: e.target.value })}
                       placeholder={lang === 'en' ? 'e.g. Lower back stiffness, thyroid issues, food allergies...' : 'مثال: خشونة في الركبة، خمول غدة، حساسية طعام...'}
-                      className="w-full bg-[#262A30] border border-neutral-800 text-white p-3 text-xs focus:border-[#B8232F] focus:outline-none"
+                      className="w-full bg-neutral-900 border border-neutral-800 text-white p-3 text-xs focus:border-brand focus:outline-none"
                     />
                   </div>
 
@@ -288,7 +290,7 @@ Looking forward to starting my 90-day transformation!`
                     <button
                       type="button"
                       onClick={() => setStep(3)}
-                      className="flex-1 py-3 min-h-[44px] text-xs font-black uppercase tracking-wider text-[#E9E9E4] bg-[#B8232F] hover:bg-[#9C1D28] cursor-pointer"
+                      className="flex-1 py-3 min-h-[44px] text-xs font-black uppercase tracking-wider text-white bg-brand hover:bg-brand-hover cursor-pointer"
                     >
                       {lang === 'en' ? 'Next: Contact Info →' : 'التالي: بيانات التواصل ←'}
                     </button>
@@ -309,7 +311,7 @@ Looking forward to starting my 90-day transformation!`
                       placeholder="e.g. Zeyad Elnamory"
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                      className="w-full bg-[#262A30] border border-neutral-800 text-white p-3 text-xs focus:border-[#B8232F] focus:outline-none"
+                      className="w-full bg-neutral-900 border border-neutral-800 text-white p-3 text-xs focus:border-brand focus:outline-none"
                     />
                   </div>
 
@@ -323,7 +325,7 @@ Looking forward to starting my 90-day transformation!`
                       placeholder="+20 100 123 4567 or +971 50 123 4567"
                       value={formData.whatsapp}
                       onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
-                      className="w-full bg-[#262A30] border border-neutral-800 text-white p-3 text-xs font-mono focus:border-[#B8232F] focus:outline-none"
+                      className="w-full bg-neutral-900 border border-neutral-800 text-white p-3 text-xs font-mono focus:border-brand focus:outline-none"
                     />
                     <span className="text-[11px] text-neutral-400 mt-1 block">
                       {lang === 'en'
@@ -343,7 +345,7 @@ Looking forward to starting my 90-day transformation!`
                         placeholder="client@gmail.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-[#262A30] border border-neutral-800 text-white p-3 text-xs focus:border-[#B8232F] focus:outline-none"
+                        className="w-full bg-neutral-900 border border-neutral-800 text-white p-3 text-xs focus:border-brand focus:outline-none"
                       />
                     </div>
                     <div>
@@ -356,7 +358,7 @@ Looking forward to starting my 90-day transformation!`
                         placeholder="Egypt, UAE, Saudi, UK..."
                         value={formData.country}
                         onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                        className="w-full bg-[#262A30] border border-neutral-800 text-white p-3 text-xs focus:border-[#B8232F] focus:outline-none"
+                        className="w-full bg-neutral-900 border border-neutral-800 text-white p-3 text-xs focus:border-brand focus:outline-none"
                       />
                     </div>
                   </div>
@@ -371,7 +373,7 @@ Looking forward to starting my 90-day transformation!`
                     </button>
                     <button
                       type="submit"
-                      className="flex-1 py-3.5 min-h-[48px] text-xs font-black uppercase tracking-wider text-[#E9E9E4] bg-[#B8232F] hover:bg-[#9C1D28] shadow-[0_0_20px_rgba(184,35,47,0.3)] cursor-pointer"
+                      className="flex-1 py-3.5 min-h-[48px] text-xs font-black uppercase tracking-wider text-white bg-brand hover:bg-brand-hover shadow-[0_0_20px_color-mix(in_srgb,var(--color-brand)_30%,transparent)] cursor-pointer"
                     >
                       {lang === 'en' ? 'Submit Intake Application →' : 'إرسال الاستمارة ←'}
                     </button>
@@ -383,12 +385,12 @@ Looking forward to starting my 90-day transformation!`
         ) : (
           /* Submission Confirmation */
           <div className="text-center py-6 space-y-6">
-            <div className="w-16 h-16 mx-auto bg-[#B8232F]/10 border border-[#B8232F] flex items-center justify-center text-2xl text-[#E5484D]">
+            <div className="w-16 h-16 mx-auto bg-brand/10 border border-brand flex items-center justify-center text-2xl text-accent">
               ✓
             </div>
 
             <div>
-              <div className="text-xs font-mono uppercase text-[#E5484D] tracking-wider mb-1">
+              <div className="text-xs font-mono uppercase text-accent tracking-wider mb-1">
                 {lang === 'en' ? 'APPLICATION CONFIRMED' : 'تم استلام الاستمارة بنجاح'}
               </div>
               <h3 className={cn(
@@ -404,14 +406,14 @@ Looking forward to starting my 90-day transformation!`
               </p>
             </div>
 
-            <div className="p-4 bg-[#262A30] border border-neutral-800 text-start text-xs font-mono space-y-1.5">
+            <div className="p-4 bg-neutral-900 border border-neutral-800 text-start text-xs font-mono space-y-1.5">
               <div className="flex justify-between">
                 <span className="text-neutral-400">{lang === 'en' ? 'Package:' : 'الباقة:'}</span>
                 <span className="text-white font-bold">{formData.selectedTier}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-neutral-400">{lang === 'en' ? 'Target:' : 'الهدف:'}</span>
-                <span className="text-[#E5484D] font-bold">{formData.targetGoal}</span>
+                <span className="text-accent font-bold">{formData.targetGoal}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-neutral-400">{lang === 'en' ? 'SLA:' : 'وقت الرد:'}</span>
@@ -422,10 +424,10 @@ Looking forward to starting my 90-day transformation!`
             {/* Direct WhatsApp Fast-Track Button */}
             <div className="space-y-3 pt-2">
               <a
-                href={`https://wa.me/201158997825?text=${whatsappMessage}`}
+                href={`https://wa.me/${cfg.contact.whatsapp}?text=${whatsappMessage}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex w-full items-center justify-center gap-2 py-3.5 min-h-[48px] text-xs font-black uppercase tracking-wider text-[#E9E9E4] bg-[#B8232F] hover:bg-[#9C1D28] cursor-pointer"
+                className="inline-flex w-full items-center justify-center gap-2 py-3.5 min-h-[48px] text-xs font-black uppercase tracking-wider text-white bg-brand hover:bg-brand-hover cursor-pointer"
               >
                 <WhatsappIcon className="w-4 h-4 shrink-0 text-black" />
                 <span>{lang === 'en' ? 'Fast-Track via WhatsApp Direct' : 'محادثة سريعة عبر الواتساب مباشرة'}</span>
