@@ -1,4 +1,4 @@
-import { getPublishedConfig } from '../_lib/store';
+import { getPublishedConfig } from '../_lib/store.js';
 
 type BillingRequest = {
   packageId?: string;

@@ -1,5 +1,5 @@
 /** Published site config, as seen by other serverless functions (e.g. the payment function reads prices from it). */
-import { PUBLISHED_ID, getCreds, readRawJson } from './cloudinary';
+import { PUBLISHED_ID, getCreds, readRawJson } from './cloudinary.js';
 
 let cache: { at: number; value: any } | null = null;
 

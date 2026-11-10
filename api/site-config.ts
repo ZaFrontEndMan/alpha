@@ -12,8 +12,8 @@
  */
 
 
-import { DRAFT_ID, PUBLISHED_ID } from './_lib/cloudinary';
-import { readSession } from './_lib/auth';
+import { DRAFT_ID, PUBLISHED_ID } from './_lib/cloudinary.js';
+import { readSession } from './_lib/auth.js';
 
 export default async function handler(
   request: { method?: string; url?: string; headers?: Record<string, string | string[] | undefined> },

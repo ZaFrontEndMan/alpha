@@ -26,7 +26,7 @@ import {
   readRawJson,
   signUpload,
   writeRawJson,
-} from './_lib/cloudinary';
+} from './_lib/cloudinary.js';
 import {
   adminConfigured,
   checkCredentials,
@@ -36,7 +36,7 @@ import {
   readSession,
   recordFailure,
   recordSuccess,
-} from './_lib/auth';
+} from './_lib/auth.js';
 
 type Req = { method?: string; url?: string; headers: Record<string, string | string[] | undefined>; body?: unknown };
 type Res = {
