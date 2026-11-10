@@ -139,7 +139,7 @@ export const translations: Record<Language, TranslationContent> = {
       transformationsLabel: 'Real Transformations',
       weeksChange: '12',
       weeksLabel: 'Weeks To Change',
-      doctorLabel: 'Dr Ahmed Assem',
+      doctorLabel: 'Dr Ahmed Assem ',
       experienceYears: '14+',
       experienceLabel: 'IFBB Pro Coaching Experience',
     },
