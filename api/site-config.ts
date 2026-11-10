@@ -11,10 +11,12 @@
  * The response is cached for a few seconds at the edge so visitors don't each trigger an Admin API call.
  */
 
-const CONFIG_PUBLIC_ID = 'assem/config/site-config.json';
+
+import { DRAFT_ID, PUBLISHED_ID } from './_lib/cloudinary';
+import { readSession } from './_lib/auth';
 
 export default async function handler(
-  request: { method?: string },
+  request: { method?: string; url?: string; headers?: Record<string, string | string[] | undefined> },
   response: {
     setHeader: (name: string, value: string) => void;
     status: (code: number) => { json: (data: unknown) => void };
@@ -38,13 +40,16 @@ export default async function handler(
 
   try {
     const auth = Buffer.from(`${key}:${secret}`).toString('base64');
-    const encodedId = CONFIG_PUBLIC_ID.split('/').map(encodeURIComponent).join('/');
+    // ?draft=1 shows the unpublished draft, but only to a signed-in admin (used by the dashboard's Preview button).
+    const wantsDraft = new URL(request.url ?? '/', 'http://local').searchParams.get('draft') === '1';
+    const useDraft = wantsDraft && Boolean(readSession(request.headers ?? {}));
+    const encodedId = (useDraft ? DRAFT_ID : PUBLISHED_ID).split('/').map(encodeURIComponent).join('/');
     const meta = await fetch(`https://api.cloudinary.com/v1_1/${cloud}/resources/raw/upload/${encodedId}`, {
       headers: { Authorization: `Basic ${auth}` },
     });
 
     if (meta.status === 404) {
-      response.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=30');
+      response.setHeader('Cache-Control', useDraft ? 'no-store' : 'public, s-maxage=10, stale-while-revalidate=30');
       return response.status(200).json({ config: null });
     }
     if (!meta.ok) throw new Error(`Cloudinary lookup failed (${meta.status})`);
@@ -54,7 +59,7 @@ export default async function handler(
     if (!file.ok) throw new Error(`Config download failed (${file.status})`);
     const config = await file.json();
 
-    response.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=30');
+    response.setHeader('Cache-Control', useDraft ? 'private, no-store' : 'public, s-maxage=10, stale-while-revalidate=30');
     return response.status(200).json({ config, version });
   } catch (error) {
     console.error('[api/site-config]', error);

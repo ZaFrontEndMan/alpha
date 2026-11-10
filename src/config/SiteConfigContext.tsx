@@ -9,7 +9,10 @@ export { buildTranslations };
 const CACHE_KEY = 'siteConfig:v1';
 
 /** Last config this browser saw. Used for the first paint so a returning visitor never sees the defaults flash. */
+const isPreview = () => typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('preview') === 'draft';
+
 function readCached(): SiteConfig {
+  if (isPreview()) return DEFAULT_CONFIG; // the draft is fetched fresh, never cached
   try {
     const raw = window.localStorage.getItem(CACHE_KEY);
     if (raw) return mergeConfig(DEFAULT_CONFIG, JSON.parse(raw));
@@ -53,11 +56,13 @@ export const SiteConfigProvider: React.FC<{ children: React.ReactNode }> = ({ ch
 
   useEffect(() => {
     const controller = new AbortController();
-    fetch('/api/site-config', { signal: controller.signal, cache: 'no-store' })
+    const preview = isPreview();
+    fetch(preview ? '/api/site-config?draft=1' : '/api/site-config', { signal: controller.signal, cache: 'no-store', credentials: 'same-origin' })
       .then((res) => (res.ok ? res.json() : null))
       .then((data: { config?: unknown } | null) => {
         if (!data?.config) return;
         setCfg(mergeConfig(DEFAULT_CONFIG, data.config));
+        if (preview) return;
         try {
           window.localStorage.setItem(CACHE_KEY, JSON.stringify(data.config));
         } catch {
@@ -90,7 +95,16 @@ export const SiteConfigProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     [cfg, img]
   );
 
-  return <SiteConfigContext.Provider value={value}>{children}</SiteConfigContext.Provider>;
+  return (
+    <SiteConfigContext.Provider value={value}>
+      {children}
+      {isPreview() && (
+        <div className="fixed bottom-3 start-3 z-[200] rounded-md bg-amber-500 px-3 py-1.5 text-xs font-black text-black shadow-lg">
+          Draft preview — not published yet
+        </div>
+      )}
+    </SiteConfigContext.Provider>
+  );
 };
 
 export function useSiteConfig(): Ctx {

@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect, type ReactNode } from 'react';
+import { Fragment, Suspense, lazy, useState, useEffect, type ReactNode } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import { Navbar } from './components/Navbar';
@@ -184,6 +184,9 @@ function LandingPage({ lang, onToggleLang }: { lang: Language; onToggleLang: () 
 
 import { PaymentStatus } from './components/PaymentStatus';
 
+// The dashboard is its own chunk: visitors of the public site never download it.
+const AdminApp = lazy(() => import('./admin/AdminApp'));
+
 // ─── Page title, description and favicon from the dashboard ─────────────────
 function SeoSync({ lang }: { lang: Language }) {
   const { cfg, img } = useSiteConfig();
@@ -216,6 +219,7 @@ export default function App() {
       <SeoSync lang={lang} />
       <Routes>
         <Route path="/" element={<LandingPage lang={lang} onToggleLang={handleToggleLang} />} />
+        <Route path="/admin/*" element={<Suspense fallback={null}><AdminApp /></Suspense>} />
         <Route path="/form" element={<FormPage lang={lang} onToggleLang={handleToggleLang} />} />
         <Route path="/Asem/Form" element={<FormPage lang={lang} onToggleLang={handleToggleLang} />} />
         <Route path="/checkout" element={<PaymentCheckout lang={lang} onToggleLang={handleToggleLang} />} />

@@ -1,3 +1,5 @@
+import { getPublishedConfig } from '../_lib/store';
+
 type BillingRequest = {
   packageId?: string;
   method?: 'card' | 'cash';
@@ -6,11 +8,27 @@ type BillingRequest = {
   phone?: string;
 };
 
+/** Fallback prices, used until the dashboard publishes a config (they match the site's defaults). */
 const packages: Record<string, { name: string; amountCents: number }> = {
   starter: { name: 'Transformation System', amountCents: 450000 },
   elite: { name: 'Elite Coaching', amountCents: 700000 },
   'alpha-vip': { name: 'Dr. Ahmed Assem VIP Mastery', amountCents: 1200000 },
   consultation: { name: '1-on-1 Strategy Consultation', amountCents: 200000 },
+};
+
+/**
+ * The amount charged always comes from the server, never from the browser. Prices are read from the published
+ * dashboard config, so what a visitor sees on the site is what Paymob charges.
+ */
+const resolvePackage = async (id: string): Promise<{ name: string; amountCents: number } | undefined> => {
+  const fallback = Object.prototype.hasOwnProperty.call(packages, id) ? packages[id] : undefined;
+  const config = await getPublishedConfig();
+  const item = config?.content?.packages?.items?.find((p: { id?: string }) => p?.id === id);
+  if (!item) return config ? undefined : fallback; // a published config that doesn't list it means it was removed
+  if (item.visible === false) return undefined;
+  const amountCents = Math.round(Number(item.priceNumeric) * 100);
+  if (!(amountCents > 0)) return fallback;
+  return { name: item.name?.en || fallback?.name || id, amountCents };
 };
 
 const readBody = (body: unknown): BillingRequest => {
@@ -31,7 +49,7 @@ export default async function handler(request: { method?: string; body?: unknown
 
   try {
     const { packageId, method = 'card', name, email, phone } = readBody(request.body);
-    const selectedPackage = packageId ? packages[packageId] : undefined;
+    const selectedPackage = packageId ? await resolvePackage(packageId) : undefined;
     if (!selectedPackage || !name?.trim() || !email?.trim() || !phone?.trim() || !['card', 'cash'].includes(method)) {
       return response.status(400).json({ error: 'Please provide a valid package and billing details.' });
     }
