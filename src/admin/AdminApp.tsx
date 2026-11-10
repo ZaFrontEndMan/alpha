@@ -200,10 +200,19 @@ const Dashboard: React.FC<{ email: string; onLogout: () => void }> = ({ email, o
     window.open('/?preview=draft', '_blank', 'noopener');
   };
 
+  // Discard: unsaved edits revert to the last saved state; a saved-but-unpublished draft reverts to the live site.
   const discard = async () => {
-    if (!window.confirm('هترجّع المسودة لآخر نسخة منشورة وتضيع تعديلاتك. تكمل؟')) return;
+    if (dirty) {
+      if (!window.confirm('هتلغي التعديلات اللي ما اتحفظتش وترجع لآخر نسخة محفوظة. تكمل؟')) return;
+      setCfgState(JSON.parse(savedJson));
+      notify('اتلغت التعديلات غير المحفوظة.');
+      return;
+    }
+    if (!window.confirm('هتمسح المسودة وترجع لآخر نسخة منشورة على الموقع، وتعديلاتك هتضيع. تكمل؟')) return;
+    setBusy('save');
     try { await adminCall('discard-draft', { method: 'POST' }); await load(); notify('رجعت المسودة لآخر نسخة منشورة.'); }
     catch (e) { notify(e instanceof Error ? e.message : 'فشل', true); }
+    finally { setBusy(''); }
   };
 
   // Ctrl/Cmd+S saves; warn before leaving with unsaved edits
@@ -230,6 +239,7 @@ const Dashboard: React.FC<{ email: string; onLogout: () => void }> = ({ email, o
               <p className={`text-xs font-semibold ${status.c}`}>{status.t}</p>
             </div>
             <button onClick={preview} disabled={!!busy} className="rounded-md border border-neutral-700 px-3 py-2 text-xs font-bold hover:border-neutral-500 disabled:opacity-50 cursor-pointer">معاينة المسودة ↗</button>
+            <button onClick={discard} disabled={(!dirty && !unpublished) || !!busy} className="rounded-md border border-neutral-700 px-3 py-2 text-xs font-bold text-neutral-300 hover:border-red-500 hover:text-red-400 disabled:opacity-40 cursor-pointer">تجاهل التعديلات</button>
             <button onClick={() => save()} disabled={!dirty || !!busy} className="rounded-md border border-brand/70 px-3 py-2 text-xs font-bold text-accent hover:bg-brand/10 disabled:opacity-40 cursor-pointer">
               {busy === 'save' ? 'جاري الحفظ…' : 'حفظ المسودة'}
             </button>
@@ -250,9 +260,6 @@ const Dashboard: React.FC<{ email: string; onLogout: () => void }> = ({ email, o
                 </button>
               ))}
             </div>
-            {unpublished && !dirty && (
-              <button onClick={discard} className="mt-4 hidden text-xs text-neutral-500 hover:text-red-400 lg:block cursor-pointer">تجاهل المسودة والرجوع للمنشور</button>
-            )}
           </nav>
 
           <main className="min-w-0 space-y-6">
