@@ -48,3 +48,16 @@ export function mergeConfig<T>(base: T, override: unknown): T {
   }
   return out as T;
 }
+
+/**
+ * Merges a saved config over the defaults, and makes sure sections / nav links that were added to the site after
+ * that config was saved still show up (arrays are replaced wholesale by `mergeConfig`, so they would be missing).
+ */
+export function loadConfig(saved: unknown): SiteConfig {
+  const merged = mergeConfig(DEFAULT_CONFIG, saved) as SiteConfig;
+  const sections = [...merged.sections];
+  for (const d of DEFAULT_CONFIG.sections) if (!sections.some((s) => s.type === d.type)) sections.push(structuredClone(d));
+  const links = [...merged.navbar.links];
+  for (const d of DEFAULT_CONFIG.navbar.links) if (!links.some((l) => l.key === d.key)) links.push(structuredClone(d));
+  return { ...merged, sections, navbar: { ...merged.navbar, links } };
+}

@@ -9,6 +9,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { translations } from '../src/translations.ts';
+import { blogContent } from './blog-seed.ts';
 
 const PLAIN_KEYS = new Set(['id', 'step', 'number', 'priceNumeric', 'popular', 'currency']);
 
@@ -86,6 +87,8 @@ const config = {
       { key: 'packages', href: '#packages', visible: true, label: T.nav.packages },
       { key: 'reviews', href: '#reviews', visible: true, label: T.nav.reviews },
       { key: 'workouts', href: '#workouts', visible: true, label: T.nav.workouts },
+      // Off until the starter articles are reviewed in /admin.
+      { key: 'blogs', href: '/blogs', visible: false, label: L('Blog', 'المدونة') },
       { key: 'calculator', href: '/substitutions', visible: true, label: T.nav.calculator },
       { key: 'features', href: '#features', visible: true, label: T.nav.features },
       { key: 'comparison', href: '#comparison', visible: true, label: T.nav.comparison },
@@ -115,6 +118,8 @@ const config = {
     { id: 'features', type: 'features', visible: true, contentKey: 'features' },
     { id: 'comparison', type: 'comparison', visible: true, contentKey: 'comparison' },
     { id: 'how', type: 'howItWorks', visible: true, contentKey: 'howItWorks' },
+    // Hidden by default: the starter articles are placeholders to review. Turn it on from /admin → Sections.
+    { id: 'blogs', type: 'blogs', visible: false, contentKey: 'blogs' },
     { id: 'faqs', type: 'faqs', visible: true, contentKey: 'faqs' },
   ],
 
@@ -314,6 +319,8 @@ const config = {
       stepLabel: L('STEP', 'الخطوة'),
       steps: T.howItWorks.steps,
     },
+
+    blogs: blogContent,
 
     faqs: {
       tag: L('COMMON QUESTIONS', 'كل ما تحتاج معرفته'),

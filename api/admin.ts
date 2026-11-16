@@ -72,6 +72,17 @@ function validateConfig(c: any): string | null {
   const items = c.content?.packages?.items;
   if (!Array.isArray(items) || items.some((p: any) => !p?.id || !(Number(p.priceNumeric) > 0)))
     return 'Every package needs an id and a price greater than zero.';
+  const posts = c.content?.blogs?.posts;
+  if (posts !== undefined) {
+    if (!Array.isArray(posts)) return 'Blog posts must be a list.';
+    const seen = new Set<string>();
+    for (const p of posts) {
+      const slug = String(p?.slug || p?.id || '');
+      if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(slug)) return `Blog article link "${slug}" must use lowercase English letters, numbers and dashes only.`;
+      if (seen.has(slug)) return `Two blog articles use the same link "${slug}".`;
+      seen.add(slug);
+    }
+  }
   return null;
 }
 

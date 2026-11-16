@@ -23,11 +23,24 @@ const isImage = (v: unknown) =>
   isObj(v) && Object.keys(v).every((k) => ['asset', 'cloudinaryId', 'alt'].includes(k)) && ('asset' in v || 'cloudinaryId' in v);
 const isColor = (v: unknown) => typeof v === 'string' && /^#[0-9a-fA-F]{6}$/.test(v);
 
+/** Text fields that are always long-form (rendered as a text area). */
+const MULTILINE_KEYS = new Set(['body', 'excerpt', 'ctaText']);
+/** Fields that are a fixed choice rather than free text. */
+const SELECTS: Record<string, [string, string][]> = {
+  tone: [['brand', 'أحمر (لون البراند)'], ['dark', 'داكن'], ['light', 'فاتح'], ['accent', 'أحمر فاتح']],
+};
+
 const uid = () => Math.random().toString(36).slice(2, 8);
 
 /** An empty item shaped like `sample`, used by "add". */
 export function blankLike(sample: any, key?: string | number): any {
-  if (typeof sample === 'string') return key === 'id' || key === 'key' ? `new-${uid()}` : '';
+  if (typeof sample === 'string') {
+    if (key === 'id' || key === 'key') return `new-${uid()}`;
+    if (key === 'slug') return `article-${uid()}`;
+    if (key === 'tone') return 'brand';
+    if (key === 'date') return new Date().toISOString().slice(0, 10);
+    return '';
+  }
   if (typeof sample === 'number') return 0;
   if (typeof sample === 'boolean') return key === 'visible';
   if (Array.isArray(sample)) return [];
@@ -51,7 +64,7 @@ function summaryOf(v: any): string {
 export function folderFor(path: Path): string {
   const area = path[0] === 'content' ? String(path[1]) : path[0] === 'site' ? 'brand' : 'sections';
   const map: Record<string, string> = {
-    hero: 'hero', coach: 'coach', whyChoose: 'coach', transformations: 'transformations', testimonials: 'testimonials', brand: 'brand',
+    hero: 'hero', coach: 'coach', whyChoose: 'coach', transformations: 'transformations', testimonials: 'testimonials', brand: 'brand', blogs: 'blogs',
   };
   return `assem/${map[area] ?? 'sections'}`;
 }
@@ -104,10 +117,10 @@ const ColorField: React.FC<{ value: string; onChange: (v: string) => void }> = (
 );
 
 /** English + Arabic side by side. */
-export const LField: React.FC<{ label: string; value: { en: string; ar: string }; onChange: (v: { en: string; ar: string }) => void }> = ({
-  label, value, onChange,
+export const LField: React.FC<{ label: string; value: { en: string; ar: string }; onChange: (v: { en: string; ar: string }) => void; forceLong?: boolean }> = ({
+  label, value, onChange, forceLong,
 }) => {
-  const long = value.en.length > 70 || value.ar.length > 70 || /\n/.test(value.en + value.ar);
+  const long = forceLong || value.en.length > 70 || value.ar.length > 70 || /\n/.test(value.en + value.ar);
   return (
     <div>
       <span className="block text-xs font-bold text-neutral-300 mb-1.5">{label}</span>
@@ -258,7 +271,7 @@ export const AutoEditor: React.FC<{ value: any; onChange: (v: any) => void; path
   const name = label ?? labelOf(key);
 
   if (isImage(value)) return <ImageField label={name} value={value} onChange={onChange} path={path} />;
-  if (isL(value)) return <LField label={name} value={value} onChange={onChange} />;
+  if (isL(value)) return <LField label={name} value={value} onChange={onChange} forceLong={MULTILINE_KEYS.has(String(key))} />;
   if (typeof value === 'boolean') return <Toggle on={value} onChange={onChange} label={name} />;
   if (typeof value === 'number')
     return (
@@ -268,7 +281,18 @@ export const AutoEditor: React.FC<{ value: any; onChange: (v: any) => void; path
     );
   if (typeof value === 'string') {
     if (isColor(value)) return <Field label={name}><ColorField value={value} onChange={onChange} /></Field>;
-    const ltr = key === 'href' || key === 'email' || key === 'whatsapp' || key === 'paymentWhatsapp' || key === 'platformLabel';
+    const options = SELECTS[String(key)];
+    if (options)
+      return (
+        <Field label={name}>
+          <select className={`${input} max-w-[14rem]`} value={value} onChange={(e) => onChange(e.target.value)}>
+            {options.map(([v, l]) => <option key={v} value={v}>{l}</option>)}
+          </select>
+        </Field>
+      );
+    if (key === 'date')
+      return <Field label={name}><input className={`${input} max-w-[14rem]`} dir="ltr" type="date" value={value} onChange={(e) => onChange(e.target.value)} /></Field>;
+    const ltr = key === 'slug' || key === 'href' || key === 'email' || key === 'whatsapp' || key === 'paymentWhatsapp' || key === 'platformLabel';
     return (
       <Field label={name}>
         <TextInput ltr={ltr} multiline={value.length > 90 || /\n/.test(value)} value={value} onChange={onChange} />

@@ -1,7 +1,7 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { CLOUDINARY_CLOUD_NAME } from '../utils/cloudinary';
 import { BUNDLED_ASSETS } from './assets';
-import { DEFAULT_CONFIG, mergeConfig } from './siteConfig';
+import { DEFAULT_CONFIG, loadConfig } from './siteConfig';
 import type { ImageRef, Lang, SiteConfig } from './siteConfig';
 import { buildTranslations } from './buildTranslations';
 export { buildTranslations };
@@ -11,11 +11,15 @@ const CACHE_KEY = 'siteConfig:v1';
 /** Last config this browser saw. Used for the first paint so a returning visitor never sees the defaults flash. */
 const isPreview = () => typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('preview') === 'draft';
 
+const hasCache = () => {
+  try { return !isPreview() && !!window.localStorage.getItem(CACHE_KEY); } catch { return false; }
+};
+
 function readCached(): SiteConfig {
   if (isPreview()) return DEFAULT_CONFIG; // the draft is fetched fresh, never cached
   try {
     const raw = window.localStorage.getItem(CACHE_KEY);
-    if (raw) return mergeConfig(DEFAULT_CONFIG, JSON.parse(raw));
+    if (raw) return loadConfig(JSON.parse(raw));
   } catch {
     /* storage blocked or corrupt: ignore */
   }
@@ -28,6 +32,9 @@ interface Ctx {
   img: (ref: ImageRef | undefined, width?: number) => string;
   /** Section visibility by section type ('hero', 'packages' …). */
   isSectionVisible: (type: string) => boolean;
+  /** False until the live config has been fetched (or a cached copy was found). Pages that depend on a section's
+   *  visibility wait for this so they don't flash "unavailable" with the defaults on a first visit. */
+  loaded: boolean;
 }
 
 const SiteConfigContext = createContext<Ctx | null>(null);
@@ -53,6 +60,7 @@ function applyTheme(cfg: SiteConfig) {
 
 export const SiteConfigProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [cfg, setCfg] = useState<SiteConfig>(readCached);
+  const [loaded, setLoaded] = useState(hasCache);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -61,7 +69,7 @@ export const SiteConfigProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       .then((res) => (res.ok ? res.json() : null))
       .then((data: { config?: unknown } | null) => {
         if (!data?.config) return;
-        setCfg(mergeConfig(DEFAULT_CONFIG, data.config));
+        setCfg(loadConfig(data.config));
         if (preview) return;
         try {
           window.localStorage.setItem(CACHE_KEY, JSON.stringify(data.config));
@@ -71,7 +79,8 @@ export const SiteConfigProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       })
       .catch(() => {
         /* offline / API not available (e.g. plain `vite preview`): the defaults are already showing */
-      });
+      })
+      .finally(() => { if (!controller.signal.aborted) setLoaded(true); });
     return () => controller.abort();
   }, []);
 
@@ -91,8 +100,9 @@ export const SiteConfigProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       cfg,
       img,
       isSectionVisible: (type: string) => cfg.sections.some((s) => s.type === type && s.visible),
+      loaded,
     }),
-    [cfg, img]
+    [cfg, img, loaded]
   );
 
   return (

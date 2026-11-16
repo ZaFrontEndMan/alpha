@@ -30,6 +30,10 @@ export const LABELS: Record<string, string> = {
   footer: 'الفوتر', navTitle: 'عنوان قائمة الروابط', channelsTitle: 'عنوان قسم التواصل', channelsText: 'نص قسم التواصل',
   platformLabel: 'سطر المنصة الرسمية', privacy: 'سياسة الخصوصية', terms: 'الشروط والأحكام',
   en: 'English', ar: 'العربية',
+  blogs: 'المدونة', posts: 'المقالات', slug: 'الرابط (إنجليزي صغير وشرطات فقط)', category: 'التصنيف', excerpt: 'مقدمة قصيرة',
+  tone: 'لون الكارت', date: 'تاريخ النشر', readTime: 'مدة القراءة', viewAll: 'زر كل المقالات',
+  readMore: 'زر اقرأ المقال', all: 'تاب "الكل"', back: 'رابط الرجوع للمقالات', empty: 'رسالة لا توجد مقالات', related: 'عنوان "كمّل قراءة"',
+  ctaText: 'نص صندوق الدعوة', page: 'صفحة المدونة',
 };
 
 /** Keys the editor never shows (internal wiring, or edited somewhere else). */
@@ -40,7 +44,7 @@ export const HIDDEN_KEYS = new Set([
 export const SECTION_NAMES: Record<string, string> = {
   hero: 'الهيرو (أول الصفحة)', transformations: 'التحولات (معرض الصور)', packages: 'الباقات', testimonials: 'آراء العملاء',
   workouts: 'التمارين', substitutions: 'بدائل الأطعمة', banner: 'البانر', whyChoose: 'ليه د. أحمد عاصم',
-  coach: 'عن الدكتور', features: 'المميزات', comparison: 'المقارنة', howItWorks: 'طريقة العمل', faqs: 'الأسئلة الشائعة',
+  coach: 'عن الدكتور', features: 'المميزات', comparison: 'المقارنة', howItWorks: 'طريقة العمل', blogs: 'المدونة (المقالات)', faqs: 'الأسئلة الشائعة',
 };
 
 /** Which content key each section type edits. */

@@ -8,6 +8,7 @@ export const FOLDERS = [
   ['assem/coach', 'عن الدكتور'],
   ['assem/transformations', 'التحولات'],
   ['assem/testimonials', 'الآراء'],
+  ['assem/blogs', 'المدونة'],
   ['assem/brand', 'اللوجو والهوية'],
   ['assem/sections', 'سكاشن أخرى'],
 ] as const;

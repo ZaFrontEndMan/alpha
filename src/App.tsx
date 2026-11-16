@@ -75,6 +75,8 @@ function LandingPage({ lang, onToggleLang }: { lang: Language; onToggleLang: () 
       // Payment starts in a secure Paymob checkout flow.
       case 'packages':
         return <PackagesSection t={t} lang={lang} onStartPayment={handleStartPayment} />;
+      case 'blogs':
+        return <BlogsSection lang={lang} />;
       case 'testimonials':
         return <Testimonials t={t} lang={lang} onOpenConsultation={handleOpenForm} />;
       case 'workouts':
@@ -183,6 +185,7 @@ function LandingPage({ lang, onToggleLang }: { lang: Language; onToggleLang: () 
 }
 
 import { PaymentStatus } from './components/PaymentStatus';
+import { BlogsSection, BlogsPage, BlogPostPage } from './components/Blogs';
 
 // The dashboard is its own chunk: visitors of the public site never download it.
 const AdminApp = lazy(() => import('./admin/AdminApp'));
@@ -220,6 +223,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<LandingPage lang={lang} onToggleLang={handleToggleLang} />} />
         <Route path="/admin/*" element={<Suspense fallback={null}><AdminApp /></Suspense>} />
+        <Route path="/blogs" element={<BlogsPage lang={lang} onToggleLang={handleToggleLang} />} />
+        <Route path="/blogs/:slug" element={<BlogPostPage lang={lang} onToggleLang={handleToggleLang} />} />
         <Route path="/form" element={<FormPage lang={lang} onToggleLang={handleToggleLang} />} />
         <Route path="/Asem/Form" element={<FormPage lang={lang} onToggleLang={handleToggleLang} />} />
         <Route path="/checkout" element={<PaymentCheckout lang={lang} onToggleLang={handleToggleLang} />} />

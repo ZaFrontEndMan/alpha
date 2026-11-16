@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { DEFAULT_CONFIG, mergeConfig, type SiteConfig } from '../config/siteConfig';
+import { loadConfig, type SiteConfig } from '../config/siteConfig';
 import { AdminApiError, adminCall } from './api';
 import { AutoEditor, MediaPickerContext, Toggle } from './fields';
 import { CONTENT_KEY, SECTION_NAMES, TABS } from './labels';
@@ -148,7 +148,7 @@ const Dashboard: React.FC<{ email: string; onLogout: () => void }> = ({ email, o
   const load = useCallback(async () => {
     try {
       const data = await adminCall<{ draft: unknown; published: unknown; dirty: boolean }>('config');
-      const base = mergeConfig(DEFAULT_CONFIG, data.draft ?? data.published ?? {});
+      const base = loadConfig(data.draft ?? data.published ?? {});
       setCfgState(base);
       setSavedJson(JSON.stringify(base));
       setUnpublished(data.draft ? !data.published || data.dirty : false);
