@@ -188,9 +188,15 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({
 
                 {/* Price Display */}
                 <div className="pb-6 mb-6 border-b border-neutral-800">
-                  <div className="text-3xl sm:text-4xl font-black text-white font-mono tabular-nums text-accent">
-                    {formatPrice(pkg.priceNumeric)}
-                  </div>
+                  {pkg.showPrice !== false ? (
+                    <div className="text-3xl sm:text-4xl font-black text-white font-mono tabular-nums text-accent">
+                      {formatPrice(pkg.priceNumeric)}
+                    </div>
+                  ) : (
+                    <div className={cn('text-xl sm:text-2xl font-black text-accent leading-snug', lang === 'en' ? 'font-sport' : 'font-cairo')}>
+                      {tx(L.priceHidden, lang)}
+                    </div>
+                  )}
                   <div className="text-[11px] text-neutral-400 mt-1">
                     {tx(L.tagline, lang)}
                   </div>
@@ -246,7 +252,7 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({
                   "text-2xl sm:text-3xl font-black text-white mb-2",
                   lang === 'en' ? 'font-sport' : 'font-cairo'
                 )}>
-                  {consult.name} — {formatPrice(consult.priceNumeric)}
+                  {consult.name}{consult.showPrice !== false && ` — ${formatPrice(consult.priceNumeric)}`}
                 </h3>
                 <p className="text-sm text-neutral-300 mb-4 max-w-2xl leading-relaxed">
                   {consult.description}

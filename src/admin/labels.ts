@@ -30,6 +30,7 @@ export const LABELS: Record<string, string> = {
   footer: 'الفوتر', navTitle: 'عنوان قائمة الروابط', channelsTitle: 'عنوان قسم التواصل', channelsText: 'نص قسم التواصل',
   platformLabel: 'سطر المنصة الرسمية', privacy: 'سياسة الخصوصية', terms: 'الشروط والأحكام',
   en: 'English', ar: 'العربية',
+  showPrices: 'إظهار الأسعار في قسم الباقات (مفتاح عام)', showPrice: 'إظهار سعر هذه الباقة', priceHidden: 'النص البديل لما السعر مخفي',
   blogs: 'المدونة', posts: 'المقالات', slug: 'الرابط (إنجليزي صغير وشرطات فقط)', category: 'التصنيف', excerpt: 'مقدمة قصيرة',
   tone: 'لون الكارت', date: 'تاريخ النشر', readTime: 'مدة القراءة', viewAll: 'زر كل المقالات',
   readMore: 'زر اقرأ المقال', all: 'تاب "الكل"', back: 'رابط الرجوع للمقالات', empty: 'رسالة لا توجد مقالات', related: 'عنوان "كمّل قراءة"',

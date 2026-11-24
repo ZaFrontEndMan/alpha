@@ -42,7 +42,7 @@ export function blankLike(sample: any, key?: string | number): any {
     return '';
   }
   if (typeof sample === 'number') return 0;
-  if (typeof sample === 'boolean') return key === 'visible';
+  if (typeof sample === 'boolean') return key === 'visible' || key === 'showPrice';
   if (Array.isArray(sample)) return [];
   if (isImage(sample)) return { cloudinaryId: '' };
   if (isObj(sample)) return Object.fromEntries(Object.entries(sample).map(([k, v]) => [k, blankLike(v, k)]));

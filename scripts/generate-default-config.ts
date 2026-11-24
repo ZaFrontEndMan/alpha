@@ -161,6 +161,8 @@ const config = {
       tag: T.packages.tag,
       heading: T.packages.heading,
       currency: T.packages.currency,
+      // Master switch: false hides every price on the packages section (the pay button still charges the real price).
+      showPrices: true,
       // Prices in EGP; other currencies are derived from these rates (EGP per 1 unit inverted).
       exchangeRates: { EGP: 1, USD: 1 / 49.5, AED: 3.67 / 49.5, SAR: 3.75 / 49.5 },
       items: T.packages.items.map((p: any) => ({
@@ -168,6 +170,7 @@ const config = {
         // English keeps "EGP"; Arabic reads "جنيه مصري"
         price: L(p.price.en, p.price.en.replace(' EGP', ' جنيه مصري')),
         visible: true,
+        showPrice: true,
       })),
       // how the EGP currency label reads next to a price
       currencyLabel: L('EGP', 'جنيه مصري'),
@@ -178,6 +181,7 @@ const config = {
         whatsapp: L('WhatsApp', 'واتساب'),
         consultationTag: L('PRIVATE 1-ON-1 STRATEGY CALL', 'جلسة استشارية خاصة فردية'),
         whatsappDirect: L('WhatsApp Us Directly', 'تواصل عبر واتساب'),
+        priceHidden: L('Contact us for pricing', 'تواصل معنا لمعرفة السعر'),
       },
     },
 

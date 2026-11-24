@@ -84,6 +84,7 @@ export function buildTranslations(cfg: SiteConfig, lang: Lang): TranslationConte
           name: r(p.name),
           price: r(p.price),
           priceNumeric: p.priceNumeric,
+          showPrice: c.packages.showPrices !== false && p.showPrice !== false,
           description: r(p.description),
           popular: p.popular,
           features: p.features.map(r),

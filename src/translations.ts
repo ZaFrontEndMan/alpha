@@ -79,6 +79,8 @@ export interface TranslationContent {
       name: string;
       price: string;
       priceNumeric: number;
+      /** false when the dashboard hides this package's price */
+      showPrice?: boolean;
       description: string;
       popular?: boolean;
       features: string[];
@@ -139,7 +141,7 @@ export const translations: Record<Language, TranslationContent> = {
       transformationsLabel: 'Real Transformations',
       weeksChange: '12',
       weeksLabel: 'Weeks To Change',
-      doctorLabel: 'Dr Ahmed Assem ',
+      doctorLabel: 'Dr Ahmed Assem',
       experienceYears: '14+',
       experienceLabel: 'IFBB Pro Coaching Experience',
     },

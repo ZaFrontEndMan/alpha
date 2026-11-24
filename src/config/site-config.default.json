@@ -396,6 +396,7 @@
         "ar": "اختر باقة التدريب الأنسب لهدفك"
       },
       "currency": "EGP",
+      "showPrices": true,
       "exchangeRates": {
         "EGP": 1,
         "USD": 0.020202020202020204,
@@ -456,7 +457,8 @@
               "ar": "توجيهات لضبط العادات اليومية وأسلوب الحياة"
             }
           ],
-          "visible": true
+          "visible": true,
+          "showPrice": true
         },
         {
           "id": "elite",
@@ -512,7 +514,8 @@
               "ar": "توجيه لضبط النوم والاستشفاء والعادات الصحية"
             }
           ],
-          "visible": true
+          "visible": true,
+          "showPrice": true
         },
         {
           "id": "alpha-vip",
@@ -575,7 +578,8 @@
               "ar": "استراتيجية أسبوع الذروة (Peak Week) في حال الاستعداد للبطولات أو المناسبات"
             }
           ],
-          "visible": true
+          "visible": true,
+          "showPrice": true
         },
         {
           "id": "consultation",
@@ -622,7 +626,8 @@
               "ar": "خطة عمل واضحة لتنفيذها مباشرة بعد الجلسة"
             }
           ],
-          "visible": true
+          "visible": true,
+          "showPrice": true
         }
       ],
       "currencyLabel": {
@@ -653,6 +658,10 @@
         "whatsappDirect": {
           "en": "WhatsApp Us Directly",
           "ar": "تواصل عبر واتساب"
+        },
+        "priceHidden": {
+          "en": "Contact us for pricing",
+          "ar": "تواصل معنا لمعرفة السعر"
         }
       }
     },
