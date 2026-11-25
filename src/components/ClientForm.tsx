@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { cn } from '../utils/cn';
 import { Language } from '../translations';
 import { useSiteConfig, useTranslations } from '../config/SiteConfigContext';
+import { tx } from '../config/siteConfig';
 import { BrandLogo } from './BrandLogo';
 import { WhatsappIcon } from './WhatsappIcon';
 
@@ -66,13 +67,6 @@ const CARB_OPTIONS = ['Sweet potatoes', 'Corn flakes', 'Toast', 'Pasta', 'Cream 
 const FRUIT_OPTIONS = ['Apples', 'Oranges', 'Kiwi', 'Strawberries', 'Bananas', 'Watermelon', 'Pomegranate'];
 const VEGGIE_OPTIONS = ['Green peas', 'Zucchini', 'Green beans', 'Asparagus', 'Lettuce', 'Bell peppers', 'Broccoli', 'Tomatoes', 'Cucumber', 'Mushroom', 'Carrot'];
 const FAT_OPTIONS = ['Almonds', 'Cashews', 'Pecan', 'Pistachio', 'Avocado', 'Olive oil', 'Dark chocolate', 'Peanut butter', 'Walnuts'];
-
-const PACKAGES = [
-  'Transformation System (4500 EGP)',
-  'Elite Coaching (7000 EGP)',
-  'VIP Mastery (12000 EGP)',
-  '1-on-1 Strategy Consultation (2000 EGP)',
-];
 
 const TOTAL_STEPS = 6;
 const STEP_LABELS_EN = ['Personal Info', 'Body Metrics', 'Fitness Profile', 'Health & History', 'Extra Info', 'Nutrition'];
@@ -158,8 +152,37 @@ export const FormPage: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
 
-  // Read ?tier= query param to pre-select a package
-  const tierParam = new URLSearchParams(window.location.search).get('tier') ?? 'Elite Coaching (7000 EGP)';
+  // Package choices come from the dashboard. A price is shown (and sent) only while the dashboard shows prices.
+  const packageOptions = useMemo(
+    () =>
+      cfg.content.packages.items
+        .filter((p) => p.visible !== false)
+        .map((p) => {
+          const showPrice = cfg.content.packages.showPrices !== false && p.showPrice !== false;
+          const nameEn = p.name.en.replace('Dr. Ahmed Assem ', '');
+          return {
+            id: p.id,
+            /** what is sent to Dr. Ahmed (always English) */
+            value: showPrice ? `${nameEn} (${p.priceNumeric} EGP)` : nameEn,
+            /** what the visitor reads */
+            label: showPrice
+              ? `${tx(p.name, lang).replace('Dr. Ahmed Assem ', '').replace('د. أحمد عاصم ', '')} (${p.priceNumeric.toLocaleString()} ${tx(cfg.content.packages.currencyLabel, lang)})`
+              : tx(p.name, lang).replace('Dr. Ahmed Assem ', '').replace('د. أحمد عاصم ', ''),
+            nameEn,
+          };
+        }),
+    [cfg, lang]
+  );
+
+  // ?tier= pre-selects a package (it may carry a price in brackets, which we ignore); Elite is the default.
+  const tierParam = (new URLSearchParams(window.location.search).get('tier') ?? 'Elite Coaching').replace(/\s*\(.*\)\s*$/, '');
+  const [tierId, setTierId] = useState<string | null>(null);
+  const activeTier =
+    packageOptions.find((o) => o.id === tierId) ??
+    packageOptions.find((o) => o.nameEn === tierParam) ??
+    packageOptions.find((o) => o.id === 'elite') ??
+    packageOptions[0];
+  const selectedTier = activeTier?.value ?? '';
 
   const [data, setData] = useState<FormData>({
     name: '', gender: 'Male', age: '', location: '', phone: '', email: '',
@@ -168,9 +191,12 @@ export const FormPage: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
     benchPressMax: '', squatsMax: '', barbellRowsMax: '',
     medicalConditions: '', onlineCoachingExp: '',
     cardioMachines: [], reachSource: 'Instagram', subscriptionReason: '',
-    selectedTier: tierParam,
+    selectedTier: '',
     proteins: [], carbs: [], fruits: [], veggies: [], healthyFats: [],
   });
+
+  /** What is actually sent: the form data plus the resolved package. */
+  const payload: FormData = { ...data, selectedTier };
 
   // Lock body scroll on this page
   useEffect(() => {
@@ -200,7 +226,7 @@ export const FormPage: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
       fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload),
       })
         .then((res) => res.json())
         .then((resData) => {
@@ -215,7 +241,7 @@ export const FormPage: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
     }
 
     // 2. Open WhatsApp fast-track
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(buildWhatsAppMessage(data))}`;
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(buildWhatsAppMessage(payload))}`;
     window.open(url, '_blank', 'noopener,noreferrer');
     setSubmitted(true);
     setIsSubmittingForm(false);
@@ -468,8 +494,8 @@ export const FormPage: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
                     <div>
                       <label className={labelCls}>{en ? 'Selected Package' : 'الباقة المختارة'}</label>
                       <div className="space-y-2">
-                        {PACKAGES.map((p) => (
-                          <CheckOption key={p} type="radio" label={p} checked={data.selectedTier === p} onChange={() => set('selectedTier', p)} />
+                        {packageOptions.map((o) => (
+                          <CheckOption key={o.id} type="radio" label={o.label} checked={activeTier?.id === o.id} onChange={() => setTierId(o.id)} />
                         ))}
                       </div>
                     </div>
@@ -592,7 +618,7 @@ export const FormPage: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
               <div className="p-5 bg-[#1E2126] border border-neutral-800 text-start text-xs font-mono space-y-2 max-w-xs mx-auto">
                 {[
                   [en ? 'Name' : 'الاسم', data.name],
-                  [en ? 'Package' : 'الباقة', data.selectedTier],
+                  [en ? 'Package' : 'الباقة', activeTier?.label ?? ''],
                   [en ? 'Goal' : 'الهدف', data.targetGoal],
                   [en ? 'Email' : 'البريد', data.email || 'N/A'],
                   [en ? 'SLA' : 'وقت الرد', 'Within 24 Hours'],
@@ -619,7 +645,7 @@ export const FormPage: React.FC<FormPageProps> = ({ lang, onToggleLang }) => {
 
               <div className="space-y-3 max-w-xs mx-auto w-full">
                 <a
-                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(buildWhatsAppMessage(data))}`}
+                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(buildWhatsAppMessage(payload))}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex w-full items-center justify-center gap-2.5 py-4 min-h-[52px] text-xs font-black uppercase tracking-wider text-white bg-brand hover:bg-brand-hover transition-colors cursor-pointer"

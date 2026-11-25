@@ -417,7 +417,7 @@ export const PaymentStatus: React.FC<PaymentStatusProps> = ({
 
               <button
                 type="button"
-                onClick={() => navigate(matchedPackage ? `/form?tier=${encodeURIComponent(`${matchedPackage.name.replace('Dr. Ahmed Assem ', '')} (${matchedPackage.priceNumeric} EGP)`)}` : '/form')}
+                onClick={() => navigate(matchedPackage ? `/form?tier=${encodeURIComponent(matchedPackage.name.replace("Dr. Ahmed Assem ", ""))}` : '/form')}
                 className="min-h-[50px] bg-neutral-900 border border-neutral-700 hover:border-neutral-500 text-white font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 rounded-xl transition-colors cursor-pointer"
               >
                 <span>{en ? 'Complete Intake Form' : 'تعبئة استمارة المشترك'}</span>
